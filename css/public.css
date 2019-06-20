@@ -1,0 +1,81 @@
+html,
+body {
+    height: 100%;
+    font-size: 12px;
+}
+/*字体*/
+.fs12{
+  font-size: 0.12rem
+}
+.fs14{
+  font-size: 14px;
+}
+.bold{
+  font-weight: bolder;
+}
+.cored{
+  color: red;
+}
+/*定位*/
+.pr{
+  position: relative;
+}
+.text-center{
+  text-align: center;
+}
+/*圆滑*/
+.boradius{
+  border-radius: 8px;
+  overflow: hidden;
+}
+/*浮动*/
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+/*margin padding*/
+.ml3v{
+  margin-left: 3vw;
+}
+.mr1v{
+  margin-right: 1vw;
+}
+.mr2v{
+  margin-right: 2vw;
+}
+.mr3v{
+  margin-right: 3vw;
+}
+.mb5{
+  margin-bottom: 5px
+}
+.mb10{
+  margin-bottom: 10px;
+}
+.mb25{
+  margin-bottom: 25px;
+}
+.pad5a2b{
+  padding: 5px 2%;
+}
+/*背景色*/
+.bgcc{
+  background-color: #ccc;
+}
+/**/
+
+.unoverflow{
+  overflow: inherit!important;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
+.texthidden{
+  overflow: hidden;/*超出部分隐藏*/
+  white-space: nowrap;/*不换行*/
+  text-overflow:ellipsis;/*超出部分文字以...显示*/
+}
+/**/

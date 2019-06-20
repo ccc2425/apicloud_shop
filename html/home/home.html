@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>首页</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/public.css" />
+      <style>
+          #header{
+            position: fixed;
+            top: 0;
+            left: 0;
+          }
+          .serchbox{
+            margin-top: 5px;
+            text-align: center;
+          }
+          .ipt{
+            display: inline-block;
+            width: 80vw;
+            height: 20px;
+            background-color: #eee;
+            border-radius: 20px;
+            text-align: center;
+            line-height:20px;
+          }
+          .serchbox span{
+              vertical-align: middle;
+          }
+          .classification ul{
+            width:100%;
+            height: 1.9rem;
+            display: inline;
+            margin: 10px 0;
+            white-space: nowrap;
+            overflow-x:scroll;
+            float:left;
+            overflow-y:hidden
+          }
+          .classification ul li{
+            display:inline-block;
+            padding: 0 5px;
+          }
+          .classification ul::-webkit-scrollbar {
+            display:none
+          }
+      </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="serchbox">
+        <span><i class="iconfont">&#xe686;</i></span>
+        <span class="ipt fs12"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
+        <span><i class="iconfont">&#xe61b;</i></span>
+      </div>
+      <div class="classification clearfix">
+        <ul>
+          <li class="bold">全部</li>
+          <li>女装</li>
+          <li>男装</li>
+          <li>鞋品</li>
+          <li>箱包</li>
+          <li>美食</li>
+          <li>美妆</li>
+          <li>母婴</li>
+          <li>数码家电</li>
+          <li>居家</li>
+          <li>配饰</li>
+          <li>文体车品</li>
+          <li>内衣</li>
+          <li>家装家纺</li>
+          <li>户外运动</li>
+          <li>其他</li>
+        </ul>
+      </div>
+    </header>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.dom('header'); // 获取 header 标签元素
+        // var footer = $api.dom('footer'); // 获取 footer 标签元素
+        var headerH = $api.fixStatusBar(header);
+        // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
+        // var footerH = $api.fixTabBar(footer);
+        api.openFrame({
+            name: 'home_frame',
+            url: './home_frame.html',
+            rect: {
+                marginTop: headerH,
+                // margin: footerH,
+                w: 'auto',
+                // h: 480
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+            bgColor: 'rgba(0,0,0,0)',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+
+      };
+  </script>
+  </html>
