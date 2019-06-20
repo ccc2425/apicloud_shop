@@ -14,7 +14,7 @@ body {
   font-weight: bolder;
 }
 .cored{
-  color: #d81e06;
+  color: #d81e06!important;
 }
 /*定位*/
 .pr{
@@ -64,6 +64,10 @@ body {
 .bgcc{
   background-color: #ccc;
 }
+.bgcr{
+  background-color: #d81e06;
+  color: #fff;
+}
 /**/
 
 .unoverflow{
@@ -79,3 +83,6 @@ img{
   text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
 /**/
+p{
+  margin: 0;
+}

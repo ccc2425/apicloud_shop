@@ -45,10 +45,6 @@
             display: flex;
             justify-content: space-around;
         }
-        /*i.iconfont{
-          display: block;
-          margin: 10px auto 5px;
-        }*/
         /* 底部切换按钮样式 */
         .bbtn01 {background: url(./image/shouye.png) no-repeat center 4px; }
         .bbtn02 {background: url(./image/fenlei.png) no-repeat center 4px; }
@@ -76,23 +72,18 @@
     <footer id="footer">
         <ul>
             <li tapmode="activebtn0 activebtn" onclick="switchframe(0)">
-                <!-- <i class="iconfont">&#xe6d9;</i> -->
                 <a class="bottom_btn bbtn01 activebtn activebtn0">首页</a>
             </li>
             <li tapmode="activebtn1 activebtn" onclick="switchframe(1)">
-                <!-- <i class="iconfont">&#xe61c;</i> -->
                 <a class="bottom_btn bbtn02">分类</a>
             </li>
             <li tapmode="activebtn2 activebtn" onclick="switchframe(2)">
-                <!-- <i class="iconfont">&#xe663;</i> -->
                 <a class="bottom_btn bbtn03">自营商城</a>
             </li>
             <li tapmode="activebtn3 activebtn" onclick="switchframe(3)">
-                <!-- <i class="iconfont">&#xe768;</i> -->
                 <a class="bottom_btn bbtn04">素材</a>
             </li>
             <li tapmode="activebtn4 activebtn" onclick="switchframe(4)">
-                <!-- <i class="iconfont">&#xe67b;</i> -->
                 <a class="bottom_btn bbtn05">我的</a>
             </li>
         </ul>
@@ -103,34 +94,28 @@
       var footerPos;
 // 隐藏所有的一级frame
 function hideAllFrame() {
-    api.setFrameAttr({
-        name: 'home',
-        hidden: true
-    });
-    api.setFrameAttr({
-        name: 'classifys',
-        hidden: true
-    });
-    api.setFrameAttr({
-        name: 'mall',
-        hidden: true
-    });
-    api.setFrameAttr({
-        name: 'material',
-        hidden: true
-    });
-    api.setFrameAttr({
-        name: 'my',
-        hidden: true
-    });
+  api.closeFrame({
+      name: 'home'
+  });
+  api.closeFrame({
+      name: 'classifys'
+  });
+  api.closeFrame({
+      name: 'mall'
+  });
+  api.closeFrame({
+      name: 'material'
+  });
+  api.closeFrame({
+      name: 'my'
+  });
 }
 // 随意切换按钮
-function randomSwitchBtn(name, index) {
+function randomSwitchBtn(index) {
     var lis = $api.domAll('.bottom_btn');
     var i = 0,
         len = lis.length;
     var curLi = lis[index];
-
     for (i; i < len; i++) {
         var thisLi = lis[i];
         if (thisLi === curLi) {
@@ -168,7 +153,7 @@ function randomSwitchBtn(name, index) {
                 h: api.frameHeight - footerPos.h,
                 w: 'auto' // main页面的宽度 自适应屏幕宽度
             },
-            bounces: false,
+            bounces: true,
         });
 
         // 获取当前年份时间，并加载显示到页面
@@ -177,7 +162,7 @@ function randomSwitchBtn(name, index) {
     };
     function switchframe(index) {
       if (index==0) {
-        randomSwitchBtn('home', 0);
+        randomSwitchBtn(0);
         hideAllFrame();
         api.openFrame({
             name: 'home',
@@ -192,10 +177,10 @@ function randomSwitchBtn(name, index) {
             pageParam: {
                 name: 'test'
             },
-            bounces: false,
+            bounces: true,
         });
       }else if (index==1) {
-        randomSwitchBtn('classifys', 1);
+        randomSwitchBtn(1);
         hideAllFrame();
         api.openFrame({
             name: 'classifys',
@@ -210,10 +195,10 @@ function randomSwitchBtn(name, index) {
             pageParam: {
                 name: 'test'
             },
-            bounces: false,
+            bounces: true,
         });
       }else if (index==2) {
-        randomSwitchBtn('mall', 2);
+        randomSwitchBtn(2);
         hideAllFrame();
         api.openFrame({
             name: 'mall',
@@ -228,10 +213,10 @@ function randomSwitchBtn(name, index) {
             pageParam: {
                 name: 'test'
             },
-            bounces: false,
+            bounces: true,
         });
       }else if (index==3) {
-        randomSwitchBtn('material', 3);
+        randomSwitchBtn(3);
         hideAllFrame();
         api.openFrame({
             name: 'material',
@@ -246,10 +231,10 @@ function randomSwitchBtn(name, index) {
             pageParam: {
                 name: 'test'
             },
-            bounces: false,
+            bounces: true,
         });
       }else if (index==4) {
-        randomSwitchBtn('mine', 4);
+        randomSwitchBtn(4);
         hideAllFrame();
         api.openFrame({
             name: 'mine',
@@ -264,7 +249,7 @@ function randomSwitchBtn(name, index) {
             pageParam: {
                 name: 'test'
             },
-            bounces: false,
+            bounces: true,
         });
       }
     }
