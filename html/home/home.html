@@ -60,32 +60,62 @@
       </div>
       <div class="classification clearfix">
         <ul>
-          <li class="bold">全部</li>
-          <li>女装</li>
-          <li>男装</li>
-          <li>鞋品</li>
-          <li>箱包</li>
-          <li>美食</li>
-          <li>美妆</li>
-          <li>母婴</li>
-          <li>数码家电</li>
-          <li>居家</li>
-          <li>配饰</li>
-          <li>文体车品</li>
-          <li>内衣</li>
-          <li>家装家纺</li>
-          <li>户外运动</li>
-          <li>其他</li>
+          <li class="classifiy bold" onclick="opensingle(0)">全部</li>
+          <li class="classifiy" onclick="opensingle(1)">女装</li>
+          <li class="classifiy" onclick="opensingle(2)">男装</li>
+          <li class="classifiy" onclick="opensingle(3)">鞋品</li>
+          <li class="classifiy" onclick="opensingle(4)">箱包</li>
+          <li class="classifiy" onclick="opensingle(5)">美食</li>
+          <li class="classifiy" onclick="opensingle(6)">美妆</li>
+          <li class="classifiy" onclick="opensingle(7)">母婴</li>
+          <li class="classifiy" onclick="opensingle(8)">数码家电</li>
+          <li class="classifiy" onclick="opensingle(9)">居家</li>
+          <li class="classifiy" onclick="opensingle(10)">配饰</li>
+          <li class="classifiy" onclick="opensingle(11)">文体车品</li>
+          <li class="classifiy" onclick="opensingle(12)">内衣</li>
+          <li class="classifiy" onclick="opensingle(13)">家装家纺</li>
+          <li class="classifiy" onclick="opensingle(14)">户外运动</li>
+          <li class="classifiy" onclick="opensingle(15)">其他</li>
         </ul>
       </div>
     </header>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
+  var headerH;
+  // // 隐藏所有的一级frame
+  // function hideAllFrame() {
+  //     api.setFrameAttr({
+  //         name: 'home_frame',
+  //         hidden: true
+  //     });
+  //     api.setFrameAttr({
+  //         name: 'home_sort_frame',
+  //         hidden: true
+  //     });
+  // }
+  // 随意切换按钮
+  function randomSwitchBtn(index) {
+      var lis = $api.domAll('.classifiy');
+      var i = 0,
+          len = lis.length;
+      var curLi = lis[index];
+      for (i; i < len; i++) {
+          var thisLi = lis[i];
+          if (thisLi === curLi) {
+              $api.addCls(thisLi, 'bold');
+              continue;
+          } else {
+              if ($api.hasCls(thisLi, 'bold')) {
+                  $api.removeCls(thisLi, 'bold');
+              }
+          }
+      }
+  }
       apiready = function(){
         var header = $api.dom('header'); // 获取 header 标签元素
         // var footer = $api.dom('footer'); // 获取 footer 标签元素
-        var headerH = $api.fixStatusBar(header);
+        headerH = $api.fixStatusBar(header);
         // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
         // var footerH = $api.fixTabBar(footer);
         api.openFrame({
@@ -104,5 +134,47 @@
         });
 
       };
+      function openall() {
+
+      }
+      function opensingle(index) {
+        if (index==0) {
+          console.log(index);
+          // hideAllFrame();
+          randomSwitchBtn(index)
+          api.openFrame({
+              name: 'home_frame',
+              url: './home_frame.html',
+              rect: {
+                  marginTop: headerH,
+                  marginBottom: 50,
+                  w: 'auto',
+                  // h: 480
+              },
+              pageParam: {
+                  name: 'test'
+              },
+              bounces: false,
+          });
+        }else {
+          console.log(index);
+          // hideAllFrame();
+          randomSwitchBtn(index)
+          api.openFrame({
+              name: 'home_sort_frame',
+              url: './home_sort_frame.html',
+              rect: {
+                  marginTop: headerH,
+                  marginBottom: 50,
+                  w: 'auto',
+                  // h: 480
+              },
+              pageParam: {
+                  name: 'test'
+              },
+              bounces: false,
+          });
+        }
+      }
   </script>
   </html>

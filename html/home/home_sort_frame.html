@@ -5,19 +5,283 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>首页分类</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          body{
-
-          }
+      .vouchers ul:first-child{
+        padding: 10px 0;
+      }
+      .classfial{
+        width: 25%;
+        font-size: 12px;
+        /*height: 80px;*/
+      }
+      .classfial-img{
+        width: 45%;
+        height: 60px;
+        margin: 5px auto;
+      }
+      /**/
+      .sorting {
+        display: flex;
+        justify-content: space-around;
+        line-height: 50px;
+        background-color: #fff;
+      }
+      /*精选好券*/
+      .vouchers-list{
+        margin-bottom: 10px;
+      }
+      .vouchers-tit{
+        border-bottom: 1px solid #ccc;
+      }
+      .titimg{
+        width: 5vw;
+        height: 5vw;
+        margin-bottom: 5px;
+      }
+      .vouchers-list{
+        width: 100vw;
+        padding: 1vh 1vw;
+        background-color: #fff;
+      }
+      .vouchers-list-left{
+        float: left;
+        position: relative;
+        width: 32vw;
+        height: 120px;
+        margin-right: 3vw;
+      }
+      .peoplenum{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: #fff;
+        background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+      }
+      .vouchers-list-right{
+        float: left;
+        width: 63vw;
+        padding: 10px 0;
+      }
+      .vouchers-list1{
+        width: 100%;
+        font-size: 14px;
+        line-height: 4vw;
+      }
+      .vouchers-list1 img{
+        width: 4vw;
+        height: 4vw;
+        margin-right: 2vw;
+        vertical-align: top;
+      }
+      .vouchers-list3{
+        font-size: 12px;
+      }
+      .original{
+        color: #ccc;
+        text-decoration: line-through;
+      }
+      .coupon{
+        background-color: red;
+        color: #fff;
+        line-height: 18px;
+        padding: 0 2vw;
+      }
+      .vouchers-list4 span{
+        color: #fff;
+        padding: 0 2vw;
+        line-height: 18px;
+        font-size: 10px;
+      }
+      .vouchers-list4 span:first-child{
+        background-color: red;
+      }
+      .vouchers-list4 span:last-child{
+        background-color: grey;
+      }
       </style>
   </head>
   <body>
-
+    <div id="pullrefresh">
+      <div>
+        <div id="pullrefreshs" class="vouchers">
+          <!-- 分类 -->
+          <ul class="clearfix mb5">
+            <li class="classfial fl text-center">
+              <div class="classfial-img">
+                <img src="../../image/1.png">
+              </div>
+              <span>衣服</span>
+            </li>
+            <li class="classfial fl text-center">
+              <div class="classfial-img">
+                <img src="../../image/1.png">
+              </div>
+              <span>衣服</span>
+            </li>
+            <li class="classfial fl text-center">
+              <div class="classfial-img">
+                <img src="../../image/1.png">
+              </div>
+              <span>衣服</span>
+            </li>
+            <li class="classfial fl text-center">
+              <div class="classfial-img">
+                <img src="../../image/1.png">
+              </div>
+              <span>衣服</span>
+            </li>
+            <li class="classfial fl text-center">
+              <div class="classfial-img">
+                <img src="../../image/1.png">
+              </div>
+              <span>衣服</span>
+            </li>
+            <li class="classfial fl text-center">
+              <div class="classfial-img">
+                <img src="../../image/1.png">
+              </div>
+              <span>衣服</span>
+            </li>
+            <li class="classfial fl text-center">
+              <div class="classfial-img">
+                <img src="../../image/1.png">
+              </div>
+              <span>衣服</span>
+            </li>
+            <li class="classfial fl text-center">
+              <div class="classfial-img">
+                <img src="../../image/1.png">
+              </div>
+              <span>衣服</span>
+            </li>
+          </ul>
+          <!-- 排序 -->
+          <div class="sorting">
+            <div class="sorts cored" onclick="sort(0)">综合</div>
+            <div class="sorts" onclick="sort(1)">销量</div>
+            <div class="sorts" onclick="sort(2)">价格</div>
+          </div>
+          <!-- <div id="pullrefresh">
+            <div> -->
+          <!--数据列表-->
+          <ul id="vouchersul" class="bgcc vouchersul">
+          </ul>
+        </div>
+      </div>
+    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/mui.min.js"></script>
+  <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript">
       apiready = function(){
 
       };
+      // 排序
+      function sort(index) {
+        var sorts = document.getElementsByClassName('sorts')
+        var len = sorts.length
+        var i = 0;
+        var curLi = sorts[index];
+        for (i; i < len; i++) {
+            var thisLi = sorts[i];
+            if (thisLi === curLi) {
+                $api.addCls(thisLi, 'cored');
+                continue;
+            } else {
+                if ($api.hasCls(thisLi, 'cored')) {
+                    $api.removeCls(thisLi, 'cored');
+                }
+            }
+        }
+       }
+      //  上拉刷新下拉加载
+      mui.init({
+          pullRefresh: {
+              container: '#pullrefresh',
+              down: {
+                callback: pulldownRefresh
+              },
+              up: {
+                  auto: true,
+                  contentrefresh: '正在刷新...',
+                  callback: pullupRefresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据
+              }
+
+          }
+      });
+      var count = 0;
+      //下拉刷新
+      function pulldownRefresh() {
+          setTimeout(function() {
+              // console.log(1);
+            mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+          }, 1500);
+        }
+        //上拉加载
+      function pullupRefresh() {
+          setTimeout(function() {
+              // console.log(2);
+              mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+              var table = document.body.querySelector('.vouchersul');
+              var cells = document.body.querySelectorAll('.vouchers-list');
+              var newCount = cells.length > 0 ? 5 : 10; //首次加载10条，满屏
+              for (var i = cells.length, len = i + newCount; i < len; i++) {
+                  var li = document.createElement('li');
+                  li.className = 'vouchers-list clearfix';
+                  li.innerHTML = "<div class=\"vouchers-list-left\"><img src=\"../image/muwu.jpg\"><div class=\"peoplenum text-center\">248人已抢</div></div><div class=\"vouchers-list-right\"><div class=\"vouchers-list1 texthidden mb5\"><img src=\"../../image/taobao.jpg\">时尚新款单肩背大人小孩通用零钱包</div><div class=\"vouchers-list2 texthidden mb25\">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div><div class=\"vouchers-list3 cored clearfix\">$<span class=\"discount mr1v cored fs14\">9.9</span><span class=\"original\">$11.9</span><span class=\"coupon fr mr3v\">2元券</span></div><div class=\"vouchers-list4\"><span class=\"mr2v\">自购赚$1.19</span><span>升级赚1.16</span></div></div>";
+                  // li.innerHTML = `<div class="vouchers-list-left">
+                  //             <img src="../image/muwu.jpg" alt="">
+                  //             <div class="peoplenum text-center">248人已抢</div>
+                  //           </div>
+                  //           <div class="vouchers-list-right">
+                  //             <div class="vouchers-list1 texthidden mb5">
+                  //               <img src="../../image/taobao.jpg">
+                  //               时尚新款单肩背大人小孩通用零钱包
+                  //             </div>
+                  //             <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                  //             <div class="vouchers-list3 cored clearfix">
+                  //               $<span class="discount mr1v cored fs14">9.9</span>
+                  //               <span class="original">$11.9</span>
+                  //               <span class="coupon fr mr3v">2元券</span>
+                  //             </div>
+                  //             <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                  //           </div>`;
+                  table.appendChild(li);
+              }
+              table.appendChild(li);
+          }, 1000);
+
+      }
+
+      function addData() {
+          var table = document.body.querySelector('.vouchersulw');
+          var cells = document.body.querySelectorAll('.vouchers-list');
+          for (var i = cells.length, len = i + 5; i < len; i++) {
+              var li = document.createElement('li');
+              li.className = 'vouchers-list clearfix';
+              li.innerHTML = "<div class=\"vouchers-list-left\"><img src=\"../image/muwu.jpg\"><div class=\"peoplenum text-center\">248人已抢</div></div><div class=\"vouchers-list-right\"><div class=\"vouchers-list1 texthidden mb5\"><img src=\"../../image/taobao.jpg\">时尚新款单肩背大人小孩通用零钱包</div><div class=\"vouchers-list2 texthidden mb25\">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div><div class=\"vouchers-list3 cored clearfix\">$<span class=\"discount mr1v cored fs14\">9.9</span><span class=\"original\">$11.9</span><span class=\"coupon fr mr3v\">2元券</span></div><div class=\"vouchers-list4\"><span class=\"mr2v\">自购赚$1.19</span><span>升级赚1.16</span></div></div>";
+              // li.innerHTML = `<div class="vouchers-list-left">
+              //             <img src="../image/muwu.jpg" alt="">
+              //             <div class="peoplenum text-center">248人已抢</div>
+              //           </div>
+              //           <div class="vouchers-list-right">
+              //             <div class="vouchers-list1 texthidden mb5">
+              //               <img src="../../image/taobao.jpg">
+              //               时尚新款单肩背大人小孩通用零钱包
+              //             </div>
+              //             <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+              //             <div class="vouchers-list3 cored clearfix">
+              //               $<span class="discount mr1v cored fs14">9.9</span>
+              //               <span class="original">$11.9</span>
+              //               <span class="coupon fr mr3v">2元券</span>
+              //             </div>
+              //             <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+              //           </div>`;
+          }
+      }
   </script>
   </html>

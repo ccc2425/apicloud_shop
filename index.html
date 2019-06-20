@@ -100,6 +100,7 @@
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
+      var footerPos;
 // 隐藏所有的一级frame
 function hideAllFrame() {
     api.setFrameAttr({
@@ -122,7 +123,6 @@ function hideAllFrame() {
         name: 'my',
         hidden: true
     });
-
 }
 // 随意切换按钮
 function randomSwitchBtn(name, index) {
@@ -153,7 +153,7 @@ function randomSwitchBtn(name, index) {
         // 3.沉浸式效果适配支持iOS7+，Android4.4+以上版本
         // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
         // var footerH = $api.fixTabBar(footer);
-        var footerPos = $api.offset(footer);
+        footerPos = $api.offset(footer);
         var header = $api.byId('header');
         $api.fixStatusBar(header);
         var headerPos = $api.offset(header);
@@ -183,7 +183,10 @@ function randomSwitchBtn(name, index) {
             name: 'home',
             url: './html/home/home.html',
             rect: {
-              marginBottom: footerH, // main页面距离win底部的高度
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
               w: 'auto'
             },
             pageParam: {
@@ -198,7 +201,10 @@ function randomSwitchBtn(name, index) {
             name: 'classifys',
             url: './html/classify/classifys.html',
             rect: {
-              marginBottom: footerH, // main页面距离win底部的高度
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
               w: 'auto'
             },
             pageParam: {
@@ -213,7 +219,10 @@ function randomSwitchBtn(name, index) {
             name: 'mall',
             url: './html/mall/mall.html',
             rect: {
-              marginBottom: footerH, // main页面距离win底部的高度
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
               w: 'auto'
             },
             pageParam: {
@@ -228,7 +237,10 @@ function randomSwitchBtn(name, index) {
             name: 'material',
             url: './html/material/material.html',
             rect: {
-              marginBottom: footerH, // main页面距离win底部的高度
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
               w: 'auto'
             },
             pageParam: {
@@ -243,7 +255,10 @@ function randomSwitchBtn(name, index) {
             name: 'mine',
             url: './html/mine/my.html',
             rect: {
-              marginBottom: footerH, // main页面距离win底部的高度
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
               w: 'auto'
             },
             pageParam: {
