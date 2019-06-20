@@ -12,8 +12,10 @@
             position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
           }
           .serchbox{
+            width: 100%;
             margin-top: 5px;
             text-align: center;
           }
@@ -36,8 +38,9 @@
             margin: 10px 0;
             white-space: nowrap;
             overflow-x:scroll;
+            /*overflow-x: hidden;*/
             float:left;
-            overflow-y:hidden
+            overflow-y:hidden;
           }
           .classification ul li{
             display:inline-block;
@@ -90,17 +93,14 @@
             url: './home_frame.html',
             rect: {
                 marginTop: headerH,
-                // margin: footerH,
+                marginBottom: 50,
                 w: 'auto',
                 // h: 480
             },
             pageParam: {
                 name: 'test'
             },
-            bounces: true,
-            bgColor: 'rgba(0,0,0,0)',
-            vScrollBarEnabled: true,
-            hScrollBarEnabled: true
+            bounces: false,
         });
 
       };

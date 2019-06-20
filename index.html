@@ -69,6 +69,7 @@
 </head>
 
 <body class="wrap">
+    <div id="header"></div>
     <section class="flex-1">
 
     </section>
@@ -151,15 +152,20 @@ function randomSwitchBtn(name, index) {
         // 2.默认已开启了沉浸式效果 config.xml中 <preference name="statusBarAppearance" value="true"/>
         // 3.沉浸式效果适配支持iOS7+，Android4.4+以上版本
         // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
-        var footerH = $api.fixTabBar(footer);
-
+        // var footerH = $api.fixTabBar(footer);
+        var footerPos = $api.offset(footer);
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerPos = $api.offset(header);
         api.openFrame({
             name: 'home',
             url: './html/home/home.html',
-            bounces: true,
             rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
                 // marginTop: headerH, // main页面距离win顶部的高度
-                marginBottom: footerH, // main页面距离win底部的高度
+                // marginBottom: footerH, // main页面距离win底部的高度
+                x: 0,
+                y: 0,
+                h: api.frameHeight - footerPos.h,
                 w: 'auto' // main页面的宽度 自适应屏幕宽度
             },
             bounces: false,
