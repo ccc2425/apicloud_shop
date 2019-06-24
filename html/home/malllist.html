@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>商城栏</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .classification ul{
+            width:100%;
+            /*height: 1.9rem;*/
+            display: inline;
+            /*margin: 10px 0;*/
+            white-space: nowrap;
+            overflow-x:scroll;
+            float:left;
+            overflow-y:hidden;
+            border-bottom: 1px solid #ddd;
+          }
+          .classification ul li{
+            display:inline-block;
+            line-height: 28px;
+            height: 28px;
+            padding: 0 10px;
+          }
+          .classification ul::-webkit-scrollbar {
+            display:none
+          }
+          .active{
+            color: #d81e06;
+            font-weight: bolder;
+            border-bottom: 2px solid #d81e06;
+          }
+      </style>
+  </head>
+  <body>
+      <div id="header" class="bgcr">
+        <div class="clearfix text-center bgcr header">
+            <i onclick="closewin()" class="iconfont fl ml3v">&#xe601;</i>
+            <!-- <img src="" alt=""> -->
+            淘宝
+            <i class="iconfont fr mr2v">&#xe627;</i>
+        </div>
+          <div class="classification clearfix bgcf">
+            <ul>
+              <li class="classifiy active" onclick="opensingle(0)">全部</li>
+              <li class="classifiy" onclick="opensingle(1)">女装</li>
+              <li class="classifiy" onclick="opensingle(2)">男装</li>
+              <li class="classifiy" onclick="opensingle(3)">鞋品</li>
+              <li class="classifiy" onclick="opensingle(4)">箱包</li>
+              <li class="classifiy" onclick="opensingle(5)">美食</li>
+              <li class="classifiy" onclick="opensingle(6)">美妆</li>
+              <li class="classifiy" onclick="opensingle(7)">母婴</li>
+              <li class="classifiy" onclick="opensingle(8)">数码家电</li>
+              <li class="classifiy" onclick="opensingle(9)">居家</li>
+              <li class="classifiy" onclick="opensingle(10)">配饰</li>
+              <li class="classifiy" onclick="opensingle(11)">文体车品</li>
+              <li class="classifiy" onclick="opensingle(12)">内衣</li>
+              <li class="classifiy" onclick="opensingle(13)">家装家纺</li>
+              <li class="classifiy" onclick="opensingle(14)">户外运动</li>
+              <li class="classifiy" onclick="opensingle(15)">其他</li>
+            </ul>
+          </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      var headerH;
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        headerH = $api.offset(header);
+
+        api.openFrame({
+            name: 'malllist_frame',
+            url: './malllist_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
+
+      };
+      // 随意切换按钮
+      function randomSwitchBtn(index) {
+        var lis = $api.domAll('.classifiy');
+        var i = 0;
+        var len = lis.length;
+        var curLi = lis[index]
+        for (i; i < len; i++) {
+          var thisLi = lis[i];
+          if (thisLi === curLi) {
+            $api.addCls(thisLi, 'active');
+            continue;
+          }else {
+            if ($api.hasCls(thisLi,'active')) {
+              $api.removeCls(thisLi, 'active');
+            }
+          }
+        }
+
+      }
+      // 隐藏所有的一级frame
+      function hideAllFrame() {
+          api.setFrameAttr({
+              name: 'malllist_frame',
+              hidden: true
+          });
+      }
+    //打开分类页面
+      function opensingle(index) {
+        randomSwitchBtn(index)
+        hideAllFrame()
+        api.openFrame({
+            name: 'malllist_frame',
+            url: './malllist_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                index: 'index'
+            },
+            bounces: true,
+        });
+        api.sendEvent({
+            name: 'ind',
+            extra: {
+                key: index,
+            }
+        });
+
+      }
+
+    //关闭该页面
+    function closewin() {
+      api.closeWin({
+          name: 'malllist'
+      });
+
+    }
+  </script>
+  </html>

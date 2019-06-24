@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          *{
+            box-sizing: border-box;
+          }
+          /*数据列表*/
+          .like-box ul li{
+            margin: 0 .5vw 5px;
+            /*margin-right: 1vw;*/
+          }
+          .vouchers-list{
+            margin-bottom: 10px;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 48vw;
+            padding: 1vh 1vw;
+            background-color: #fff;
+          }
+          .vouchers-list-left{
+            position: relative;
+            width: 100%;
+            height: 160px;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            width: 100%;
+            padding-top: 10px;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 18px;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: top;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .vouchers-list4 span{
+            vertical-align: top;
+          }
+          .vouchers-list4 span:first-child{
+            color: #fff;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 10px;
+          }
+          .vouchers-list4 span:first-child{
+            background-color: #e8989a;
+            border-radius: 3px;
+          }
+          .vouchers-list4 span:last-child{
+            background-color: #e8989a;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 猜你喜欢 -->
+    <div class="like bgcf mb10">
+      <div class="like-box pad1v bgce">
+        <ul class="clearfix">
+          <li onclick="openitem()" class="vouchers-list fl">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">自购赚￥0.47</div>
+            </div>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="fs12 texthidden mb5 cogry">
+                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                原价：￥<span class="original">￥11.9</span>
+                <span class="fr">190人已买</span>
+              </div>
+              <div class="vouchers-list4 cooo fs10">
+                <span class="mr2v">券后价</span>
+                ￥<span class="discount mr1v cooo fs16">5.9</span>
+                <span class="coupon fr mr3v fs14">2元券</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">自购赚￥0.47</div>
+            </div>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="fs12 texthidden mb5 cogry">
+                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                原价：￥<span class="original">￥11.9</span>
+                <span class="fr">190人已买</span>
+              </div>
+              <div class="vouchers-list4 cooo fs10">
+                <span class="mr2v">券后价</span>
+                ￥<span class="discount mr1v cooo fs16">5.9</span>
+                <span class="coupon fr mr3v fs14">2元券</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">自购赚￥0.47</div>
+            </div>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="fs12 texthidden mb5 cogry">
+                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                原价：￥<span class="original">￥11.9</span>
+                <span class="fr">190人已买</span>
+              </div>
+              <div class="vouchers-list4 cooo fs10">
+                <span class="mr2v">券后价</span>
+                ￥<span class="discount mr1v cooo fs16">5.9</span>
+                <span class="coupon fr mr3v fs14">2元券</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">自购赚￥0.47</div>
+            </div>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="fs12 texthidden mb5 cogry">
+                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                原价：￥<span class="original">￥11.9</span>
+                <span class="fr">190人已买</span>
+              </div>
+              <div class="vouchers-list4 cooo fs10">
+                <span class="mr2v">券后价</span>
+                ￥<span class="discount mr1v cooo fs16">5.9</span>
+                <span class="coupon fr mr3v fs14">2元券</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">自购赚￥0.47</div>
+            </div>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="fs12 texthidden mb5 cogry">
+                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                原价：￥<span class="original">￥11.9</span>
+                <span class="fr">190人已买</span>
+              </div>
+              <div class="vouchers-list4 cooo fs10">
+                <span class="mr2v">券后价</span>
+                ￥<span class="discount mr1v cooo fs16">5.9</span>
+                <span class="coupon fr mr3v fs14">2元券</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">自购赚￥0.47</div>
+            </div>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="fs12 texthidden mb5 cogry">
+                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                原价：￥<span class="original">￥11.9</span>
+                <span class="fr">190人已买</span>
+              </div>
+              <div class="vouchers-list4 cooo fs10">
+                <span class="mr2v">券后价</span>
+                ￥<span class="discount mr1v cooo fs16">5.9</span>
+                <span class="coupon fr mr3v fs14">2元券</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">自购赚￥0.47</div>
+            </div>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="fs12 texthidden mb5 cogry">
+                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                原价：￥<span class="original">￥11.9</span>
+                <span class="fr">190人已买</span>
+              </div>
+              <div class="vouchers-list4 cooo fs10">
+                <span class="mr2v">券后价</span>
+                ￥<span class="discount mr1v cooo fs16">5.9</span>
+                <span class="coupon fr mr3v fs14">2元券</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">自购赚￥0.47</div>
+            </div>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="fs12 texthidden mb5 cogry">
+                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                原价：￥<span class="original">￥11.9</span>
+                <span class="fr">190人已买</span>
+              </div>
+              <div class="vouchers-list4 cooo fs10">
+                <span class="mr2v">券后价</span>
+                ￥<span class="discount mr1v cooo fs16">5.9</span>
+                <span class="coupon fr mr3v fs14">2元券</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //布局变化
+      function layoutframe() {
+        alert("1")
+      }
+      //打开商品详情页
+      function openitem() {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+  </script>
+  </html>

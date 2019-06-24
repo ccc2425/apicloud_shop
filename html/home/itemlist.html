@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>衣服</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          /*排序*/
+          .sorting {
+            width: 90vw;
+            display: flex;
+            justify-content: space-around;
+            line-height: 40px;
+            background-color: #fff;
+            color: #aaa;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header">
+      <div class="clearfix text-center borderb1e header">
+          <i onclick="closewin()" class="iconfont fl ml3v">&#xe601;</i>
+          <!-- <img src="" alt=""> -->
+          淘宝
+          <i class="iconfont fr mr2v">&#xe627;</i>
+      </div>
+      <!-- 排序 -->
+      <div id="sorting clearfix">
+        <div class="sorting fl fs12">
+          <div class="sorts cobck" onclick="sort(0)">综合</div>
+          <div class="sorts" onclick="sort(1)">销量</div>
+          <div class="sorts" onclick="sort(2)">价格</div>
+        </div>
+        <div onclick="layout()" class="fr lh40 mr2v">
+          <i class="iconfont">&#xe61c;</i>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        api.openFrame({
+            name: 'itemlist_frame',
+            url: './itemlist_frame.html',
+            rect: {
+                x: 0,
+                marginTop:headerH,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
+      };
+      // 排序
+      function sort(index) {
+        var sorts = document.getElementsByClassName('sorts')
+        var len = sorts.length
+        var i = 0;
+        var curLi = sorts[index];
+        for (i; i < len; i++) {
+            var thisLi = sorts[i];
+            if (thisLi === curLi) {
+                $api.addCls(thisLi, 'cobck');
+                continue;
+            } else {
+                if ($api.hasCls(thisLi, 'cobck')) {
+                    $api.removeCls(thisLi, 'cobck');
+                }
+            }
+        }
+       }
+       //布局
+       function layout() {
+         var fungoto = "layoutframe();"
+         api.execScript({
+            //  name: 'winName',
+             frameName: 'itemlist_frame',
+             script: fungoto
+         });
+       }
+  </script>
+  </html>

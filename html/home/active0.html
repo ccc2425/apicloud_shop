@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>活动1</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .classification ul{
+            width:100%;
+            /*height: 1.9rem;*/
+            display: inline;
+            white-space: nowrap;
+            overflow-x:scroll;
+            float:left;
+            overflow-y:hidden;
+          }
+          .classification ul li{
+            display:inline-block;
+            width: 16vw;
+            height: 42px;
+            margin: 3px 3vw;
+            /*padding: 0 3vw;*/
+            line-height: 18px;
+          }
+          .classification ul::-webkit-scrollbar {
+            display:none
+          }
+          .classifiy>span:first-child{margin-top: 3px;}
+          .active{
+            background-color: #fff;
+            color: #d4237a;
+            border-radius: 5px;
+          }
+      </style>
+  </head>
+  <body>
+      <div id="header" class="bgcp">
+        <div class="clearfix text-center header">
+            <i onclick="closewin()" class="iconfont fl ml3v">&#xe601;</i>
+            限时抢购
+        </div>
+          <div class="classification clearfix mt5 text-center">
+            <ul>
+              <li class="classifiy active" onclick="opensingle(0)"><span class="fs16 bold">00:00</span></br><span class="fs12">昨日开抢</span></li>
+              <li class="classifiy" onclick="opensingle(1)"><span class="fs16 bold">10:00</span></br><span class="fs12">昨日开抢</span></li>
+              <li class="classifiy" onclick="opensingle(2)"><span class="fs16 bold">12:00</span></br><span class="fs12">昨日开抢</span></li>
+              <li class="classifiy" onclick="opensingle(3)"><span class="fs16 bold">15:00</span></br><span class="fs12">昨日开抢</span></li>
+              <li class="classifiy" onclick="opensingle(4)"><span class="fs16 bold">20:00</span></br><span class="fs12">昨日开抢</span></li>
+              <li class="classifiy" onclick="opensingle(5)"><span class="fs16 bold">00:00</span></br><span class="fs12">已开抢</span></li>
+              <li class="classifiy" onclick="opensingle(6)"><span class="fs16 bold">10:00</span></br><span class="fs12">已开抢</span></li>
+              <li class="classifiy" onclick="opensingle(7)"><span class="fs16 bold">12:00</span></br><span class="fs12">即将开抢</span></li>
+              <li class="classifiy" onclick="opensingle(8)"><span class="fs16 bold">15:00</span></br><span class="fs12">即将开抢</span></li>
+              <li class="classifiy" onclick="opensingle(9)"><span class="fs16 bold">20:00</span></br><span class="fs12">即将开抢</span></li>
+              <li class="classifiy" onclick="opensingle(10)"><span class="fs16 bold">00:00</span></br><span class="fs12">即将开抢</span></li>
+              <li class="classifiy" onclick="opensingle(11)"><span class="fs16 bold">10:00</span></br><span class="fs12">即将开抢</span></li>
+              <li class="classifiy" onclick="opensingle(12)"><span class="fs16 bold">12:00</span></br><span class="fs12">即将开抢</span></li>
+              <li class="classifiy" onclick="opensingle(13)"><span class="fs16 bold">15:00</span></br><span class="fs12">即将开抢</span></li>
+              <li class="classifiy" onclick="opensingle(14)"><span class="fs16 bold">20:00</span></br><span class="fs12">即将开抢</span></li>
+            </ul>
+          </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      var headerH;
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        headerH = $api.offset(header);
+
+        api.openFrame({
+            name: 'active0_frame',
+            url: './active0_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
+
+      };
+      // 随意切换按钮
+      function randomSwitchBtn(index) {
+        var lis = $api.domAll('.classifiy');
+        var i = 0;
+        var len = lis.length;
+        var curLi = lis[index]
+        for (i; i < len; i++) {
+          var thisLi = lis[i];
+          if (thisLi === curLi) {
+            $api.addCls(thisLi, 'active');
+            continue;
+          }else {
+            if ($api.hasCls(thisLi,'active')) {
+              $api.removeCls(thisLi, 'active');
+            }
+          }
+        }
+
+      }
+      // 隐藏所有的一级frame
+      function hideAllFrame() {
+          api.setFrameAttr({
+              name: 'malllist_frame',
+              hidden: true
+          });
+      }
+    //打开分类页面
+      function opensingle(index) {
+        randomSwitchBtn(index)
+        hideAllFrame()
+        api.openFrame({
+            name: 'active0_frame',
+            url: './active0_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+              name:'test'
+            },
+            bounces: true,
+        });
+      }
+    //关闭该页面
+    function closewin() {
+      api.closeWin({
+          name: 'active0'
+      });
+
+    }
+  </script>
+  </html>

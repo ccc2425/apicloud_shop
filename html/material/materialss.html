@@ -3,24 +3,34 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>精选单品</title>
+      <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
+          body{
 
+          }
       </style>
   </head>
   <body>
 
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
-  <script type="text/javascript" src="../../script/mui.min.js"></script>
   <script type="text/javascript">
-
       apiready = function(){
-
+        api.openFrame({
+            name: 'specialty',
+            url: './specialty.html',
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                marginBottom: 50
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
       };
-      
   </script>
   </html>

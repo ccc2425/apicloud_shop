@@ -8,7 +8,11 @@
       <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-      /*banner图*/
+      html,body{
+        height: 100%;
+        background-color: #eee;
+      }
+    /*banner图*/
           .mui-slider-indicator .mui-indicator{
             width: 3px;
             height: 3px;
@@ -24,6 +28,78 @@
             line-height: 50px;
             background-color: #fff;
           }
+          /**/
+      .mui-table-view{
+        margin-top: 10px;
+      }
+      .mui-media-object{
+        border-radius: 50%;
+      }
+      .share{
+        position: absolute;
+        top: 50%;
+        right: 3vw;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        border-radius: 30px;
+        line-height: 1;
+        font-size: 12px;
+        padding: 3px 2vw;
+      }
+      .buy{
+        position: absolute;
+        top: 50%;
+        right: 16vw;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        border-radius: 30px;
+        line-height: 1;
+        font-size: 12px;
+        padding: 3px 2vw;
+      }
+      .specialty-box{
+        width: 100%;
+        border-top: 1px solid #ccc;
+      }
+      .specialty-boxi{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 5px 3vw;
+      }
+      .specialty-img li{
+        float: left;
+        width: 30vw;
+        height: 30vw;
+        margin: 5px 2vw 5px 0;
+      }
+      .specialty-img li:nth-child(3n){
+        margin-right: 0;
+      }
+      .materials{
+        display: none;
+      }
+      .disbl{
+        display: block;
+      }
+      /**/
+      .password{
+        width: 70vw;
+        height: 66px;
+        padding: 5px 2vw;
+        box-sizing: border-box;
+        border: 1px dashed #d81e06;
+        font-size: 12px;
+        line-height: 18px;
+      }
+      .copy{
+        width: 20vw;
+        height: 66px;
+        color: #fff;
+        background: linear-gradient(to bottom right,#666,#000);
+        border-radius:3px;
+        text-align: center;
+        padding: 10px 5vw;
+      }
       </style>
   </head>
   <body>
@@ -81,51 +157,447 @@
       <div class="shops" onclick="shop(2)">商品</div>
       <div class="shops" onclick="shop(3)">精选单品</div>
     </div>
+    <!-- 好货专场 -->
+    <div id="specialty" class="materials disbl">
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr share">4058</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">榜单榜</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr share">4058</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">榜单榜</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr share">4058</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">榜单榜</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr share">4058</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">榜单榜</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr share">4058</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">榜单榜</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr share">4058</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">榜单榜</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 必备素材 -->
+    <div id="necessary" class="materials">
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19 18:52:00</p>
+            </div>
+            <span class="bgcr share">一键分享</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p>每天上班挤公交车挤地铁都不能穿美丽的裙子看看这些休闲的修身的裤装满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19 18:52:00</p>
+            </div>
+            <span class="bgcr share">一键分享</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p>每天上班挤公交车挤地铁都不能穿美丽的裙子看看这些休闲的修身的裤装满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19 18:52:00</p>
+            </div>
+            <span class="bgcr share">一键分享</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p>每天上班挤公交车挤地铁都不能穿美丽的裙子看看这些休闲的修身的裤装满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19 18:52:00</p>
+            </div>
+            <span class="bgcr share">一键分享</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p>每天上班挤公交车挤地铁都不能穿美丽的裙子看看这些休闲的修身的裤装满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 商品 -->
+    <div id="commodity" class="materials">
+      22
+    </div>
+    <!-- 精选单品 -->
+    <div id="selected" class="materials">
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr buy">领券购买</span>
+            <span class="bgcr share">280</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">自购赚￥1.17</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+            <div class="clearfix mt10b5">
+              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
+              <div class="copy fr">复制评论</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr buy">领券购买</span>
+            <span class="bgcr share">280</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">自购赚￥1.17</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+            <div class="clearfix mt10b5">
+              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
+              <div class="copy fr">复制评论</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr buy">领券购买</span>
+            <span class="bgcr share">280</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">自购赚￥1.17</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+
+            </ul>
+            <div class="clearfix mt10b5">
+              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
+              <div class="copy fr">复制评论</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/yuantiao.jpg">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr buy">领券购买</span>
+            <span class="bgcr share">280</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">自购赚￥1.17</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+                <li onclick="openitem()"><img src="../../image/yuantiao.jpg"></li>
+            </ul>
+            <div class="clearfix mt10b5">
+              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
+              <div class="copy fr">复制评论</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/mui.min.js"></script>
+  <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript">
-      var headerH;
-      //关闭其他子页面
-      function hideAllFrame() {
-        api.closeFrame({
-            name: 'specialty'
-        });
-        api.closeFrame({
-            name: 'necessary'
-        });
-        api.closeFrame({
-            name: 'commodity'
-        });
-        api.closeFrame({
-            name: 'selected'
-        });
-      }
       apiready = function(){
         var header = $api.byId('header');
         // $api.fixStatusBar(header);
         var headerPos = $api.offset(header);
-        var slider = $api.byId('slider');
-        var shoping = $api.byId('shoping');
-        var sliderPos = $api.offset(slider);
-        var shopingPos = $api.offset(shoping);
-
-        headerH = headerPos.h + sliderPos.h + shopingPos.h;
-          api.openFrame({
-              name: 'specialty',
-              url: './specialty.html',
-              rect: {
-                  x: 0,
-                  y: headerH,
-                  w: 'auto',
-                  marginBottom: 50
-              },
-              pageParam: {
-                  name: 'test'
-              },
-              bounces: true,
-          });
-
+        // api.sendEvent({
+        //     name: 'toptop',
+        //     extra: {
+        //         key1: 'value1',
+        //         key2: 'value2'
+        //     }
+        // });
+        //
+        // api.addEventListener({
+        //     name: 'toptop'
+        // }, function(ret){
+        //     if( ret ){
+        //          alert( JSON.stringify( ret ) );
+        //     }
+        // });    
       };
       // 轮播图
       var slider = mui("#slider");
@@ -151,79 +623,134 @@
                 }
             }
         }
-        // 打开frame
-        switch (index) {
-          case 0:
-            hideAllFrame()
-            api.openFrame({
-                name: 'specialty',
-                url: './specialty.html',
-                rect: {
-                    x: 0,
-                    y: headerH,
-                    w: 'auto',
-                    marginBottom: 50
-                },
-                pageParam: {
-                    name: 'test'
-                },
-                bounces: true,
-            });
-            break;
-          case 1:
-          hideAllFrame()
-          api.openFrame({
-              name: 'necessary',
-              url: './necessary.html',
-              rect: {
-                  x: 0,
-                  y: headerH,
-                  w: 'auto',
-                  marginBottom: 50
-              },
-              pageParam: {
-                  name: 'test'
-              },
-              bounces: true,
-          });
-            break;
-          case 2:
-          hideAllFrame()
-          api.openFrame({
-              name: 'commodity',
-              url: './commodity.html',
-              rect: {
-                  x: 0,
-                  y: headerH,
-                  w: 'auto',
-                  marginBottom: 50
-              },
-              pageParam: {
-                  name: 'test'
-              },
-              bounces: true,
-          });
-            break;
-          case 3:
-          hideAllFrame()
-          api.openFrame({
-              name: 'selected',
-              url: './selected.html',
-              rect: {
-                  x: 0,
-                  y: headerH,
-                  w: 'auto',
-                  marginBottom: 50
-              },
-              pageParam: {
-                  name: 'test'
-              },
-              bounces: true,
-          });
-            break;
-          default:
-
+        //打开子页面
+        var materials = document.getElementsByClassName('materials')
+        var lens = materials.length
+        // console.log(lens);
+        var j = 0;
+        var curLis = materials[index];
+        for (j; j < len; j++) {
+            var thisLi = materials[j];
+            if (thisLi === curLis) {
+                $api.addCls(thisLi, 'disbl');
+                continue;
+            } else {
+                if ($api.hasCls(thisLi, 'disbl')) {
+                    $api.removeCls(thisLi, 'disbl');
+                }
+            }
         }
+      }
+      //实时监听
+      // document.addEventListener('touchMove', shopp, false);
+      // var shopp = document.getElementById('shoping');
+      // var shopingY;
+      // document.addEventListener('touchmove', touch, false);
+      // function touch(event) {
+      //   var event = event || window.event;
+      //   shopingY = event.touches[0].clientY;
+      //   console.log(shopingY);
+      // }
+      //  //
+      //  //              下拉刷新
+      // var top = 0, //滚动条距离顶部距离
+      //     startY = 0, //手动滑动开始时的坐标
+      //     cantop = true, //是否能够上拉刷新
+      //     updateload = false, //是否显示刷新数据提示语
+      //     moredata = true, //是否显示加载更多提示语
+      //     endy = 0, //手动滑动结束时的坐标
+      //  //              上拉加载更多
+      //     scrollTop = "", //滚动条到顶部距离
+      //     clientHeight = "", //滚动条高度
+      //     scrollHeight = ""; //滚动条总高度
+      //  // @touchstart = "touchStart($event)"
+      //  // @touchmove = "touchMove($event)"
+      //  // @touchend = "touchEnd($event)"
+      //  var touchstart = "touchStart($event)";
+      //  var touchmove = "touchMove($event)";
+      //  var touchend = "touchEnd($event)";
+      //  touchStart(e) {
+      //    this.startY = e.changedTouches[0].pageY
+      //  } //手势滑动开始
+      //  touchMove(e) {
+      //    this.scrollTop = this.$refs.contentref.scrollTop
+      //    this.clientHeight = this.$refs.contentref.clientHeight
+      //    this.scrollHeight = this.$refs.contentref.scrollHeight
+      //    if (!this.serching) {
+      //      if (this.$refs.contentref.scrollTop == 0) {
+      //        if (e.changedTouches[0].pageY > this.startY) {
+      //          this.cantop = true
+      //          this.updateload = true
+      //        }
+      //      } else {
+      //        this.cantop = false
+      //        this.updateload = false
+      //      }
+      //    }
+      //  } //手势滑动移动
+      //  touchEnd(e) {
+      //    this.endy = e.changedTouches[0].pageY
+      //    if (this.cantop && !this.serching) {
+      //      if (this.endy > this.startY) {
+      //        this.nowpage = 1;
+      //        this.clistdata = [];
+      //        this.getListByType();
+      //        this.cantop = false
+      //      } else {
+      //        this.updateload = false
+      //      }
+      //    }
+      //  }//手势滑动结束
+
+      // document.addEventListener('touchstart', touch, false);
+      // document.addEventListener('touchmove', touch, false);
+      // document.addEventListener('touchend', touch, false);
+      // // var top = 0, //滚动条距离顶部距离
+      // //     startY = 0, //手动滑动开始时的坐标
+      // //     cantop = true, //是否能够上拉刷新
+      // //     updateload = false, //是否显示刷新数据提示语
+      // //     moredata = true, //是否显示加载更多提示语
+      // //     endy = 0, //手动滑动结束时的坐标
+      // //  //              上拉加载更多
+      // //     scrollTop = "", //滚动条到顶部距离
+      // //     clientHeight = "", //滚动条高度
+      // //     scrollHeight = ""; //滚动条总高度
+      // var startY = 0;
+      // var endY = 0;
+      // var c = 0;
+      // function touch(event) {
+      //     /**兼用 IE 浏览器*/
+      //     var event = event || window.event;
+      //     switch (event.type) {
+      //         case "touchstart":
+      //             startY = event.touches[0].clientY;
+      //             // console.log(startY);
+      //             return startY;
+      //             // console.log(event.touches[0].clientY);
+      //             break;
+      //         case "touchend":
+      //             endY = event.changedTouches[0].clientY;
+      //             console.log(endY);
+      //             // return endY;
+      //             // console.log(event.changedTouches[0].clientY);
+      //             // var a = event.changedTouches[0].clientY - event.touches[0].clientY;
+      //             // console.log(a);
+      //             break;
+      //         case "touchmove":
+      //             // console.log(event.touches[0].clientY);
+      //             break;
+      //     }
+      // }
+
+       // 打开物品
+       function openitem() {
+         api.openWin({
+             name: 'item',
+             url: '../home/item.html',
+             pageParam: {
+                 name: 'test'
+             }
+         });
        }
   </script>
   </html>

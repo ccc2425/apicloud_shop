@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>商品</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+      /*banner图*/
+          .mui-slider-indicator .mui-indicator{
+            width: 3px;
+            height: 3px;
+            margin: 1px;
+          }
+          .mui-table-view-cell.mui-collapse .mui-collapse-content{
+            display: block;
+          }
+          /**/
+          .shoping {
+            display: flex;
+            justify-content: space-around;
+            line-height: 50px;
+            background-color: #fff;
+          }
+      </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <!-- 轮播图 -->
+    <div id="slider" class="mui-slider" >
+      <div class="mui-slider-group mui-slider-loop">
+        <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+        <div class="mui-slider-item mui-slider-item-duplicate">
+          <a href="#">
+            <img src="../../image/yuantiao.jpg">
+          </a>
+        </div>
+        <!-- 第一张 -->
+        <div class="mui-slider-item">
+          <a href="#">
+            <img src="../../image/shuijiao.jpg">
+          </a>
+        </div>
+        <!-- 第二张 -->
+        <div class="mui-slider-item">
+          <a href="#">
+            <img src="../../image/muwu.jpg">
+          </a>
+        </div>
+        <!-- 第三张 -->
+        <div class="mui-slider-item">
+          <a href="#">
+            <img src="../../image/cbd.jpg">
+          </a>
+        </div>
+        <!-- 第四张 -->
+        <div class="mui-slider-item">
+          <a href="#">
+            <img src="../../image/yuantiao.jpg">
+          </a>
+        </div>
+        <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+        <div class="mui-slider-item mui-slider-item-duplicate">
+          <a href="#">
+            <img src="../../image/shuijiao.jpg">
+          </a>
+        </div>
+      </div>
+      <div class="mui-slider-indicator">
+        <div class="mui-indicator mui-active"></div>
+        <div class="mui-indicator"></div>
+        <div class="mui-indicator"></div>
+        <div class="mui-indicator"></div>
+      </div>
+    </div>
+    <div id="shoping" class="shoping">
+      <div class="shops" onclick="shop(0)">好货专场</div>
+      <div class="shops" onclick="shop(1)">必备素材</div>
+      <div class="shops cored" onclick="shop(2)">商品</div>
+      <div class="shops" onclick="shop(3)">精选单品</div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/mui.min.js"></script>
+  <script type="text/javascript">
+  var headerH;
+  //关闭其他子页面
+  function hideAllFrame() {
+    // api.closeFrame({
+    //     name: 'specialty'
+    // });
+    // api.closeFrame({
+    //     name: 'necessary'
+    // });
+    // api.closeFrame({
+    //     name: 'commodity'
+    // });
+    // api.closeFrame({
+    //     name: 'selected'
+    // });
+  }
+  // 轮播图
+  var slider = mui("#slider");
+  (function() {
+    slider.slider({
+      interval: 1000
+    })
+  }());
+      apiready = function(){
+
+      };
+      // 切换
+      function shop(index) {
+      // 打开frame
+      switch (index) {
+        case 0:
+          hideAllFrame()
+          api.openFrame({
+              name: 'specialty',
+              url: './specialty.html',
+              rect: {
+                  x: 0,
+                  y: headerH,
+                  w: 'auto',
+                  marginBottom: 50
+              },
+              pageParam: {
+                  name: 'test'
+              },
+              bounces: true,
+          });
+          break;
+        case 1:
+        hideAllFrame()
+        api.openFrame({
+            name: 'necessary',
+            url: './necessary.html',
+            rect: {
+                x: 0,
+                y: headerH,
+                w: 'auto',
+                marginBottom: 50
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
+          break;
+        case 2:
+        hideAllFrame()
+        api.openFrame({
+            name: 'commodity',
+            url: './commodity.html',
+            rect: {
+                x: 0,
+                y: headerH,
+                w: 'auto',
+                marginBottom: 50
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
+          break;
+        case 3:
+        hideAllFrame()
+        api.openFrame({
+            name: 'selected',
+            url: './selected.html',
+            rect: {
+                x: 0,
+                y: headerH,
+                w: 'auto',
+                marginBottom: 50
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
+          break;
+        default:
+
+      }
+     }
+  </script>
+  </html>
