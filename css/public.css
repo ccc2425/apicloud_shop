@@ -43,9 +43,18 @@ body {
 .cooo{
   color: #e8989a!important;
 }
+.cowhl{
+  color: #fff;
+}
 /*定位*/
 .pr{
   position: relative;
+}
+.pa{
+  position: absolute;
+}
+.pf{
+  position: fixed;
 }
 .lh20{
   line-height: 20px;
@@ -59,16 +68,33 @@ body {
 .lh50{
   line-height: 50px;
 }
+.lh70{
+  line-height: 70px;
+}
 .text-center{
   text-align: center;
 }
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
+}
 /*圆滑*/
+.boradius50{
+  border-radius: 50%;
+  overflow: hidden;
+}
 .boradius{
   border-radius: 8px;
   overflow: hidden;
 }
 .boradius3{
   border-radius: 3px;
+  overflow: hidden;
+}
+.boradius30 {
+  border-radius: 30px;
   overflow: hidden;
 }
 /*浮动*/
@@ -81,6 +107,15 @@ body {
 /*margin padding*/
 .mt5{
   margin-top: 5px;
+}
+.mt10{
+  margin-top: 10px;
+}
+.mt16{
+  margin-top: 16px;
+}
+.mt30{
+  margin-top: 30px;
 }
 .ml3v{
   margin-left: 3vw;
@@ -121,8 +156,17 @@ body {
 .pad10a3v{
   padding: 10px 3vw;
 }
+.pad0a3v{
+  padding: 0 3vw;
+}
 .pad1v{
   padding: 1vw;
+}
+.pad2v{
+  padding: 2vw;
+}
+.padt10{
+  padding-top: 10px;
 }
 /*背景色*/
 .bgcc{
@@ -143,8 +187,16 @@ body {
   background-color: #e8989a;
   color:#fff;
 }
+.bgcor{
+  background-color: #f3ca7e;
+  color: #fff;
+}
 .bgcp{
   background-color: #d4237a;
+  color: #fff;
+}
+.bgcb{
+  background-color: #1296db;
   color: #fff;
 }
 /**/
@@ -165,6 +217,16 @@ img{
   white-space: nowrap;/*不换行*/
   text-overflow:ellipsis;/*超出部分文字以...显示*/
 }
+.texthiddens{
+   text-overflow: -o-ellipsis-lastline;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2;
+   line-clamp: 2;
+   -webkit-box-orient: vertical;
+}
+
 /**/
 p{
   margin: 0;

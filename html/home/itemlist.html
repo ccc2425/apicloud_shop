@@ -25,8 +25,7 @@
   </head>
   <body>
     <!-- 头部 -->
-    <div id="header">
-      <div class="clearfix text-center borderb1e header">
+      <div id="header" class="clearfix text-center borderb1e header">
           <i onclick="closewin()" class="iconfont fl ml3v">&#xe601;</i>
           <!-- <img src="" alt=""> -->
           淘宝
@@ -43,20 +42,19 @@
           <i class="iconfont">&#xe61c;</i>
         </div>
       </div>
-    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
         var header = $api.byId('header');
         $api.fixStatusBar(header);
-        var headerH = $api.offset(header);
+        var headerPos = $api.offset(header);
         api.openFrame({
             name: 'itemlist_frame',
             url: './itemlist_frame.html',
             rect: {
                 x: 0,
-                marginTop:headerH,
+                y:headerPos.h + 40,
                 w: 'auto',
                 h: 'auto'
             },
@@ -92,6 +90,13 @@
              frameName: 'itemlist_frame',
              script: fungoto
          });
+       }
+       //关闭
+       function closewin() {
+         api.closeWin({
+             name: 'itemlist'
+         });
+
        }
   </script>
   </html>

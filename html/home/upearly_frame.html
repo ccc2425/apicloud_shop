@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .bg{
+            width: 100%;
+            height: 240px;
+            background: url('../../image/loginbg.png') no-repeat;
+            background-size: cover;
+          }
+          .bg div>p{
+            line-height: 25px;
+          }
+          .btn{
+            width: 80vw;
+            margin: 5px auto 0;
+            padding: 10px 0;
+            font-size: 16px;
+            border-radius: 50px;
+          }
+          .share{
+              border-radius: 5px 0 0 5px;
+          }
+          .situation,.rank{
+            display: flex;
+            justify-content: space-around;
+          }
+          .situation-img{
+              width: 20vw;
+              height: 80px;
+              margin: 5px auto;
+          }
+          .rank-img{
+              width: 15vw;
+              height: 15vw;
+              margin: 5px auto;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="bg">
+        <div class="text-center cowhl fs12 padt10">
+          <p>早上准时打卡可瓜分金额（元）</p>
+          <p class="fs20">0</p>
+          <p><span>...</span>0人参与</p>
+          <p>挑战规则<i>></i></p>
+          <p class="btn bgco">我要挑战</p>
+          <p class="btn bgcf">免费获得打卡券</p>
+        </div>
+        <div class="mt10 fs10 text-right">
+          <span class="share bgcor pad5a2b"><i></i>邀请好友</span>
+        </div>
+      </div>
+      <!-- 战况 -->
+      <div class="pr mb15">
+        <!-- <div class="pa">
+          今天战况
+        </div> -->
+        <div class="situation text-center ps">
+          <div class="">
+            <div class="situation-img">
+              <img src="" alt="">
+            </div>
+            <span>成功</span><span class="cored">0</span>
+          </div>
+          <div class="">
+            <div class="situation-img">
+              <img src="" alt="">
+            </div>
+            <span>失败</span><span>0</span>
+          </div>
+        </div>
+      </div>
+      <!-- 排名 -->
+      <div class="rank text-center fs12">
+        <div class="">
+          <div class="rank-img boradius50">
+            <img src="" alt="">
+          </div>
+          <span>虚位以待</span></br>
+          <span class="cored">0</span>
+        </div>
+        <div class="">
+          <div class="rank-img boradius50">
+            <img src="" alt="">
+          </div>
+          <span>虚位以待</span></br>
+          <span class="cored">0</span>
+        </div>
+        <div class="">
+          <div class="rank-img boradius50">
+            <img src="" alt="">
+          </div>
+          <span>虚位以待</span></br>
+          <span class="cored">0</span>
+        </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+  </script>
+  </html>

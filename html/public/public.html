@@ -155,5 +155,23 @@
       apiready = function(){
 
       };
+      // 排序
+      function sort(index) {
+        var sorts = document.getElementsByClassName('sorts')
+        var len = sorts.length
+        var i = 0;
+        var curLi = sorts[index];
+        for (i; i < len; i++) {
+            var thisLi = sorts[i];
+            if (thisLi === curLi) {
+                $api.addCls(thisLi, 'cored');
+                continue;
+            } else {
+                if ($api.hasCls(thisLi, 'cored')) {
+                    $api.removeCls(thisLi, 'cored');
+                }
+            }
+        }
+       }
   </script>
   </html>

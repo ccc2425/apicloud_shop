@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+      /*分类*/
+      .sorting {
+        display: flex;
+        justify-content: space-around;
+        line-height: 50px;
+        background-color: #fff;
+      }
+      .sorts{
+        width: 20vw;
+      }
+      /*商家分类*/
+      .classification {
+        padding: 0 2vw;
+      }
+      .classification ul{
+        width:100%;
+        display: inline;
+        margin: 10px 0;
+        white-space: nowrap;
+        overflow-x:scroll;
+        /*overflow-x: hidden;*/
+        float:left;
+        overflow-y:hidden;
+      }
+      .classification ul li{
+        display:inline-block;
+        padding: 0 5px;
+        width: 20vw;
+        text-align: center;
+        font-size: 12px;
+      }
+      .classification ul::-webkit-scrollbar {
+        display:none
+      }
+      .classification>ul>li>div{
+        width: 12vw;
+        height: 12vw;
+        margin: 5px auto;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      /**/
+      .actived{
+        color: #d81e06;
+        border-bottom: 1px solid #d81e06;
+      }
+      /*领券*/
+      .bgp{
+        width: 100%;
+        height: 70px;
+        padding-top: 10px;
+        background: url('../../image/duihuan.png') no-repeat;
+        background-size: cover;
+        font-size: 12px;
+        line-height: 20px;
+      }
+      .coupons-img{
+        width: 12vw;
+        margin-left: 3vw;
+      }
+      </style>
+  </head>
+  <body>
+    <!-- 分类 -->
+    <div class="sorting text-center">
+      <div class="sorts actived" onclick="sort(0)">外卖券</div>
+      <div class="sorts" onclick="sort(1)">出行券</div>
+      <div class="sorts" onclick="sort(2)">网购类</div>
+      <div class="sorts" onclick="sort(3)">快餐券</div>
+      <div class="sorts" onclick="sort(4)">娱乐券</div>
+    </div>
+    <!-- 商家分类 -->
+    <div class="classification clearfix">
+      <ul>
+        <li class="classifiy bold" onclick="opensingle(0)">
+          <div>
+            <img src="../../image/a4.png" alt="">
+          </div>
+          <span>全部</span>
+        </li>
+        <li class="classifiy" onclick="opensingle(1)">
+          <div>
+            <img src="../../image/a4.png" alt="">
+          </div>
+          <span>饿了么</span>
+        </li>
+        <li class="classifiy" onclick="opensingle(2)">
+          <div>
+            <img src="../../image/a4.png" alt="">
+          </div>
+          <span>美团</span>
+        </li>
+        <li class="classifiy" onclick="opensingle(3)">
+          <div>
+            <img src="../../image/a4.png" alt="">
+          </div>
+          <span>大众点评</span>
+        </li>
+        <li class="classifiy" onclick="opensingle(4)">
+          <div>
+            <img src="../../image/a4.png" alt="">
+          </div>
+          <span>百度糯米</span>
+        </li>
+      </ul>
+    </div>
+    <!-- 优惠券 -->
+    <div class="pad2v bgce">
+      <div class="bgp mb10 clearfix">
+        <div class="coupons-img fl">
+          <img src="../../image/a4.png" alt="">
+        </div>
+        <div class="fl ml3v">
+          <p>饿了么</p>
+          <p class="cored">最高20元福袋红包</p>
+          <p class="cogry">最后更新于 2019-06-24 1:33:25</p>
+        </div>
+        <div class="fr mr3v mt16">
+          <span class="bgcr pad0a3v boradius30">领取</span>
+        </div>
+      </div>
+      <div class="bgp mb10 clearfix">
+        <div class="coupons-img fl">
+          <img src="../../image/a4.png" alt="">
+        </div>
+        <div class="fl ml3v">
+          <p>饿了么</p>
+          <p class="cored">最高20元福袋红包</p>
+          <p class="cogry">最后更新于 2019-06-24 1:33:25</p>
+        </div>
+        <div class="fr mr3v mt16">
+          <span class="bgcr pad0a3v boradius30">领取</span>
+        </div>
+      </div>
+      <div class="bgp mb10 clearfix">
+        <div class="coupons-img fl">
+          <img src="../../image/a4.png" alt="">
+        </div>
+        <div class="fl ml3v">
+          <p>饿了么</p>
+          <p class="cored">最高20元福袋红包</p>
+          <p class="cogry">最后更新于 2019-06-24 1:33:25</p>
+        </div>
+        <div class="fr mr3v mt16">
+          <span class="bgcr pad0a3v boradius30">领取</span>
+        </div>
+      </div>
+      <div class="bgp mb10 clearfix">
+        <div class="coupons-img fl">
+          <img src="../../image/a4.png" alt="">
+        </div>
+        <div class="fl ml3v">
+          <p>饿了么</p>
+          <p class="cored">最高20元福袋红包</p>
+          <p class="cogry">最后更新于 2019-06-24 1:33:25</p>
+        </div>
+        <div class="fr mr3v mt16">
+          <span class="bgcr pad0a3v boradius30">领取</span>
+        </div>
+      </div>
+      <div class="bgp mb10 clearfix">
+        <div class="coupons-img fl">
+          <img src="../../image/a4.png" alt="">
+        </div>
+        <div class="fl ml3v">
+          <p>饿了么</p>
+          <p class="cored">最高20元福袋红包</p>
+          <p class="cogry">最后更新于 2019-06-24 1:33:25</p>
+        </div>
+        <div class="fr mr3v mt16">
+          <span class="bgcr pad0a3v boradius30">领取</span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      // 按钮切换
+      // function switchBtn(index) {
+      function sort(index) {
+        var sorts = document.getElementsByClassName('sorts')
+        var len = sorts.length
+        var i = 0;
+        var curLi = sorts[index];
+        for (i; i < len; i++) {
+            var thisLi = sorts[i];
+            if (thisLi === curLi) {
+                $api.addCls(thisLi, 'actived');
+                continue;
+            } else {
+                if ($api.hasCls(thisLi, 'actived')) {
+                    $api.removeCls(thisLi, 'actived');
+                }
+            }
+        }
+       }
+       function opensingle(index) {
+         var classifiy = document.getElementsByClassName('classifiy');
+         var len = classifiy.length;
+         var i = 0;
+         var clicks = classifiy[index];
+         for (i; i < len; i++) {
+           var thisLi = classifiy[i]
+           if (thisLi === clicks) {
+             $api.addCls('bold');
+             continue
+           } else {
+             if ($api.hasCls(thisLi,"bold")) {
+               $api.removeCls(thisLi, 'bold');
+             }
+           }
+         }
+       }
+       //打开页面
+  </script>
+  </html>

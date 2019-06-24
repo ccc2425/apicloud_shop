@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+      /*banner图*/
+          .mui-slider-indicator .mui-indicator{
+            width: 3px;
+            height: 3px;
+            margin: 1px;
+          }
+          .mui-table-view-cell.mui-collapse .mui-collapse-content{
+            display: block;
+          }
+          .classfial-list{
+            font-size: 10px
+          }
+          .classfial-list li{
+            float: left;
+            width: 20%;
+            text-align: center;
+          }
+          .mui-slider .mui-slider-group .mui-slider-item .classfial-list li img{
+            display: block;
+            width: 64%;
+            border-radius: 50%;
+            margin: 5px auto 0;
+          }
+          /*排序*/
+          .sorting {
+            display: flex;
+            justify-content: space-around;
+            line-height: 36px;
+            background-color: #fff;
+          }
+          /*精选好券*/
+          .vouchers-list{
+            margin-bottom: 10px;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 100vw;
+            padding: 1vh 1vw;
+            background-color: #fff;
+          }
+          .vouchers-list-left{
+            float: left;
+            position: relative;
+            width: 32vw;
+            height: 120px;
+            margin-right: 3vw;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            float: left;
+            width: 63vw;
+            padding: 10px 0;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 4vw;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: top;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .vouchers-list4 span{
+            vertical-align: top;
+          }
+          .vouchers-list4 span:first-child{
+            color: #fff;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 10px;
+          }
+          .vouchers-list4 span:first-child{
+            background-color: #e8989a;
+            border-radius: 3px;
+          }
+          .vouchers-list4 span:last-child{
+            background-color: #e8989a;
+          }
+      </style>
+  </head>
+  <body>
+      <!-- 轮播图 -->
+      <div id="slider" class="mui-slider home-banner" >
+  			<div class="mui-slider-group mui-slider-loop home-banner">
+  				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+  				<div class="mui-slider-item mui-slider-item-duplicate">
+  					<a href="#">
+  						<img src="../../image/yuantiao.jpg">
+  					</a>
+  				</div>
+  				<!-- 第一张 -->
+  				<div class="mui-slider-item">
+  					<a href="#">
+  						<img src="../../image/shuijiao.jpg">
+  					</a>
+  				</div>
+  				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+  				<div class="mui-slider-item mui-slider-item-duplicate">
+  					<a href="#">
+  						<img src="../../image/shuijiao.jpg">
+  					</a>
+  				</div>
+  			</div>
+  			<div class="mui-slider-indicator">
+  				<div class="mui-indicator mui-active"></div>
+  			</div>
+  		</div>
+      <!-- 排序 -->
+      <div class="sorting borderb1e">
+        <div class="sorts cored" onclick="sort(0)">综合</div>
+        <div class="sorts" onclick="sort(1)">销量</div>
+        <div class="sorts" onclick="sort(2)">价格</div>
+        <div class="sorts" onclick="sort(3)">佣金比例</div>
+      </div>
+      <!-- 数据列表 -->
+      <ul id="vouchersul" class="bgcc vouchersul fs12">
+        <li onclick="openitem()" class="vouchers-list clearfix">
+          <div class="vouchers-list-left">
+            <img src="../image/muwu.jpg" alt="">
+            <div class="peoplenum text-center">248人已抢</div>
+          </div>
+          <div class="vouchers-list-right">
+            <div class="vouchers-list1 texthidden mb5">
+              <img src="../../image/taobao.jpg">
+              时尚新款单肩背大人小孩通用零钱包
+            </div>
+            <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+            <div class="vouchers-list3 cogry clearfix">
+              <span class="discount mr1v fs14">原价</span>
+              <span class="original">￥11.9</span>
+              <span class="fr">190人已买</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              <span class="mr2v">券后价</span>
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+              <span class="coupon fr mr3v fs14">2元券</span>
+            </div>
+          </div>
+        </li>
+        <li onclick="openitem()" class="vouchers-list clearfix">
+          <div class="vouchers-list-left">
+            <img src="../image/muwu.jpg" alt="">
+            <div class="peoplenum text-center">248人已抢</div>
+          </div>
+          <div class="vouchers-list-right">
+            <div class="vouchers-list1 texthidden mb5">
+              <img src="../../image/taobao.jpg">
+              时尚新款单肩背大人小孩通用零钱包
+            </div>
+            <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+            <div class="vouchers-list3 cogry clearfix">
+              <span class="discount mr1v fs14">原价</span>
+              <span class="original">￥11.9</span>
+              <span class="fr">190人已买</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              <span class="mr2v">券后价</span>
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+              <span class="coupon fr mr3v fs14">2元券</span>
+            </div>
+          </div>
+        </li>
+        <li onclick="openitem()" class="vouchers-list clearfix">
+          <div class="vouchers-list-left">
+            <img src="../image/muwu.jpg" alt="">
+            <div class="peoplenum text-center">248人已抢</div>
+          </div>
+          <div class="vouchers-list-right">
+            <div class="vouchers-list1 texthidden mb5">
+              <img src="../../image/taobao.jpg">
+              时尚新款单肩背大人小孩通用零钱包
+            </div>
+            <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+            <div class="vouchers-list3 cogry clearfix">
+              <span class="discount mr1v fs14">原价</span>
+              <span class="original">￥11.9</span>
+              <span class="fr">190人已买</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              <span class="mr2v">券后价</span>
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+              <span class="coupon fr mr3v fs14">2元券</span>
+            </div>
+          </div>
+        </li>
+        <li onclick="openitem()" class="vouchers-list clearfix">
+          <div class="vouchers-list-left">
+            <img src="../image/muwu.jpg" alt="">
+            <div class="peoplenum text-center">248人已抢</div>
+          </div>
+          <div class="vouchers-list-right">
+            <div class="vouchers-list1 texthidden mb5">
+              <img src="../../image/taobao.jpg">
+              时尚新款单肩背大人小孩通用零钱包
+            </div>
+            <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+            <div class="vouchers-list3 cogry clearfix">
+              <span class="discount mr1v fs14">原价</span>
+              <span class="original">￥11.9</span>
+              <span class="fr">190人已买</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              <span class="mr2v">券后价</span>
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+              <span class="coupon fr mr3v fs14">2元券</span>
+            </div>
+          </div>
+        </li>
+        <li onclick="openitem()" class="vouchers-list clearfix">
+          <div class="vouchers-list-left">
+            <img src="../image/muwu.jpg" alt="">
+            <div class="peoplenum text-center">248人已抢</div>
+          </div>
+          <div class="vouchers-list-right">
+            <div class="vouchers-list1 texthidden mb5">
+              <img src="../../image/taobao.jpg">
+              时尚新款单肩背大人小孩通用零钱包
+            </div>
+            <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+            <div class="vouchers-list3 cogry clearfix">
+              <span class="discount mr1v fs14">原价</span>
+              <span class="original">￥11.9</span>
+              <span class="fr">190人已买</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              <span class="mr2v">券后价</span>
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+              <span class="coupon fr mr3v fs14">2元券</span>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/mui.min.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      // 轮播图
+      var slider = mui("#slider");
+      (function() {
+        slider.slider({
+          interval: 1000
+        })
+      }());
+      //切换排序
+      function sort(index) {
+        var sorts = document.getElementsByClassName('sorts')
+        var len = sorts.length
+        var i = 0;
+        var curLi = sorts[index];
+        for (i; i < len; i++) {
+            var thisLi = sorts[i];
+            if (thisLi === curLi) {
+                $api.addCls(thisLi, 'cored');
+                continue;
+            } else {
+                if ($api.hasCls(thisLi, 'cored')) {
+                    $api.removeCls(thisLi, 'cored');
+                }
+            }
+        }
+      }
+      //打开商品
+      function openitem() {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+
+  </script>
+  </html>
