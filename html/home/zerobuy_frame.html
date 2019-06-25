@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          body{
+
+          }
+          .bg{
+            width: 100%;
+            height: 55vh;
+          }
+          .rules{
+            top: 28%;
+            right: 0;
+            background-color: #000;
+            color: #fff;
+            opacity: .4;
+          }
+          .qualification{
+            background-color: #666;
+            opacity: .8;
+            color: #fff;
+          }
+          .item-nav{
+            display: flex;
+            justify-content: space-around;
+          }
+          .qualification-get{
+            left: 0;
+            top: 72%;
+            background: linear-gradient(to right,#e8989a,#aaa);
+          }
+      </style>
+  </head>
+  <body>
+    <div class="bg">
+      <img src="../../image/chongzhibg.png">
+      <div class="rules pf pad5a2v boradiusl">
+        活动规则
+      </div>
+    </div>
+    <div class="bgb bgco">
+        <div class="text-center qualification lh29 fs12">
+          当前您拥有<span class="bold">2</span>次参与活动资格
+        </div>
+        <div class="text-center fs11 lh29">
+          活动时间：2019-06-23~2019-06-25
+        </div>
+        <div class="item-nav lh40 fs16">
+            <div onclick="tabbtn(0)" class="item-navs bold">活动商品</div>
+            <div onclick="tabbtn(1)" class="item-navs">未开始商品</div>
+            <div onclick="tabbtn(2)" class="item-navs">已结束商品</div>
+        </div>
+        <div class="item text-center">
+            <img src="../../image/11.png">
+            <!-- 还没有该商品类型哟 -->
+        </div>
+        <div class="qualification-get pf boradiusr pad5a2v">
+            领取资格
+        </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+       function tabbtn(index) {
+         var itemNav = document.getElementsByClassName('item-navs');
+         var curLi = itemNav[index];
+         var len = itemNav.length;
+         for (i = 0; i < len; i++) {
+           var thisLi = itemNav[i];
+           if (thisLi === curLi) {
+               $api.addCls(thisLi, 'bold');
+           } else {
+             if ($api.hasCls(thisLi,'bold')) {
+               $api.removeCls(thisLi, 'bold');
+             }
+           }
+         }
+       }
+  </script>
+  </html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>今日疯抢</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          *{
+            box-sizing: border-box;
+          }
+          /**/
+          .mallall-img{
+            width: 100%;
+            height: 160px;
+          }
+          /*数据列表*/
+          .like-box ul li{
+            margin: 0 .5vw 5px;
+            /*margin-right: 1vw;*/
+          }
+          .vouchers-list{
+            margin-bottom: 10px;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 48vw;
+            padding: 1vh 1vw;
+            background-color: #fff;
+          }
+          .vouchers-list-left{
+            position: relative;
+            width: 100%;
+            height: 160px;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            width: 100%;
+            padding-top: 10px;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 12px;
+            line-height: 18px;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 1vw;
+            vertical-align: middle;;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .vouchers-list4 span{
+            line-height: 18px;
+          }
+          .vouchers-list4 span:first-child{
+            color: #fff;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 10px;
+          }
+          .vouchers-list4 span:first-child{
+            background-color: #e8989a;
+          }
+          /**/
+          .rob-btn{
+            width: 10vw;
+            height: 10vw;
+            line-height: 10vw;
+            bottom: 24px;
+            right: 1vw;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 精选单品 -->
+    <div id="mallallimg" class="mallall-img">
+      <img src="../../image/ban1.png" alt="">
+    </div>
+    <div class="like bgcf mb10">
+      <div class="like-box pad1v bgce">
+        <ul class="clearfix">
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+          <li onclick="openitem()" class="vouchers-list fl clearfix">
+            <div class="vouchers-list-left fl pr">
+              <img src="../../image/la1.png" alt="">
+              <div class="peoplenum text-center fs10 lh20">自购赚￥0.47</div>
+              <div class="pa bgco rob-btn boradius50 text-center fs18">
+                抢
+              </div>
+            </div>
+            <div class="vouchers-list-right fl">
+              <div class="vouchers-list1 texthidden mb5 fs12">
+                <img src="../../image/tm.png">
+                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+              </div>
+              <div class="vouchers-list3 clearfix cogry mb5">
+                <p class="fl ml2v fs10 cooo">
+                  券后价￥
+                  <span class="fs12">12.20</span>
+                </p>
+                <p>
+                  <span class="fr fs10">原价：￥<span class="original">￥11.9</span></span>
+                </p>
+              </div>
+              <div class="vouchers-list4 cogry fs10 clearfix">
+                <!-- ￥<span class="discount mr1v cooo fs16">5.9</span> -->
+                <span class="coupon fl mr3v fs14">2元券</span>
+                <span class="fr">190人已抢</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      function openitem() {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+  </script>
+  </html>

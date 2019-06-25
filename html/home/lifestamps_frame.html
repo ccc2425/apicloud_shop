@@ -213,12 +213,15 @@
          var clicks = classifiy[index];
          for (i; i < len; i++) {
            var thisLi = classifiy[i]
+           console.log(thisLi);
            if (thisLi === clicks) {
-             $api.addCls('bold');
+             $api.addCls(thisLi,'bold');
+             console.log(1);
              continue
            } else {
              if ($api.hasCls(thisLi,"bold")) {
-               $api.removeCls(thisLi, 'bold');
+                 $api.removeCls(thisLi, 'bold');
+                 console.log(2);
              }
            }
          }

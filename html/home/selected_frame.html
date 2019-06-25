@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>精选单品</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          /**/
+          .mallall-img{
+            width: 100%;
+            height: 160px;
+          }
+          /**/
+          .mui-table-view{
+            margin-top: 10px;
+          }
+          .mui-media-object{
+            border-radius: 50%;
+          }
+          .share{
+            position: absolute;
+            top: 50%;
+            right: 3vw;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            border-radius: 30px;
+            line-height: 1;
+            font-size: 12px;
+            padding: 3px 2vw;
+          }
+          .buy{
+            position: absolute;
+            top: 50%;
+            right: 16vw;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            border-radius: 30px;
+            line-height: 1;
+            font-size: 12px;
+            padding: 3px 2vw;
+          }
+          .specialty-box{
+            width: 100%;
+            border-top: 1px solid #ccc;
+          }
+          .specialty-boxi{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px 3vw;
+          }
+          .specialty-img li{
+            float: left;
+            width: 30vw;
+            height: 30vw;
+            margin: 5px 2vw 5px 0;
+          }
+          .specialty-img li:nth-child(3n){
+            margin-right: 0;
+          }
+          /**/
+          .password{
+            width: 70vw;
+            height: 66px;
+            padding: 5px 2vw;
+            box-sizing: border-box;
+            border: 1px dashed #d81e06;
+            font-size: 12px;
+            line-height: 18px;
+          }
+          .copy{
+            width: 20vw;
+            height: 66px;
+            color: #fff;
+            background: linear-gradient(to bottom right,#666,#000);
+            border-radius:3px;
+            text-align: center;
+            padding: 10px 5vw;
+          }
+      </style>
+  </head>
+  <body>
+
+    <!-- 精选单品 -->
+    <div id="mallallimg" class="mallall-img">
+      <img src="../../image/ban1.png" alt="">
+    </div>
+    <!-- 列表 -->
+    <div id="selected" class="materials">
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr buy">领券购买</span>
+            <span class="bgcr share">280</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">自购赚￥1.17</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+            </ul>
+            <div class="clearfix mt10b5">
+              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
+              <div class="copy fr">复制评论</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr buy">领券购买</span>
+            <span class="bgcr share">280</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">自购赚￥1.17</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+            </ul>
+            <div class="clearfix mt10b5">
+              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
+              <div class="copy fr">复制评论</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr buy">领券购买</span>
+            <span class="bgcr share">280</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">自购赚￥1.17</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+            </ul>
+            <div class="clearfix mt10b5">
+              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
+              <div class="copy fr">复制评论</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mui-table-view">
+        <div class="mui-table-view-cell mui-media">
+          <a href="javascript:;">
+            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
+            <div class="mui-media-body">
+              小编推荐
+              <p class='mui-ellipsis'>2019-6-19</p>
+            </div>
+            <span class="bgcr buy">领券购买</span>
+            <span class="bgcr share">280</span>
+          </a>
+        </div>
+        <div class="specialty-box">
+          <div class="specialty-boxi">
+            <div class="specialty-text">
+              <p class="cored bold">自购赚￥1.17</p>
+              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+            </div>
+            <ul class="specialty-img clearfix">
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+            </ul>
+            <div class="clearfix mt10b5">
+              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
+              <div class="copy fr">复制评论</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      function openitem() {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+  </script>
+  </html>
