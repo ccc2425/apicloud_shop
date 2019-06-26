@@ -12,12 +12,45 @@
       </style>
   </head>
   <body>
+      <div id="header" class="">
 
+      </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
+        // api.openFrame({
+        //     name: 'page2',
+        //     url: './page2.html',
+        //     rect: {
+        //         x: 0,
+        //         y: 0,
+        //         w: 320,
+        //         h: 480
+        //     },
+        //     pageParam: {
+        //         name: 'test'
+        //     },
+        //     bounces: true,
+        //     bgColor: 'rgba(0,0,0,0)',
+        //     vScrollBarEnabled: true,
+        //     hScrollBarEnabled: true
+        // });
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        api.openFrame({
+            name: 'main',
+            url: 'http://wx.wellmr.cn/addons/we7_wmall/template/deliveryer/index.html?menu=#/pages/auth/login?i=6',
+            bounces: true,
+            rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
+                x:0,
+                y:headerH.h,
+                h:0,
+                w: 'auto' // main页面的宽度 自适应屏幕宽度
 
+            }
+        });
       };
   </script>
   </html>

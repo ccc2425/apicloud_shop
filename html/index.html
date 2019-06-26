@@ -6,9 +6,9 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>首页</title>
-    <link rel="stylesheet" type="text/css" href="./css/api.css" />
-    <link rel="stylesheet" type="text/css" href="./css/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="./css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../css/public.css" />
     <style type="text/css">
         html,
         body {
@@ -46,19 +46,19 @@
             justify-content: space-around;
         }
         /* 底部切换按钮样式 */
-        .bbtn01 {background: url(./image/shouye.png) no-repeat center 4px; }
-        .bbtn02 {background: url(./image/fenlei.png) no-repeat center 4px; }
-        .bbtn03 {background: url(./image/shang.png) no-repeat center 4px; }
-        .bbtn04 {background: url(./image/wenjian.png) no-repeat center 4px; }
-        .bbtn05 {background: url(./image/my.png) no-repeat center 4px; }
+        .bbtn01 {background: url(../image/shouye.png) no-repeat center 4px; }
+        .bbtn02 {background: url(../image/fenlei.png) no-repeat center 4px; }
+        .bbtn03 {background: url(../image/shang.png) no-repeat center 4px; }
+        .bbtn04 {background: url(../image/wenjian.png) no-repeat center 4px; }
+        .bbtn05 {background: url(../image/my.png) no-repeat center 4px; }
         .bottom_btn {width: 100%; padding-top: 32px;background-position-y: 4px; background-size: 24px;  font-size: 10px; color: #333;}
 
         /* 底部按钮激活样式 */
-        .activebtn0 {background: url(./image/shouye1.png) no-repeat center 4px;}
-        .activebtn1 {background: url(./image/fenlei1.png) no-repeat center 4px;}
-        .activebtn2 {background: url(./image/shang1.png) no-repeat center 4px;}
-        .activebtn3 {background: url(./image/wenjian1.png) no-repeat center 4px;}
-        .activebtn4 {background: url(./image/my1.png) no-repeat center 4px;}
+        .activebtn0 {background: url(../image/shouye1.png) no-repeat center 4px;}
+        .activebtn1 {background: url(../image/fenlei1.png) no-repeat center 4px;}
+        .activebtn2 {background: url(../image/shang1.png) no-repeat center 4px;}
+        .activebtn3 {background: url(../image/wenjian1.png) no-repeat center 4px;}
+        .activebtn4 {background: url(../image/my1.png) no-repeat center 4px;}
         .activebtn {color:#d81e06; background-size: 24px;}
         .bottomhover {background-color: #46494B;}
     </style>
@@ -89,7 +89,7 @@
         </ul>
     </footer>
 </body>
-<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
       var footerPos;
 // 隐藏所有的一级frame
@@ -144,7 +144,7 @@ function randomSwitchBtn(index) {
         var headerPos = $api.offset(header);
         api.openFrame({
             name: 'home',
-            url: './html/home/home.html',
+            url: './home/home.html',
             rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
                 // marginTop: headerH, // main页面距离win顶部的高度
                 // marginBottom: footerH, // main页面距离win底部的高度
@@ -166,7 +166,7 @@ function randomSwitchBtn(index) {
         hideAllFrame();
         api.openFrame({
             name: 'home',
-            url: './html/home/home.html',
+            url: './home/home.html',
             rect: {
               x: 0,
               y: 0,
@@ -184,7 +184,7 @@ function randomSwitchBtn(index) {
         hideAllFrame();
         api.openFrame({
             name: 'classifys',
-            url: './html/classify/classify.html',
+            url: './classify/classify.html',
             rect: {
               x: 0,
               y: 0,
@@ -202,7 +202,7 @@ function randomSwitchBtn(index) {
         hideAllFrame();
         api.openFrame({
             name: 'mall',
-            url: './html/mall/mall.html',
+            url: './mall/mall.html',
             rect: {
               x: 0,
               y: 0,
@@ -220,7 +220,7 @@ function randomSwitchBtn(index) {
         hideAllFrame();
         api.openFrame({
             name: 'material',
-            url: './html/material/material.html',
+            url: './material/material.html',
             rect: {
               x: 0,
               y: 0,
@@ -238,7 +238,7 @@ function randomSwitchBtn(index) {
         hideAllFrame();
         api.openFrame({
             name: 'mine',
-            url: './html/mine/my.html',
+            url: './mine/my.html',
             rect: {
               x: 0,
               y: 0,

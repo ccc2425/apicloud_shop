@@ -101,7 +101,7 @@
   <body>
 
     <!-- 头部 -->
-    <div id="header" class="clearfix text-center bgcf header">
+    <div id="header" class="clearfix text-center bgcf header fs16">
         <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
         <!-- <img src="" alt=""> -->
         淘宝
@@ -131,6 +131,51 @@
       <div class="sorts" onclick="sort(1)">销量</div>
       <div class="sorts" onclick="sort(2)">价格</div>
     </div>
+    <!--  -->
+<div id="aui-slide2">
+    <div class="aui-slide-wrap" >
+        <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+            <div class="aui-content aui-padded-15">
+                <span class="aui-text-danger">AUI Slide</span>会让你更方便让你布局轮播效果
+            </div>
+        </div>
+        <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+            <div class="aui-content aui-padded-15">
+                <span class="aui-text-success">AUI Slide</span>更好的支持循环滑动切换
+            </div>
+        </div>
+    </div>
+    <div class="aui-slide-page-wrap"><!--分页容器--></div>
+</div>
+<div id="aui-slide4">
+    <div class="aui-slide-wrap" >
+        <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+            <div class="aui-content aui-padded-15">
+                <span class="aui-text-danger">AUI Slide</span>会让你更方便让你布局轮播效果
+            </div>
+        </div>
+        <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+            <div class="aui-content aui-padded-15">
+                <span class="aui-text-success">AUI Slide</span>更好的支持循环滑动切换
+            </div>
+        </div>
+    </div>
+    <div class="aui-slide-page-wrap"><!--分页容器--></div>
+</div>
+<div id="aui-slide3">
+    <div class="aui-slide-wrap" >
+        <div class="aui-slide-node bg-dark">
+            <img src="../../image/l1.png" />
+        </div>
+        <div class="aui-slide-node bg-dark">
+            <img src="../../image/l2.png" />
+        </div>
+        <div class="aui-slide-node bg-dark">
+            <img src="../../image/l3.png" />
+        </div>
+    </div>
+    <div class="aui-slide-page-wrap"><!--分页容器--></div>
+  </div>
     <!-- 数据列表 -->
     <ul id="vouchersul" class="bgcc vouchersul">
       <li onclick="openitem()" class="vouchers-list clearfix">
@@ -209,18 +254,53 @@
 
        //轮播
        var slide = new auiSlide({
-           container:document.getElementById("aui-slide"),
-           // "width":300,
-           "height":160,
-           "speed":300,
-           "pageShow":true,
-           "pageStyle":'dot',
-           "loop":true,
-           'dotPosition':'center',
-           currentPage:currentFun
-       })
-       function currentFun(index) {
-           console.log(index);
-       }
+        container:document.getElementById("aui-slide"),
+        // "width":300,
+        "height":260,
+        "speed":300,
+        "pageShow":true,
+        "pageStyle":'dot',
+        "loop":true,
+        'dotPosition':'center',
+        currentPage:currentFun
+    })
+
+    function currentFun(index) {
+        console.log(index);
+    }
+    var slide2 = new auiSlide({
+        container:document.getElementById("aui-slide2"),
+        // "width":300,
+        "height":240,
+        "speed":300,
+        "autoPlay": 0, //自动播放
+        "pageShow":true,
+        "loop":true,
+        "pageStyle":'dot',
+        'dotPosition':'center'
+    })
+    var slide3 = new auiSlide({
+        container:document.getElementById("aui-slide3"),
+        // "width":300,
+        "height":240,
+        "speed":500,
+        "autoPlay": 3000, //自动播放
+        "loop":true,
+        "pageShow":true,
+        "pageStyle":'line',
+        'dotPosition':'center'
+    })
+    var slide4 = new auiSlide({
+        container:document.getElementById("aui-slide4"),
+        // "width":300,
+        "height":240,
+        "speed":500,
+        "autoPlay": 3000, //自动播放
+        "loop":true,
+        "pageShow":true,
+        "pageStyle":'line',
+        'dotPosition':'center'
+    })
+    console.log(slide3.pageCount());
   </script>
   </html>

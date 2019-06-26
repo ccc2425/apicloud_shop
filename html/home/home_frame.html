@@ -5,7 +5,6 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
@@ -37,24 +36,17 @@
             width: 20%;
             text-align: center;
           }
-          .mui-slider .mui-slider-group .mui-slider-item .classfial-list li img{
+          .classfial-list li img{
             display: block;
             width: 64%;
             border-radius: 50%;
-            margin: 5px auto 0;
+            margin: 5px auto;
           }
           .home-banner{
             /*width: 80vw;
             padding: 0 10vw*/
           }
           /*分类*/
-          .classfical-btn{
-            bottom: -16px
-          }
-          .classfical-btn .mui-indicator{
-            width:8px;
-            height: 2px
-          }
           /*广告banner*/
           #sliderad img{
             height: 80px;
@@ -71,15 +63,17 @@
           }
           #mooc {
            width: 100%;
-           text-align: left;    /* 让新闻内容靠左 */
+           text-align: left;
+           line-height: 14px;
           }
           /* 中间样式 */
           #moocBox {
-           height: 24px;
+           height: 14px;
            overflow: hidden; /* 这个一定要加，超出的内容部分要隐藏，免得撑高中间部分 */
           }
           #mooc ul li {
-           height: 24px;
+           height: 14px;
+           line-height: 14px;
           }
           #mooc ul li span {
            float: right;
@@ -272,8 +266,6 @@
       </style>
   </head>
   <body>
-    <div id="pullrefresh">
-      <div>
         <!-- <div class="bgbanner">
           <img src="../../image/t2.png" alt="">
         </div> -->
@@ -294,41 +286,12 @@
               </div>
           </div>
           <div class="aui-slide-page-wrap"><!--分页容器--></div>
-      </div>
-
-
-      <!-- <div class="bgcf"> -->
+        </div>
         <!-- 分类轮播 -->
         <div class="pr bgcf">
-          <div class="mui-table-view-cell mui-collapse">
-      			<div class="mui-collapse-content unoverflow">
-      				<div id="sliders" class="mui-slider unoverflow">
-      					<div class="mui-slider-group mui-slider-loop">
-      						<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-      						<div class="mui-slider-item mui-slider-item-duplicate">
-                    <ul>
-                      <li>
-                        <ul class="classfial-list clearfix">
-                          <li onclick="openmall(0)"><img src="../../image/a1.png" alt=""><span>信用卡</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a2.png" alt=""><span>省钱一元购</span></li>
-                          <!-- <li><img src="../../image/taobao.jpg" alt=""><span>京东</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>o2o</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>早起打卡</span></li> -->
-                        </ul>
-                      </li>
-                      <!-- <li>
-                        <ul class="classfial-list clearfix">
-                          <li><img src="../../image/taobao.jpg" alt=""><span>淘宝</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>拼多多</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>京东</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>o2o</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>早起打卡</span></li>
-                        </ul>
-                      </li> -->
-                    </ul>
-      						</div>
-      						<!-- 第一张 -->
-      						<div class="mui-slider-item">
+          <div id="aui-slide2">
+              <div class="aui-slide-wrap" >
+                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
                     <ul>
                       <li>
                         <ul class="classfial-list clearfix">
@@ -349,9 +312,8 @@
                         </ul>
                       </li>
                     </ul>
-      						</div>
-      						<!-- 第二张 -->
-      						<div class="mui-slider-item">
+                  </div>
+                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
                     <ul>
                       <li>
                         <ul class="classfial-list clearfix">
@@ -372,9 +334,8 @@
                         </ul>
                       </li>
                     </ul>
-      						</div>
-      						<!-- 第三张 -->
-      						<div class="mui-slider-item">
+                  </div>
+                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
                     <ul>
                       <li>
                         <ul class="classfial-list clearfix">
@@ -395,70 +356,26 @@
                         </ul>
                       </li> -->
                     </ul>
-      						</div>
-      						<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-      						<div class="mui-slider-item mui-slider-item-duplicate">
-                    <ul>
-                      <li>
-                        <ul class="classfial-list clearfix">
-                          <li onclick="openmall(0)"><img src="../../image/a1.png" alt=""><span>淘宝</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a2.png" alt=""><span>拼多多</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a3.png" alt=""><span>京东</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a4.png" alt=""><span>o2o</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a5.png" alt=""><span>早起打卡</span></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <ul class="classfial-list clearfix">
-                          <li onclick="openmall(0)"><img src="../../image/a6.png" alt=""><span>天猫</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a7.png" alt=""><span>天猫国际</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a8.png" alt=""><span>抖券</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a9.png" alt=""><span>视频单</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a10.png" alt=""><span>天猫超市</span></li>
-                        </ul>
-                      </li>
-                    </ul>
-      						</div>
-      					</div>
-                <div class="mui-slider-indicator classfical-btn">
-                  <div class="mui-indicator mui-active"></div>
-                  <div class="mui-indicator"></div>
-                  <div class="mui-indicator"></div>
-                </div>
+                  </div>
               </div>
-      			</div>
-      		</div>
-          <!-- <div class="mui-slider-indicator classfical-btn">
-            <div class="mui-indicator mui-active"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-          </div> -->
+              <div class="aui-slide-page-wrap"><!--分页容器--></div>
+          </div>
         </div>
         <!-- 广告轮播图 -->
-        <div id="sliderad" class="mui-slider bgcf" >
-    			<div class="mui-slider-group mui-slider-loop">
-    				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-    				<div onclick="openactive(2)" class="mui-slider-item mui-slider-item-duplicate">
-              <img src="../../image/l1.png">
-    				</div>
-    				<!-- 第一张 -->
-    				<div onclick="openactive(0)" class="mui-slider-item">
-              <img src="../../image/l1.png">
-    				</div>
-    				<!-- 第二张 -->
-    				<div onclick="openactive(1)" class="mui-slider-item">
-              <img src="../../image/l1.png">
-    				</div>
-    				<!-- 第三张 -->
-    				<div onclick="openactive(2)" class="mui-slider-item">
-              <img src="../../image/l1.png">
-    				</div>
-    				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-    				<div onclick="openactive(0)" class="mui-slider-item mui-slider-item-duplicate">
-              <img src="../../image/l1.png">
-    				</div>
-    			</div>
-    		</div>
+        <div id="aui-slide3">
+            <div class="aui-slide-wrap" >
+                <div onclick="openactive(0)" class="aui-slide-node bg-dark">
+                    <img src="../../image/l1.png" />
+                </div>
+                <div onclick="openactive(1)" class="aui-slide-node bg-dark">
+                    <img src="../../image/l1.png" />
+                </div>
+                <div onclick="openactive(2)" class="aui-slide-node bg-dark">
+                    <img src="../../image/l1.png" />
+                </div>
+            </div>
+            <div class="aui-slide-page-wrap no"><!--分页容器--></div>
+        </div>
         <!-- 头条 -->
         <div class="headlines clearfix bgcf">
           <div class="headlines-text fl">
@@ -842,11 +759,8 @@
           </ul>
         </div>
         <!-- </div> -->
-      </div>
-    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
-  <script type="text/javascript" src="../../script/mui.min.js"></script>
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
   <script type="text/javascript">
       //轮播
@@ -863,55 +777,62 @@
         currentPage:currentFun
     })
       var thisI;
+      var aSlide = document.getElementById("aui-slide");
     function currentFun(index) {
         thisI = index;
-        return thisI;
+        // return thisI;
         console.log(index);
+        // console.log(this);
         // api.sendEvent({
         //     name: 'banner',
         //     // mui('#slider').slider().getSlideNumber();
         //     extra: {
-        //         key1: '1',
+        //         key1: thisI,
         //         // key2: 'value2'
         //     }
         // });
     }
-  // <script type="text/javascript">
 
+  // <script type="text/javascript">
+      // 分类轮播
+      var slide2 = new auiSlide({
+          container:document.getElementById("aui-slide2"),
+          // "width":300,
+          "height":180,
+          "speed":300,
+          "autoPlay": 0, //自动播放
+          "pageShow":true,
+          "loop":false,
+          "pageStyle":'dot',
+          'dotPosition':'center'
+      })
       apiready = function(){
 
         //发送监听banner数据
-        api.sendEvent({
-            name: 'banner',
-            // mui('#slider').slider().getSlideNumber();
-            extra: {
-                key1: thisI,
-                // key2: 'value2'
-            }
-        });
+        // api.sendEvent({
+        //     name: 'banner',
+        //     // mui('#slider').slider().getSlideNumber();
+        //     extra: {
+        //         key1: thisI,
+        //         // key2: 'value2'
+        //     }
+        // });
       };
-      // mui('#slider').slider().getSlideNumber();
-      // slider.slider().getSlideNumber();
-      // console.log(slider);
-
-      // 轮播图
-      // var slider = mui("#slider");
-      // (function() {
-      //   slider.slider({
-      //     interval: 1000
-      //   })
-      //
-      // }());
       // 广告轮播
-      var sliderad = mui("#sliderad");
-      (function() {
-        sliderad.slider({
-          interval: 2000
-        })
-      }());
+      var slide3 = new auiSlide({
+          container:document.getElementById("aui-slide3"),
+          // "width":300,
+          "height":120,
+          "speed":500,
+          "autoPlay": 1000, //自动播放
+          "loop":true,
+          "pageShow":true,
+          "pageStyle":'line',
+          'dotPosition':'center',
+      })
     //纵向滚动 需要设置div的高度
       var area = document.getElementById('moocBox');
-      var iliHeight = 21;//单行滚动的高度
+      var iliHeight = 14;//单行滚动的高度
       var speed = 50;//滚动的速度
       var time;
       var delay= 1000;

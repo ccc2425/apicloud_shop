@@ -12,6 +12,109 @@
             width: 100%;
             height: 160px;
           }
+          /*分类*/
+          .classfial-box{
+            width: 16vw;
+            padding: 2vw;
+          }
+          .classfial-img{
+            width: 16vw;
+            height: 16vw;
+          }
+          /**/
+          .item-box>div{
+            width: 30vw;
+            height: 120px;
+            margin-right: 2vw;
+          }
+          .item-box>div:last-child{
+            margin-right: 0;
+          }
+          .item-box2>div{
+            width: 20vw;
+            height: 100px;
+            margin-right: 2vw;
+          }
+          .item-box2>div:last-child{
+            margin-right: 0;
+          }
+          /*精选好券*/
+          .vouchers-list{
+            margin-bottom: 10px;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 100vw;
+            padding: 1vh 1vw;
+            background-color: #fff;
+          }
+          .vouchers-list-left{
+            float: left;
+            position: relative;
+            width: 32vw;
+            height: 120px;
+            margin-right: 3vw;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            float: left;
+            width: 63vw;
+            padding: 10px 0;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 4vw;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: top;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .vouchers-list4 span{
+            vertical-align: top;
+          }
+          .vouchers-list4 span:first-child{
+            color: #fff;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 10px;
+          }
+          .vouchers-list4 span:first-child{
+            background-color: #e8989a;
+            border-radius: 3px;
+          }
+          .vouchers-list4 span:last-child{
+            background-color: #e8989a;
+          }
       </style>
   </head>
   <body>
@@ -31,9 +134,211 @@
       <div class="aui-slide-page-wrap no"><!--分页容器--></div>
     </div>
     <!-- 完美日记 -->
-    <div onclick="openDiary" class="diary">
+    <div onclick="openDiary()" class="diary">
       <img src="../../image/xianshi.png" alt="">
     </div>
+    <!-- 分类 -->
+    <div>
+      <ul class="clearfix text-center">
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          护肤套装
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          面膜
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          防晒
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          口红
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          粉底
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          面部保养
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          彩妆
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          香水
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          洗护
+        </li>
+        <li onclick="openDiary()" class="fl classfial-box">
+          <div class="classfial-img boradius50 mb5">
+            <img src="../../image/q1.jpg" alt="">
+          </div>
+          海外美妆
+        </li>
+      </ul>
+    </div>
+    <!--  -->
+    <div class="text-center pad5a2v">
+      <div class="fs10 lh40">
+        <span class="bold">有了这些，</span><span>才能放心出去浪起来！</span>
+      </div>
+      <div class="item-box just-space mb10">
+          <div onclick="openDiary()"><img src="../../image/la3.png" alt=""></div>
+          <div onclick="openDiary()"><img src="../../image/la3.png" alt=""></div>
+          <div onclick="openDiary()"><img src="../../image/la3.png" alt=""></div>
+      </div>
+      <div class="item-box2 just-space mb10">
+        <div onclick="openDiary()"><img src="../../image/c1.png" alt=""></div>
+        <div onclick="openDiary()"><img src="../../image/c2.png" alt=""></div>
+        <div onclick="openDiary()"><img src="../../image/c1.png" alt=""></div>
+        <div onclick="openDiary()"><img src="../../image/c3.png" alt=""></div>
+      </div>
+    </div>
+    <!-- 商品列表 -->
+    <!-- 数据列表 -->
+    <ul id="vouchersul" class="bgcc vouchersul fs12">
+      <li onclick="openitem()" class="vouchers-list clearfix">
+        <div class="vouchers-list-left">
+          <img src="../image/muwu.jpg" alt="">
+          <div class="peoplenum text-center">248人已抢</div>
+        </div>
+        <div class="vouchers-list-right">
+          <div class="vouchers-list1 texthidden mb5">
+            <img src="../../image/taobao.jpg">
+            时尚新款单肩背大人小孩通用零钱包
+          </div>
+          <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+          <div class="vouchers-list3 cogry clearfix">
+            <span class="discount mr1v fs14">原价</span>
+            <span class="original">￥11.9</span>
+            <span class="fr">190人已买</span>
+          </div>
+          <div class="vouchers-list4 cooo fs10">
+            <span class="mr2v">券后价</span>
+            ￥<span class="discount mr1v cooo fs16">5.9</span>
+            <span class="coupon fr mr3v fs14">2元券</span>
+          </div>
+        </div>
+      </li>
+      <li onclick="openitem()" class="vouchers-list clearfix">
+        <div class="vouchers-list-left">
+          <img src="../image/muwu.jpg" alt="">
+          <div class="peoplenum text-center">248人已抢</div>
+        </div>
+        <div class="vouchers-list-right">
+          <div class="vouchers-list1 texthidden mb5">
+            <img src="../../image/taobao.jpg">
+            时尚新款单肩背大人小孩通用零钱包
+          </div>
+          <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+          <div class="vouchers-list3 cogry clearfix">
+            <span class="discount mr1v fs14">原价</span>
+            <span class="original">￥11.9</span>
+            <span class="fr">190人已买</span>
+          </div>
+          <div class="vouchers-list4 cooo fs10">
+            <span class="mr2v">券后价</span>
+            ￥<span class="discount mr1v cooo fs16">5.9</span>
+            <span class="coupon fr mr3v fs14">2元券</span>
+          </div>
+        </div>
+      </li>
+      <li onclick="openitem()" class="vouchers-list clearfix">
+        <div class="vouchers-list-left">
+          <img src="../image/muwu.jpg" alt="">
+          <div class="peoplenum text-center">248人已抢</div>
+        </div>
+        <div class="vouchers-list-right">
+          <div class="vouchers-list1 texthidden mb5">
+            <img src="../../image/taobao.jpg">
+            时尚新款单肩背大人小孩通用零钱包
+          </div>
+          <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+          <div class="vouchers-list3 cogry clearfix">
+            <span class="discount mr1v fs14">原价</span>
+            <span class="original">￥11.9</span>
+            <span class="fr">190人已买</span>
+          </div>
+          <div class="vouchers-list4 cooo fs10">
+            <span class="mr2v">券后价</span>
+            ￥<span class="discount mr1v cooo fs16">5.9</span>
+            <span class="coupon fr mr3v fs14">2元券</span>
+          </div>
+        </div>
+      </li>
+      <li onclick="openitem()" class="vouchers-list clearfix">
+        <div class="vouchers-list-left">
+          <img src="../image/muwu.jpg" alt="">
+          <div class="peoplenum text-center">248人已抢</div>
+        </div>
+        <div class="vouchers-list-right">
+          <div class="vouchers-list1 texthidden mb5">
+            <img src="../../image/taobao.jpg">
+            时尚新款单肩背大人小孩通用零钱包
+          </div>
+          <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+          <div class="vouchers-list3 cogry clearfix">
+            <span class="discount mr1v fs14">原价</span>
+            <span class="original">￥11.9</span>
+            <span class="fr">190人已买</span>
+          </div>
+          <div class="vouchers-list4 cooo fs10">
+            <span class="mr2v">券后价</span>
+            ￥<span class="discount mr1v cooo fs16">5.9</span>
+            <span class="coupon fr mr3v fs14">2元券</span>
+          </div>
+        </div>
+      </li>
+      <li onclick="openitem()" class="vouchers-list clearfix">
+        <div class="vouchers-list-left">
+          <img src="../image/muwu.jpg" alt="">
+          <div class="peoplenum text-center">248人已抢</div>
+        </div>
+        <div class="vouchers-list-right">
+          <div class="vouchers-list1 texthidden mb5">
+            <img src="../../image/taobao.jpg">
+            时尚新款单肩背大人小孩通用零钱包
+          </div>
+          <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+          <div class="vouchers-list3 cogry clearfix">
+            <span class="discount mr1v fs14">原价</span>
+            <span class="original">￥11.9</span>
+            <span class="fr">190人已买</span>
+          </div>
+          <div class="vouchers-list4 cooo fs10">
+            <span class="mr2v">券后价</span>
+            ￥<span class="discount mr1v cooo fs16">5.9</span>
+            <span class="coupon fr mr3v fs14">2元券</span>
+          </div>
+        </div>
+      </li>
+
+    </ul>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
@@ -58,5 +363,26 @@
       apiready = function(){
 
       };
+      //完美日记
+      function openDiary() {
+        api.openWin({
+            name: 'diary',
+            url: './diary.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //
+      function openitem() {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
   </script>
   </html>
