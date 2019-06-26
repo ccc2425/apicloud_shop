@@ -11,6 +11,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .bold{font-weight: bolder;}
 .cored{color: #d81e06!important;}
 .cobck{color: #333;}
+.coaaa{color: #aaa;}
 .cogry{color: #ccc;}
 .cooo{color: #e8989a!important;}
 .cowhl{color: #fff;}
@@ -22,6 +23,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .lh16{line-height: 16px;}
 .lh20{line-height: 20px;}
 .lh29{line-height: 29px;}
+.lh35{line-height: 35px;}
 .lh40{line-height: 40px;}
 .lh50{line-height: 50px;}
 .lh70{line-height: 70px;}
@@ -32,6 +34,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .boradius50{border-radius: 50%; overflow: hidden;}
 .boradius{border-radius: 8px; overflow: hidden;}
 .boradius3{border-radius: 3px; overflow: hidden;}
+.boradius5{border-radius: 5px; overflow: hidden;}
 .boradius30 {border-radius: 30px; overflow: hidden;}
 .boradiusl{border-radius: 30px 0 0 30px;overflow: hidden;}
 .boradiusr{border-radius: 0 30px 30px 0;overflow: hidden;}
@@ -43,6 +46,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .mt10{margin-top: 10px;}
 .mt16{margin-top: 16px;}
 .mt30{margin-top: 30px;}
+.ml1v{margin-left: 1vw;}
 .ml3v{margin-left: 3vw;}
 .mr1v{margin-right: 1vw;}
 .mr2v{margin-right: 2vw;}
@@ -57,11 +61,14 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .pad5a2v{padding: 5px 2vw;}
 .pad10a2v{padding: 10px 2vw;}
 .pad10a3v{padding: 10px 3vw;}
+.pad0a1v{padding: 0 1vw;}
+.pad0a2v{padding: 0 2vw;}
 .pad0a3v{padding: 0 3vw;}
 .pad1v{padding: 1vw;}
-.pad0a1v{padding: 0 1vw;}
 .pad2v{padding: 2vw;}
 .padt10{padding-top: 10px;}
+.pad20a10v{padding: 20px 10vw;}
+.pad5{padding: 5px;}
 /*背景色*/
 .bgcc{background-color: #ccc;}
 .bgce{background-color: #eee;}
@@ -79,6 +86,6 @@ html,body {/*height: 100%;*/font-size: 14px;}
 img{width:100%;height:100%;}
 .texthidden{overflow: hidden;/*超出部分隐藏*/ white-space: nowrap;/*不换行*/ text-overflow: ellipsis;/*超出部分文字以...显示*/}
 .texthiddens{text-overflow: -o-ellipsis-lastline; overflow: hidden;text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;}
-
+.no{display: none}
 /**/
 pmargin: 0;}

@@ -6,6 +6,7 @@
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
         /*.bgbanner{
@@ -276,53 +277,26 @@
         <!-- <div class="bgbanner">
           <img src="../../image/t2.png" alt="">
         </div> -->
-      <!-- 轮播图 -->
-      <div id="slider" class="mui-slider home-banner" >
-  			<div class="mui-slider-group mui-slider-loop home-banner">
-  				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-  				<div class="mui-slider-item mui-slider-item-duplicate">
-  					<a href="#">
-  						<img src="../../image/ban1.png">
-  					</a>
-  				</div>
-  				<!-- 第一张 -->
-  				<div class="mui-slider-item">
-  					<a href="#">
-  						<img src="../../image/ban1.png">
-  					</a>
-  				</div>
-  				<!-- 第二张 -->
-  				<div class="mui-slider-item">
-  					<a href="#">
-  						<img src="../../image/ban1.png">
-  					</a>
-  				</div>
-  				<!-- 第三张 -->
-  				<div class="mui-slider-item">
-  					<a href="#">
-  						<img src="../../image/ban1.png">
-  					</a>
-  				</div>
-  				<!-- 第四张 -->
-  				<div class="mui-slider-item">
-  					<a href="#">
-  						<img src="../../image/ban1.png">
-  					</a>
-  				</div>
-  				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-  				<div class="mui-slider-item mui-slider-item-duplicate">
-  					<a href="#">
-  						<img src="../../image/ban1.png">
-  					</a>
-  				</div>
-  			</div>
-  			<div class="mui-slider-indicator">
-  				<div class="mui-indicator mui-active"></div>
-  				<div class="mui-indicator"></div>
-  				<div class="mui-indicator"></div>
-  				<div class="mui-indicator"></div>
-  			</div>
-  		</div>
+        <!-- 轮播图 -->
+        <div id="aui-slide">
+          <div class="aui-slide-wrap" >
+              <div class="aui-slide-node bg-dark">
+                  <img src="../../image/ban1.png">
+              </div>
+              <div class="aui-slide-node bg-dark">
+                  <img src="../../image/ban1.png">
+              </div>
+              <div class="aui-slide-node bg-dark">
+                  <img src="../../image/ban1.png">
+              </div>
+              <div class="aui-slide-node bg-dark">
+                  <img src="../../image/ban1.png">
+              </div>
+          </div>
+          <div class="aui-slide-page-wrap"><!--分页容器--></div>
+      </div>
+
+
       <!-- <div class="bgcf"> -->
         <!-- 分类轮播 -->
         <div class="pr bgcf">
@@ -539,12 +513,18 @@
     						<img class="tit-img" src="../public/img/index/icon1.png" />
     					</h4>
     					<div class="yxzc mb5">
-    						<div><img src="../../image/c1.png" /></div>
-    						<div><img src="../../image/c2.png" /></div>
-    						<div><img src="../../image/c3.png" /></div>
+    						<div onclick="openBeauty()">
+                  <img src="../../image/c1.png" />
+                </div>
+    						<div onclick="openMaterKid()">
+                  <img src="../../image/c2.png" />
+                </div>
+    						<div onclick="openLife()">
+                  <img src="../../image/c3.png" />
+                </div>
     					</div>
               <div class="optimization-box clearfix mb5">
-                <div onclick="">
+                <div onclick="openAdults()">
                   <img src="../../image/c4.png" />
                 </div>
                 <div>
@@ -867,14 +847,45 @@
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/mui.min.js"></script>
+  <script type="text/javascript" src="../../script/aui-slide.js"></script>
   <script type="text/javascript">
+      //轮播
+      var slide = new auiSlide({
+        container:document.getElementById("aui-slide"),
+        // "width":300,
+        "height":160,
+        "speed":300,
+        "autoPlay":3000, //自动播放
+        "pageShow":true,
+        "pageStyle":'dot',
+        "loop":true,
+        'dotPosition':'center',
+        currentPage:currentFun
+    })
+      var thisI;
+    function currentFun(index) {
+        thisI = index;
+        return thisI;
+        console.log(index);
+        // api.sendEvent({
+        //     name: 'banner',
+        //     // mui('#slider').slider().getSlideNumber();
+        //     extra: {
+        //         key1: '1',
+        //         // key2: 'value2'
+        //     }
+        // });
+    }
+  // <script type="text/javascript">
+
       apiready = function(){
+
         //发送监听banner数据
         api.sendEvent({
             name: 'banner',
             // mui('#slider').slider().getSlideNumber();
             extra: {
-                // key1: 'value1',
+                key1: thisI,
                 // key2: 'value2'
             }
         });
@@ -884,13 +895,13 @@
       // console.log(slider);
 
       // 轮播图
-      var slider = mui("#slider");
-      (function() {
-        slider.slider({
-          interval: 1000
-        })
-
-      }());
+      // var slider = mui("#slider");
+      // (function() {
+      //   slider.slider({
+      //     interval: 1000
+      //   })
+      //
+      // }());
       // 广告轮播
       var sliderad = mui("#sliderad");
       (function() {
@@ -1048,7 +1059,50 @@
             name: 'test'
         }
     });
+  }
+  //达人说
+  function openAdults() {
+    api.openWin({
+        name: 'adults',
+        url: './adults.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //美妆
+  function openBeauty() {
+    api.openWin({
+        name: 'beadty',
+        url: './beadty.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
 
+  }
+
+  //母婴
+  function openMaterKid() {
+      api.openWin({
+          name: 'materkid',
+          url: './materkid.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+  }
+
+  //生活
+  function openLife() {
+    api.openWin({
+        name: 'life',
+        url: './life.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
   }
 
     // //  上拉刷新下拉加载

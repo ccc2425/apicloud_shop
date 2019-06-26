@@ -8,7 +8,7 @@
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="../css/api.css" />
     <style>
-        
+
     </style>
 </head>
 
@@ -17,9 +17,39 @@
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
-    apiready = function() {
 
+    apiready = function() { 
+      	api.parseTapmode(); 
+      	var showGuide = $api.getStorage('showGuide'); 
+      	//判断条件 
+      	if (!showGuide) { 
+      		openGuide();//首次下载安装操作 
+      	  } else { 
+      		openWelcome();//不是首次操作 
+      	} 
     };
+    //打开引导页 
+      function openGuide() { 
+      	api.openFrame({ 
+      		name: 'guide_frm', 
+      		url: './guide_frm.html', 
+      		bounces: false, 
+      		rect: { 
+      			x: 0, 
+      			y: 0, 
+      			w: 'auto', 
+      			h: 'auto' 
+      			} 
+      	});
+      } 
+      //打开启动页 
+      function openWelcome() { 
+      	api.openWin({ 
+      		name: 'welcomePage_win', 
+      		url: './welcomePage.html', 
+      		slidBackEnabled: false 
+      	}); 
+      }
 </script>
 
 </html>

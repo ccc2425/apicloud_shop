@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>美妆专场</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .diary{
+            width: 100%;
+            height: 160px;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部轮播 -->
+    <div id="aui-slide" class="bgcr">
+      <div class="aui-slide-wrap boradius" >
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+      </div>
+      <div class="aui-slide-page-wrap no"><!--分页容器--></div>
+    </div>
+    <!-- 完美日记 -->
+    <div onclick="openDiary" class="diary">
+      <img src="../../image/xianshi.png" alt="">
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-slide.js"></script>
+  <script type="text/javascript">
+      //轮播
+      var slide = new auiSlide({
+          container:document.getElementById("aui-slide"),
+          // "width":300,
+          "height":160,
+          "speed":300,
+          "autoPlay":2000,
+          "pageShow":true,
+          "pageStyle":'dot',
+          "loop":true,
+          'dotPosition':'center',
+          currentPage:currentFun
+      })
+      function currentFun(index) {
+          console.log(index);
+      }
+      //初始化
+      apiready = function(){
+
+      };
+  </script>
+  </html>

@@ -5,105 +5,125 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
       <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-      .header{
-        height: 40px;
-        line-height: 40px;
-      }
-      .iconfont{
-        left: 0
-      }
-      /*排序*/
-      .sorting {
-        display: flex;
-        justify-content: space-around;
-        line-height: 50px;
-        background-color: #fff;
-      }
-      /*精选好券*/
-      .vouchers-list{
-        margin-bottom: 10px;
-      }
-      .vouchers-tit{
-        border-bottom: 1px solid #ccc;
-      }
-      .titimg{
-        width: 5vw;
-        height: 5vw;
-        margin-bottom: 5px;
-      }
-      .vouchers-list{
-        width: 100vw;
-        padding: 1vh 1vw;
-        background-color: #fff;
-      }
-      .vouchers-list-left{
-        float: left;
-        position: relative;
-        width: 32vw;
-        height: 120px;
-        margin-right: 3vw;
-      }
-      .peoplenum{
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        color: #fff;
-        background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
-      }
-      .vouchers-list-right{
-        float: left;
-        width: 63vw;
-        padding: 10px 0;
-      }
-      .vouchers-list1{
-        width: 100%;
-        font-size: 14px;
-        line-height: 4vw;
-      }
-      .vouchers-list1 img{
-        width: 4vw;
-        height: 4vw;
-        margin-right: 2vw;
-        vertical-align: top;
-      }
-      .vouchers-list3{
-        font-size: 12px;
-      }
-      .original{
-        color: #ccc;
-        text-decoration: line-through;
-      }
-      .coupon{
-        background-color: red;
-        color: #fff;
-        line-height: 18px;
-        padding: 0 2vw;
-      }
-      .vouchers-list4 span{
-        color: #fff;
-        padding: 0 2vw;
-        line-height: 18px;
-        font-size: 10px;
-      }
-      .vouchers-list4 span:first-child{
-        background-color: red;
-      }
-      .vouchers-list4 span:last-child{
-        background-color: grey;
-      }
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .iconfont{
+            left: 0
+          }
+          /*排序*/
+          .sorting {
+            display: flex;
+            justify-content: space-around;
+            line-height: 50px;
+            background-color: #fff;
+          }
+          /*精选好券*/
+          .vouchers-list{
+            margin-bottom: 10px;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 100vw;
+            padding: 1vh 1vw;
+            background-color: #fff;
+          }
+          .vouchers-list-left{
+            float: left;
+            position: relative;
+            width: 32vw;
+            height: 120px;
+            margin-right: 3vw;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            float: left;
+            width: 63vw;
+            padding: 10px 0;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 4vw;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: top;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .vouchers-list4 span{
+            color: #fff;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 10px;
+          }
+          .vouchers-list4 span:first-child{
+            background-color: red;
+          }
+          .vouchers-list4 span:last-child{
+            background-color: grey;
+          }
       </style>
   </head>
   <body>
+
     <!-- 头部 -->
     <div id="header" class="clearfix text-center bgcf header">
         <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
         <!-- <img src="" alt=""> -->
         淘宝
         <i class="iconfont fr mr2v">&#xe627;</i>
+    </div>
+    <!-- 头部轮播 -->
+    <div id="aui-slide" class="bgcr">
+      <div class="aui-slide-wrap boradius" >
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+      </div>
+      <div class="aui-slide-page-wrap no"><!--分页容器--></div>
     </div>
     <!-- 排序 -->
     <div class="sorting">
@@ -152,12 +172,22 @@
         </div>
       </li>
     </ul>
+
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-slide.js"></script>
   <script type="text/javascript">
-      apiready = function(){
 
-      };
+        apiready = function(){
+          var header = $api.byId('header');
+          $api.fixStatusBar(header);
+          var headerH = $api.offset(header);
+        };
+        function closewin() {
+          api.closeWin({
+              name: 'beadty'
+          });
+        }
       // 排序
       function sort(index) {
         var sorts = document.getElementsByClassName('sorts')
@@ -175,6 +205,22 @@
                 }
             }
         }
+       }
+
+       //轮播
+       var slide = new auiSlide({
+           container:document.getElementById("aui-slide"),
+           // "width":300,
+           "height":160,
+           "speed":300,
+           "pageShow":true,
+           "pageStyle":'dot',
+           "loop":true,
+           'dotPosition':'center',
+           currentPage:currentFun
+       })
+       function currentFun(index) {
+           console.log(index);
        }
   </script>
   </html>

@@ -68,7 +68,7 @@
       <div class="serchbox">
         <span><i class="iconfont">&#xe686;</i></span>
         <span class="ipt fs12"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
-        <span><i class="iconfont">&#xe61b;</i></span>
+        <span onclick="opebShopcar()"><i class="iconfont">&#xe61b;</i></span>
       </div>
       <div class="classification clearfix">
         <ul>
@@ -227,6 +227,7 @@
             name: 'banner'
         }, function(ret, err){
             if( ret ){
+                alert(ret.value.key1)
                 //  alert( JSON.stringify( ret ) );
             }else{
                 //  alert( JSON.stringify( err ) );
@@ -270,7 +271,17 @@
         }
       }
 
+      //购物车
+      function opebShopcar() {
+        api.openWin({
+            name: 'shopcar',
+            url: './shopcar.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
 
+      }
 
   </script>
   </html>

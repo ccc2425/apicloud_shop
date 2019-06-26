@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>达人说</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+        .aui-slide-wrap{
+          /*width: 80vw;*/
+          /*margin: 0 auto;*/
+        }
+        /*新作*/
+        .beauty{
+          width: 100vw;
+          height: 100px;
+        }
+        .beauty-list{
+          width: 100%;
+          box-sizing: border-box;
+          padding-top: 10px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+          white-space: nowrap;
+        }
+        .beauty-list::-webkit-scrollbar {
+          display:none
+        }
+        .beauty-list-box{
+          display: inline-block;
+          width: 30vw;
+          height: 100%;
+          margin-right: 2vw;
+        }
+        .beauty-list-img{
+          width: 100%;
+          height: 60px;
+        }
+        .head-img{
+          width: 28px;
+          height: 28px;
+        }
+        /*大家都在逛*/
+        .switch-box{
+          display: flex;
+          justify-content: flex-start;
+        }
+        .switch{
+          width: 16vw;
+        }
+        .list-img{
+          width: 100%;
+          height: 120px;
+        }
+        .icon{
+          bottom: -12px;
+          left: 2vw;
+        }
+      </style>
+  </head>
+  <body>
+    <!-- 头部轮播 -->
+    <div id="aui-slide" class="bgcr">
+      <div class="aui-slide-wrap boradius" >
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+      </div>
+      <div class="aui-slide-page-wrap no"><!--分页容器--></div>
+    </div>
+    <!-- 本周新作 -->
+    <div class="week-new pad10a2v">
+      <div class="fs16">
+          本周新作
+      </div>
+      <div class="beauty-list">
+        <div onclick="openitem()" class="beauty-list-box bgce pad5 boradius">
+          <div class="beauty-list-img mb5">
+            <img src="../../image/la1.png" />
+          </div>
+          <div class="beauty-list-tit texthidden mb5">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+          <div class="clearfix fs12 lh29">
+              <div class="head-img fl mr2v">
+                <img src="../../image/a3.png" alt="">
+              </div>
+              半夏微凉
+          </div>
+        </div>
+        <div onclick="openitem()" class="beauty-list-box bgce pad5 boradius">
+          <div class="beauty-list-img mb5">
+            <img src="../../image/la1.png" />
+          </div>
+          <div class="beauty-list-tit texthidden mb5">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+          <div class="clearfix fs12 lh29">
+              <div class="head-img fl mr2v">
+                <img src="../../image/a3.png" alt="">
+              </div>
+              半夏微凉
+          </div>
+        </div>
+
+        <div onclick="openitem()" class="beauty-list-box bgce pad5 boradius">
+          <div class="beauty-list-img mb5">
+            <img src="../../image/la1.png" />
+          </div>
+          <div class="beauty-list-tit texthidden mb5">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+          <div class="clearfix fs12 lh29">
+              <div class="head-img fl mr2v">
+                <img src="../../image/a3.png" alt="">
+              </div>
+              半夏微凉
+          </div>
+        </div>
+        <div onclick="openitem()" class="beauty-list-box bgce pad5 boradius">
+          <div class="beauty-list-img mb5">
+            <img src="../../image/la1.png" />
+          </div>
+          <div class="beauty-list-tit texthidden mb5">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+          <div class="clearfix fs12 lh29">
+              <div class="head-img fl mr2v">
+                <img src="../../image/a3.png" alt="">
+              </div>
+              半夏微凉
+          </div>
+        </div>
+        <div onclick="openitem()" class="beauty-list-box bgce pad5 boradius">
+          <div class="beauty-list-img mb5">
+            <img src="../../image/la1.png" />
+          </div>
+          <div class="beauty-list-tit texthidden mb5">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+          <div class="clearfix fs12 lh29">
+              <div class="head-img fl mr2v">
+                <img src="../../image/a3.png" alt="">
+              </div>
+              半夏微凉
+          </div>
+        </div>
+        <div onclick="openitem()" class="beauty-list-box bgce pad5 boradius">
+          <div class="beauty-list-img mb5">
+            <img src="../../image/la1.png" />
+          </div>
+          <div class="beauty-list-tit texthidden mb5">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+          <div class="clearfix fs12 lh29">
+              <div class="head-img fl mr2v">
+                <img src="../../image/a3.png" alt="">
+              </div>
+              半夏微凉
+          </div>
+        </div>
+        <div onclick="openitem()" class="beauty-list-box bgce pad5 boradius">
+          <div class="beauty-list-img mb5">
+            <img src="../../image/la1.png" />
+          </div>
+          <div class="beauty-list-tit texthidden mb5">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+          <div class="clearfix fs12 lh29">
+              <div class="head-img fl mr2v">
+                <img src="../../image/a3.png" alt="">
+              </div>
+              半夏微凉
+          </div>
+        </div>
+        <div onclick="openitem()" class="beauty-list-box bgce pad5 boradius">
+          <div class="beauty-list-img mb5">
+            <img src="../../image/la1.png" />
+          </div>
+          <div class="beauty-list-tit texthidden mb5">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+          <div class="clearfix fs12 lh29">
+              <div class="head-img fl mr2v">
+                <img src="../../image/a3.png" alt="">
+              </div>
+              半夏微凉
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- 大家都在逛 -->
+    <div class="pad5a2v">
+      <div class="fs16">
+          大家都在逛
+      </div>
+      <div class="switch-box lh40 ml1v">
+        <div onclick="checkBtn(0)" class="switch cored">全部</div>
+        <div onclick="checkBtn(1)" class="switch">好物</div>
+        <div onclick="checkBtn(2)" class="switch">潮流</div>
+        <div onclick="checkBtn(3)" class="switch">美食</div>
+        <div onclick="checkBtn(4)" class="switch">生活</div>
+      </div>
+      <div>
+        <!-- name:0全部，1好物，2潮流，3美食，4生活 -->
+        <div class="items bgce pad2v" name="live">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                生活/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+        <div class="items bgce pad2v" name="food">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                美食/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+        <div class="items bgce pad2v" name="thing">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                好物/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+        <div class="items bgce pad2v" name="thing">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                好物/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+        <div class="items bgce pad2v" name="live">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                生活/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+        <div class="items bgce pad2v" name="trend">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                潮流/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+        <div class="items bgce pad2v" name="food">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                美食/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+        <div class="items bgce pad2v" name="live">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                生活/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+        <div class="items bgce pad2v" name="trend">
+          <div class="list-img pr">
+            <img src="../../image/gouwu.png" alt="">
+            <div class="pa bgcr pad5a2v boradius5 icon">
+                潮流/9单品
+            </div>
+          </div>
+          <div class="texthidden lh35 mt16 pad0a2v">
+            暑假带孩子出去旅游，这样穿既舒服又好看！
+          </div>
+          <div class="texthiddens lh20 fs12 coaaa pad0a2v">
+            嗨！我是小编再过一阵子，熊孩子的暑假就要到了！小编觉得除了给孩子们报兴趣班之外，短暂的旅行也是很不错的，毕竟暑假时间那么长
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-slide.js"></script>
+  <script type="text/javascript">
+      //轮播
+      var slide = new auiSlide({
+          container:document.getElementById("aui-slide"),
+          // "width":300,
+          "height":160,
+          "speed":300,
+          "pageShow":true,
+          "pageStyle":'dot',
+          "loop":true,
+          'dotPosition':'center',
+          currentPage:currentFun
+      })
+      function currentFun(index) {
+          console.log(index);
+      }
+      //切换按钮
+      var switchs = document.getElementsByClassName('switch');
+      var len = switchs.length;
+      function switchBtn(index) {
+        var i = 0;
+        var curLi = switchs[index];
+        for (i; i < len; i++) {
+          var thisLi = switchs[i];
+          if (thisLi === curLi) {
+            $api.addCls(thisLi, 'cored');
+          } else {
+            if ($api.hasCls(thisLi,'cored')) {
+               $api.removeCls(thisLi, 'cored');
+            }
+          }
+        }
+      }
+      //切换页面
+      function checkBtn(index) {
+        switchBtn(index)
+        var items = document.getElementsByClassName('items');
+        var thing = document.getElementsByName('thing');
+        var trend = document.getElementsByName('trend');
+        var food = document.getElementsByName('food');
+        var live = document.getElementsByName('live');
+
+        for (i = 0; i < items.length; i++) {
+          switch (index) {
+            case 0:
+              items[i].style.display = "block";
+              break;
+            case 1:
+              items[i].style.display = "none";
+              for (j = 0; j < thing.length; j++) {
+                thing[j].style.display = "block";
+              }
+              break;
+            case 2:
+              items[i].style.display = "none";
+              for (j = 0; j < thing.length; j++) {
+                trend[j].style.display = "block";
+              }
+              break;
+            case 3:
+              items[i].style.display = "none";
+              for (j = 0; j < thing.length; j++) {
+                food[j].style.display = "block";
+              }
+              break;
+            case 4:
+              items[i].style.display = "none";
+              for (j = 0; j < thing.length; j++) {
+                live[j].style.display = "block";
+              }
+              break;
+            default:
+          }
+        }
+      }
+      //打开其他页面
+      function openitem() {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+      apiready = function(){
+
+      };
+  </script>
+  </html>
