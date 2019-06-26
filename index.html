@@ -1,55 +1,261 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
-    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
-    <title>Hello APP</title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>首页</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
-    <style>
+    <link rel="stylesheet" type="text/css" href="./css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="./css/public.css" />
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+        .wrap {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+        }
 
+        .flex-1 {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+        }
+        /* 底部切换按钮样式 */
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            /*line-height: 50px;*/
+            background-color: #aaa;
+            border-top: 1px solid #332E2A;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        ul {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            justify-content: space-around;
+        }
+        /* 底部切换按钮样式 */
+        .bbtn01 {background: url(./image/shouye.png) no-repeat center 4px; }
+        .bbtn02 {background: url(./image/fenlei.png) no-repeat center 4px; }
+        .bbtn03 {background: url(./image/shang.png) no-repeat center 4px; }
+        .bbtn04 {background: url(./image/wenjian.png) no-repeat center 4px; }
+        .bbtn05 {background: url(./image/my.png) no-repeat center 4px; }
+        .bottom_btn {width: 100%; padding-top: 32px;background-position-y: 4px; background-size: 24px;  font-size: 10px; color: #333;}
+
+        /* 底部按钮激活样式 */
+        .activebtn0 {background: url(./image/shouye1.png) no-repeat center 4px;}
+        .activebtn1 {background: url(./image/fenlei1.png) no-repeat center 4px;}
+        .activebtn2 {background: url(./image/shang1.png) no-repeat center 4px;}
+        .activebtn3 {background: url(./image/wenjian1.png) no-repeat center 4px;}
+        .activebtn4 {background: url(./image/my1.png) no-repeat center 4px;}
+        .activebtn {color:#d81e06; background-size: 24px;}
+        .bottomhover {background-color: #46494B;}
     </style>
 </head>
 
-<body>
+<body class="wrap">
+    <div id="header"></div>
+    <section class="flex-1">
 
+    </section>
+    <footer id="footer">
+        <ul>
+            <li tapmode="activebtn0 activebtn" onclick="switchframe(0)">
+                <a class="bottom_btn bbtn01 activebtn activebtn0">首页</a>
+            </li>
+            <li tapmode="activebtn1 activebtn" onclick="switchframe(1)">
+                <a class="bottom_btn bbtn02">分类</a>
+            </li>
+            <li tapmode="activebtn2 activebtn" onclick="switchframe(2)">
+                <a class="bottom_btn bbtn03">自营商城</a>
+            </li>
+            <li tapmode="activebtn3 activebtn" onclick="switchframe(3)">
+                <a class="bottom_btn bbtn04">素材</a>
+            </li>
+            <li tapmode="activebtn4 activebtn" onclick="switchframe(4)">
+                <a class="bottom_btn bbtn05">我的</a>
+            </li>
+        </ul>
+    </footer>
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
+      var footerPos;
+// 隐藏所有的一级frame
+function hideAllFrame() {
+  api.closeFrame({
+      name: 'home'
+  });
+  api.closeFrame({
+      name: 'classifys'
+  });
+  api.closeFrame({
+      name: 'mall'
+  });
+  api.closeFrame({
+      name: 'material'
+  });
+  api.closeFrame({
+      name: 'my'
+  });
+}
+// 随意切换按钮
+function randomSwitchBtn(index) {
+    var lis = $api.domAll('.bottom_btn');
+    var i = 0,
+        len = lis.length;
+    var curLi = lis[index];
+    for (i; i < len; i++) {
+        var thisLi = lis[i];
+        if (thisLi === curLi) {
+            $api.addCls(thisLi, 'activebtn');
+            $api.addCls(thisLi, 'activebtn' + index);
+            continue;
+        } else {
+            if ($api.hasCls(thisLi, 'activebtn')) {
+                $api.removeCls(thisLi, 'activebtn');
+                $api.removeCls(thisLi, 'activebtn' + i);
+            }
+        }
+    }
+}
+    apiready = function() {
+        var footer = $api.dom('footer'); // 获取 footer 标签元素
 
-    apiready = function() { 
-      	api.parseTapmode(); 
-      	var showGuide = $api.getStorage('showGuide'); 
-      	//判断条件 
-      	if (!showGuide) { 
-      		openGuide();//首次下载安装操作 
-      	  } else { 
-      		openWelcome();//不是首次操作 
-      	} 
+        // 1.修复开启沉浸式效果带来的顶部Header与手机状态栏重合的问题，最新api.js方法已支持适配iPhoneX；
+        // 2.默认已开启了沉浸式效果 config.xml中 <preference name="statusBarAppearance" value="true"/>
+        // 3.沉浸式效果适配支持iOS7+，Android4.4+以上版本
+        // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
+        // var footerH = $api.fixTabBar(footer);
+        footerPos = $api.offset(footer);
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerPos = $api.offset(header);
+        api.openFrame({
+            name: 'home',
+            url: './html/home/home.html',
+            rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
+                // marginTop: headerH, // main页面距离win顶部的高度
+                // marginBottom: footerH, // main页面距离win底部的高度
+                x: 0,
+                y: 0,
+                h: api.frameHeight - footerPos.h,
+                w: 'auto' // main页面的宽度 自适应屏幕宽度
+            },
+            bounces: false,
+        });
+
+        // 获取当前年份时间，并加载显示到页面
+        // var year = $api.byId('year');
+        // year.innerHTML = new Date().getFullYear();
     };
-    //打开引导页 
-      function openGuide() { 
-      	api.openFrame({ 
-      		name: 'main_frame', 
-      		url: './main_frame.html', 
-      		bounces: false, 
-      		rect: { 
-      			x: 0, 
-      			y: 0, 
-      			w: 'auto', 
-      			h: 'auto' 
-      			} 
-      	});
-      } 
-      //打开启动页 
-      function openWelcome() { 
-      	api.openWin({ 
-      		name: 'indexs', 
-      		url: './html/index.html', 
-      		slidBackEnabled: false 
-      	}); 
+    function switchframe(index) {
+      if (index==0) {
+        randomSwitchBtn(0);
+        hideAllFrame();
+        api.openFrame({
+            name: 'home',
+            url: './html/home/home.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }else if (index==1) {
+        randomSwitchBtn(1);
+        hideAllFrame();
+        api.openFrame({
+            name: 'classifys',
+            url: './html/classify/classify.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }else if (index==2) {
+        randomSwitchBtn(2);
+        hideAllFrame();
+        api.openFrame({
+            name: 'mall',
+            url: './html/mall/mall.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }else if (index==3) {
+        randomSwitchBtn(3);
+        hideAllFrame();
+        api.openFrame({
+            name: 'material',
+            url: './html/material/material.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }else if (index==4) {
+        randomSwitchBtn(4);
+        hideAllFrame();
+        api.openFrame({
+            name: 'mine',
+            url: './html/mine/my.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
       }
+    }
+
+
+
 </script>
 
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+var headerH;
+    apiready = function() { 
+       var header = $api.byId('header');
+       $api.fixStatusBar(header);
+       headerH = $api.offset(header);
+
+      	api.parseTapmode(); 
+      	var showGuide = $api.getStorage('showGuide'); 
+      	//判断条件 
+      	if (!showGuide) { 
+      		openGuide();//首次下载安装操作 
+      	  } else { 
+      		openWelcome();//不是首次操作 
+      	} 
+    };
+    //打开引导页 
+      function openGuide() { 
+      	api.openFrame({ 
+      		name: 'main_frame', 
+      		url: './main_frame.html', 
+      		bounces: false, 
+      		rect: { 
+      			x: 0, 
+      			y: headerH.h, 
+      			w: 'auto', 
+      			h: 'auto' 
+      			} 
+      	});
+      } 
+      //打开启动页 
+      function openWelcome() { 
+      	api.openWin({ 
+      		name: 'indexs', 
+      		url: './html/index.html', 
+      		slidBackEnabled: false 
+      	}); 
+      }
+</script>
+
+</html>
