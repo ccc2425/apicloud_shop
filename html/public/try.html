@@ -13,6 +13,43 @@
       </style>
   </head>
   <body>
+    <section class="aui-content-padded">
+        <div class="aui-btn aui-btn-info" aui-popup-for="bottom-left">左下角</div>
+        <div class="aui-btn aui-btn-info" aui-popup-for="bottom">底部中间</div>
+        <div class="aui-btn aui-btn-info" aui-popup-for="bottom-right">右下角</div>
+    </section>
+    <!-- 分享框 -->
+    <div class="aui-popup aui-popup-bottom" id="bottom">
+        <div class="aui-popup-arrow"></div>
+        <div class="aui-popup-content">
+            <ul class="aui-list aui-list-noborder">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-my aui-text-warning"></i>
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-middle">
+                        会员中心
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-mail aui-text-info"></i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        会话消息
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-star aui-text-danger"></i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        我的收藏
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
     <section class="aui-refresh-content">
       <div class="aui-content">
       <div id="demo">
@@ -41,110 +78,18 @@
       </div>
       </div>
     </section>
-    <div id="item">
-      <ul id="personkit_article_ul">
-          <li class="pin">
-              <div class="personkit-article__img">
-                  <img src="../public/imgs/4.png" alt="">
-              </div>
-              <div class="personkit-article__info">
-                  <h3 class="personkit-article__title">关于保健的一本书</h3>
-                  <p>原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊</p>
-              </div>
-          </li>
-          <li class="pin">
-              <div class="personkit-article__img">
-                  <img src="../public/imgs/4.png" alt="">
-              </div>
-              <div class="personkit-article__info">
-                  <h3 class="personkit-article__title">关于保健的一本书</h3>
-                  <p>原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊</p>
-              </div>
-          </li>
-          <li class="pin">
-              <div class="personkit-article__img">
-                  <img src="../public/imgs/4.png" alt="">
-              </div>
-              <div class="personkit-article__info">
-                  <h3 class="personkit-article__title">关于保健的一本书</h3>
-                  <p>原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊</p>
-              </div>
-          </li>
-          <li class="pin">
-              <div class="personkit-article__img">
-                  <img src="../public/imgs/4.png" alt="">
-              </div>
-              <div class="personkit-article__info">
-                  <h3 class="personkit-article__title">关于保健的一本书</h3>
-                  <p>原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊</p>
-              </div>
-          </li>
-          <li class="pin">
-              <div class="personkit-article__img">
-                  <img src="../public/imgs/4.png" alt="">
-              </div>
-              <div class="personkit-article__info">
-                  <h3 class="personkit-article__title">关于保健的一本书</h3>
-                  <p>原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊</p>
-              </div>
-          </li>
-      </ul>
-    <div class="bottom-line"></div>
-</div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/zepto.js"></script>
   <script src="../../script/aui-pull-refresh.js"></script>
+  <script type="text/javascript" src="../../script/aui-popup.js" ></script>
   <script type="text/javascript">
-  //滚动条到页面底部加载更多案例
-  (function(){
-     $('#personkit_article_ul').on('touchmove',function(){
-         //判断最后一个元素是否在底部之上
-         if( $('.pin').eq($('.pin').length-1).offset().top-$(window).scrollTop() < $(window).height() ){
-             $('.bottom-line').css('display','block').text('正在刷新...');
-             checkPull();
-         }
-     });
-     //添加元素方法
-     function checkPull(){
-         var pinNew;
-         pinNew=document.createDocumentFragment();
-         //每次添加5条内容
-         for(var j=5;j>0;j--){
-             var li=document.createElement('li');
-             li.className="pin";
-             li.innerHTML='<div class="personkit-article__img"><img src="../public/imgs/4.png" alt=""></div><div class="personkit-article__info"><h3 class="personkit-article__title">关于保健的一本书</h3><p>原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊原来保健是这样的啊</p></div>';
-             pinNew.appendChild(li);
-         }
-         $('#personkit_article_ul')[0].appendChild(pinNew);
-     }
-  })();
-
-
+  var popup = new auiPopup();
+  function showPopup(){
+      popup.show(document.getElementById("bottom"))
+  }
       apiready = function(){
 
       };
-      var pullRefresh = new auiPullToRefresh({
-        container: document.querySelector('.aui-refresh-content'),
-        triggerDistance: 100
-    },function(ret){
-      console.log('bb');
-        if(ret.status=="success"){
-            setTimeout(function(){
-                var wrap = document.getElementById("demo")
-                var lis = wrap.querySelectorAll('.aui-card-list');
-                // for (var i = lis.length, length = i + 1; i < length; i++) {
-                //     var html = '<div class="aui-card-list">'+
-                //             '<div class="aui-card-list-header">'+
-                //                 '卡片布局头部区域'+(i+1)+''+
-                //             '</div>'+
-                //         '</div>';
-                //     wrap.insertAdjacentHTML('afterbegin', html);
-                // }
-                window.location.reload();
-                pullRefresh.cancelLoading(); //刷新成功后调用此方法隐藏
-            },1500)
-        }
-    })
   </script>
   </html>

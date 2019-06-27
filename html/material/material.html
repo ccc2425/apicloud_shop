@@ -101,6 +101,19 @@
         text-align: center;
         padding: 10px 5vw;
       }
+      /*分享*/
+      .mui-plus .plus{
+				display: inline;
+			}
+
+			.plus{
+				display: none;
+			}
+      .share-item{
+        position: fixed!important;
+        left: 0;
+        bottom: 0;
+      }
       </style>
   </head>
   <body>
@@ -168,7 +181,9 @@
               小编推荐
               <p class='mui-ellipsis'>2019-6-19</p>
             </div>
-            <span class="bgcr share">4058</span>
+            <span>
+              <a href="#middlePopover" class="mui-btn bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</a>
+            </span>
           </a>
         </div>
         <div class="specialty-box">
@@ -199,7 +214,7 @@
               小编推荐
               <p class='mui-ellipsis'>2019-6-19</p>
             </div>
-            <span class="bgcr share">4058</span>
+            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
           </a>
         </div>
         <div class="specialty-box">
@@ -230,7 +245,7 @@
               小编推荐
               <p class='mui-ellipsis'>2019-6-19</p>
             </div>
-            <span class="bgcr share">4058</span>
+            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
           </a>
         </div>
         <div class="specialty-box">
@@ -261,7 +276,7 @@
               小编推荐
               <p class='mui-ellipsis'>2019-6-19</p>
             </div>
-            <span class="bgcr share">4058</span>
+            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
           </a>
         </div>
         <div class="specialty-box">
@@ -292,7 +307,7 @@
               小编推荐
               <p class='mui-ellipsis'>2019-6-19</p>
             </div>
-            <span class="bgcr share">4058</span>
+            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
           </a>
         </div>
         <div class="specialty-box">
@@ -323,7 +338,7 @@
               小编推荐
               <p class='mui-ellipsis'>2019-6-19</p>
             </div>
-            <span class="bgcr share">4058</span>
+            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
           </a>
         </div>
         <div class="specialty-box">
@@ -574,6 +589,23 @@
         </div>
       </div>
     </div>
+    <!--  -->
+    <div id="middlePopover" class="mui-popover">
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view just-space share-item">
+						<li class="mui-table-view-cell">Item1
+						</li>
+						<li class="mui-table-view-cell">Item2
+						</li>
+						<li class="mui-table-view-cell">Item3
+						</li>
+						<li class="mui-table-view-cell">Item4
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/mui.min.js"></script>
@@ -641,107 +673,15 @@
             }
         }
       }
-      //实时监听
-      // document.addEventListener('touchMove', shopp, false);
-      // var shopp = document.getElementById('shoping');
-      // var shopingY;
-      // document.addEventListener('touchmove', touch, false);
-      // function touch(event) {
-      //   var event = event || window.event;
-      //   shopingY = event.touches[0].clientY;
-      //   console.log(shopingY);
-      // }
-      //  //
-      //  //              下拉刷新
-      // var top = 0, //滚动条距离顶部距离
-      //     startY = 0, //手动滑动开始时的坐标
-      //     cantop = true, //是否能够上拉刷新
-      //     updateload = false, //是否显示刷新数据提示语
-      //     moredata = true, //是否显示加载更多提示语
-      //     endy = 0, //手动滑动结束时的坐标
-      //  //              上拉加载更多
-      //     scrollTop = "", //滚动条到顶部距离
-      //     clientHeight = "", //滚动条高度
-      //     scrollHeight = ""; //滚动条总高度
-      //  // @touchstart = "touchStart($event)"
-      //  // @touchmove = "touchMove($event)"
-      //  // @touchend = "touchEnd($event)"
-      //  var touchstart = "touchStart($event)";
-      //  var touchmove = "touchMove($event)";
-      //  var touchend = "touchEnd($event)";
-      //  touchStart(e) {
-      //    this.startY = e.changedTouches[0].pageY
-      //  } //手势滑动开始
-      //  touchMove(e) {
-      //    this.scrollTop = this.$refs.contentref.scrollTop
-      //    this.clientHeight = this.$refs.contentref.clientHeight
-      //    this.scrollHeight = this.$refs.contentref.scrollHeight
-      //    if (!this.serching) {
-      //      if (this.$refs.contentref.scrollTop == 0) {
-      //        if (e.changedTouches[0].pageY > this.startY) {
-      //          this.cantop = true
-      //          this.updateload = true
-      //        }
-      //      } else {
-      //        this.cantop = false
-      //        this.updateload = false
-      //      }
-      //    }
-      //  } //手势滑动移动
-      //  touchEnd(e) {
-      //    this.endy = e.changedTouches[0].pageY
-      //    if (this.cantop && !this.serching) {
-      //      if (this.endy > this.startY) {
-      //        this.nowpage = 1;
-      //        this.clistdata = [];
-      //        this.getListByType();
-      //        this.cantop = false
-      //      } else {
-      //        this.updateload = false
-      //      }
-      //    }
-      //  }//手势滑动结束
+        //分享
+        function share() {
 
-      // document.addEventListener('touchstart', touch, false);
-      // document.addEventListener('touchmove', touch, false);
-      // document.addEventListener('touchend', touch, false);
-      // // var top = 0, //滚动条距离顶部距离
-      // //     startY = 0, //手动滑动开始时的坐标
-      // //     cantop = true, //是否能够上拉刷新
-      // //     updateload = false, //是否显示刷新数据提示语
-      // //     moredata = true, //是否显示加载更多提示语
-      // //     endy = 0, //手动滑动结束时的坐标
-      // //  //              上拉加载更多
-      // //     scrollTop = "", //滚动条到顶部距离
-      // //     clientHeight = "", //滚动条高度
-      // //     scrollHeight = ""; //滚动条总高度
-      // var startY = 0;
-      // var endY = 0;
-      // var c = 0;
-      // function touch(event) {
-      //     /**兼用 IE 浏览器*/
-      //     var event = event || window.event;
-      //     switch (event.type) {
-      //         case "touchstart":
-      //             startY = event.touches[0].clientY;
-      //             // console.log(startY);
-      //             return startY;
-      //             // console.log(event.touches[0].clientY);
-      //             break;
-      //         case "touchend":
-      //             endY = event.changedTouches[0].clientY;
-      //             console.log(endY);
-      //             // return endY;
-      //             // console.log(event.changedTouches[0].clientY);
-      //             // var a = event.changedTouches[0].clientY - event.touches[0].clientY;
-      //             // console.log(a);
-      //             break;
-      //         case "touchmove":
-      //             // console.log(event.touches[0].clientY);
-      //             break;
-      //     }
-      // }
-
+        }
+        mui('.mui-scroll-wrapper').scroll();
+  			mui('body').on('shown', '.mui-popover', function(e) {
+  			});
+  			mui('body').on('hidden', '.mui-popover', function(e) {
+  			});
        // 打开物品
        function openitem() {
          api.openWin({

@@ -28,6 +28,23 @@
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
+          var header = $api.byId('header');
+          $api.fixStatusBar(header);
+          var headerPos = $api.offset(header);
+          api.openFrame({
+              name: 'shopcar_frame',
+              url: './shopcar_frame.html',
+              rect: {
+                  x: 0,
+                  y: headerPos.h,
+                  w: 'auto',
+                  h: 'auto'
+              },
+              pageParam: {
+                  name: 'test'
+              },
+              bounces: true,
+          });
 
       };
       function closewin() {

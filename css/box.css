@@ -1,0 +1,250 @@
+.flex-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-con {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.flex-vertical {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-flex-flow: column;
+    flex-flow: column;
+    height: 100%;
+}
+
+.flex-box {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.flex-middle {
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-align: center;
+}
+
+.flex-center {
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-pack: center;
+}
+
+.flex-around {
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-pack: justify;
+}
+
+.border-t, .border-b, .border-1px-bottom, .border-right1 {
+    position: relative;
+}
+
+.border-t:before, .border-b:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #ddd;
+    right: 0;
+    height: 1px;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.border-right1:after {
+    content: "  ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    border-right: 1px solid #ddd;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scale(.5, .5);
+    transform: scale(.5, .5);
+}
+
+.border-1px-bottom:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleY(0.5);
+    -webkit-transform: scaleY(0.5);
+    transform-origin: 100% 100%;
+    -webkit-transform-origin: 100% 100%;
+}
+
+.border-b:after {
+    top: auto;
+    bottom: 0;
+}
+
+.cl-f:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.active {
+    opacity: 0.8;
+}
+
+input {
+    outline: none;
+}
+.center{
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-box-pack:center;
+}
+
+.desbloack{ /**描述文字框**/
+	border-color: #CCCCCC;
+	-webkit-border-radius: 4px;
+	border-style: dashed;
+	border-width: 1px;
+	color: #333333;
+	font-size: 10px;
+	padding: 5px;
+	text-align: left;
+	width: auto;
+	min-height:80px;
+    margin:8px 15px;
+}
+
+.textbloack{ /**文字框**/
+	border-color: #CCCCCC;
+	border-style: solid;
+	border-width: 1px;
+	color: #333333;
+	font-size: 10px;
+	padding: 5px;
+	text-align: left;
+	width: auto;
+	min-height:30px;
+    margin:8px 15px;
+}
+
+.row{ /**行**/
+	width:auto;
+	display:-webkit-box;
+	-webkit-box-orient:horizontal;
+	margin:5px;
+}
+
+.active{ /**九宫格项点击效果**/
+	background-color: #CCC !important;
+}
+
+.clickitem { /**九宫格项**/
+	width:100%;
+	-webkit-box-flex:1;
+	display:-webkit-box;
+	-webkit-box-orient:vertical;
+	-webkit-box-pack:center;
+	-webkit-box-align:center;
+	min-height:60px;
+	background-color: #EEEEEE;
+	border-color: #CCCCCC;
+	border-style: solid;
+	border-width: 1px;
+	color: #333333;
+	font-size: 14px;
+	margin:5px;
+}
+
+.clickbtn { /**按钮**/
+	width: auto;
+    margin:8px 15px;
+    border-color: #CCCCCC;
+    -webkit-border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    color: #333333;
+    font: bold 18px;
+    padding: 8px 0;
+    text-align: center;
+    background-color: #EEEEEE;
+}
+
+.itemtitle{ /**标题项**/
+	margin:20px 5px;
+	color:#222;
+	font-size:14px;
+	border-bottom:1px solid;
+}
+
+input{
+	border-style: solid;
+    border-width: 1px;
+    color: #000;
+    font-size:15px;
+    padding:4px;
+	border-color: #CCCCCC #CCCCCC #BBBBBB;
+	background-color:#FFF;
+    -webkit-border-radius: 2px;
+    width: auto;
+    margin:3px 15px;
+}
+
+img{
+	margin:3px 15px;
+	border-style: solid;
+    border-width: 1px;
+    border-color: #CCCCCC;
+}
+
+select{
+	font-size:20px;
+	width: 200px;
+    margin:3px 15px;
+}
+
+lable {
+	font-size:12px;
+	margin:3px 5px 3px 15px;
+	word-wrap: break-word;
+	word-break: normal;
+}
+
+.tips{
+	font-size:13px;
+	margin:3px 15px 3px 15px;
+	padding:3px 0px;
+	word-wrap: break-word;
+	word-break: normal;
+	border: 1px dashed #ccc;
+}
+
+.info-area{
+	margin:5px 15px;
+	padding:5px;
+	color:#222;
+	font-size:14px;
+	max-height:150px;
+	border:1px dashed #CCCCCC;
+	overflow:scroll;
+	-webkit-border-radius: 3px;
+	text-align: center;
+	word-break:break-all;
+}

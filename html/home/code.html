@@ -1,43 +1,183 @@
-<!DOCTYPE html>
-  <html>
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>title</title>
-      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
-      <style>
-      .header{
-        height: 40px;
-        line-height: 40px;
-        background-color: #000;
-        color: #fff;
-      }
-      .iconfont{
-        left: 0
-      }
-      </style>
-  </head>
-  <body>
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+    <title>wifi_frm</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/box.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+    <style media="screen">
+        html,
+        body {
+            background: #06091C;
+        }
+
+        header {
+            position: relative;
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+            background-color: #06091C;
+        }
+        .header{
+          height: 40px;
+          line-height: 40px;
+          color: #fff;
+        }
+        .iconfont{
+          left: 0
+        }
+    </style>
+</head>
+
+<body>
     <!-- 头部 -->
-    <div id="header" class="clearfix text-center bgcf header fs16">
-        <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
-        <i class="iconfont fr mr3v">相册</i>
-    </div>
-  </body>
-  <script type="text/javascript" src="../../script/api.js"></script>
-  <script type="text/javascript">
-      apiready = function(){
-        var header = $api.byId('header');
-        $api.fixStatusBar(header);
-        var headerPos = $api.offset(header);
-        api.openFrame({
-            name: 'code_frame',
-            url: './code_frame.html',
+    <header id="header">
+        <div class="clearfix text-center header fs16">
+            <i onclick="back()" class="iconfont pa ml3v">&#xe601;</i>
+            <!-- <img src="" alt=""> -->
+            <!-- 扫码 -->
+            <i onclick="openDicm()" class="iconfont fr mr2v">相册</i>
+        </div>
+        <!-- <div class="header">
+            <div class="left" tapmode onclick="back()"></div>
+            <div class="title">扫码</div>
+            <div class="right" tapmode onclick="fnOpenLamp()"></div>
+        </div> -->
+    </header>
+</body>
+<script src="../../script/api.js"></script>
+<script src="../../script/public.js"></script>
+<script>
+    var FNScanner, eHeader, headerH;
+    apiready = function() {
+        //应用全局FNScanner模块
+        FNScanner = api.require('FNScanner');
+        //定义根据id获取dom
+        eHeader = $api.byId('header');
+        //设置头部沉浸式
+        $api.fixStatusBar(eHeader);
+        //获取头部高度
+        headerH = $api.offset(eHeader).h;
+
+        //监听应用回到前台
+        api.addEventListener({
+            name: 'resume'
+        }, function(ret, err) {
+            FNScanner.onResume();
+        });
+
+        //监听应用回到后台
+        api.addEventListener({
+            name: 'pause'
+        }, function(ret, err) {
+            FNScanner.onPause();
+        });
+        // 打开后置摄像头扫码
+        fnOpenFNScanner();
+    }
+    var sces;
+    function fnOpenFNScanner() {
+        // 打开指定自定义模块
+        FNScanner.openView({
+            //autorotation: true,
+            fixedOn: api.frameName,
             rect: {
                 x: 0,
-                y: headerPos.h,
+                y: headerH,
+                w: api.frameWidth,
+                h: api.frameHeight
+            }
+        }, function(ret, err) {
+            if (ret) {
+              // console.log(ret.eventType);
+                if (ret.eventType == 'success' && ret.content != '') {
+                    // 扫码成功执行函数操作传值
+                    fnOpenCouple(ret.content);
+                    return;
+                }
+                if (ret.eventType == 'cameraError') {
+                    api.toast({
+                        msg: '请开启app访问手机摄像头权限',
+                        duration: 2000,
+                        location: 'bottom'
+                    });
+                    setTimeout(function() {
+                        // 关闭扫码器  关闭扫码界面
+                        back();
+                    }, 300);
+                    return;
+                }
+                if (ret.eventType == 'albumError') {
+                    api.toast({
+                        msg: '请开启app访问手机相册权限',
+                        duration: 2000,
+                        location: 'bottom'
+                    });
+                    setTimeout(function() {
+                        back();
+                    }, 300);
+                    return;
+                }
+                if (ret.eventType == 'fail') {
+                    api.toast({
+                        msg: '扫码失败,请从新扫码',
+                        duration: 2000,
+                        location: 'bottom'
+                    });
+                    setTimeout(function() {
+                        back();
+                    }, 300);
+                    return;
+                }
+            } else {
+                api.toast({
+                    msg: '扫码错误请稍后再试',
+                    duration: 2000,
+                    location: 'bottom'
+                });
+                setTimeout(function() {
+                    back();
+                }, 300);
+            }
+        });
+        setTimeout(function() {
+            // 打开扫码动画frm页面
+            api.openFrame({
+                name: 'add_frm',
+                url: './add_frm.html',
+                rect: {
+                    marginTop: headerH,
+                    marginLeft: 0,
+                    marginRight: 0,
+                    marginBottom: 0
+                },
+                bgColor: 'rgba(0,0,0,0)',
+            });
+        }, 300);
+    }
+
+    //返回
+    function back() {
+        // 关闭win页面
+        api.closeWin();
+        // 关闭扫码模块
+        FNScanner.closeView();
+    }
+
+    //打开最后扫码得出的数值
+    function fnOpenCouple(content) {
+        // console.log(content);
+        api.openFrame({
+            name: 'content',
+            url: content,
+            rect: {
+                x: 0,
+                y: headerH - 44,
                 w: 'auto',
                 h: 'auto'
             },
@@ -47,12 +187,55 @@
             bounces: false,
         });
 
-      };
-      //关闭该界面
-      function closewin() {
-        api.closeWin({
-            name: 'code'
+        // back(); //建议打开下一页我这块只是为了方便直接调用返回按钮   扫码成功之后必须关闭扫码模块  不然会出现多次扫码情况
+    }
+
+    var isSOff = true;
+    // 打开闪光灯
+    function fnOpenLamp() {
+        if (isSOff) {
+            FNScanner.switchLight({
+                status: 'on'
+            });
+            isSOff = false;
+        } else {
+            FNScanner.switchLight({
+                status: 'off'
+            });
+            isSOff = true;
+        }
+    }
+    //获取相册图片
+    function openDicm() {
+            api.getPicture({
+            // sourceType: 'camera',//选择相机
+            // sourceType: 'library',//选择图库
+            sourceType: 'album',//选择相册
+            encodingType: 'jpg',
+            mediaValue: 'pic',
+            destinationType: 'url',
+            allowEdit: true,
+            quality: 50,
+            targetWidth: 100,
+            targetHeight: 100,
+            saveToPhotoAlbum: false
+        }, function(ret, err) {
+            if (ret) {
+              FNScanner.decodeImg({
+                  path: ret.data,
+              }, function(ret, err) {
+                  if (ret.status) {
+                    // console.log(ret.content);
+                    // console.log(JSON.stringify(ret));
+                    //打开扫描的二维码地址
+                    fnOpenCouple(ret.content);
+                    return;
+                  }
+              });
+            }
         });
-      }
-  </script>
-  </html>
+    }
+
+</script>
+
+</html>

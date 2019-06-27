@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .ceshi{
+            width: 40vw;
+            height: 20vw;
+            margin: 20px auto;
+            text-align: center;
+          }
+      </style>
+  </head>
+  <body>
+      <button onclick="getAjax()" class="ceshi">
+          请求
+      </button>
+      <div id="app"></div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      function getAjax() {
+        var appid = $api.byId('app');
+          api.ajax({
+            url: 'http://ntstk.xianlubang.com/',
+            method: 'get',
+            headers: {
+                'appid': '1237',
+                'appkey':'3b1a71e6bb62a6ad0a2df9150ffcb1a6'
+            },
+        }, function(ret, err) {
+            if (ret) {
+              console.log($api.jsonToStr(ret));
+            }
+        });
+      }
+  </script>
+  </html>
