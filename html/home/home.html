@@ -66,7 +66,7 @@
   <body>
     <header id="header">
       <div class="serchbox">
-        <span><i class="iconfont">&#xe686;</i></span>
+        <span onclick="openCode()"><i class="iconfont">&#xe686;</i></span>
         <span class="ipt fs12"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
         <span onclick="opebShopcar()"><i class="iconfont">&#xe61b;</i></span>
       </div>
@@ -139,7 +139,7 @@
         api.openFrameGroup ({
             name: 'homefroup',
             background: '#fff',
-            scrollEnabled: true,
+            scrollEnabled: false,
             rect: {
                  marginTop: headerH,
                  marginBottom: 50,
@@ -227,10 +227,27 @@
             name: 'banner'
         }, function(ret, err){
             if( ret ){
-                alert(ret.value.key1)
-                //  alert( JSON.stringify( ret ) );
+                var bIndex = ret.value.key1;
+                switch (bIndex) {
+                  case 0:
+                    header.style.background = "#d81e06"
+                    break;
+                  case 1:
+                    header.style.background = "#e8989a"
+                    break;
+                  case 2:
+                    header.style.background = "#f3ca7e"
+                    break;
+                  case 3:
+                    header.style.background = "#d4237a"
+                    break;
+                  default:
+
+                }
+                console.log(header.style.background);
+                // alert(ret.value.key1)
             }else{
-                //  alert( JSON.stringify( err ) );
+
             }
         });
       };
@@ -282,6 +299,15 @@
         });
 
       }
-
+      //二维码
+      function openCode() {
+        api.openWin({
+            name: 'code',
+            url: './code.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
   </script>
   </html>

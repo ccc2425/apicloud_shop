@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="css/public.css"/>
+      <style>
+      .yin1{
+        width: 100vw;
+        height: 100vh;
+        background: url('./image/luckdraw.png') no-repeat;
+        background-size: cover;
+      }
+      .aaa{
+        width: 30vw;
+        height: 60px;
+        line-height: 60px;
+        position: absolute;
+        bottom: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #f3ca7e;
+        text-align: center;
+        color: #fff;
+        font-size: 20px;
+      }
+      </style>
+  </head>
+  <body>
+    <div class="yin1 fs20 bold">
+      <div onclick="getin()" class="aaa">
+        进入
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="script/api.js"></script>
+  <script type="text/javascript">
+  var footerPos;
+  var headerPos;
+  apiready = function(){
+      headerPos = api.appParam.name1;
+      footerPos = api.appParam.name2;
+  };
+  function getin() {
+    $api.setStorage('showGuide', '1');//设置值
+    api.openFrame({
+        name: 'home',
+        url: './html/home/home.html',
+        rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
+            // marginTop: headerH, // main页面距离win顶部的高度
+            // marginBottom: footerH, // main页面距离win底部的高度
+            x: 0,
+            y: 0,
+            h: api.frameHeight - footerPos,
+            w: 'auto' // main页面的宽度 自适应屏幕宽度
+        },
+        bounces: false,
+    });
+
+    api.openWin({
+        name: 'indexs',
+        url: './html/index.html',
+        slidBackEnabled: false
+    });
+  }
+  </script>
+  </html>

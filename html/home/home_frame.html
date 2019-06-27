@@ -5,7 +5,9 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/aui-pull-refresh.css" />
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
         /*.bgbanner{
@@ -207,6 +209,9 @@
             padding: 1vh 1vw;
             background-color: #fff;
           }
+          .vouchers-list:last-child{
+            margin-bottom: 0;
+          }
           .vouchers-list-left{
             float: left;
             position: relative;
@@ -263,29 +268,65 @@
           .vouchers-list4 span:last-child{
             background-color: grey;
           }
+          /**/
+          .bottom-line-img{
+            display: inline-block;
+            width: 3vw;
+            height: 3vw;
+          }
       </style>
   </head>
   <body>
+    <section class="aui-refresh-content">
         <!-- <div class="bgbanner">
           <img src="../../image/t2.png" alt="">
         </div> -->
         <!-- 轮播图 -->
-        <div id="aui-slide">
-          <div class="aui-slide-wrap" >
-              <div class="aui-slide-node bg-dark">
-                  <img src="../../image/ban1.png">
-              </div>
-              <div class="aui-slide-node bg-dark">
-                  <img src="../../image/ban1.png">
-              </div>
-              <div class="aui-slide-node bg-dark">
-                  <img src="../../image/ban1.png">
-              </div>
-              <div class="aui-slide-node bg-dark">
-                  <img src="../../image/ban1.png">
-              </div>
+        <div id="slider" class="mui-slider" >
+          <div class="mui-slider-group mui-slider-loop">
+            <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 第一张 -->
+            <div class="mui-slider-item">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 第二张 -->
+            <div class="mui-slider-item">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 第三张 -->
+            <div class="mui-slider-item">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 第四张 -->
+            <div class="mui-slider-item">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
           </div>
-          <div class="aui-slide-page-wrap"><!--分页容器--></div>
+          <div class="mui-slider-indicator">
+            <div class="mui-indicator mui-active"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+          </div>
         </div>
         <!-- 分类轮播 -->
         <div class="pr bgcf">
@@ -615,185 +656,236 @@
         </div>
         <!-- 精选好券 -->
         <!--下拉刷新容器-->
-        <div id="pullrefreshs" class="vouchers bgcf">
-          <h4 class="vouchers-tit text-center">
-            <img class="tit-img" src="../public/img/index/icon1.png" />
-            <span><img class="titimg" src="../public/img/index/icon1.png"></br>今日精选好券</br><span class="tit2">EXPLOSION UPDATE TODAY</span></span>
-            <img class="tit-img" src="../public/img/index/icon1.png" />
-          </h4>
-          <!--数据列表-->
-          <ul id="vouchersul" class="bgcc vouchersul">
-            <li onclick="openitem()" class="vouchers-list clearfix">
-              <div class="vouchers-list-left">
-                <img src="../../image/la3.png" alt="">
-                <div class="peoplenum text-center">248人已抢</div>
-              </div>
-              <div class="vouchers-list-right">
-                <div class="vouchers-list1 texthidden mb5">
-                  <img src="../../image/taobao.jpg">
-                  时尚新款单肩背大人小孩通用零钱包
+        <!-- <section class="aui-refresh-content"> -->
+          <div class="aui-content">
+            <div id="loading" class="vouchers bgcf">
+              <h4 class="vouchers-tit text-center">
+                <img class="tit-img" src="../public/img/index/icon1.png" />
+                <span><img class="titimg" src="../public/img/index/icon1.png"></br>今日精选好券</br><span class="tit2">EXPLOSION UPDATE TODAY</span></span>
+                <img class="tit-img" src="../public/img/index/icon1.png" />
+              </h4>
+              <!--数据列表-->
+              <ul id="demo" class="bgcc vouchersul">
+                <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                  <div class="vouchers-list-left">
+                    <img src="../../image/la3.png" alt="">
+                    <div class="peoplenum text-center">248人已抢</div>
+                  </div>
+                  <div class="vouchers-list-right">
+                    <div class="vouchers-list1 texthidden mb5">
+                      <img src="../../image/taobao.jpg">
+                      时尚新款单肩背大人小孩通用零钱包
+                    </div>
+                    <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                    <div class="vouchers-list3 cored clearfix">
+                      $<span class="discount mr1v cored fs14">9.9</span>
+                      <span class="original">$11.9</span>
+                      <span class="coupon fr mr3v">2元券</span>
+                    </div>
+                    <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                  </div>
+                </li>
+                <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                  <div class="vouchers-list-left">
+                    <img src="../../image/la3.png" alt="">
+                    <div class="peoplenum text-center">248人已抢</div>
+                  </div>
+                  <div class="vouchers-list-right">
+                    <div class="vouchers-list1 texthidden mb5">
+                      <img src="../../image/taobao.jpg">
+                      时尚新款单肩背大人小孩通用零钱包
+                    </div>
+                    <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                    <div class="vouchers-list3 cored clearfix">
+                      $<span class="discount mr1v cored fs14">9.9</span>
+                      <span class="original">$11.9</span>
+                      <span class="coupon fr mr3v">2元券</span>
+                    </div>
+                    <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                  </div>
+                </li>
+                <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                  <div class="vouchers-list-left">
+                    <img src="../../image/la3.png" alt="">
+                    <div class="peoplenum text-center">248人已抢</div>
+                  </div>
+                  <div class="vouchers-list-right">
+                    <div class="vouchers-list1 texthidden mb5">
+                      <img src="../../image/taobao.jpg">
+                      时尚新款单肩背大人小孩通用零钱包
+                    </div>
+                    <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                    <div class="vouchers-list3 cored clearfix">
+                      $<span class="discount mr1v cored fs14">9.9</span>
+                      <span class="original">$11.9</span>
+                      <span class="coupon fr mr3v">2元券</span>
+                    </div>
+                    <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                  </div>
+                </li>
+                <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                  <div class="vouchers-list-left">
+                    <img src="../../image/la3.png" alt="">
+                    <div class="peoplenum text-center">248人已抢</div>
+                  </div>
+                  <div class="vouchers-list-right">
+                  <div class="vouchers-list1 texthidden mb5">
+                    <img src="../../image/taobao.jpg">
+                    时尚新款单肩背大人小孩通用零钱包
+                  </div>
+                  <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                  <div class="vouchers-list3 cored clearfix">
+                    $<span class="discount mr1v cored fs14">9.9</span>
+                    <span class="original">$11.9</span>
+                    <span class="coupon fr mr3v">2元券</span>
+                  </div>
+                  <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
                 </div>
-                <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-                <div class="vouchers-list3 cored clearfix">
-                  $<span class="discount mr1v cored fs14">9.9</span>
-                  <span class="original">$11.9</span>
-                  <span class="coupon fr mr3v">2元券</span>
+                </li>
+                <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                  <div class="vouchers-list-left">
+                    <img src="../../image/la3.png" alt="">
+                    <div class="peoplenum text-center">248人已抢</div>
+                  </div>
+                  <div class="vouchers-list-right">
+                  <div class="vouchers-list1 texthidden mb5">
+                    <img src="../../image/taobao.jpg">
+                    时尚新款单肩背大人小孩通用零钱包
+                  </div>
+                  <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                  <div class="vouchers-list3 cored clearfix">
+                    $<span class="discount mr1v cored fs14">9.9</span>
+                    <span class="original">$11.9</span>
+                    <span class="coupon fr mr3v">2元券</span>
+                  </div>
+                  <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
                 </div>
-                <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-              </div>
-            </li>
-            <li onclick="openitem()" class="vouchers-list clearfix">
-              <div class="vouchers-list-left">
-                <img src="../../image/la3.png" alt="">
-                <div class="peoplenum text-center">248人已抢</div>
-              </div>
-              <div class="vouchers-list-right">
-                <div class="vouchers-list1 texthidden mb5">
-                  <img src="../../image/taobao.jpg">
-                  时尚新款单肩背大人小孩通用零钱包
+                </li>
+                <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                  <div class="vouchers-list-left">
+                    <img src="../../image/la3.png" alt="">
+                    <div class="peoplenum text-center">248人已抢</div>
+                  </div>
+                  <div class="vouchers-list-right">
+                  <div class="vouchers-list1 texthidden mb5">
+                    <img src="../../image/taobao.jpg">
+                    时尚新款单肩背大人小孩通用零钱包
+                  </div>
+                  <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                  <div class="vouchers-list3 cored clearfix">
+                    $<span class="discount mr1v cored fs14">9.9</span>
+                    <span class="original">$11.9</span>
+                    <span class="coupon fr mr3v">2元券</span>
+                  </div>
+                  <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
                 </div>
-                <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-                <div class="vouchers-list3 cored clearfix">
-                  $<span class="discount mr1v cored fs14">9.9</span>
-                  <span class="original">$11.9</span>
-                  <span class="coupon fr mr3v">2元券</span>
+                </li>
+                <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                  <div class="vouchers-list-left">
+                    <img src="../../image/la3.png" alt="">
+                    <div class="peoplenum text-center">248人已抢</div>
+                  </div>
+                  <div class="vouchers-list-right">
+                  <div class="vouchers-list1 texthidden mb5">
+                    <img src="../../image/taobao.jpg">
+                    时尚新款单肩背大人小孩通用零钱包
+                  </div>
+                  <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                  <div class="vouchers-list3 cored clearfix">
+                    $<span class="discount mr1v cored fs14">9.9</span>
+                    <span class="original">$11.9</span>
+                    <span class="coupon fr mr3v">2元券</span>
+                  </div>
+                  <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
                 </div>
-                <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                </li>
+              </ul>
+              <div class="bottom-line text-center">
+                <div class="bottom-line-img">
+                  <img src="../../image/loading_more.gif">
+                </div>
+                正在加载中......
               </div>
-            </li>
-            <li onclick="openitem()" class="vouchers-list clearfix">
-              <div class="vouchers-list-left">
-                <img src="../../image/la3.png" alt="">
-                <div class="peoplenum text-center">248人已抢</div>
-              </div>
-              <div class="vouchers-list-right">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/taobao.jpg">
-                时尚新款单肩背大人小孩通用零钱包
-              </div>
-              <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-              <div class="vouchers-list3 cored clearfix">
-                $<span class="discount mr1v cored fs14">9.9</span>
-                <span class="original">$11.9</span>
-                <span class="coupon fr mr3v">2元券</span>
-              </div>
-              <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
             </div>
-            </li>
-            <li onclick="openitem()" class="vouchers-list clearfix">
-              <div class="vouchers-list-left">
-                <img src="../../image/la3.png" alt="">
-                <div class="peoplenum text-center">248人已抢</div>
-              </div>
-              <div class="vouchers-list-right">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/taobao.jpg">
-                时尚新款单肩背大人小孩通用零钱包
-              </div>
-              <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-              <div class="vouchers-list3 cored clearfix">
-                $<span class="discount mr1v cored fs14">9.9</span>
-                <span class="original">$11.9</span>
-                <span class="coupon fr mr3v">2元券</span>
-              </div>
-              <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-            </div>
-            </li>
-            <li onclick="openitem()" class="vouchers-list clearfix">
-              <div class="vouchers-list-left">
-                <img src="../../image/la3.png" alt="">
-                <div class="peoplenum text-center">248人已抢</div>
-              </div>
-              <div class="vouchers-list-right">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/taobao.jpg">
-                时尚新款单肩背大人小孩通用零钱包
-              </div>
-              <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-              <div class="vouchers-list3 cored clearfix">
-                $<span class="discount mr1v cored fs14">9.9</span>
-                <span class="original">$11.9</span>
-                <span class="coupon fr mr3v">2元券</span>
-              </div>
-              <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-            </div>
-            </li>
-            <li onclick="openitem()" class="vouchers-list clearfix">
-              <div class="vouchers-list-left">
-                <img src="../../image/la3.png" alt="">
-                <div class="peoplenum text-center">248人已抢</div>
-              </div>
-              <div class="vouchers-list-right">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/taobao.jpg">
-                时尚新款单肩背大人小孩通用零钱包
-              </div>
-              <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-              <div class="vouchers-list3 cored clearfix">
-                $<span class="discount mr1v cored fs14">9.9</span>
-                <span class="original">$11.9</span>
-                <span class="coupon fr mr3v">2元券</span>
-              </div>
-              <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-            </div>
-            </li>
-            <li onclick="openitem()" class="vouchers-list clearfix">
-              <div class="vouchers-list-left">
-                <img src="../../image/la3.png" alt="">
-                <div class="peoplenum text-center">248人已抢</div>
-              </div>
-              <div class="vouchers-list-right">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/taobao.jpg">
-                时尚新款单肩背大人小孩通用零钱包
-              </div>
-              <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-              <div class="vouchers-list3 cored clearfix">
-                $<span class="discount mr1v cored fs14">9.9</span>
-                <span class="original">$11.9</span>
-                <span class="coupon fr mr3v">2元券</span>
-              </div>
-              <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-            </div>
-            </li>
-          </ul>
-        </div>
-        <!-- </div> -->
+          </div>
+        </section>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/mui.min.js"></script>
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
+  <script type="text/javascript" src="../../script/aui-pull-refresh.js"></script>
+  <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript">
+      //上拉加载
+        //滚动条到页面底部加载更多案例
+      (function() {
+         $('#demo').on('touchmove',function(){
+             //判断最后一个元素是否在底部之上
+             if( $('.aui-card-list').eq($('.aui-card-list').length-1).offset().top-$(window).scrollTop() < $(window).height() ){
+                 $('.bottom-line').css('display','block');
+                 checkPull();
+                //  $('.bottom-line').css('display','none').text('加载中...');
+
+             }
+         });
+         //添加元素方法
+         function checkPull(){
+             var pinNew;
+             pinNew=document.createDocumentFragment();
+             //每次添加5条内容
+             for(var j=5;j>0;j--){
+                 var li=document.createElement('li');
+                 li.className="aui-card-list";
+                 li.innerHTML=`<li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                   <div class="vouchers-list-left">
+                     <img src="../../image/la3.png" alt="">
+                     <div class="peoplenum text-center">248人已抢</div>
+                   </div>
+                   <div class="vouchers-list-right">
+                   <div class="vouchers-list1 texthidden mb5">
+                     <img src="../../image/taobao.jpg">
+                     时尚新款单肩背大人小孩通用零钱包
+                   </div>
+                   <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                   <div class="vouchers-list3 cored clearfix">
+                     $<span class="discount mr1v cored fs14">9.9</span>
+                     <span class="original">$11.9</span>
+                     <span class="coupon fr mr3v">2元券</span>
+                   </div>
+                   <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                 </div>
+                 </li>`;
+                 pinNew.appendChild(li);
+             }
+             $('#demo')[0].appendChild(pinNew);
+         }
+        })();
+
       //轮播
-      var slide = new auiSlide({
-        container:document.getElementById("aui-slide"),
-        // "width":300,
-        "height":160,
-        "speed":300,
-        "autoPlay":3000, //自动播放
-        "pageShow":true,
-        "pageStyle":'dot',
-        "loop":true,
-        'dotPosition':'center',
-        currentPage:currentFun
-    })
-      var thisI;
-      var aSlide = document.getElementById("aui-slide");
+      var slider = mui("#slider");
+      (function() {
+        slider.slider({
+          interval: 1000
+        })
+      }());
+      //监听轮播显示
+      document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+        //注意slideNumber是从0开始的；
+        // console.log(event.detail.slideNumber);
+        var bIndex = event.detail.slideNumber;
+        api.sendEvent({
+            name: 'banner',
+            extra: {
+                key1: bIndex,
+            }
+        });
+
+      });
+
     function currentFun(index) {
-        thisI = index;
-        // return thisI;
-        console.log(index);
-        // console.log(this);
-        // api.sendEvent({
-        //     name: 'banner',
-        //     // mui('#slider').slider().getSlideNumber();
-        //     extra: {
-        //         key1: thisI,
-        //         // key2: 'value2'
-        //     }
-        // });
+        // console.log(index);
     }
 
-  // <script type="text/javascript">
       // 分类轮播
       var slide2 = new auiSlide({
           container:document.getElementById("aui-slide2"),
@@ -808,22 +900,13 @@
       })
       apiready = function(){
 
-        //发送监听banner数据
-        // api.sendEvent({
-        //     name: 'banner',
-        //     // mui('#slider').slider().getSlideNumber();
-        //     extra: {
-        //         key1: thisI,
-        //         // key2: 'value2'
-        //     }
-        // });
       };
       // 广告轮播
       var slide3 = new auiSlide({
           container:document.getElementById("aui-slide3"),
           // "width":300,
           "height":120,
-          "speed":500,
+          "speed":100,
           "autoPlay": 1000, //自动播放
           "loop":true,
           "pageShow":true,
@@ -832,7 +915,7 @@
       })
     //纵向滚动 需要设置div的高度
       var area = document.getElementById('moocBox');
-      var iliHeight = 14;//单行滚动的高度
+      var iliHeight = 21;//单行滚动的高度
       var speed = 50;//滚动的速度
       var time;
       var delay= 1000;
@@ -1002,7 +1085,6 @@
     });
 
   }
-
   //母婴
   function openMaterKid() {
       api.openWin({
@@ -1014,7 +1096,6 @@
       });
 
   }
-
   //生活
   function openLife() {
     api.openWin({
@@ -1027,95 +1108,57 @@
   }
 
     // //  上拉刷新下拉加载
-    // mui.init({
-    //     pullRefresh: {
-    //         container: '#pullrefresh',
-    //         down: {
-  	// 					callback: pulldownRefresh
-  	// 				},
-    //         up: {
-    //             auto: true,
-    //             contentrefresh: '正在刷新...',
-    //             callback: pullupRefresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据
-    //         }
-    //
-    //     }
-    // });
-    // var count = 0;
-    // //下拉刷新
-    // function pulldownRefresh() {
-		// 		setTimeout(function() {
-		// 		    // console.log(1);
-		// 			mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-		// 		}, 1000);
-		// 	}
-    //   //上拉加载
-    // function pullupRefresh() {
-    //     setTimeout(function() {
-    //         // console.log(2);
-    //         mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-    //         var table = document.body.querySelector('.vouchersul');
-    //         var cells = document.body.querySelectorAll('.vouchers-list');
-    //         var newCount = cells.length > 0 ? 5 : 10; //首次加载10条，满屏
-    //         for (var i = cells.length, len = i + newCount; i < len; i++) {
-    //             var li = document.createElement('li');
-    //             li.className = 'vouchers-list clearfix';
-    //             li.innerHTML = "<div class=\"vouchers-list-left\"><img src=\"../image/muwu.jpg\"><div class=\"peoplenum text-center\">248人已抢</div></div><div class=\"vouchers-list-right\"><div class=\"vouchers-list1 texthidden mb5\"><img src=\"../../image/taobao.jpg\">时尚新款单肩背大人小孩通用零钱包</div><div class=\"vouchers-list2 texthidden mb25\">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div><div class=\"vouchers-list3 cored clearfix\">$<span class=\"discount mr1v cored fs14\">9.9</span><span class=\"original\">$11.9</span><span class=\"coupon fr mr3v\">2元券</span></div><div class=\"vouchers-list4\"><span class=\"mr2v\">自购赚$1.19</span><span>升级赚1.16</span></div></div>";
-    //             // li.innerHTML = `<div class="vouchers-list-left">
-    //             //             <img src="../image/muwu.jpg" alt="">
-    //             //             <div class="peoplenum text-center">248人已抢</div>
-    //             //           </div>
-    //             //           <div class="vouchers-list-right">
-    //             //             <div class="vouchers-list1 texthidden mb5">
-    //             //               <img src="../../image/taobao.jpg">
-    //             //               时尚新款单肩背大人小孩通用零钱包
-    //             //             </div>
-    //             //             <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-    //             //             <div class="vouchers-list3 cored clearfix">
-    //             //               $<span class="discount mr1v cored fs14">9.9</span>
-    //             //               <span class="original">$11.9</span>
-    //             //               <span class="coupon fr mr3v">2元券</span>
-    //             //             </div>
-    //             //             <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-    //             //           </div>`;
-    //             table.appendChild(li);
-    //         }
-    //         table.appendChild(li);
-    //     }, 1000);
-    //
-    // }
-    //
-    // function addData() {
-    //     var table = document.body.querySelector('.vouchersulw');
-    //     var cells = document.body.querySelectorAll('.vouchers-list');
-    //     for (var i = cells.length, len = i + 5; i < len; i++) {
-    //         var li = document.createElement('li');
-    //         li.className = 'vouchers-list clearfix';
-    //         li.innerHTML = "<div class=\"vouchers-list-left\"><img src=\"../image/muwu.jpg\"><div class=\"peoplenum text-center\">248人已抢</div></div><div class=\"vouchers-list-right\"><div class=\"vouchers-list1 texthidden mb5\"><img src=\"../../image/taobao.jpg\">时尚新款单肩背大人小孩通用零钱包</div><div class=\"vouchers-list2 texthidden mb25\">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div><div class=\"vouchers-list3 cored clearfix\">$<span class=\"discount mr1v cored fs14\">9.9</span><span class=\"original\">$11.9</span><span class=\"coupon fr mr3v\">2元券</span></div><div class=\"vouchers-list4\"><span class=\"mr2v\">自购赚$1.19</span><span>升级赚1.16</span></div></div>";
-    //         // li.innerHTML = `<div class="vouchers-list-left">
-    //         //             <img src="../image/muwu.jpg" alt="">
-    //         //             <div class="peoplenum text-center">248人已抢</div>
-    //         //           </div>
-    //         //           <div class="vouchers-list-right">
-    //         //             <div class="vouchers-list1 texthidden mb5">
-    //         //               <img src="../../image/taobao.jpg">
-    //         //               时尚新款单肩背大人小孩通用零钱包
-    //         //             </div>
-    //         //             <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-    //         //             <div class="vouchers-list3 cored clearfix">
-    //         //               $<span class="discount mr1v cored fs14">9.9</span>
-    //         //               <span class="original">$11.9</span>
-    //         //               <span class="coupon fr mr3v">2元券</span>
-    //         //             </div>
-    //         //             <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-    //         //           </div>`;
-    //     }
-    // }
+    var pullRefresh = new auiPullToRefresh({
+       container: document.querySelector('.aui-refresh-content'),
+       triggerDistance: 100
+   },function(ret){
+       if(ret.status=="success"){
+           setTimeout(function(){
+               var wrap = document.getElementById("demo")
+               var lis = wrap.querySelectorAll('.aui-card-list');
+              //  for (var i = lis.length, length = i + 10; i < length; i++) {
+              //      var html = '<div class="aui-card-list">'+
+              //              '<div class="aui-card-list-header">'+
+              //                  '卡片布局头部区域'+(i+1)+''+
+              //              '</div>'+
+              //              '<div class="aui-card-list-content-padded">'+
+              //                  '内容区域，卡片列表布局样式可以实现APP中常见的各类样式'+
+              //              '</div>'+
+              //              '<div class="aui-card-list-footer">'+
+              //                  '底部区域'+
+              //              '</div>'+
+              //          '</div>';
+              //      wrap.insertAdjacentHTML('afterbegin', html);
+              //  }
+                window.location.reload();
+               pullRefresh.cancelLoading(); //刷新成功后调用此方法隐藏
+           },1000)
+       }
+   })
 
-
-    //
-
-
+    // (function() {
+    //   console.log(11);
+    //    $('#demo').on('touchmove',function(){
+    //        //判断最后一个元素是否在底部之上
+    //        if( $('.aui-card-list').eq($('.aui-card-list').length-1).offset().top-$(window).scrollTop() < $(window).height() ){
+    //            $('.bottom-line').css('display','block').text('正在刷新...');
+    //            checkPull();
+    //        }
+    //    });
+    //    //添加元素方法
+    //    function checkPull(){
+    //        var pinNew;
+    //        pinNew=document.createDocumentFragment();
+    //        //每次添加5条内容
+    //        for(var j=5;j>0;j--){
+    //            var li=document.createElement('li');
+    //            li.className="aui-card-list";
+    //            li.innerHTML='1';
+    //            pinNew.appendChild(li);
+    //        }
+    //        $('#demo')[0].appendChild(pinNew);
+    //    }
+    //   })();
 
   </script>
   </html>
