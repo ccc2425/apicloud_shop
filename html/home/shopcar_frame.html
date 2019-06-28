@@ -43,41 +43,23 @@
 
       };
       function getAjax() {
-        $.ajax({
-             type: "GET",
-             url: 'http://192.168.0.236:9999#',//她地址给对没有不清楚
-            //  url: "http://ntstk.xianlubang.com#",
-             data: {
-             },
-             dataType: "json",
-             success: function(data){
-                        console.log(data);
-                      }
-         });
         // var appids = $api.byId('app');
-        //   var params = {
-        //     fields:{},
-        //     where:{},
-        //     skip:0,
-        //     limit:10
-        //   }
-        //   params = $api.jsonToStr(params);
-        //   api.ajax({
-        //     // 192.168.0.236 9999
-        //     url: '192.168.0.236/9999'
-        //     // url: 'http://ntstk.xianlubang.com/',
-        //     method: 'get',
-        //     dataType: 'json',
-        //     headers: {
-        //       // 'Content-Type': 'application/json;charset=utf-8',
-        //     },
-        // }, function(ret, err) {
-        //     if (ret) {
-        //       console.log($api.jsonToStr(ret));
-        //     }else {
-        //       console.log($api.jsonToStr(err));
-        //     }
-        // });
+          api.ajax({
+            url: 'http://ntstk.xianlubang.com/apiv4/update',
+            method: 'get',
+            dataType: 'json',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8',
+              'X-APICloud-AppId':'A6015374016925', 
+            },
+        }, function(ret, err) {
+            if (ret) {
+              console.log($api.jsonToStr(ret));
+            }else {
+              alert($api.jsonToStr(err));
+              console.log($api.jsonToStr(err));
+            }
+        });
       }
   </script>
   </html>

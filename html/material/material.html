@@ -6,6 +6,7 @@
       <title>素材</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
       <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
@@ -102,17 +103,29 @@
         padding: 10px 5vw;
       }
       /*分享*/
-      .mui-plus .plus{
-				display: inline;
-			}
-
-			.plus{
-				display: none;
-			}
-      .share-item{
-        position: fixed!important;
+      .aui-btn-info.aui-active, .aui-btn-info:active,.aui-btn:active{
+        color: #fff;
+        background-color:#d81e06!important;
+      }
+      .aui-popup-bottom{
         left: 0;
         bottom: 0;
+        width: 100vw;
+        margin: 0;
+      }
+      .aui-popup-arrow{
+        display: none;
+      }
+      #shareout{
+        display: none;
+      }
+      .share-box{
+        width: 20vw;
+        padding: 7px 0;
+      }
+      .share-box .share-box-img{
+        width: 55%;
+        margin: 0 auto 5px;
       }
       </style>
   </head>
@@ -181,9 +194,7 @@
               小编推荐
               <p class='mui-ellipsis'>2019-6-19</p>
             </div>
-            <span>
-              <a href="#middlePopover" class="mui-btn bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</a>
-            </span>
+            <span class="bgcr share aui-btn" tapmode onclick="share()"><i class="iconfont fs12">&#xe61f;</i>4058</span>
           </a>
         </div>
         <div class="specialty-box">
@@ -193,15 +204,15 @@
               <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
             </div>
             <ul class="specialty-img clearfix">
-                <li onclick="openitem()"><img src="../../image/la1.png"></li>
-                <li onclick="openitem()"><img src="../../image/la2.png"></li>
-                <li onclick="openitem()"><img src="../../image/la3.png"></li>
-                <li onclick="openitem()"><img src="../../image/la3.png"></li>
-                <li onclick="openitem()"><img src="../../image/la2.png"></li>
-                <li onclick="openitem()"><img src="../../image/la1.png"></li>
-                <li onclick="openitem()"><img src="../../image/la1.png"></li>
-                <li onclick="openitem()"><img src="../../image/la2.png"></li>
-                <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+              <li onclick="openitem()"><img src="../../image/la1.png"></li>
+              <li onclick="openitem()"><img src="../../image/la2.png"></li>
+              <li onclick="openitem()"><img src="../../image/la3.png"></li>
             </ul>
           </div>
         </div>
@@ -590,26 +601,51 @@
       </div>
     </div>
     <!--  -->
-    <div id="middlePopover" class="mui-popover">
-			<div class="mui-scroll-wrapper">
-				<div class="mui-scroll">
-					<ul class="mui-table-view just-space share-item">
-						<li class="mui-table-view-cell">Item1
-						</li>
-						<li class="mui-table-view-cell">Item2
-						</li>
-						<li class="mui-table-view-cell">Item3
-						</li>
-						<li class="mui-table-view-cell">Item4
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+    <div id="shareout">
+      <div onclick="hideShare()" class="aui-mask aui-mask-in"></div>
+      <div class="aui-popup aui-popup-bottom aui-popup-in">
+        <div class="aui-popup-arrow"></div>
+        <div class="aui-popup-content text-center">
+          <ul class="aui-list-share aui-list-noborder just-space">
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="../../image/a1.png">
+              </div>
+              <div class="aui-list-item-inner">微信</div>
+            </li>
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="../../image/a2.png">
+              </div>
+              <div class="aui-list-item-inner">朋友圈</div>
+            </li>
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="../../image/a3.png">
+              </div>
+              <div class="aui-list-item-inner">qq好友</div>
+            </li>
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="../../image/a4.png">
+              </div>
+              <div class="aui-list-item-inner">qq空间</div>
+            </li>
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="../../image/a5.png">
+              </div>
+              <div class="aui-list-item-inner">新浪微博</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/mui.min.js"></script>
   <script type="text/javascript" src="../../script/zepto.js"></script>
+  <script type="text/javascript" src="../../script/aui-popup-new.js" ></script>
   <script type="text/javascript">
       apiready = function(){
         var header = $api.byId('header');
@@ -674,14 +710,13 @@
         }
       }
         //分享
-        function share() {
-
-        }
-        mui('.mui-scroll-wrapper').scroll();
-  			mui('body').on('shown', '.mui-popover', function(e) {
-  			});
-  			mui('body').on('hidden', '.mui-popover', function(e) {
-  			});
+      var shareOut = document.getElementById('shareout');
+      function share() {
+        shareOut.style.display = "block"
+      }
+      function hideShare() {
+        shareOut.style.display = "none"
+      }
        // 打开物品
        function openitem() {
          api.openWin({
