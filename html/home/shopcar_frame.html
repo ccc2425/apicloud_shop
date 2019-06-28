@@ -22,24 +22,62 @@
       <div id="app"></div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript">
       apiready = function(){
+        // api.ajax({
+        //     url: 'http://ntstk.xianlubang.com/',
+        //     method: 'get',
+        //     headers:{
+        //       appid:'1237',
+        //       AppKey:'3b1a71e6bb62a6ad0a2df9150ffcb1a6'
+        //     }
+        // },function(ret, err){
+        //     if (ret) {
+        //         alert( JSON.stringify( ret ) );
+        //     } else {
+        //         alert( JSON.stringify( err ) );
+        //     }
+        // });
+
 
       };
       function getAjax() {
-        var appid = $api.byId('app');
-          api.ajax({
-            url: 'http://ntstk.xianlubang.com/',
-            method: 'get',
-            headers: {
-                'appid': '1237',
-                'appkey':'3b1a71e6bb62a6ad0a2df9150ffcb1a6'
-            },
-        }, function(ret, err) {
-            if (ret) {
-              console.log($api.jsonToStr(ret));
-            }
-        });
+        $.ajax({
+             type: "GET",
+             url: 'http://192.168.0.236:9999#',//她地址给对没有不清楚
+             url: "http://ntstk.xianlubang.com#",
+             data: {
+             },
+             dataType: "json",
+             success: function(data){
+                        console.log(data);
+                      }
+         });
+        // var appids = $api.byId('app');
+        //   var params = {
+        //     fields:{},
+        //     where:{},
+        //     skip:0,
+        //     limit:10
+        //   }
+        //   params = $api.jsonToStr(params);
+        //   api.ajax({
+        //     // 192.168.0.236 9999
+        //     url: '192.168.0.236/9999'
+        //     // url: 'http://ntstk.xianlubang.com/',
+        //     method: 'get',
+        //     dataType: 'json',
+        //     headers: {
+        //       // 'Content-Type': 'application/json;charset=utf-8',
+        //     },
+        // }, function(ret, err) {
+        //     if (ret) {
+        //       console.log($api.jsonToStr(ret));
+        //     }else {
+        //       console.log($api.jsonToStr(err));
+        //     }
+        // });
       }
   </script>
   </html>
