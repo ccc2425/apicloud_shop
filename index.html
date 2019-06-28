@@ -61,6 +61,18 @@
         .activebtn4 {background: url(./image/my1.png) no-repeat center 4px;}
         .activebtn {color:#d81e06; background-size: 24px;}
         .bottomhover {background-color: #46494B;}
+        /*分享*/
+        #shareout{
+          display: none;
+        }
+        .share-box{
+          width: 20vw;
+          padding: 7px 0;
+        }
+        .share-box .share-box-img{
+          width: 55%;
+          margin: 0 auto 5px;
+        }
     </style>
 </head>
 
@@ -88,6 +100,46 @@
             </li>
         </ul>
     </footer>
+    <div id="shareout">
+      <div onclick="hideShare()" class="aui-mask aui-mask-in"></div>
+      <div class="aui-popup aui-popup-bottom aui-popup-in">
+        <div class="aui-popup-arrow"></div>
+        <div class="aui-popup-content text-center">
+          <ul class="aui-list-share aui-list-noborder just-space">
+            <li onclick="share()" class="share-box">
+              <div class="share-box-img">
+                <img src="./image/a1.png">
+              </div>
+              <div class="aui-list-item-inner">微信</div>
+            </li>
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="./image/a2.png">
+              </div>
+              <div class="aui-list-item-inner">朋友圈</div>
+            </li>
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="./image/a3.png">
+              </div>
+              <div class="aui-list-item-inner">qq好友</div>
+            </li>
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="./image/a4.png">
+              </div>
+              <div class="aui-list-item-inner">qq空间</div>
+            </li>
+            <li class="share-box">
+              <div class="share-box-img">
+                <img src="./image/a5.png">
+              </div>
+              <div class="aui-list-item-inner">新浪微博</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
@@ -132,11 +184,7 @@ function randomSwitchBtn(index) {
     }
 }
     apiready = function() {
-
-
-
         var footer = $api.dom('footer'); // 获取 footer 标签元素
-
         // 1.修复开启沉浸式效果带来的顶部Header与手机状态栏重合的问题，最新api.js方法已支持适配iPhoneX；
         // 2.默认已开启了沉浸式效果 config.xml中 <preference name="statusBarAppearance" value="true"/>
         // 3.沉浸式效果适配支持iOS7+，Android4.4+以上版本
@@ -280,7 +328,6 @@ function randomSwitchBtn(index) {
           },
           bounces: false,
       });
-
     }
     //打开引导页
     function openGuide() {
@@ -321,7 +368,10 @@ function randomSwitchBtn(index) {
       });
 
     }
-
+//分享
+    function fnOpenshare() {
+      console.log(1);
+    }
 </script>
 
 </html>

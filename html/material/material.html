@@ -188,14 +188,12 @@
     <div id="specialty" class="materials disbl">
       <div class="mui-table-view">
         <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
             <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
             <div class="mui-media-body">
               小编推荐
               <p class='mui-ellipsis'>2019-6-19</p>
             </div>
-            <span class="bgcr share aui-btn" tapmode onclick="share()"><i class="iconfont fs12">&#xe61f;</i>4058</span>
-          </a>
+            <span class="bgcr share aui-btn" onclick="shareBtn()"><i class="iconfont fs12">&#xe61f;</i>4058</span>
         </div>
         <div class="specialty-box">
           <div class="specialty-boxi">
@@ -377,14 +375,12 @@
     <div id="necessary" class="materials">
       <div class="mui-table-view">
         <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
             <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
             <div class="mui-media-body">
               小编推荐
               <p class='mui-ellipsis'>2019-6-19 18:52:00</p>
             </div>
             <span class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>一键分享</span>
-          </a>
         </div>
         <div class="specialty-box">
           <div class="specialty-boxi">
@@ -607,7 +603,7 @@
         <div class="aui-popup-arrow"></div>
         <div class="aui-popup-content text-center">
           <ul class="aui-list-share aui-list-noborder just-space">
-            <li class="share-box">
+            <li onclick="share()" class="share-box">
               <div class="share-box-img">
                 <img src="../../image/a1.png">
               </div>
@@ -647,25 +643,12 @@
   <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript" src="../../script/aui-popup-new.js" ></script>
   <script type="text/javascript">
+      var wx;
       apiready = function(){
         var header = $api.byId('header');
         // $api.fixStatusBar(header);
         var headerPos = $api.offset(header);
-        // api.sendEvent({
-        //     name: 'toptop',
-        //     extra: {
-        //         key1: 'value1',
-        //         key2: 'value2'
-        //     }
-        // });
-        //
-        // api.addEventListener({
-        //     name: 'toptop'
-        // }, function(ret){
-        //     if( ret ){
-        //          alert( JSON.stringify( ret ) );
-        //     }
-        // });
+        wx = api.require('wx');
       };
       // 轮播图
       var slider = mui("#slider");
@@ -709,14 +692,32 @@
             }
         }
       }
+      //分享
+        var shareOut = document.getElementById('shareout');
+        //打开分享按钮
+        function shareBtn() {
+          shareOut.style.display = "block";
+        }
+        //隐藏分享按钮
+        function hideShare() {
+          var no
+          console.log(3);
+          shareOut.style.display = "none"
+        }
         //分享
-      var shareOut = document.getElementById('shareout');
-      function share() {
-        shareOut.style.display = "block"
-      }
-      function hideShare() {
-        shareOut.style.display = "none"
-      }
+        function share() {
+          wx.shareText({
+            apiKey: '',
+            scene: 'timeline',
+            text: '我分享的文本'
+        }, function(ret, err) {
+            if (ret.status) {
+                alert('分享成功');
+            } else {
+                alert(err.code);
+            }
+        });
+        }
        // 打开物品
        function openitem() {
          api.openWin({
