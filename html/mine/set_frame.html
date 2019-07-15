@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>设置</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          /*头像*/
+          .head-img{
+            width: 14vw;
+            height: 14vw;
+            background: #eee;
+            margin: 0 auto 10px;
+          }
+          /*信息*/
+          .aui-list-item-input input,.aui-list{
+            font-size: 14px;
+          }
+          .aui-list .aui-list-item-label{
+            line-height: 3.2rem;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头像 -->
+    <div onclick="getHeaderImg()" class="fs10 text-center padb30 bgcf mb5 padt10">
+      <div id="headImg" class="head-img boradius50">
+        <!-- <img src="../../image/a6.png" alt=""> -->
+      </div>
+      点击修改头像
+    </div>
+    <!-- 信息 -->
+    <ul class="aui-list aui-form-list mb5">
+        <li class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    昵称
+                </div>
+                <div class="aui-list-item-input">
+                    <input class="iptcob" type="text" placeholder="小小">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    个人签名
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" placeholder="记录此刻心情！">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    微信号
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" placeholder="请填写微信号">
+                </div>
+            </div>
+        </li>
+        <li onclick="openSetFrame('changePassword')" class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    修改密码
+                </div>
+                <div class="aui-list-item-input clearfix">
+                    <i class="iconfont fr fs14">&#xe615;</i>
+                </div>
+            </div>
+        </li>
+        <li onclick="openSetFrame('changePhone')" class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    绑定手机号
+                </div>
+                <div class="aui-list-item-input clearfix">
+                    <i class="iconfont fr fs14">&#xe615;</i>
+                    <span class="fr cogry mr2v">199****0580</span>
+                </div>
+            </div>
+        </li>
+        <li onclick="openSetFrame('changeApply')" class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    修改支付密码
+                </div>
+                <div class="aui-list-item-input clearfix">
+                    <i class="iconfont fr fs14">&#xe615;</i>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    绑定微信
+                </div>
+                <div class="aui-list-item-input clearfix">
+                    <i class="iconfont fr fs14">&#xe615;</i>
+                    <span class="fr cogry mr2v">小小</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="aui-list aui-form-list mb5">
+        <li onclick="openSetFrame('privacy')" class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    隐私设置
+                </div>
+                <div class="aui-list-item-input clearfix">
+                    <i class="iconfont fr fs14">&#xe615;</i>
+                </div>
+            </div>
+        </li>
+        <li onclick="clearChache()" class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    清除缓存
+                </div>
+                <div class="aui-list-item-input clearfix">
+                    <i class="iconfont fr fs14">&#xe615;</i>
+                    <span id="huancun" class="fr cogry mr2v">20M</span>
+                </div>
+            </div>
+        </li>
+        <li onclick="openSetFrame('about')" class="aui-list-item lh24">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    关于我们
+                </div>
+                <div class="aui-list-item-input clearfix">
+                    <i class="iconfont fr fs14">&#xe615;</i>
+                    <span class="fr cogry mr2v">当前版本2.5.21</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <!-- 退出登录 -->
+    <div class="exit text-center lh40 bgcf">退出登录</div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-dialog.js" ></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //头像
+      function getHeaderImg() {
+        api.actionSheet({
+            title: '选择',
+            cancelTitle: '取消',
+            buttons: ['拍照', '从相册选择']
+        }, function(ret, err) {
+            var sourceTypes = [
+              "camera",
+              "album"
+            ];
+            api.getPicture({
+                sourceType: sourceTypes[ret.buttonIndex-1],
+                encodingType: 'jpg',
+                mediaValue: 'pic',
+                destinationType: 'url',
+                allowEdit: true,
+                quality: 50,
+                targetWidth: 100,
+                targetHeight: 100,
+                saveToPhotoAlbum: false
+            }, function(ret, err) {
+                getImg(ret)
+            });
+        });
+      }
+      //
+      function getImg(_data) {
+          var headImg = $api.byId('headImg');
+          api.imageCache({
+              url: _data.data
+          }, function(ret, err){
+              headImg.style.background = 'url(' + ret.url  + ')';
+              headImg.style.backgroundSize = '100% 100%';
+              headImg.style.backgroundRepeat = "no-repeat";
+          });
+      }
+      //设置页面
+      function openSetFrame(type) {
+        api.openWin({
+            name: type,
+            url: './seting/' + type + '.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //清除缓存
+      function clearChache() {
+        var huancun = document.getElementById('huancun');
+        var dialog = new auiDialog();
+        dialog.alert({
+            title:"清除",
+            msg:'清除缓存？',
+            buttons:['取消','确定']
+        },function(ret){
+            if (ret.buttonIndex === 2) {
+              huancun.innerHTML = '0M';
+            }
+        })
+      }
+  </script>
+  </html>

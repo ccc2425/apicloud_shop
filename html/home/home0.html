@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>首页</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css" />
+      <style>
+      /*html,body,#header{
+        background-color: transparent;
+      }*/
+          #header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 99;
+            color: #fff;
+          }
+          .serchbox{
+            width: 100%;
+            margin-top: 5px;
+            text-align: center;
+          }
+          .ipt{
+            display: inline-block;
+            width: 80vw;
+            height: 20px;
+            background-color: #eee;
+            border-radius: 20px;
+            text-align: center;
+            line-height:20px;
+            color: #333;
+          }
+          .serchbox span{
+              vertical-align: middle;
+          }
+          .classification ul{
+            width:100%;
+            height: 1.9rem;
+            display: inline;
+            margin: 10px 0;
+            white-space: nowrap;
+            overflow-x:scroll;
+            /*overflow-x: hidden;*/
+            float:left;
+            overflow-y:hidden;
+          }
+          .classification ul li{
+            display:inline-block;
+            padding: 0 5px;
+          }
+          .classification ul::-webkit-scrollbar {
+            display:none
+          }
+
+          .bgbanner{
+            width: 100vw;
+            height: 180px;
+            background: url(../../image/banbg1.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+          }
+      </style>
+  </head>
+  <body>
+    <header id="header">
+      <div class="serchbox">
+        <span onclick="openCode()" class="pad0a2v"><i class="iconfont">&#xe686;</i></span>
+        <span class="ipt fs12"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
+        <span onclick="opebShopcar()"><i class="iconfont">&#xe61b;</i></span>
+      </div>
+      <div class="classification clearfix">
+        <ul>
+          <li class="classifiy bold" onclick="opensingle(0)">全部</li>
+          <li class="classifiy" onclick="opensingle(1)">女装</li>
+          <li class="classifiy" onclick="opensingle(2)">男装</li>
+          <li class="classifiy" onclick="opensingle(3)">鞋品</li>
+          <li class="classifiy" onclick="opensingle(4)">箱包</li>
+          <li class="classifiy" onclick="opensingle(5)">美食</li>
+          <li class="classifiy" onclick="opensingle(6)">美妆</li>
+          <li class="classifiy" onclick="opensingle(7)">母婴</li>
+          <li class="classifiy" onclick="opensingle(8)">数码家电</li>
+          <li class="classifiy" onclick="opensingle(9)">居家</li>
+          <li class="classifiy" onclick="opensingle(10)">配饰</li>
+          <li class="classifiy" onclick="opensingle(11)">文体车品</li>
+          <li class="classifiy" onclick="opensingle(12)">内衣</li>
+          <li class="classifiy" onclick="opensingle(13)">家装家纺</li>
+          <li class="classifiy" onclick="opensingle(14)">户外运动</li>
+          <li class="classifiy" onclick="opensingle(15)">其他</li>
+        </ul>
+      </div>
+    </header>
+    <div class="bgbanner">
+      <!-- <img src="../../image/t2.png" alt=""> -->
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/mui.min.js"></script>
+  <script type="text/javascript">
+  var headerH;
+  var FNScanner;
+  // 轮播图
+
+  // // 隐藏所有的一级frame
+  // function hideAllFrame() {
+  //     api.setFrameAttr({
+  //         name: 'home_frame',
+  //         hidden: true
+  //     });
+  //     api.setFrameAttr({
+  //         name: 'home_sort_frame',
+  //         hidden: true
+  //     });
+  // }
+  // 随意切换按钮
+  function randomSwitchBtn(index) {
+      var lis = $api.domAll('.classifiy');
+      var i = 0,
+          len = lis.length;
+      var curLi = lis[index];
+      for (i; i < len; i++) {
+          var thisLi = lis[i];
+          if (thisLi === curLi) {
+              $api.addCls(thisLi, 'bold');
+              continue;
+          } else {
+              if ($api.hasCls(thisLi, 'bold')) {
+                  $api.removeCls(thisLi, 'bold');
+              }
+          }
+      }
+  }
+      apiready = function(){
+        var header = $api.dom('header'); // 获取 header 标签元素
+        // var footer = $api.dom('footer'); // 获取 footer 标签元素
+        headerH = $api.fixStatusBar(header);
+        // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
+        // var footerH = $api.fixTabBar(footer);
+        api.openFrameGroup ({
+            name: 'homefroup',
+            background: '#fff',
+            scrollEnabled: false,
+            rect: {
+                 marginTop: headerH,
+                 marginBottom: 50,
+                 w: 'auto',
+                 h: 'auto'
+            },
+            index: 0,
+            frames: [{
+                name: 'home_frame',
+                url: 'home_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            },{
+                name: 'home_sort_frame',
+                url: 'home_sort_frame.html',
+                bgColor: '#fff'
+            }]
+        }, function(ret){
+            if( ret ){
+                 randomSwitchBtn(ret.index)
+            }
+        });
+
+        // 监听banner
+        api.addEventListener({
+            name: 'banner'
+        }, function(ret, err){
+            if( ret ){
+                var bIndex = ret.value.key1;
+                switch (bIndex) {
+                  case 0:
+                    header.style.background = 'url(../../image/banbg1.png)'
+                    break;
+                  case 1:
+                    header.style.background = 'url(../../image/banbg1.png)'
+                    break;
+                  case 2:
+                    header.style.background = 'url(../../image/banbg1.png)'
+                    break;
+                  case 3:
+                    header.style.background = 'url(../../image/banbg1.png)'
+                    break;
+                  default:
+
+                }
+                // console.log(header.style.background);
+                // alert(ret.value.key1)
+            }else{
+
+            }
+        });
+      };
+      function opensingle(index) {
+        if (index==0) {
+          console.log(index);
+          // hideAllFrame();
+          randomSwitchBtn(index)
+          api.openFrame({
+              name: 'home_frame',
+              url: './home_frame.html',
+              rect: {
+                  marginTop: headerH,
+                  marginBottom: 50,
+                  w: 'auto'
+              },
+              pageParam: {
+                  name: 'test'
+              },
+              bounces: false,
+          });
+        }else {
+          // hideAllFrame();
+          randomSwitchBtn(index)
+          api.openFrame({
+              name: 'home_sort_frame',
+              url: './home_sort_frame.html',
+              rect: {
+                  marginTop: headerH,
+                  marginBottom: 50,
+                  w: 'auto'
+              },
+              pageParam: {
+                  name: 'test'
+              },
+              bounces: false,
+          });
+        }
+      }
+
+      //购物车
+      function opebShopcar() {
+        api.openWin({
+            name: 'shopcar',
+            url: './shopcar.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+      //二维码
+      function openCode() {
+        api.openWin({
+            name: 'code',
+            url: './code.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+  </script>
+  </html>

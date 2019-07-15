@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>自营订单</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .iconfont{
+            left: 0
+          }
+          .active{
+            background-color: #000;
+            color: #fff;
+          }
+          .actives{
+            color: #333;
+            border-bottom: 1px solid #333;
+          }
+          .myorder>div{
+            width: 20%;
+          }
+          .fansorder>div{
+            width: 25%;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class="clearfix text-center bgcf header fs16">
+        <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
+        <!-- <img src="" alt=""> -->
+        <diiv class="fs12">
+          <span onclick="openOredr('myOrder')" class="border1c0 pad0a3v lh24 boradiusl3 active">我的订单</span><span  onclick="openOredr('fansOrder')" class="border1c0 pad0a3v lh24">粉丝订单</span>
+        </diiv>
+        <i class="iconfont fr mr2v boradiusr3">&#xe60c;</i>
+    </div>
+    <!-- 我的订单 -->
+    <div class="clearfix bgcf lh29 coaaa text-center myorder">
+        <div onclick="myOrder(0)" class="fl btn actives">全部</div>
+        <div onclick="myOrder(1)" class="fl btn">待付款</div>
+        <div onclick="myOrder(2)" class="fl btn">代发货</div>
+        <div onclick="myOrder(3)" class="fl btn">待收货</div>
+        <div onclick="myOrder(4)" class="fl btn">已收货</div>
+    </div>
+    <!-- 粉丝订单 -->
+    <div class="clearfix bgcf lh29 coaaa text-center fansorder">
+        <div onclick="fansOrder(0)" class="fl btn actives">全部</div>
+        <div onclick="fansOrder(1)" class="fl btn">已结算</div>
+        <div onclick="fansOrder(2)" class="fl btn">未结算</div>
+        <div onclick="fansOrder(3)" class="fl btn">已失效</div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+        var btnA = document.querySelectorAll('.myorder .btn');
+        var btnB = document.querySelectorAll('.fansorder .btn');
+        var lengA = btnA.length;
+        var lengB = btnA.length;
+        apiready = function(){
+          var header = $api.byId('header');
+          $api.fixStatusBar(header);
+          var headerH = $api.offset(header);
+          var framesA = [];
+          for (var i = 0; i < lengA; i++) {
+            framesA.push({
+              name:'myOrder_frame' + i;
+              url:'./myOrder_frame' + i;
+            })
+          }
+          api.openFrameGroup ({
+              name: 'myOrder',
+              background: '#fff',
+              scrollEnabled: false,
+              rect: {
+                   x: 0,
+                   y: 0,
+                   w: 'auto',
+                   h: 'auto'
+              },
+              index: 0,
+              frames: framesA;
+          }, function(ret, err){
+
+          });
+
+        };
+        //隐藏frame组
+        function hideFrameGroup() {
+          api.setFrameGroupAttr({
+              name: 'myOrder',
+              hidden: true
+          });
+          api.setFrameGroupAttr({
+              name: 'fansOrder',
+              hidden: true
+          });
+        }
+        //显示frame组
+        function showFrameGroup(type) {
+          api.setFrameGroupAttr({
+              name: type,
+              hidden: false
+          });
+        }
+        //按钮切换
+        function checkBtnA(index) {
+          var i = 0;
+          for (i; i < lengA; i++) {
+            var thisLi = btnA[i];
+            if (i===index) {
+              $api.addCls(thisLi,'actives')
+            }else {
+              if ($api.hasCls(thisLi,'actives')) {
+                $api.removeCls(thisLi,'actives')
+              }
+            }
+          }
+        }
+          function checkBtnB(index) {
+          var i = 0;
+          for (i; i < lengB; i++) {
+            var thisLi = btnB[i];
+            if (i===index) {
+              $api.addCls(thisLi,'actives')
+            }else {
+              if ($api.hasCls(thisLi,'actives')) {
+                $api.removeCls(thisLi,'actives')
+              }
+            }
+          }
+        }
+        //切换frame页面
+        function myOrder(index) {
+          checkBtnA(index);
+          hideFrameGroup();
+          showFrameGroup('myOrder')
+          api.setFrameGroupIndex({
+              name: 'myOrder',
+              index: index,
+              scroll: true
+          });
+        }
+        function fansOrder(index) {
+          checkBtnB(index)
+          hideFrameGroup();
+          showFrameGroup('fansOrder');
+          api.setFrameGroupIndex({
+              name: 'fansOrder',
+              index: index,
+              scroll: true
+          });
+        }
+        //切换frame组
+        function openOredr(type) {
+          if (type === 'myOrder') {
+            var framesA = [];
+            for (var i = 0; i < lengA; i++) {
+              framesA.push({
+                name:'myOrder_frame' + i;
+                url:'./myOrder_frame' + i;
+              })
+            }
+            api.openFrameGroup ({
+                name: 'myOrder',
+                background: '#fff',
+                scrollEnabled: true,
+                rect: {
+                     x: 0,
+                     y: 0,
+                     w: 'auto',
+                     h: 'auto'
+                },
+                index: 0,
+                frames: framesA,
+            }, function(ret, err){
+
+            });
+          }else {
+            var framesB = [];
+            for (var i = 0; i < lengA; i++) {
+              framesB.push({
+                name:'fansOrder_frame' + i;
+                url:'./fansOrder_frame' + i;
+              })
+            }
+            api.openFrameGroup ({
+                name: 'fansOrder',
+                background: '#fff',
+                scrollEnabled: true,
+                rect: {
+                     x: 0,
+                     y: 0,
+                     w: 'auto',
+                     h: 'auto'
+                },
+                index: 0,
+                frames: framesB,
+            }, function(ret, err){
+
+            });
+          }
+        }
+        //
+        function closewin() {
+          api.closeWin();
+        }
+  </script>
+  </html>

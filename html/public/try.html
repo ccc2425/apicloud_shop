@@ -17,40 +17,79 @@
     <div id="div" class="">
       111
     </div>
+    <!-- <section class="aui-content-padded"> -->
+        <span class="fl" aui-popup-for="top-right"><i>1</i></span>
+    <!-- </section> -->
+    <div class="aui-popup aui-popup-top-right" id="top-right">
+    <div class="aui-popup-arrow"></div>
+    <div class="aui-popup-content">
+        <ul class="aui-list aui-list-noborder">
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <i class="aui-iconfont aui-icon-my aui-text-warning"></i>
+                </div>
+                <div class="aui-list-item-inner aui-list-item-middle">
+                    会员中心
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <i class="aui-iconfont aui-icon-mail aui-text-info"></i>
+                </div>
+                <div class="aui-list-item-inner">
+                    会话消息
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-list-item-label-icon">
+                    <i class="aui-iconfont aui-icon-star aui-text-danger"></i>
+                </div>
+                <div class="aui-list-item-inner">
+                    我的收藏
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
-<script type="text/javascript" src="../../script/zepto.js"></script>
+<!-- <script type="text/javascript" src="../../script/zepto.js"></script>
 <script src="../../script/aui-pull-refresh.js"></script>
-<script type="text/javascript" src="../../script/aui-popup-new.js"></script>
+<script type="text/javascript" src="../../script/aui-popup-new.js"></script> -->
+<script type="text/javascript" src="../../script/aui-popup.js"></script>
 <script type="text/javascript">
-    var nowshowdiv = "";
-
-    function showhidden(div, nohidden) {
-        if (div != "") {
-            if (document.getElementById(div).style.display == "" && nohidden != "nohidden") {
-                document.getElementById(div).style.display = "none";
-                nowshowdiv = "";
-                /*当nohidden的值为 nohidden 时，div的状态保持为显示状态*/
-            } else if (nohidden == "nohidden") {
-                nowshowdiv = "";
-                setTimeout("nowshowdiv='" + div + "'", 500);
-            } else {
-                document.getElementById(div).style.display = "";
-                setTimeout("nowshowdiv='" + div + "'", 500);
-            }
-        } else {
-            if (document.getElementById(nowshowdiv)) {
-                document.getElementById(nowshowdiv).style.display = "none";
-                nowshowdiv = "";
-            }
-        }
-    }
-    document.onclick = function() {
-        showhidden("");
-    }
+    // var nowshowdiv = "";
+    //
+    // function showhidden(div, nohidden) {
+    //     if (div != "") {
+    //         if (document.getElementById(div).style.display == "" && nohidden != "nohidden") {
+    //             document.getElementById(div).style.display = "none";
+    //             nowshowdiv = "";
+    //             /*当nohidden的值为 nohidden 时，div的状态保持为显示状态*/
+    //         } else if (nohidden == "nohidden") {
+    //             nowshowdiv = "";
+    //             setTimeout("nowshowdiv='" + div + "'", 500);
+    //         } else {
+    //             document.getElementById(div).style.display = "";
+    //             setTimeout("nowshowdiv='" + div + "'", 500);
+    //         }
+    //     } else {
+    //         if (document.getElementById(nowshowdiv)) {
+    //             document.getElementById(nowshowdiv).style.display = "none";
+    //             nowshowdiv = "";
+    //         }
+    //     }
+    // }
+    // document.onclick = function() {
+    //     showhidden("");
+    // }
     apiready = function() {
 
     };
+    var popup = new auiPopup();
+    function showPopup(){
+        popup.show(document.getElementById("top-right"))
+    }
 </script>
 
 </html>

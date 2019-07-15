@@ -45,12 +45,12 @@
       function getAjax() {
         // var appids = $api.byId('app');
           api.ajax({
-            url: 'http://ntstk.xianlubang.com/apiv4/update',
+            url: 'http://ntstk.xianlubang.com/apiv4/mobilereg',
             method: 'get',
             dataType: 'json',
             headers: {
               'Content-Type': 'application/json;charset=utf-8',
-              'X-APICloud-AppId':'A6015374016925', 
+              'X-APICloud-AppId':'A6015374016925',
             },
         }, function(ret, err) {
             if (ret) {

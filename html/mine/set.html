@@ -5,19 +5,61 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>设置</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <!-- <link rel="stylesheet" type="text/css" href="../../css/aui.css"/> -->
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          body{
-
+          html,body{
+            background-color: #eee;
           }
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .header .iconfont:first-child{
+            left: 0
+          }
+          .header .iconfont:last-child{
+            right: 0
+          }
+
       </style>
   </head>
   <body>
-
+    <!-- 头部 -->
+    <div id="header" class="text-center bgcf header fs16 borderb1e">
+        <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
+        <!-- <img src="" alt=""> -->
+        设置
+        <i class="iconfont pa mr2v">&#xe627;</i>
+    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
-
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        api.openFrame({
+            name: 'set_frame',
+            url: './set_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false
+        });
       };
+      //关闭
+      function closewin() {
+        api.closeWin({
+            name: 'set'
+        });
+      }
   </script>
   </html>

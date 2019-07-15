@@ -59,8 +59,12 @@
 
           .bgbanner{
             width: 100vw;
-            height: 160px;
+            height: 180px;
+            background: url(../../image/banbg1.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
           }
+
       </style>
   </head>
   <body>
@@ -91,7 +95,7 @@
         </ul>
       </div>
     </header>
-    <div class="bgbanner bgcp">
+    <div class="bgbanner">
       <!-- <img src="../../image/t2.png" alt=""> -->
     </div>
   </body>
@@ -215,16 +219,16 @@
                 var bIndex = ret.value.key1;
                 switch (bIndex) {
                   case 0:
-                    header.style.background = "#d81e06"
+                    header.style.background = 'url(../../image/banbg1.png)'
                     break;
                   case 1:
-                    header.style.background = "#e8989a"
+                    header.style.background = 'url(../../image/banbg2.png)'
                     break;
                   case 2:
-                    header.style.background = "#f3ca7e"
+                    header.style.background = 'url(../../image/banbg1.png)'
                     break;
                   case 3:
-                    header.style.background = "#d4237a"
+                    header.style.background = 'url(../../image/banbg2.png)'
                     break;
                   default:
 
@@ -237,40 +241,46 @@
         });
       };
       function opensingle(index) {
-        if (index==0) {
-          console.log(index);
-          // hideAllFrame();
-          randomSwitchBtn(index)
-          api.openFrame({
-              name: 'home_frame',
-              url: './home_frame.html',
-              rect: {
-                  marginTop: headerH,
-                  marginBottom: 50,
-                  w: 'auto'
-              },
-              pageParam: {
-                  name: 'test'
-              },
-              bounces: false,
-          });
-        }else {
-          // hideAllFrame();
-          randomSwitchBtn(index)
-          api.openFrame({
-              name: 'home_sort_frame',
-              url: './home_sort_frame.html',
-              rect: {
-                  marginTop: headerH,
-                  marginBottom: 50,
-                  w: 'auto'
-              },
-              pageParam: {
-                  name: 'test'
-              },
-              bounces: false,
-          });
-        }
+        randomSwitchBtn(index)
+        api.setFrameGroupIndex({
+            name: 'homefroup',
+            index: index,
+            scroll: true
+        });
+        // if (index==0) {
+        //   console.log(index);
+        //   // hideAllFrame();
+        //   randomSwitchBtn(index)
+        //   api.openFrame({
+        //       name: 'home_frame',
+        //       url: './home_frame.html',
+        //       rect: {
+        //           marginTop: headerH,
+        //           marginBottom: 50,
+        //           w: 'auto'
+        //       },
+        //       pageParam: {
+        //           name: 'test'
+        //       },
+        //       bounces: false,
+        //   });
+        // }else {
+        //   // hideAllFrame();
+        //   randomSwitchBtn(index)
+        //   api.openFrame({
+        //       name: 'home_sort_frame',
+        //       url: './home_sort_frame.html',
+        //       rect: {
+        //           marginTop: headerH,
+        //           marginBottom: 50,
+        //           w: 'auto'
+        //       },
+        //       pageParam: {
+        //           name: 'test'
+        //       },
+        //       bounces: false,
+        //   });
+        // }
       }
 
       //购物车

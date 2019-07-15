@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .money>div{
+            width: 33%;
+            border-right: 1px solid #eee;
+          }
+          .money>div:last-child{
+            border-right: 0;
+          }
+          .get-drawal{
+            width: 90vw;
+            margin: 30px auto;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="text-center bgcr lh24 pad30a3v">
+          <div class="fs20">
+            ￥0.44
+          </div>
+          <div class="fs10">
+            我的账户余额
+          </div>
+      </div>
+      <div class="just-space text-center lh20 money bgcf">
+        <div onclick="tip(0)" class="pad10a0 fs12">
+          <div>提现中<i class="iconfont cogry fs12 ml1v">&#xe62a;</i></div>
+          <div class="cored fs16">
+            0.00
+          </div>
+        </div>
+        <div onclick="tip(1)" class="pad10a0 fs12">
+          <div>本月结算预估<i class="iconfont cogry fs12 ml1v">&#xe62a;</i></div>
+          <div class="cored fs16">
+            ￥2.7
+          </div>
+        </div>
+        <div onclick="tip(2)" class="pad10a0 fs12">
+          <div>本月付款预估<i class="iconfont cogry fs12 ml1v">&#xe62a;</i></div>
+          <div class="cored fs16">
+            ￥0
+          </div>
+        </div>
+      </div>
+      <div class="text-center get-drawal bgcr lh40 boradius30">
+          前往提现
+      </div>
+      <div class="mt30 lh35 text-center">
+        为你推荐
+      </div>
+      <div class="bgcf pad5a3v text-center fs12 coaaa lh24">
+        <div class="">今日区块币涨幅+0.0352%</div>
+        <div class="">今日区块币价格7.09020798/个</div>
+        <div class="bgcr lh40 fs14 mt5 mb5">赶快去兑换吧！</div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //提示
+      function tip(index) {
+        var tit;
+        var text;
+        switch (index) {
+          case 0:
+            tit="提取中";
+            text="已经提取，但是还未实际到账";
+            break;
+          case 1:
+            tit="本月结算预估";
+            text="本月所有已确认的订单";
+            break;
+          case 2:
+            tit="本月付款预估";
+            text="本月所有已付款的订单佣金";
+            break;
+          default:
+        }
+        api.alert({
+            title: tit,
+            msg: text,
+        }, function(ret, err){
+        });
+      }
+  </script>
+  </html>

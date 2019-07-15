@@ -5,19 +5,104 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>消息</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          body{
-
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .iconfont{
+            left: 0
+          }
+          /**/
+          .tab{
+            width: 44%;
+            margin: 0 3%;
+            line-height: 36px;
+            text-align: center;
+          }
+          .active{
+            border-bottom: 1px solid #000;
           }
       </style>
   </head>
   <body>
+    <!-- 头部 -->
+    <div id="header" class="clearfix text-center bgcf header fs16 borderb1e">
+        <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
+        消息
+    </div>
+    <div class="clearfix">
+      <div onclick="openNewsFrame(0)" tapmode class="fl tab active">
+        系统通知
+      </div>
+      <div onclick="openNewsFrame(1)" tapmode class="fl tab">
+        我的消息
+      </div>
+    </div>
 
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
+      var headerH;
       apiready = function(){
+          var header = $api.byId('header');
+          $api.fixStatusBar(header);
+          headerH = $api.offset(header);
+          api.openFrameGroup ({
+              name: 'newsGroup',
+              background: '#eee',
+              scrollEnabled: true,
+              rect: {
+                   x: 0,
+                   y: headerH.h + 37,
+                   w: 'auto',
+                   h: 'auto'
+              },
+              index: 0,
+              frames: [{
+                  name: 'news_frame0',
+                  url: 'news_frame0.html',
+                  bgColor: '#eee'
+              },{
+                  name: 'news_frame1',
+                  url: 'news_frame1.html',
+                  bgColor: '#eee'
+              }]
+          }, function(ret, err){
+              checkTab(ret.index)
+          });
 
       };
+      //按钮切换
+      function checkTab(_index) {
+        var tabs = document.getElementsByClassName('tab');
+        var curLi = tabs[_index];
+        var i = 0;
+        for (i; i < tabs.length; i++) {
+          var thisLi = tabs[i];
+          if (thisLi === curLi) {
+            $api.addCls(thisLi, 'active');
+          } else {
+            if ($api.hasCls(thisLi,'active')) {
+              $api.removeCls(thisLi, 'active');
+            }
+          }
+        }
+      }
+      //打开页面
+      function openNewsFrame(_index) {
+        checkTab(_index)
+        api.setFrameGroupIndex({
+            name: 'newsGroup',
+            index: _index,
+            scroll: true,
+        });
+      }
+      //关闭
+      function closewin() {
+        api.closeWin();    
+      }
   </script>
   </html>

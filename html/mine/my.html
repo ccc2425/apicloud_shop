@@ -5,19 +5,373 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>我的</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          body{
-
+          html,body{
+            background-color: #eee;
+          }
+          /*头部*/
+          #header{
+            background: url(../../image/bg.png) no-repeat;
+          }
+          .header{
+            height: 120px;
+          }
+          .aui-list .aui-list-item,.aui-list{
+            background: inherit;
+          }
+          .upgrade{
+            right: 0;
+            top: 50%;
+            padding: 0 2vw;
+            transform: translateY(-50%);
+            background-color: rgba(51,51,51,.3);
+            border-radius: 30px 0 0 30px;
+            line-height: 20px;
+          }
+          .aui-list .aui-list-item-media{
+            padding: 0.5rem 0.75rem 0.5rem 0.25rem
+          }
+          .weixin{
+            bottom: 5px;
+            width: 3.8rem;
+            text-align: center;
+            line-height: 12px;
+            font-size: .6rem;
+          }
+          /*信息*/
+          .inform{
+            top: -15px;
+            left: 2vw;
+          }
+          /*签到*/
+          .sign-img{
+            width: 25vw;
+            height: 44px;
+          }
+          p{
+            font-size: 12px;
+          }
+          /**/
+          .aui-list-item-arrow:before{
+            width: .6rem;
+            height: .6rem;
+          }
+          /*宫格*/
+          .aui-grid .aui-grid-label{
+            font-size: 12px;
+          }
+          .aui-list .aui-list-item:active {
+              background-color: inherit;
           }
       </style>
   </head>
   <body>
-    <div>111</div>
+    <!-- 头部 -->
+    <div id="header" class="cowhl">
+      <div class="header">
+        <div class="text-right lh29">
+          <i onclick="openNews()" class="iconfont mr3v fs20">&#xe628;</i><i onclick="openSet()" class="iconfont mr3v fs20">&#xe60b;</i>
+        </div>
+        <div class="aui-content aui-margin-b-15">
+          <div class="aui-list aui-media-list">
+            <div class="aui-list-item aui-list-item-middle">
+              <div class="aui-media-list-item-inner">
+                <div onclick="openSet()" class="aui-list-item-media" style="width: 4.8rem;">
+                  <img src="../../image/a1.png" class="aui-img-round aui-list-img-sm">
+                  <span class="pa weixin bgcshy boradius30">填写微信号</span>
+                </div>
+                <div class="aui-list-item-inner">
+                  <div class="aui-list-item-text">
+                    <div class="aui-list-item-title cowhl fs14">追风人<span class="bgcdai fs10 pad0a1v boradius30 ver-middle ml1v">代理商</span></div>
+                  </div>
+                  <div class="aui-list-item-text coshw fs10">
+                    <span>邀请码：<span>47385</span><i></i></span>
+                  </div>
+                  <div class="pa cowhl upgrade">
+                    <span>我要升级</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 信息 -->
+    <div class="pr wid96 boradius5 inform bgcf">
+      <div class="bgcdai pr pad10a5v">
+        <div class="">
+          <div class="">
+            <span class="mr2v">账户余额</span><span>￥0.44</span>
+          </div>
+          <div class="fs11 cogry">
+            <span>每月28号提现<i class="iconfont fs11">&#xe615;</i></span>
+          </div>
+        </div>
+        <div onclick="withdrawal()" class="pa fs12 top50r0 mr2v">
+            <span class="bgcshy boradius30 pad0a2v lh20">一键提现<i class="iconfont fs12">&#xe615;</i></span>
+        </div>
+      </div>
+      <div onclick="openEarnings()" class="just-space text-center fs14 pad10a5v lh22">
+        <div>
+          <div class="fs12">￥<span class="fs16">0</span></div>
+          <div class="">
+            今日预估
+          </div>
+        </div>
+        <div>
+          <div class="fs12">￥<span class="fs16">0</span></div>
+          <div class="">
+            本月预估
+          </div>
+        </div>
+        <div>
+          <div class="fs12">￥<span class="fs16">2.94</span></div>
+          <div class="">
+            上月预估
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 签到 -->
+    <div onclick="openSignIn()" class="pad10a5v clearfix bgcf wid96 mar10au boradius5">
+      <img src="../../image/b9.png" alt="">
+      <!-- <div class="sign-img fl">
+        <img src="../../image/b7.png" alt="">
+      </div>
+      <div class="fr text-right">
+        <div class="fs16 cored lh29">签到送集分宝</div>
+        <div class="fs10 co666">连续签到还会得到额外奖励哦</div>
+      </div> -->
+    </div>
+    <!-- 订单 -->
+    <div class="bgcf wid96 mar10au boradius5">
+      <div class="pad10a5v borderb1e clearfix">
+        <span class="bold">自营商城订单</span><span class="fr fs13 co666">全部订单</span>
+      </div>
+      <div class="text-center just-space fs12 pad10a5v lh20">
+        <div class="mt10">
+          <i class="iconfont cored fs32">&#xe604;</i>
+          <p>待付款</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont cored fs32">&#xe60a;</i>
+          <p>待发货</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont cored fs32">&#xe68e;</i>
+          <p>待收货</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont cored fs32">&#xe628;</i>
+          <p>已收货</p>
+        </div>
+      </div>
+    </div>
+    <div class="bgcf wid96 mar10au boradius5">
+      <div class="pad10a5v borderb1e clearfix">
+        <span class="bold">我的订单</span><span class="fr fs13 co666">查看全部</span>
+      </div>
+      <div class="text-center just-space fs12 pad10a5v lh20">
+        <div class="mt10">
+          <i class="iconfont fs32">&#xe640;</i>
+          <p>全部订单</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont fs32">&#xe656;</i>
+          <p>已付款</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont fs32">&#xe634;</i>
+          <p>已结算</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont fs32">&#xe622;</i>
+          <p>已失效</p>
+        </div>
+      </div>
+    </div>
+    <!-- 升级合伙人 -->
+    <div class="aui-content bgcf wid96 mar10au pad10a5v boradius5">
+      <div class="aui-list aui-media-list">
+          <div class="aui-list-item aui-list-item-middle pad0">
+            <img src="../../image/b10.png">
+              <!-- <div class="aui-media-list-item-inner">
+                  <div class="sign-img mr2v">
+                      <img src="../../image/demo5.png" class="aui-img-round aui-list-img-sm">
+                  </div>
+                  <div class="aui-list-item-inner aui-list-item-arrow">
+                      <div class="aui-list-item-text">
+                          <div class="aui-list-item-title fs10r">升级合伙人·让你轻松赚钱</div>
+                      </div>
+                      <div class="aui-list-item-text fs9r">
+                          自购省钱，邀请好友赚钱
+                      </div>
+                  </div>
+              </div> -->
+          </div>
+      </div>
+    </div>
+    <!-- 代理中心 -->
+    <div class="bgcf wid96 mar10au boradius5">
+      <div class="pad10a5v borderb1e clearfix">
+        <span class="bold">代理商中心</span><span class="fr fs13 co666">查看更多</span>
+      </div>
+      <div class="text-center just-space fs12 pad10a5v lh20">
+        <div class="mt10">
+          <i class="iconfont fs32">&#xe610;</i>
+          <p>收益报表</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont fs32">&#xe626;</i>
+          <p>粉丝订单</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont fs32">&#xe654;</i>
+          <p>团队粉丝</p>
+        </div>
+        <div class="mt10">
+          <i class="iconfont fs32">&#xe630;</i>
+          <p>钱包</p>
+        </div>
+      </div>
+    </div>
+    <!-- 必备工具 -->
+    <div class="bgcf wid96 mar10au boradius5">
+      <div class="pad10a5v borderb1e">
+        <span class="bold">必备工具</span>
+      </div>
+      <div class="aui-grid">
+        <div class="aui-row">
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a21.png" alt="">
+                </div>
+                <div class="aui-grid-label">邀请分享</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a22.png" alt="">
+                </div>
+                <div class="aui-grid-label">设置自定义密令</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a23.png" alt="">
+                </div>
+                <div class="aui-grid-label">我的足迹</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a24.png" alt="">
+                </div>
+                <div class="aui-grid-label">我的收藏</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a25.png" alt="">
+                </div>
+                <div class="aui-grid-label">新手教程</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a26.png" alt="">
+                </div>
+                <div class="aui-grid-label">消息通知</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a27.png" alt="">
+                </div>
+                <div class="aui-grid-label">帮助中心</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a28.png" alt="">
+                </div>
+                <div class="aui-grid-label">商家中心</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a29.png" alt="">
+                </div>
+                <div class="aui-grid-label">运营商升级</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a30.png" alt="">
+                </div>
+                <div class="aui-grid-label">找回订单</div>
+            </div>
+            <div class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a31.png" alt="">
+                </div>
+                <div class="aui-grid-label">淘宝授权</div>
+            </div>
+        </div>
+    </div>
+    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
-
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        // var headerH = $api.offset(header);
       };
+      // 设置
+      function openSet() {
+          api.openWin({
+              name: 'set',
+              url: './set.html',
+              pageParam: {
+                  name: 'test'
+              }
+          });
+      }
+      //消息
+      function openNews() {
+          api.openWin({
+              name: 'news',
+              url: './news.html',
+              pageParam: {
+                  name: 'test'
+              }
+          });
+      }
+      //提现
+      function withdrawal() {
+        api.openWin({
+            name: 'withdrawal',
+            url: './withdrawal.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //收益报表
+      function openEarnings() {
+        api.openWin({
+            name: 'earnings',
+            url: './earnings.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //签到
+      function openSignIn() {
+        api.openWin({
+            name: 'signIn',
+            url: '../public/signIn.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
   </script>
   </html>

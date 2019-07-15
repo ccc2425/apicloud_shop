@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>收益报表</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,body{
+              background-color: #eee;
+          }
+          .inform{
+            margin: 0 auto;
+            box-shadow: 0px 0px 10px #CB4540;
+          }
+          /**/
+          .tab{
+            width: 25%;
+          }
+          .active{
+            border-bottom: 1px solid #000;
+          }
+          .alerts{
+            display: none;
+            z-index: 9;
+            width: 25vw;
+            top: 56px;
+            right: 2vw;
+            font-size: 13px;
+            background-color: #fff;
+            line-height: 24px;
+            border: 1px solid #eee;
+          }
+          .alerts>div{
+            border-bottom: 1px solid #eee;
+          }
+          .alerts>div:last-child{
+            border-bottom: 0;
+          }
+          .trble{
+            position: absolute;
+            top: -5px;
+            right: 4vw;
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+            border-bottom: 0!important;
+            border-top: 1px solid #ddd;
+            border-left: 1px solid #ddd;
+            transform: rotate(45deg);
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 信息 -->
+    <div class="bgcf pad10a0">
+      <div class="wid90 boradius5 inform bgcrs">
+        <div class="pr pad10a5v0">
+          <div class="lh24 padb10 borderb1e">
+            <div class="ml1v">
+              <span class="fs12">账户余额</span>
+            </div>
+            <div class="fs16">
+              ￥<span class="fs24">0.44</span>
+            </div>
+          </div>
+          <div class="pa fs12 top50r0 mr4v">
+              <span class="bgcbcr boradius30 pad0a3v lh20"><i class="iconfont fs12">&#xe769;</i>立即提现</span>
+          </div>
+        </div>
+        <div class="just-between text-center fs14 pad10a5v lh22">
+          <div>
+            <div class="fs12 cogry">累计收入(元)</div>
+            <div class="fs16">0.44</div>
+          </div>
+          <div>
+            <div class="fs12 cogry">已提现(元)</div>
+            <div class="fs16">0.00</div>
+          </div>
+          <div>
+            <div class="fs12 cogry">未结算(元)</div>
+            <div class="fs16">2.70</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 收益 -->
+    <div class="bgce">
+      <div class="just-space text-center lh35 fs13 bgcf">
+        <div onclick="checkTab(0)" class="tab active">今日收益</div>
+        <div onclick="checkTab(1)" class="tab">昨日收益</div>
+        <div onclick="checkTab(2)" class="tab">本月收益</div>
+        <div onclick="checkTab(3)" class="tab">上月收益</div>
+      </div>
+      <div class="pad5a2v">
+        <div class="lh35">
+          结算收入：￥<span class="fs16">0.00</span>
+        </div>
+        <div class="pr pad10a3v bgcf boradius5">
+          <div class="borderb1e lh35 pad10a1v">
+            <span>我的订单收益</span><span onclick="lookAll()" class="fr">全部<i class="iconfont ml1v fs14">&#xe756;</i></span>
+          </div>
+          <div class="pa text-center alerts">
+            <div class="trble"></div>
+            <div>全部</div>
+            <div>淘宝</div>
+            <div>京东</div>
+            <div>拼多多</div>
+            <div>本地O2O</div>
+            <div>自营商城</div>
+          </div>
+          <div class="pad10a1v borderb1e">
+            <div class="just-space text-center lh24 mb10">
+              <div class="fs12">
+                <div>付款笔数<i class="iconfont cogry fs12 ml1v">&#xe62a;</i></div>
+                <div class="fs16">
+                  0
+                </div>
+              </div>
+              <div class="fs12">
+                <div>预估收益<i class="iconfont cogry fs12 ml1v">&#xe62a;</i></div>
+                <div class="fs16">
+                  ￥0.00
+                </div>
+              </div>
+            </div>
+            <div>团队订单收益</div>
+          </div>
+          <div class="pad10a1v0">
+            <div class="just-space text-center lh24">
+              <div class="fs12">
+                <div>付款笔数<i class="iconfont cogry fs12 ml1v">&#xe62a;</i></div>
+                <div class="fs16">
+                  0
+                </div>
+              </div>
+              <div class="fs12">
+                <div>预估收益<i class="iconfont cogry fs12 ml1v">&#xe62a;</i></div>
+                <div class="fs16">
+                  ￥0.00
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lh40 bgcf mb10 pad0a3v">余额明细</div>
+      <div class="lh40 bgcf mb10 pad0a3v">提现记录</div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //切换
+      function checkTab(index) {
+        checkTabBtn(index)
+      }
+      //切换tab
+      function checkTabBtn(index) {
+        var tabs = document.getElementsByClassName('tab');
+        var i = 0;
+        var tabsLeng = tabs.length;
+        for (i; i < tabsLeng; i++) {
+          if (i === index) {
+            $api.addCls(tabs[i], 'active');
+          } else {
+            if ($api.hasCls(tabs[i],'active')) {
+              $api.removeCls(tabs[i],'active');
+            }
+          }
+        }
+      }
+      //查看全部
+      var alerts = document.getElementsByClassName('alerts');
+      function lookAll() {
+        if (alerts[0].style.display === "block") {
+          alerts[0].style.display = "none";
+        }else {
+          alerts[0].style.display = "block";
+        }
+      }
+
+      // var scheduleBox = document.querySelector('#schedule-box')
+  </script>
+  </html>

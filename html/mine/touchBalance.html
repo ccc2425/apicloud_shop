@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>余额明细</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .iconfont{
+            left: 0
+          }
+          /**/
+          .tab{
+            width: 44%;
+            margin: 0 3%;
+            line-height: 36px;
+            text-align: center;
+          }
+          .active{
+            color: #d81e06;
+            border-bottom: 1px solid #d81e06;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class="clearfix text-center bgcf header fs16">
+        <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
+        <!-- <img src="" alt=""> -->
+        账户明细
+    </div>
+    <div class="clearfix bgcf">
+      <div onclick="openTouchBalanceFrame(0)" tapmode class="fl tab active">
+        余额明细
+      </div>
+      <div onclick="openTouchBalanceFrame(1)" tapmode class="fl tab">
+        提现记录
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+        var headerH;
+        apiready = function(){
+            var header = $api.byId('header');
+            $api.fixStatusBar(header);
+            headerH = $api.offset(header);
+            api.openFrameGroup ({
+                name: 'touchBalanceGroup',
+                background: '#eee',
+                scrollEnabled: true,
+                rect: {
+                     x: 0,
+                     y: headerH.h + 37,
+                     w: 'auto',
+                     h: 'auto'
+                },
+                index: 0,
+                frames: [{
+                    name: 'touchBalance_frame0',
+                    url: 'touchBalance_frame0.html',
+                    bgColor: '#eee'
+                },{
+                    name: 'touchBalance_frame1',
+                    url: 'touchBalance_frame1.html',
+                    bgColor: '#eee'
+                }]
+            }, function(ret, err){
+                checkTab(ret.index)
+            });
+
+        };
+        //按钮切换
+        function checkTab(_index) {
+          var tabs = document.getElementsByClassName('tab');
+          var curLi = tabs[_index];
+          var i = 0;
+          for (i; i < tabs.length; i++) {
+            var thisLi = tabs[i];
+            if (thisLi === curLi) {
+              $api.addCls(thisLi, 'active');
+            } else {
+              if ($api.hasCls(thisLi,'active')) {
+                $api.removeCls(thisLi, 'active');
+              }
+            }
+          }
+        }
+        //打开页面
+        function openTouchBalanceFrame(_index) {
+          checkTab(_index)
+          api.setFrameGroupIndex({
+              name: 'touchBalanceGroup',
+              index: _index,
+              scroll: true,
+          });
+        }
+        //关闭
+        function closewin() {
+          api.closeWin();
+        }
+</script>
+</html>

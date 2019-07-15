@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/aui-pull-refresh.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+        /*.bgbanner{
+          position: absolute;
+          top: -50px;
+        }*/
+        html,body{
+          background: #fff;;
+        }
+        /*banner图*/
+          #slider img{
+            width: 100%;
+            height: 160px;
+          }
+          .mui-slider-indicator .mui-indicator{
+            width: 3px;
+            height: 3px;
+            margin: 1px;
+          }
+          .mui-table-view-cell.mui-collapse .mui-collapse-content{
+            display: block;
+          }
+          .classfial-list{
+            font-size: 10px
+          }
+          .classfial-list li{
+            float: left;
+            width: 20%;
+            text-align: center;
+          }
+          .classfial-list li img{
+            display: block;
+            width: 64%;
+            border-radius: 50%;
+            margin: 5px auto;
+          }
+          .home-banner{
+            /*width: 80vw;
+            padding: 0 10vw*/
+          }
+          /*分类*/
+          /*广告banner*/
+          #sliderad img{
+            height: 80px;
+            width: 80%;
+            margin: 20px 10% 5px;
+          }
+          /*头条*/
+          .headlines{
+            padding: 0 3vw;
+            font-size: 12px;
+          }
+          .headlines-text{
+            margin-right: 3vw;
+          }
+          #mooc {
+           width: 100%;
+           text-align: left;
+           line-height: 14px;
+          }
+          /* 中间样式 */
+          #moocBox {
+           height: 14px;
+           overflow: hidden; /* 这个一定要加，超出的内容部分要隐藏，免得撑高中间部分 */
+          }
+          #mooc ul li {
+           height: 14px;
+           line-height: 14px;
+          }
+          #mooc ul li span {
+           float: right;
+           color: #999;
+          }
+          /*活动*/
+          .activenews{
+            padding: 5px 2%;
+          }
+          .earlypunch{
+            width: 100%;
+            height: 100px;
+          }
+          .actcoupon{
+            display: flex;
+            flex-direction: row;
+          }
+          .actcoupon>div{
+            width: 48vw;
+            height: 140px
+          }
+          .actcoupon>div>div{
+            width: 100%;
+            height: 67px
+          }
+          .activelist{
+            display: flex;
+            flex-direction: row;
+          }
+          .activelist div{
+            flex: 1;
+            height: 90px;
+            margin-right: 2vw;
+            border-radius: 8px;
+            overflow: hidden;
+          }
+          .activelist div:last-child{
+            margin-right: 0;
+          }
+          /*优选专场*/
+          .tit-img-box{
+            width: 34vw;
+            height: 100%;
+            margin: auto;
+          }
+          .tit-img{
+            width: 20%;
+            height: 36px;
+          }
+          .tit2{
+            font-size: 12px;
+            color: #ccc;
+          }
+          .yxzc{
+            display: flex;
+            flex-direction: row;
+          	background: #fff;
+          }
+          .yxzc div{
+            flex: 1;
+            height: 120px;
+            margin-right: 2vw;
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+          }
+          .yxzc div:last-child{
+            margin-right: 0;
+          }
+          .optimization-box div{
+            float: left;
+            width: 47vw;
+            height: 100px;
+            margin-top: 3px;
+            margin-bottom: 3px;
+          }
+          .optimization-box div:nth-child(2n-1){
+            margin-right: 2vw;
+          }
+          /*美妆*/
+          .beauty{
+            width: 100vw;
+            height: 100px;
+          }
+          .beauty-list{
+            width: 100%;
+            height: 160px;
+            box-sizing: border-box;
+            padding: 10px 0 10px 2vw;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+          }
+          .beauty-list::-webkit-scrollbar {
+            display:none
+          }
+          .beauty-list-box{
+            display: inline-block;
+            width: 30vw;
+            height: 100%;
+            margin-right: 2vw;
+          }
+          .beauty-list-img{
+            width: 100%;
+            height: 70%;
+          }
+          .beauty-list-price span:first-child{
+            background: red;
+            color: #fff;
+            font-size: 10px;
+            padding: 0 5px;
+            height: 16px;
+            line-height: 16px;
+            margin-right: 1vw;
+            border-radius: 3px;
+          }
+          .beauty-list-price span:last-child{
+            color: red;
+            font-size: 12px;
+            height: 18px;
+            line-height: 18px;
+          }
+          /*精选好券*/
+          .vouchers-list{
+            margin-bottom: 10px;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 100vw;
+            padding: 1vh 1vw;
+            background-color: #fff;
+          }
+          .vouchers-list:last-child{
+            margin-bottom: 0;
+          }
+          .vouchers-list-left{
+            float: left;
+            position: relative;
+            width: 32vw;
+            height: 120px;
+            margin-right: 3vw;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            float: left;
+            width: 63vw;
+            padding: 10px 0;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 4vw;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: top;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .vouchers-list4 span{
+            color: #fff;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 10px;
+          }
+          .vouchers-list4 span:first-child{
+            background-color: red;
+          }
+          .vouchers-list4 span:last-child{
+            background-color: grey;
+          }
+          /**/
+          .bottom-line-img{
+            display: inline-block;
+            width: 3vw;
+            height: 3vw;
+          }
+          .mui-slider-item>a{
+            width: 95%;
+            margin: auto;
+          }
+      </style>
+  </head>
+  <body>
+    <section class="aui-refresh-content">
+        <!-- <div class="bgbanner">
+          <img src="../../image/t2.png" alt="">
+        </div> -->
+        <!-- 轮播图 -->
+        <div id="slider" class="mui-slider" >
+          <div class="mui-slider-group mui-slider-loop">
+            <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 第一张 -->
+            <div class="mui-slider-item">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 第二张 -->
+            <div class="mui-slider-item">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 第三张 -->
+            <div class="mui-slider-item">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 第四张 -->
+            <div class="mui-slider-item">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+            <div class="mui-slider-item mui-slider-item-duplicate">
+              <a href="#">
+                <img src="../../image/ban1.png">
+              </a>
+            </div>
+          </div>
+          <div class="mui-slider-indicator">
+            <div class="mui-indicator mui-active"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+            <div class="mui-indicator"></div>
+          </div>
+        </div>
+        <!-- 分类轮播 -->
+        <div class="pr bgcf">
+          <div id="aui-slide2">
+              <div class="aui-slide-wrap" >
+                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                    <ul>
+                      <li>
+                        <ul class="classfial-list clearfix">
+                          <li onclick="openmall(0)"><img src="../../image/a1.png" alt=""><span>淘宝</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a2.png" alt=""><span>拼多多</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a3.png" alt=""><span>京东</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a4.png" alt=""><span>o2o</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a5.png" alt=""><span>早起打卡</span></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <ul class="classfial-list clearfix">
+                          <li onclick="openmall(0)"><img src="../../image/a6.png" alt=""><span>天猫</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a7.png" alt=""><span>天猫国际</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a8.png" alt=""><span>抖券</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a9.png" alt=""><span>视频单</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a10.png" alt=""><span>天猫超市</span></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                    <ul>
+                      <li>
+                        <ul class="classfial-list clearfix">
+                          <li onclick="openmall(0)"><img src="../../image/a1.png" alt=""><span>o2o商家中心</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a2.png" alt=""><span>超市入口</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a3.png" alt=""><span>地区代理</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a4.png" alt=""><span>推手中心</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a5.png" alt=""><span>app拉新</span></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <ul class="classfial-list clearfix">
+                          <li onclick="openmall(0)"><img src="../../image/a6.png" alt=""><span>618红包</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a7.png" alt=""><span>出单排行</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a8.png" alt=""><span>京喜红包</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a9.png" alt=""><span>测试专用</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a10.png" alt=""><span>淘礼金</span></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                    <ul>
+                      <li>
+                        <ul class="classfial-list clearfix">
+                          <li onclick="openmall(0)"><img src="../../image/a1.png" alt=""><span>信用卡</span></li>
+                          <li onclick="openmall(0)"><img src="../../image/a2.png" alt=""><span>省钱一元购</span></li>
+                          <!-- <li><img src="../../image/taobao.jpg" alt=""><span>京东</span></li>
+                          <li><img src="../../image/taobao.jpg" alt=""><span>o2o</span></li>
+                          <li><img src="../../image/taobao.jpg" alt=""><span>早起打卡</span></li> -->
+                        </ul>
+                      </li>
+                      <!-- <li>
+                        <ul class="classfial-list clearfix">
+                          <li><img src="../../image/taobao.jpg" alt=""><span>淘宝</span></li>
+                          <li><img src="../../image/taobao.jpg" alt=""><span>拼多多</span></li>
+                          <li><img src="../../image/taobao.jpg" alt=""><span>京东</span></li>
+                          <li><img src="../../image/taobao.jpg" alt=""><span>o2o</span></li>
+                          <li><img src="../../image/taobao.jpg" alt=""><span>早起打卡</span></li>
+                        </ul>
+                      </li> -->
+                    </ul>
+                  </div>
+              </div>
+              <div class="aui-slide-page-wrap"><!--分页容器--></div>
+          </div>
+        </div>
+        <!-- 广告轮播图 -->
+        <div id="aui-slide3">
+            <div class="aui-slide-wrap" >
+                <div onclick="openactive(0)" class="aui-slide-node bg-dark">
+                    <img src="../../image/l1.png" />
+                </div>
+                <div onclick="openactive(1)" class="aui-slide-node bg-dark">
+                    <img src="../../image/l1.png" />
+                </div>
+                <div onclick="openactive(2)" class="aui-slide-node bg-dark">
+                    <img src="../../image/l1.png" />
+                </div>
+            </div>
+            <div class="aui-slide-page-wrap no"><!--分页容器--></div>
+        </div>
+        <!-- 头条 -->
+        <div class="headlines clearfix bgcf">
+          <div class="headlines-text fl">
+              挖券头条
+          </div>
+          <div id="mooc fl">
+            <div id="moocBox">
+             <ul>
+              <li><span>1</span></li>
+              <li><span>2</span></li>
+              <li><span>3</span></li>
+              <li><span>4</span></li>
+              <li><span>5</span></li>
+              <li><span>6</span></li>
+              <li><span>7</span></li>
+              <li><span>8</span></li>
+              <li><span>9</span></li>
+             </ul>
+            </div>
+          </div>
+        </div>
+        <!-- 活动 -->
+        <div class="activenews bgcf">
+          <div onclick="openGetup()" class="earlypunch boradius mb5">
+              <img src="../../image/b1.png" alt="">
+          </div>
+          <div class="actcoupon mb5">
+              <div onclick="living()" class="mr2v boradius">
+                <img src="../../image/b2.png" alt="">
+              </div>
+              <div>
+                <div onclick="openzero()" class="mb5 boradius">
+                  <img src="../../image/b3.png" alt="">
+                </div>
+                <div class="boradius">
+                  <img src="../../image/b4.png" alt="">
+                </div>
+              </div>
+          </div>
+          <div class="activelist">
+            <div><img src="../../image/b5.png"></div>
+            <div><img src="../../image/b6.png"></div>
+            <div><img src="../../image/b7.png"></div>
+            <div onclick="openRedBag()"><img src="../../image/b8.png"></div>
+          </div>
+        </div>
+        <!-- 优选专场 -->
+        <div class="optimization pad5a2b bgcf">
+              <h4 class="optimization-tit text-center">
+                <div class="tit-img-box">
+                  <img src="../../image/tit1.png" alt="">
+                </div>
+    						<!-- <img class="tit-img" src="../public/img/index/icon1.png" />
+    						<span>优选专场</br><span class="tit2">热门活动,发现更多好货</span></span>
+    						<img class="tit-img" src="../public/img/index/icon1.png" /> -->
+    					</h4>
+    					<div class="yxzc mb5">
+    						<div onclick="openBeauty()">
+                  <img src="../../image/c1.png" />
+                </div>
+    						<div onclick="openMaterKid()">
+                  <img src="../../image/c2.png" />
+                </div>
+    						<div onclick="openLife()">
+                  <img src="../../image/c3.png" />
+                </div>
+    					</div>
+              <div class="optimization-box clearfix mb5">
+                <div onclick="openAdults()">
+                  <img src="../../image/c4.png" />
+                </div>
+                <div>
+                  <img src="../../image/c5.png" />
+                </div>
+                <div onclick="openBuyVideo()">
+                  <img src="../../image/c4.png" />
+                </div>
+                <div onclick="openSpecialty()">
+                  <img src="../../image/c5.png" />
+                </div>
+                <div onclick="openRob()">
+                  <img src="../../image/c6.png" />
+                </div>
+                <div onclick="openSelected()">
+                  <img src="../../image/c7.png">
+                </div>
+              </div>
+        </div>
+        <div class="hot-field bgcf">
+          <h4 class="optimization-tit text-center">
+            <div class="tit-img-box">
+              <img src="../../image/tit2.png" alt="">
+            </div>
+            <!-- <img class="tit-img" src="../public/img/index/icon1.png" />
+            <span>优选专场</br><span class="tit2">热门活动,发现更多好货</span></span>
+            <img class="tit-img" src="../public/img/index/icon1.png" /> -->
+          </h4>
+          <div onclick="actSpecial()" class="beauty">
+            <img src="../../image/d1.png" />
+          </div>
+          <div class="beauty-list">
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la1.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+          </div>
+          <div onclick="actSpecial()" class="beauty">
+            <img src="../../image/d2.png" />
+          </div>
+          <div class="beauty-list">
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+            <div onclick="openitem()" class="beauty-list-box">
+              <div class="beauty-list-img">
+                <img src="../../image/la2.png" />
+              </div>
+              <div class="beauty-list-tit texthidden">纯棉化妆棉洁面膜卸妆棉上妆粉扑补水双效洗脸棉片</div>
+              <div class="beauty-list-price text-center"><span>券后价</span><span>$9.9</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- 精选好券 -->
+        <!--下拉刷新容器-->
+        <!-- <section class="aui-refresh-content"> -->
+        <div class="aui-content">
+          <div id="loading" class="vouchers bgcf">
+            <h4 class="optimization-tit text-center">
+              <div class="tit-img-box">
+                <img src="../../image/tit1.png" alt="">
+              </div>
+              <!-- <img class="tit-img" src="../public/img/index/icon1.png" />
+              <span>优选专场</br><span class="tit2">热门活动,发现更多好货</span></span>
+              <img class="tit-img" src="../public/img/index/icon1.png" /> -->
+            </h4>
+            <!-- <h4 class="vouchers-tit text-center">
+              <img class="tit-img" src="../public/img/index/icon1.png" />
+              <span><img class="titimg" src="../public/img/index/icon1.png"></br>今日精选好券</br><span class="tit2">EXPLOSION UPDATE TODAY</span></span>
+              <img class="tit-img" src="../public/img/index/icon1.png" />
+            </h4> -->
+            <!--数据列表-->
+            <ul id="demo" class="bgcc vouchersul">
+              <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="vouchers-list-left">
+                  <img src="../../image/la3.png" alt="">
+                  <div class="peoplenum text-center">248人已抢</div>
+                </div>
+                <div class="vouchers-list-right">
+                  <div class="vouchers-list1 texthidden mb5">
+                    <img src="../../image/taobao.jpg">
+                    时尚新款单肩背大人小孩通用零钱包
+                  </div>
+                  <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                  <div class="vouchers-list3 cored clearfix">
+                    $<span class="discount mr1v cored fs14">9.9</span>
+                    <span class="original">$11.9</span>
+                    <span class="coupon fr mr3v">2元券</span>
+                  </div>
+                  <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                </div>
+              </li>
+              <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="vouchers-list-left">
+                  <img src="../../image/la3.png" alt="">
+                  <div class="peoplenum text-center">248人已抢</div>
+                </div>
+                <div class="vouchers-list-right">
+                  <div class="vouchers-list1 texthidden mb5">
+                    <img src="../../image/taobao.jpg">
+                    时尚新款单肩背大人小孩通用零钱包
+                  </div>
+                  <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                  <div class="vouchers-list3 cored clearfix">
+                    $<span class="discount mr1v cored fs14">9.9</span>
+                    <span class="original">$11.9</span>
+                    <span class="coupon fr mr3v">2元券</span>
+                  </div>
+                  <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                </div>
+              </li>
+              <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="vouchers-list-left">
+                  <img src="../../image/la3.png" alt="">
+                  <div class="peoplenum text-center">248人已抢</div>
+                </div>
+                <div class="vouchers-list-right">
+                  <div class="vouchers-list1 texthidden mb5">
+                    <img src="../../image/taobao.jpg">
+                    时尚新款单肩背大人小孩通用零钱包
+                  </div>
+                  <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                  <div class="vouchers-list3 cored clearfix">
+                    $<span class="discount mr1v cored fs14">9.9</span>
+                    <span class="original">$11.9</span>
+                    <span class="coupon fr mr3v">2元券</span>
+                  </div>
+                  <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                </div>
+              </li>
+              <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="vouchers-list-left">
+                  <img src="../../image/la3.png" alt="">
+                  <div class="peoplenum text-center">248人已抢</div>
+                </div>
+                <div class="vouchers-list-right">
+                <div class="vouchers-list1 texthidden mb5">
+                  <img src="../../image/taobao.jpg">
+                  时尚新款单肩背大人小孩通用零钱包
+                </div>
+                <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                <div class="vouchers-list3 cored clearfix">
+                  $<span class="discount mr1v cored fs14">9.9</span>
+                  <span class="original">$11.9</span>
+                  <span class="coupon fr mr3v">2元券</span>
+                </div>
+                <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+              </div>
+              </li>
+              <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="vouchers-list-left">
+                  <img src="../../image/la3.png" alt="">
+                  <div class="peoplenum text-center">248人已抢</div>
+                </div>
+                <div class="vouchers-list-right">
+                <div class="vouchers-list1 texthidden mb5">
+                  <img src="../../image/taobao.jpg">
+                  时尚新款单肩背大人小孩通用零钱包
+                </div>
+                <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                <div class="vouchers-list3 cored clearfix">
+                  $<span class="discount mr1v cored fs14">9.9</span>
+                  <span class="original">$11.9</span>
+                  <span class="coupon fr mr3v">2元券</span>
+                </div>
+                <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+              </div>
+              </li>
+              <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="vouchers-list-left">
+                  <img src="../../image/la3.png" alt="">
+                  <div class="peoplenum text-center">248人已抢</div>
+                </div>
+                <div class="vouchers-list-right">
+                <div class="vouchers-list1 texthidden mb5">
+                  <img src="../../image/taobao.jpg">
+                  时尚新款单肩背大人小孩通用零钱包
+                </div>
+                <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                <div class="vouchers-list3 cored clearfix">
+                  $<span class="discount mr1v cored fs14">9.9</span>
+                  <span class="original">$11.9</span>
+                  <span class="coupon fr mr3v">2元券</span>
+                </div>
+                <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+              </div>
+              </li>
+              <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="vouchers-list-left">
+                  <img src="../../image/la3.png" alt="">
+                  <div class="peoplenum text-center">248人已抢</div>
+                </div>
+                <div class="vouchers-list-right">
+                <div class="vouchers-list1 texthidden mb5">
+                  <img src="../../image/taobao.jpg">
+                  时尚新款单肩背大人小孩通用零钱包
+                </div>
+                <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                <div class="vouchers-list3 cored clearfix">
+                  $<span class="discount mr1v cored fs14">9.9</span>
+                  <span class="original">$11.9</span>
+                  <span class="coupon fr mr3v">2元券</span>
+                </div>
+                <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+              </div>
+              </li>
+            </ul>
+            <div class="bottom-line text-center">
+              <div class="bottom-line-img">
+                <img src="../../image/loading_more.gif">
+              </div>
+              正在加载中......
+            </div>
+          </div>
+        </div>
+    </section>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/mui.min.js"></script>
+  <script type="text/javascript" src="../../script/aui-slide.js"></script>
+  <script type="text/javascript" src="../../script/aui-pull-refresh.js"></script>
+  <script type="text/javascript" src="../../script/zepto.js"></script>
+  <script type="text/javascript">
+      //上拉加载
+        //滚动条到页面底部加载更多案例
+      (function() {
+         $('#demo').on('touchmove',function(){
+             //判断最后一个元素是否在底部之上
+             if( $('.aui-card-list').eq($('.aui-card-list').length-1).offset().top-$(window).scrollTop() < $(window).height() ){
+                 $('.bottom-line').css('display','block');
+                 checkPull();
+                //  $('.bottom-line').css('display','none').text('加载中...');
+
+             }
+         });
+         //添加元素方法
+         function checkPull(){
+             var pinNew;
+             pinNew=document.createDocumentFragment();
+             //每次添加5条内容
+             for(var j=5;j>0;j--){
+                 var li=document.createElement('li');
+                 li.className="aui-card-list";
+                 li.innerHTML=`<li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                   <div class="vouchers-list-left">
+                     <img src="../../image/la3.png" alt="">
+                     <div class="peoplenum text-center">248人已抢</div>
+                   </div>
+                   <div class="vouchers-list-right">
+                   <div class="vouchers-list1 texthidden mb5">
+                     <img src="../../image/taobao.jpg">
+                     时尚新款单肩背大人小孩通用零钱包
+                   </div>
+                   <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+                   <div class="vouchers-list3 cored clearfix">
+                     $<span class="discount mr1v cored fs14">9.9</span>
+                     <span class="original">$11.9</span>
+                     <span class="coupon fr mr3v">2元券</span>
+                   </div>
+                   <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                 </div>
+                 </li>`;
+                 pinNew.appendChild(li);
+             }
+             $('#demo')[0].appendChild(pinNew);
+         }
+        })();
+
+      //轮播
+      var slider = mui("#slider");
+      (function() {
+        slider.slider({
+          interval: 1000
+        })
+      }());
+      //监听轮播显示
+      document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+        //注意slideNumber是从0开始的；
+        // console.log(event.detail.slideNumber);
+        var bIndex = event.detail.slideNumber;
+        api.sendEvent({
+            name: 'banner',
+            extra: {
+                key1: bIndex,
+            }
+        });
+
+      });
+
+    function currentFun(index) {
+        // console.log(index);
+    }
+
+      // 分类轮播
+      var slide2 = new auiSlide({
+          container:document.getElementById("aui-slide2"),
+          // "width":300,
+          "height":180,
+          "speed":300,
+          "autoPlay": 0, //自动播放
+          "pageShow":true,
+          "loop":false,
+          "pageStyle":'dot',
+          'dotPosition':'center'
+      })
+      apiready = function(){
+
+      };
+      // 广告轮播
+      var slide3 = new auiSlide({
+          container:document.getElementById("aui-slide3"),
+          // "width":300,
+          "height":120,
+          "speed":100,
+          "autoPlay": 1000, //自动播放
+          "loop":true,
+          "pageShow":true,
+          "pageStyle":'line',
+          'dotPosition':'center',
+      })
+    //纵向滚动 需要设置div的高度
+      var area = document.getElementById('moocBox');
+      var iliHeight = 21;//单行滚动的高度
+      var speed = 50;//滚动的速度
+      var time;
+      var delay= 1000;
+      area.scrollTop=0;
+      area.innerHTML+=area.innerHTML;//克隆一份一样的内容
+      function startScroll(){
+       time=setInterval("scrollUp()",speed);
+       area.scrollTop++;
+       }
+      function scrollUp(){
+       if(area.scrollTop % iliHeight==0){
+        clearInterval(time);
+        setTimeout(startScroll,delay);
+        }else{
+         area.scrollTop++;
+         if(area.scrollTop >= area.scrollHeight/2){
+          area.scrollTop =0;
+          }
+         }
+       }
+       setTimeout(startScroll,delay)
+
+//打开其他页面
+  // 打开分类商城页面
+  function openmall() {
+    api.openWin({
+        name: 'malllist',
+        url: './malllist.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  // 打开活动页面
+  function openactive(index) {
+      api.openWin({
+          // name: 'active'+index,
+          // url: './active' + index + '.html',
+          name: 'active0',
+          url: './active0.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+  }
+  //打开活动专场页面
+  function actSpecial() {
+    api.openWin({
+        name: 'actSpecial',
+        url: './actSpecial.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  // 打开商品页面
+  function openitem() {
+    api.openWin({
+        name: 'item',
+        url: './item.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //早起挑战
+  function openGetup() {
+    api.openWin({
+        name: 'upearly',
+        url: './upearly.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //生活券
+  function living() {
+    api.openWin({
+        name: 'lifestamps',
+        url: './lifestamps.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //0元购
+  function openzero() {
+    api.openWin({
+        name: 'zerobuy',
+        url: './zerobuy.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //红包
+  function openRedBag() {
+    api.openWin({
+        name: 'redEnvelope',
+        url: './redEnvelope.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+
+  }
+  //精选单品
+  function openSelected() {
+    api.openWin({
+        name: 'selected',
+        url: './selected.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+
+  }
+  //疯抢
+  function openRob() {
+    api.openWin({
+        name: 'rob',
+        url: './rob.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+
+  }
+  //好货专场
+  function openSpecialty() {
+    api.openWin({
+        name: 'specialty',
+        url: './specialty.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //视频导购
+  function openBuyVideo() {
+    api.openWin({
+        name: 'buyvideo',
+        url: './buyvideo.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //达人说
+  function openAdults() {
+    api.openWin({
+        name: 'adults',
+        url: './adults.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //美妆
+  function openBeauty() {
+    api.openWin({
+        name: 'beadty',
+        url: './beadty.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+
+  }
+  //母婴
+  function openMaterKid() {
+      api.openWin({
+          name: 'materkid',
+          url: './materkid.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+  }
+  //生活
+  function openLife() {
+    api.openWin({
+        name: 'life',
+        url: './life.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+
+    // //  上拉刷新下拉加载
+    var pullRefresh = new auiPullToRefresh({
+       container: document.querySelector('.aui-refresh-content'),
+       triggerDistance: 100
+   },function(ret){
+       if(ret.status=="success"){
+           setTimeout(function(){
+               var wrap = document.getElementById("demo")
+               var lis = wrap.querySelectorAll('.aui-card-list');
+              //  for (var i = lis.length, length = i + 10; i < length; i++) {
+              //      var html = '<div class="aui-card-list">'+
+              //              '<div class="aui-card-list-header">'+
+              //                  '卡片布局头部区域'+(i+1)+''+
+              //              '</div>'+
+              //              '<div class="aui-card-list-content-padded">'+
+              //                  '内容区域，卡片列表布局样式可以实现APP中常见的各类样式'+
+              //              '</div>'+
+              //              '<div class="aui-card-list-footer">'+
+              //                  '底部区域'+
+              //              '</div>'+
+              //          '</div>';
+              //      wrap.insertAdjacentHTML('afterbegin', html);
+              //  }
+                window.location.reload();
+               pullRefresh.cancelLoading(); //刷新成功后调用此方法隐藏
+           },1000)
+       }
+   })
+
+    // (function() {
+    //   console.log(11);
+    //    $('#demo').on('touchmove',function(){
+    //        //判断最后一个元素是否在底部之上
+    //        if( $('.aui-card-list').eq($('.aui-card-list').length-1).offset().top-$(window).scrollTop() < $(window).height() ){
+    //            $('.bottom-line').css('display','block').text('正在刷新...');
+    //            checkPull();
+    //        }
+    //    });
+    //    //添加元素方法
+    //    function checkPull(){
+    //        var pinNew;
+    //        pinNew=document.createDocumentFragment();
+    //        //每次添加5条内容
+    //        for(var j=5;j>0;j--){
+    //            var li=document.createElement('li');
+    //            li.className="aui-card-list";
+    //            li.innerHTML='1';
+    //            pinNew.appendChild(li);
+    //        }
+    //        $('#demo')[0].appendChild(pinNew);
+    //    }
+    //   })();
+
+  </script>
+  </html>

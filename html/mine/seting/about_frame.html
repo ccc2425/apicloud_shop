@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>关于</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .box{
+            padding: 5vh 0;
+            border-top: 1px solid #eee;
+          }
+          .logo{
+            width: 16vw;
+            height: 16vw;
+            margin: auto;
+          }
+          .aui-row-padded{
+            display: flex;
+            justify-content: space-around;
+          }
+          .aui-sharebox.aui-grid .aui-grid-label{
+            font-size: 12px;
+          }
+          .aui-sharebox img {
+              display: block;
+              width: 50%;
+              height: inherit;
+              margin: 0 auto;
+          }
+          .aui-toast-content{
+            font-size: 12px;
+          }
+          .aui-toast{
+            width: 35vw;
+            min-height: inherit;
+            top: 80%;
+          }
+          .aui-toast .aui-icon-correct{
+            display: none;
+          }
+          .aui-toast-content{
+            margin: 0;
+            padding: 3px 0;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="text-center box bgcf">
+          <div class="logo">
+            <img src="../../../image/a6.png" alt="">
+          </div>
+          <div class="lh30 mt10 mb5">
+            挖券儿
+          </div>
+          <div class="fs10">
+            版本号V2.5.21
+          </div>
+      </div>
+      <div class="bgcf mb10 lh40">
+        <div tapmode onclick="openSharebox()" class="pad0a3v clearfix">
+          分享挖券儿<i class="iconfont fr">&#xe615;</i>
+        </div>
+        <div onclick="showDefault()" class="pad0a3v clearfix">
+          检查更新<i class="iconfont fr">&#xe615;</i>
+        </div>
+      </div>
+      <div class="bgcf lh40">
+        <div class="pad0a3v clearfix">
+          用户服务条款<i class="iconfont fr">&#xe615;</i>
+        </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript" src="../../../script/aui-sharebox.js" ></script>
+  <script type="text/javascript" src="../../../script/aui-toast.js" ></script>
+
+  <script type="text/javascript">
+      apiready = function(){
+          api.parseTapmode();
+      }
+      var sharebox = new auiSharebox();
+      function openSharebox(){
+          sharebox.init({
+              frameBounces:true,//当前页面是否弹动，（主要针对安卓端）
+              buttons:[{
+                  image:'../../../image/wx.png',
+                  text:'微信',
+                  value:'wx'//可选
+              },{
+                  image:'../../../image/wx-circle.png',
+                  text:'朋友圈',
+                  value:'wx-circle'
+              }],
+              col:5,
+              cancelTitle:'关闭'//可选,当然也可以采用下面的方式使用图标
+              // cancelTitle:'<i class="aui-iconfont aui-icon-close aui-font-size-16"></i>'//可选
+          },function(ret){
+              if(ret){
+                console.log(ret);
+              //     document.getElementById("button-index").textContent = ret.buttonIndex;
+              //     document.getElementById("button-value").textContent = ret.buttonValue;
+              }
+          })
+      }
+      //
+      var toast = new auiToast();
+      function showDefault(type){
+                  toast.success({
+                      title:"当前已是最新版本",
+                      duration:1000
+                  });
+      }
+  </script>
+  </html>

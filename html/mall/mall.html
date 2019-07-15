@@ -5,19 +5,677 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>自营商城</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          body{
-
-          }
+        #header{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 9999;
+        }
+        .serchbox{
+          width: 100%;
+          margin-top: 5px;
+          text-align: center;
+          box-sizing: border-box;
+          padding: 10px 0;
+        }
+        .ipt{
+          display: inline-block;
+          width: 84vw;
+          height: 20px;
+          background-color: #eee;
+          border-radius: 20px;
+          text-align: center;
+          line-height:20px;
+          color: #333;
+        }
+        /*轮播*/
+        /*分类*/
+        .class-box{
+          width: 96%;
+          padding: 0 2%;
+          background-color: #ffffff;
+          display: table;
+          table-layout: fixed;
+        }
+        .classification-img{
+          width: 100%;
+          height: 80px;
+          margin-top: 5px;
+        }
+        .class-box-row{
+          overflow: hidden;
+          margin: 0;
+        }
+        .class-box-row>div{
+          display: table-cell;
+          position: relative;
+          text-align: center;
+          vertical-align: middle;
+          padding: 1rem 0;
+          float: left;
+        }
+        .class-box-clo-name{
+          font-size: 12px;
+          display: block;
+          position: relative;
+          margin-top: 0.25rem;
+        }
+        /*礼包*/
+        .gift{
+          width: 100%;
+          height: 120px;
+        }
+        /*活动*/
+        .wh-try-l{
+          left: 0;
+          bottom: 0;
+          border: 12px solid #1296db;
+          border-left: 7px solid #fff;
+        }
+        .wh-try-y{
+          right: 0;
+          bottom: 0;
+          border: 12px solid #1296db;
+          border-right: 7px solid #fff;
+        }
+        .height24{
+          height: 24px;
+          overflow: hidden;
+        }
+        .ani-font{
+          width: 76px;
+          animation: fontsize .1s infinite;
+          animation-direction:alternate;
+        }
+        @keyframes fontsize {
+          from {font-size: 11px;}
+          to {font-size: 13px;}
+        }
+        .act-img>div{
+          width: 30vw;
+          height: 120px;
+        }
+        /**/
+        /*数据列表*/
+        .like ul li{
+          margin: 0 1vw 5px;
+          box-sizing: border-box;
+        }
+        .vouchers-list{
+          margin-bottom: 10px;
+        }
+        .vouchers-tit{
+          border-bottom: 1px solid #ccc;
+        }
+        .titimg{
+          width: 5vw;
+          height: 5vw;
+          margin-bottom: 5px;
+        }
+        .vouchers-list{
+          width: 46vw;
+          padding: 1vh 1vw;
+          background-color: #fff;
+        }
+        .vouchers-list-left{
+          position: relative;
+          width: 100%;
+          height: 160px;
+        }
+        .vouchers-list-right{
+          width: 100%;
+          padding-top: 10px;
+        }
+        .vouchers-list1{
+          width: 96%;
+          font-size: 14px;
+          line-height: 18px;
+        }
+        .vouchers-list1 img{
+          width: 4vw;
+          height: 4vw;
+          margin-right: 2vw;
+          vertical-align: top;
+        }
+        .vouchers-list3{
+          font-size: 12px;
+        }
+        .original{
+          color: #ccc;
+          text-decoration: line-through;
+        }
+        .coupon{
+          margin-top: 4px;
+        }
+        /**/
+        /*.aui-popup{
+          top: 3.75rem;
+          top: 47px;
+        }*/
+        .aui-popup-arrow,.aui-popup-content{
+          background: rgba(0, 0, 0, 0.8);
+        }
+        .aui-list .aui-list-item-label-icon,.aui-list .aui-list-item{
+          color: #fff;
+        }
+        .aui-list-item-label-icon i{
+          font-size: 20px;
+        }
+        .aui-list{
+          font-size: 16px;
+        }
+        .aui-list .aui-list-item{
+          padding: 5px 5vw;
+        }
       </style>
   </head>
   <body>
-      <div>111</div>
+    <!-- 头部 -->
+    <div id="header" class="bgcf">
+      <div class="serchbox clearfix lh20">
+        <span onclick="openCode()" class="ml2v fl"><i class="iconfont">&#xe601;</i></span>
+        <span class="ipt fs11"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
+        <!-- <span class="fr" aui-popup-for="top-right">h</span> -->
+        <span class="fr mr2v zdex9999" aui-popup-for="top-right"><i class="iconfont fs18">&#xe62c;</i></span>
+      </div>
+    </div>
+
+    <!-- 轮播 -->
+    <div id="aui-slide" class="bgcr slid">
+      <div class="aui-slide-wrap boradius" >
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban2.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban4.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/banb1.png" />
+          </div>
+      </div>
+      <div class="aui-slide-page-wrap"><!--分页容器--></div>
+    </div>
+    <!-- 分类 -->
+    <div class="classification">
+      <div class="classification-img">
+        <img src="../../image/l2.png" alt="">
+      </div>
+      <div class="class-box">
+        <div class="class-box-row clearfix">
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/a5.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              女装
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f2.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              男装
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f3.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              鞋包
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f4.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              手表配饰
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f1.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              保暖内衣
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f6.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              运动户外
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f7.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              童装童鞋
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f8.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              面部护肤
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f9.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              轻奢
+            </div>
+          </div>
+          <div onclick="openItemList()" class="wid20b">
+            <div class="marau wid56b">
+              <img src="../../image/f10.png" alt="">
+            </div>
+            <div class="class-box-clo-name">
+              旗舰店
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 礼包 -->
+    <div class="gift mb15">
+      <img src="../../image/l2.png" alt="">
+    </div>
+    <!-- 活动 -->
+    <div class="pad10a0">
+      <div class="text-center mb10">
+        <div class="mb5">
+          <span class="fs20 ver-middle">品牌钜献</span>
+          <i class="iconfont fs12 pad0a2v ver-middle">&#xe73e;</i>
+          <span class="bold fs16 ver-middle">韩都衣舍</span>
+        </div>
+        <div class="pr fs12 lh24 disi-b height24">
+          <div class="pa wh-try-l"></div>
+          <div class="pad0a8v bgcblue text-center">
+              全场折上<span>6</span>折<span class="pad0a3v">|</span><span class="ani-font">仅限24小时</span><i class="iconfont fs12">&#xe615;</i>
+          </div>
+          <div class="pa wh-try-y"></div>
+        </div>
+      </div>
+      <div class="just-space pad0a2v act-img">
+        <div class="">
+          <img src="../../image/la3.png" alt="">
+        </div>
+        <div>
+          <img src="../../image/la3.png" alt="">
+        </div>
+        <div>
+          <img src="../../image/la3.png" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 列表 -->
+    <div class="pad10a2v bgce">
+      <div class="like mb10">
+          <ul class="clearfix">
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+            <li onclick="openitem()" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="../../image/la1.png" alt="">
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthiddens mb5 fs12 pad0a2b">
+                  光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  <span class="original">￥11.9</span>
+                  <span class="fr fs11">已售0</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">￥<span class="fs16 bold">239</span></span>
+                  <span class="coupon fr fs11">预估佣金￥7</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+    </div>
+    <!--  -->
+
+    <div class="aui-popup aui-popup-top-right" id="top-right">
+        <div class="aui-popup-arrow"></div>
+        <div class="aui-popup-content">
+            <ul class="aui-list aui-list-noborder">
+                <li onclick="openShopCar()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe61b;</i>
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-middle">
+                        购物车
+                    </div>
+                </li>
+                <li onclick="openClassfy()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe61c;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        分类
+                    </div>
+                </li>
+                <li onclick="openSerch()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe627;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        搜索
+                    </div>
+                </li>
+                <li onclick="openShopCar()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe630;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        卡券包
+                    </div>
+                </li>
+                <li onclick="openHome()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe6d9;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        首页
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-slide.js"></script>
+  <script type="text/javascript" src="../../script/aui-popups.js" ></script>
   <script type="text/javascript">
       apiready = function(){
-
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerPos = $api.offset(header);
+        var headerH = headerPos.h;
+        var slid = document.getElementsByClassName('slid');
+        var auiPopup = document.getElementsByClassName('aui-popup');
+        slid[0].style.marginTop = headerH + "px";
+        auiPopup[0].style.top = headerH + 5 + "px";
       };
+      //轮播
+      var slide = new auiSlide({
+           container:document.getElementById("aui-slide"),
+           // "width":300,
+           "height":160,
+           "speed":300,
+           "autoPlay": 2000, //自动播放
+           "pageShow":true,
+           "pageStyle":'dot',
+           "loop":true,
+           'dotPosition':'center',
+          //  currentPage:currentFun
+       })
+      //  togist
+       var popup = new auiPopup();
+       function showPopup(){
+           popup.show(document.getElementById("top-right"))
+       }
+      //  分类打开列表
+      function openItemList() {
+        api.openWin({
+            name: 'itemlist',
+            url: '../home/itemlist.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
   </script>
   </html>

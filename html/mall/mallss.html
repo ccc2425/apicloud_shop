@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>自营商城</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+        #header{
+          width: 100%;
+        }
+        .serchbox{
+          width: 100%;
+          margin-top: 5px;
+          text-align: center;
+          box-sizing: border-box;
+          padding: 10px 0;
+        }
+        .ipt{
+          display: inline-block;
+          width: 84vw;
+          height: 20px;
+          background-color: #eee;
+          border-radius: 20px;
+          text-align: center;
+          line-height:20px;
+          color: #333;
+        }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class="bgcf">
+      <div class="serchbox clearfix lh20">
+        <span onclick="openCode()" class="ml2v fl"><i class="iconfont">&#xe601;</i></span>
+        <span class="ipt fs11"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
+        <!-- <span class="fr mr2v" aui-popup-for="top-right">h</span> -->
+        <span class="fr mr2v" aui-popup-for="top-right"><i class="iconfont">&#xe62c;</i></span>
+      </div>
+    </div>
+    <!--  -->
+    <div class="aui-popup aui-popup-top-right" id="top-right">
+        <div class="aui-popup-arrow"></div>
+        <div class="aui-popup-content">
+            <ul class="aui-list aui-list-noborder">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-my aui-text-warning"></i>
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-middle">
+                        会员中心
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-mail aui-text-info"></i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        会话消息
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-star aui-text-danger"></i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        我的收藏
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-popup.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        api.openFrame({
+            name: 'mall_frame',
+            url: './mall_frame.html',
+            rect: {
+                x: 0,
+                y: header.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
+
+      };
+
+      //  togist
+       var popup = new auiPopup();
+       function showPopup(){
+           popup.show(document.getElementById("top-right"))
+       }
+      //  分类打开列表
+
+  </script>
+  </html>
