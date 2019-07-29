@@ -45,6 +45,7 @@
   };
   function getin() {
     $api.setStorage('showGuide', '1');//设置值
+    hideAllFrame()
     api.openFrame({
         name: 'home',
         url: './html/home/home.html',
@@ -65,5 +66,20 @@
     //     slidBackEnabled: false
     // });
   }
+  function hideAllFrame() {
+    api.setFrameAttr({
+        name: 'frame0',
+        hidden: true
+    });
+    api.setFrameAttr({
+        name: 'frame1',
+        hidden: true
+    });
+    api.setFrameAttr({
+        name: 'frame2',
+        hidden: true
+    });
+  }
+
   </script>
   </html>
