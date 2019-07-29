@@ -45,26 +45,26 @@
   };
   function getin() {
     $api.setStorage('showGuide', '1');//设置值
-    hideAllFrame()
-    api.openFrame({
-        name: 'home',
-        url: './html/home/home.html',
-        rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
-            // marginTop: headerH, // main页面距离win顶部的高度
-            // marginBottom: footerH, // main页面距离win底部的高度
-            x: 0,
-            y: 0,
-            h: api.winHeight - footerPos,
-            w: 'auto' // main页面的宽度 自适应屏幕宽度
-        },
-        bounces: false,
-    });
-
-    // api.openWin({
-    //     name: 'indexs',
-    //     url: './html/index.html',
-    //     slidBackEnabled: false
+    // hideAllFrame()
+    // api.openFrame({
+    //     name: 'home',
+    //     url: './html/home/home.html',
+    //     rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
+    //         // marginTop: headerH, // main页面距离win顶部的高度
+    //         // marginBottom: footerH, // main页面距离win底部的高度
+    //         x: 0,
+    //         y: 0,
+    //         h: api.winHeight - footerPos,
+    //         w: 'auto' // main页面的宽度 自适应屏幕宽度
+    //     },
+    //     bounces: false,
     // });
+
+    api.openWin({
+        name: 'indexs',
+        url: './html/index.html',
+        slidBackEnabled: false
+    });
   }
   function hideAllFrame() {
     api.setFrameAttr({
