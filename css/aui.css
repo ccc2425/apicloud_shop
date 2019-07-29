@@ -1076,18 +1076,18 @@ input[type="search"]::-webkit-search-cancel-button {
 @media screen and (-webkit-min-device-pixel-ratio:1.5) {
 	.aui-list {
 		border: none;
-        background-size: 100% 1px;
+        /*background-size: 100% 1px;
 		background-repeat: no-repeat;
 		background-position: top;
-        background-image: linear-gradient(0,#dddddd,#dddddd 50%,transparent 50%);
+        background-image: linear-gradient(0,#dddddd,#dddddd 50%,transparent 50%);*/
 	}
 	.aui-list .aui-list-item {
 		border: none;
-        background-size: 100% 1px;
+        /*background-size: 100% 1px;
 		background-repeat: no-repeat;
 		background-position: bottom;
         background-image: linear-gradient(0,#dddddd,#dddddd 50%,transparent 50%);
-        background-image: -webkit-linear-gradient(90deg,#dddddd,#dddddd 50%,transparent 50%);
+        background-image: -webkit-linear-gradient(90deg,#dddddd,#dddddd 50%,transparent 50%);*/
 	}
 
 	.aui-list.aui-list-in .aui-list-item {

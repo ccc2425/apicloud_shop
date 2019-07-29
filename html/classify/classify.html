@@ -143,7 +143,7 @@
 </head>
 
 <body>
-    <div id="header">
+    <div id="header" class="bgcf">
         <div class="search-box">
             <div class="search text-center boradius30 bgce">
                 请输入搜索内容
@@ -915,14 +915,17 @@
                 </ul>
             </div>
         </div>
+      </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
 <script type="text/javascript">
     apiready = function() {
         var headers = $api.byId('header');
         $api.fixStatusBar(headers);
     };
-    //打开分类页面
+
+        //打开分类页面
     function itemlist() {
         api.openWin({
             name: 'itemlist',
@@ -962,6 +965,26 @@
       // console.log(listA[index])
     }
 
+
+
+    $(function(){
+        //锚点跳转滑动效果
+        $('a[href*=#],area[href*=#]').click(function() {
+            console.log(this.pathname)
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var $target = $(this.hash);
+                $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+                if ($target.length) {
+                    var targetOffset = $target.offset().top-50;
+                    $('html,body').animate({
+                                scrollTop: targetOffset
+                            },
+                            1000);
+                    return false;
+                }
+            }
+        });
+    })
 </script>
 
 </html>

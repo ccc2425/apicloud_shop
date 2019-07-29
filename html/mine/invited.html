@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>邀请分享</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,
+          body {
+              height: 100%;
+          }
+          .wrap {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-flex-flow: column;
+          }
+
+          .flex-1 {
+              -webkit-box-flex: 1;
+              -webkit-flex: 1;
+          }
+          /* 底部切换按钮样式 */
+
+          #footer {
+              position: fixed;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 60px;
+              /*line-height: 50px;*/
+              background-color: #fff;
+              border-top: 1px solid #eee;
+              text-align: center;
+          }
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .iconfont{
+            left: 0
+          }
+          .btn{
+            padding: 0 5vw;
+            margin: 12px 5vw;
+            line-height: 36px;
+            border-radius: 30px;
+            color: #fff;
+          }
+          .btnl{
+            background: linear-gradient(to right,#999,#444);
+          }
+          .btnr{
+            background: linear-gradient(to right,pink,red);
+          }
+      </style>
+  </head>
+  <body class="wrap">
+    <!-- 头部 -->
+    <div id="header" class="clearfix text-center bgcf header fs16">
+        <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
+        <!-- <img src="" alt=""> -->
+        邀请分享
+        <i class="iconfont fr mr2v fs20">&#xe62a;</i>
+    </div>
+    <section class="flex-1">
+
+    </section>
+    <div id="footer">
+      <div class="just-space">
+        <div class="btn btnl">分享邀请海报</div>
+        <div class="btn btnr">分享邀请链接</div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        var footer = $api.byId('footer');
+        var footerH = $api.offset(footer);
+        api.openFrame({
+            name: 'invited_frame',
+            url: './invited_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: api.frameHeight - headerH.h - footerH.h
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false
+        });
+      };
+      function closewin() {
+        api.closeWin();
+      }
+  </script>
+  </html>

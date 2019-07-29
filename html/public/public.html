@@ -96,6 +96,57 @@
           .vouchers-list4 span:last-child{
             background-color: grey;
           }
+          .alert-box{
+            display: none;
+            z-index: 99999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+          .alert{
+            z-index: 999999;
+            position: fixed;
+            left: 10vw;
+            top: 30vh;
+            width: 80vw;
+            background-color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            overflow: hidden;
+          }
+          .alert-tit{
+            background-color: #d81e06;
+            color: #fff;
+            line-height: 48px;
+            font-size: 18px;
+          }
+          .alert-text{
+            background-color: #fff;
+            padding: 5vw 5vw 0;
+          }
+          .alert-ipt{
+            width: 100%;
+            font-size: 14px;
+            line-height: 32px;
+            border: 1px solid #d81e06;
+            text-align: center;
+          }
+          .alert-btn{
+            padding: 0 5vw;
+            border-radius: 20px;
+            line-height: 24px;
+            font-size: 13px;
+          }
+          .alert-btn-l{
+            background-color: #eee;
+          }
+          .alert-btn-r{
+            background-color: #d81e06;
+            color: #fff;
+          }
       </style>
   </head>
   <body>
@@ -123,7 +174,7 @@
               <img src="../../image/ban1.png" />
           </div>
       </div>
-      <div class="aui-slide-page-wrap no"><!--分页容器--></div>
+      <div class="aui-slide-page-wrap"><!--分页容器--></div>
     </div>
     <!-- 排序 -->
     <div class="sorting">
@@ -132,92 +183,109 @@
       <div class="sorts" onclick="sort(2)">价格</div>
     </div>
     <!--  -->
-<div id="aui-slide2">
-    <div class="aui-slide-wrap" >
-        <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
-            <div class="aui-content aui-padded-15">
-                <span class="aui-text-danger">AUI Slide</span>会让你更方便让你布局轮播效果
+      <div id="aui-slide2">
+          <div class="aui-slide-wrap" >
+              <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                  <div class="aui-content aui-padded-15">
+                      <span class="aui-text-danger">AUI Slide</span>会让你更方便让你布局轮播效果
+                  </div>
+              </div>
+              <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                  <div class="aui-content aui-padded-15">
+                      <span class="aui-text-success">AUI Slide</span>更好的支持循环滑动切换
+                  </div>
+              </div>
+          </div>
+          <div class="aui-slide-page-wrap"><!--分页容器--></div>
+      </div>
+      <div id="aui-slide4">
+          <div class="aui-slide-wrap" >
+              <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                  <div class="aui-content aui-padded-15">
+                      <span class="aui-text-danger">AUI Slide</span>会让你更方便让你布局轮播效果
+                  </div>
+              </div>
+              <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                  <div class="aui-content aui-padded-15">
+                      <span class="aui-text-success">AUI Slide</span>更好的支持循环滑动切换
+                  </div>
+              </div>
+          </div>
+          <div class="aui-slide-page-wrap"><!--分页容器--></div>
+      </div>
+      <div id="aui-slide3">
+        <div class="aui-slide-wrap" >
+            <div class="aui-slide-node bg-dark">
+                <img src="../../image/l1.png" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="../../image/l2.png" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="../../image/l3.png" />
             </div>
         </div>
-        <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
-            <div class="aui-content aui-padded-15">
-                <span class="aui-text-success">AUI Slide</span>更好的支持循环滑动切换
+        <div class="aui-slide-page-wrap"><!--分页容器--></div>
+      </div>
+        <!-- 数据列表 -->
+        <ul id="vouchersul" class="bgcc vouchersul">
+          <li onclick="openitem()" class="vouchers-list clearfix">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">248人已抢</div>
             </div>
-        </div>
-    </div>
-    <div class="aui-slide-page-wrap"><!--分页容器--></div>
-</div>
-<div id="aui-slide4">
-    <div class="aui-slide-wrap" >
-        <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
-            <div class="aui-content aui-padded-15">
-                <span class="aui-text-danger">AUI Slide</span>会让你更方便让你布局轮播效果
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/taobao.jpg">
+                时尚新款单肩背大人小孩通用零钱包
+              </div>
+              <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+              <div class="vouchers-list3 cored clearfix">
+                $<span class="discount mr1v cored fs14">9.9</span>
+                <span class="original">$11.9</span>
+                <span class="coupon fr mr3v">2元券</span>
+              </div>
+              <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
             </div>
-        </div>
-        <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
-            <div class="aui-content aui-padded-15">
-                <span class="aui-text-success">AUI Slide</span>更好的支持循环滑动切换
+          </li>
+          <li onclick="openitem()" class="vouchers-list clearfix">
+            <div class="vouchers-list-left">
+              <img src="../image/muwu.jpg" alt="">
+              <div class="peoplenum text-center">248人已抢</div>
             </div>
-        </div>
-    </div>
-    <div class="aui-slide-page-wrap"><!--分页容器--></div>
-</div>
-<div id="aui-slide3">
-    <div class="aui-slide-wrap" >
-        <div class="aui-slide-node bg-dark">
-            <img src="../../image/l1.png" />
-        </div>
-        <div class="aui-slide-node bg-dark">
-            <img src="../../image/l2.png" />
-        </div>
-        <div class="aui-slide-node bg-dark">
-            <img src="../../image/l3.png" />
-        </div>
-    </div>
-    <div class="aui-slide-page-wrap"><!--分页容器--></div>
-  </div>
-    <!-- 数据列表 -->
-    <ul id="vouchersul" class="bgcc vouchersul">
-      <li onclick="openitem()" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <div class="peoplenum text-center">248人已抢</div>
-        </div>
-        <div class="vouchers-list-right">
-          <div class="vouchers-list1 texthidden mb5">
-            <img src="../../image/taobao.jpg">
-            时尚新款单肩背大人小孩通用零钱包
-          </div>
-          <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-          <div class="vouchers-list3 cored clearfix">
-            $<span class="discount mr1v cored fs14">9.9</span>
-            <span class="original">$11.9</span>
-            <span class="coupon fr mr3v">2元券</span>
-          </div>
-          <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-        </div>
-      </li>
-      <li onclick="openitem()" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <div class="peoplenum text-center">248人已抢</div>
-        </div>
-        <div class="vouchers-list-right">
-          <div class="vouchers-list1 texthidden mb5">
-            <img src="../../image/taobao.jpg">
-            时尚新款单肩背大人小孩通用零钱包
-          </div>
-          <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-          <div class="vouchers-list3 cored clearfix">
-            $<span class="discount mr1v cored fs14">9.9</span>
-            <span class="original">$11.9</span>
-            <span class="coupon fr mr3v">2元券</span>
-          </div>
-          <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-        </div>
-      </li>
-    </ul>
+            <div class="vouchers-list-right">
+              <div class="vouchers-list1 texthidden mb5">
+                <img src="../../image/taobao.jpg">
+                时尚新款单肩背大人小孩通用零钱包
+              </div>
+              <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+              <div class="vouchers-list3 cored clearfix">
+                $<span class="discount mr1v cored fs14">9.9</span>
+                <span class="original">$11.9</span>
+                <span class="coupon fr mr3v">2元券</span>
+              </div>
+              <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+            </div>
+          </li>
+        </ul>
 
+      <!-- 弹窗 -->
+      <div class="alert-box">
+        <!-- <div class="alert-bg"></div> -->
+        <div class="alert">
+          <div class="alert-tit">
+            设置邀请码
+          </div>
+          <div class="alert-text">
+            <input type="text" name="" value="" class="alert-ipt mb5" placeholder="请输入邀请码">
+            <p  class="fs12 mb10 lh20 text-left cogry">自定义邀请码仅限设置一次且不可修改，支持中文、数字、字母组合</p>
+            <div class="just-space mb10">
+              <div class="alert-btn alert-btn-l">取消</div>
+              <div class="alert-btn alert-btn-r">保存</div>
+            </div>
+          </div>
+        </div>
+      </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/aui-slide.js"></script>

@@ -1,34 +1,92 @@
 <!DOCTYPE html>
-  <html>
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>分类</title>
-      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/mui.indexedlist.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/public.css" />
-      <style>
-          /*.mui-table-view{
-            padding-left: 20vw;
-          }*/
-          .mui-table-view>li>ul>li{
-              display: inline-block;
-              width: 25vw;
-              text-align: center;
-              font-size: 12px;
-          }
-          .mui-table-view>li>ul>li>div{
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>分类</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/public.css" />
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            outline: 0;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mui-indexed-list {
+            position: relative;
+            overflow: hidden;
+            background-color: #fafafa;
+            cursor: default;
+        }
+
+        .mui-indexed-list-bar div a {
+            display: block;
+            text-align: center;
+            padding: 0px;
+            margin: 0px;
+            font-size: 13px;
+            line-height: 26px;
+            color: #333;
+        }
+
+        .mui-indexed-list-group {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+        .mui-indexed-list-group>span {
+            font-weight: normal;
+            margin-right: 8vw;
+            color: #999;
+        }
+
+        .mui-table-view-divider {
+            position: relative;
+            margin-top: -1px;
+            margin-left: 0;
+            padding-bottom: 6px;
+            padding-left: 15px;
+            font-size: 12px;
+        }
+
+        .mui-table-view-cell {
+            position: relative;
+            overflow: hidden;
+            padding: 11px 15px;
+            -webkit-touch-callout: none;
+        }
+
+        .mui-table-view {
+            background-color: #fff;
+        }
+
+        .mui-table-view>li>ul>li {
+            display: inline-block;
+            width: 25vw;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .mui-table-view>li>ul>li>div {
             width: 16vw;
             height: 16vw;
             margin: 5px auto;
             border-radius: 50%;
             overflow: hidden;
-          }
-          .mui-table-view-cell:after{
-            height:0;
-          }
-          .mui-indexed-list-bar {
+        }
+
+        .mui-table-view-cell:after {
+            height: 0;
+        }
+
+        .mui-indexed-list-bar {
             width: 20vw;
             background-color: #fff;
             position: absolute;
@@ -37,779 +95,856 @@
             left: 0px;
             -webkit-transition: .2s;
             border-right: 1px solid #eee;
-          }
-          .mui-ios .mui-indexed-list-inner {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .mui-indexed-list-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .mui-ios .mui-indexed-list-inner {
             width: calc(100% + 10px);
             padding-left: 20vw;
             height: calc(100vh - 85px);
             overflow-x: hidden;
             overflow-y: scroll;
-          }
-          .mui-content #list .cls{
+        }
+
+        .mui-content #list .cls {
             width: 100vw;
             padding-left: 20vw;
             overflow-x: hidden;
             overflow-y: scroll;
             height: calc(100vh - 85px);
-          }
-      </style>
-  </head>
-  <body>
-    <div id="header">
+        }
+        /**/
 
+        .search-box {
+            width: 100%;
+            padding: 5px 2vw;
+            font-size: 12px;
+            line-height: 21px;
+        }
+
+        .active {
+            width: 88%;
+            border-radius: 30px;
+            height: 24px;
+            line-height: 24px;
+            margin: auto;
+            background-color: #d81e06;
+            color: #fff!important;
+            box-shadow: 0px 2px 5px #aaa;
+        }
+
+        .mui-indexed-list-bar div {
+            height: 50px;
+            padding: 13px 0;
+        }
+
+        .mui-indexed-list-bar a:active {}
+
+        .sticky {
+            position: fixed;
+            box-sizing: border-box;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header" class="bgcf">
+        <div class="search-box">
+            <div class="search text-center boradius30 bgce">
+                请输入搜索内容
+            </div>
+        </div>
     </div>
     <!-- <header class="mui-bar mui-bar-nav">
 		</header> -->
-    <div class="mui-content">
-			<div id='list' class="mui-indexed-list">
-				<div class="mui-indexed-list-search mui-input-row mui-search">
-					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="请输入搜索内容">
-				</div>
-				<div class="mui-indexed-list-bar">
-					<a class="active">女装</a>
-					<a><div>男装</div></a>
-					<a><div>美食</div></a>
-					<a href="#bbb"><div>美妆</div></a>
-					<a><div>居家日用</div></a>
-					<a><div>鞋品</div></a>
-					<a><div>数码家电</div></a>
-					<a href="#aaa"><div>文娱车品</div></a>
-					<a><div>内衣</div></a>
-					<a><div>母婴</div></a>
-					<a><div>箱包</div></a>
-					<a><div>配饰</div></a>
-					<a><div>家装家纺</div></a>
-					<a><div>户外运动</div></a>
-				</div>
-				<div class="mui-indexed-list-alert"></div>
-				<div class="mui-indexed-list-inner cls">
-					<div class="mui-indexed-list-empty-alert">没有数据</div>
-					<ul class="mui-table-view">
-						<li data-group="女装" class="mui-table-view-divider mui-indexed-list-group">女装</li>
-            <li>
-              <ul class="clearfix">
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-						<li data-group="男装" class="mui-table-view-divider mui-indexed-list-group">男装</li>
-            <li>
-              <ul class="clearfix">
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-						<li data-group="美食" class="mui-table-view-divider mui-indexed-list-group">美食</li>
-            <li>
-              <ul class="clearfix">
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="美妆" class="mui-table-view-divider mui-indexed-list-group">美妆</li>
-            <li>
-              <ul class="clearfix">
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="居家日用" class="mui-table-view-divider mui-indexed-list-group">居家日用</li>
-            <li>
-              <ul class="clearfix">
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="鞋品" class="mui-table-view-divider mui-indexed-list-group">鞋品</li>
-            <li>
-              <ul class="clearfix">
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="数码家电" class="mui-table-view-divider mui-indexed-list-group">数码家电</li>
-            <li>
-              <ul class="clearfix">
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li id="bbb" data-group="文娱车品" class="mui-table-view-divider mui-indexed-list-group">文娱车品</li>
-            <li>
-              <ul class="clearfix">
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="内衣" class="mui-table-view-divider mui-indexed-list-group">内衣</li>
-            <li>
-              <ul class="clearfix">
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>裙子</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="母婴" class="mui-table-view-divider mui-indexed-list-group">母婴</li>
-            <li>
-              <ul class="clearfix">
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="箱包" class="mui-table-view-divider mui-indexed-list-group">箱包</li>
-            <li>
-              <ul class="clearfix">
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="配饰" class="mui-table-view-divider mui-indexed-list-group">配饰</li>
-            <li>
-              <ul class="clearfix">
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li data-group="家装家纺" class="mui-table-view-divider mui-indexed-list-group">家装家纺</li>
-            <li>
-              <ul class="clearfix">
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-            <li id="aa" data-group="户外运动" class="mui-table-view-divider mui-indexed-list-group">户外运动</li>
-            <li>
-              <ul class="clearfix">
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li><li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div><img src="../../image/q2.jpg" alt=""></div>
-                  <span>连衣裙</span>
-                </li>
-                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="../../image/q1.jpg" alt="">
-                  </div>
-                  <span>T恤</span>
-                </li>
-              </ul>
-            </li>
-					</ul>
-				</div>
-			</div>
-  </body>
-  <script type="text/javascript" src="../../script/api.js"></script>
-  <!-- <script type="text/javascript" src="../../script/mui.min.js"></script>
-  <script type="text/javascript" src="../../script/mui.indexedlist.js"></script> -->
-  <script type="text/javascript">
-      apiready = function(){
+    <div class="mui-content padt10 bgcf">
+        <div id='list' class="mui-indexed-list">
+            <div class="mui-indexed-list-bar">
+                <div>
+                    <a onclick="activeCheck(0)" href="#classify1" class="active">女装</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(1)" href="#classify2">男装</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(2)" href="#classify3">美食</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(3)" href="#classify4">美妆</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(4)" href="#classify5">居家日用</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(5)" href="#classify6">鞋品</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(6)" href="#classify7">数码家电</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(7)" href="#classify8">文娱车品</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(8)" href="#classify9">内衣</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(9)" href="#classify10">母婴</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(10)" href="#classify11">箱包</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(11)" href="#classify12">配饰</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(12)" href="#classify13">家装家纺</a>
+                </div>
+                <div>
+                    <a onclick="activeCheck(13)" href="#classify14">户外运动</a>
+                </div>
+            </div>
+            <div id="items" class="mui-indexed-list-inner cls">
+                    <ul class="mui-table-view clearfix">
+                        <li id="classify1" data-group="女装" class="mui-table-view-divider mui-indexed-list-group">女装<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify2" data-group="男装" class="mui-table-view-divider mui-indexed-list-group">男装<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify3" data-group="美食" class="mui-table-view-divider mui-indexed-list-group">美食<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify4" data-group="美妆" class="mui-table-view-divider mui-indexed-list-group">美妆<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify5" data-group="居家日用" class="mui-table-view-divider mui-indexed-list-group">居家日用<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify6" data-group="鞋品" class="mui-table-view-divider mui-indexed-list-group">鞋品<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify7" data-group="数码家电" class="mui-table-view-divider mui-indexed-list-group">数码家电<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify8" data-group="文娱车品" class="mui-table-view-divider mui-indexed-list-group">文娱车品<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li onclick="itemlist()" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify9" data-group="内衣" class="mui-table-view-divider mui-indexed-list-group">内衣<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>裙子</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify10" data-group="母婴" class="mui-table-view-divider mui-indexed-list-group">母婴<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify11" data-group="箱包" class="mui-table-view-divider mui-indexed-list-group">箱包<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify12" data-group="配饰" class="mui-table-view-divider mui-indexed-list-group">配饰<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify13" data-group="家装家纺" class="mui-table-view-divider mui-indexed-list-group">家装家纺<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="classify14" data-group="户外运动" class="mui-table-view-divider mui-indexed-list-group">户外运动<span onclick="openmore()" class="fr">查看更多</span></li>
+                        <li>
+                            <ul class="clearfix">
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div><img src="../../image/q2.jpg" alt=""></div>
+                                    <span>连衣裙</span>
+                                </li>
+                                <li data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                                    <div>
+                                        <img src="../../image/q1.jpg" alt="">
+                                    </div>
+                                    <span>T恤</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<!-- <script type="text/javascript" src="../script/jq.js" charset="utf-8"></script> -->
+<script type="text/javascript" src="../../script/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript">
+    apiready = function() {
         var headers = $api.byId('header');
         $api.fixStatusBar(headers);
+    };
 
-      };
-      // mui.init();
-      // mui.ready(function() {
-			// 	var list = document.getElementById('list');
-			// 	//calc hieght
-			// 	// list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
-			// 	//create
-			// 	window.indexedList = new mui.IndexedList(list);
-			// });
-      //打开分类页面
-      function itemlist() {
+    //打开分类页面
+    function itemlist() {
         api.openWin({
             name: 'itemlist',
             url: '../home/itemlist.html',
@@ -817,7 +952,99 @@
                 name: 'test'
             }
         });
+    }
 
-      }
-  </script>
-  </html>
+    function openmore() {
+        api.openWin({
+            name: 'itemlist',
+            url: '../home/itemlist.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+    //导航栏活动
+    var list = document.querySelectorAll('.mui-indexed-list-bar a div');
+    var listA = document.querySelectorAll('.mui-indexed-list-bar a');
+    var len = list.length;
+
+    function activeCheck(index) {
+        // var curLi = list[index]
+        // var i = 0;
+        // for (i; i < len; i++) {
+        //     var thisLi = list[i]
+        //     if (thisLi === curLi) {
+        //         $api.addCls(thisLi, 'active');
+        //     } else {
+        //         if ($api.hasCls(thisLi, 'active')) {
+        //             $api.removeCls(thisLi, 'active');
+        //         }
+        //     }
+        // }
+        // //a滑动
+        // // console.log(listA[index])
+    }
+
+    /* show active navigation element */
+    $(document).ready(function() {
+        $('#items').on("scroll", onScroll);
+
+        //smooth scrolling
+        $('a[href^="#"]').on('click', function(e) {
+            e.preventDefault();
+            $(document).off("scroll");
+            $('a').each(function() {
+                // $(this).removeClass('active');
+            })
+            $(this).addClass('active');
+            var target = this.hash,
+                nav = target;
+            $target = $(target);
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top + 2
+            }, 500, 'swing', function() {
+                window.location.hash = target;
+                $('#items').on("scroll", onScroll);
+            });
+        });
+    });
+
+    //get scroll position and handle class active
+    function onScroll(event) {
+        var scrollPos = $(document).scrollTop() + 150;
+        $('#list div a').each(function() {
+          console.log(333);
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                $('#list div a').removeClass("active");
+                currLink.addClass("active");
+            } else {
+                currLink.removeClass("active");
+            }
+        });
+    }
+
+    /* activate sticky navigation */
+    $(document).ready(function() {
+        var stickyNavTop = $('#list').offset().top;
+
+        var stickyNav = function() {
+          console.log(444);
+            var scrollTop = $(window).scrollTop();
+            //
+            // if (scrollTop > stickyNavTop) {
+            //     $('#list').addClass('sticky');
+            // } else {
+            //     $('#list').removeClass('sticky');
+            // }
+        };
+        stickyNav();
+
+        $(window).scroll(function() {
+            stickyNav();
+        });
+    });
+</script>
+
+</html>

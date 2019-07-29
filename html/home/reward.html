@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>奖励明细</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .l0{
+            left: 0
+          }
+          .tab{
+            width: 90vw;
+            margin: auto;
+          }
+          .active{
+            color: #e8989a;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class="clearfix text-center bgco header fs16">
+        <i onclick="closewin()" class="iconfont pa ml3v l0">&#xe601;</i>
+        奖励明细
+    </div>
+    <div id="tabs" class="bgco pad10a5v tab-box">
+      <div class="just-space tab lh50 bgcf boradius5 co999 fs16">
+        <div onclick="checkTab(0)" class="active tab-btn">
+          <i class="iconfont mr2v">&#xe888;</i>邀请明细
+        </div>
+        <div onclick="checkTab(1)" class="tab-btn">
+          <i class="iconfont mr2v">&#xe63c;</i>奖励明细
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        var tabs = $api.byId('tabs');
+        var tabsH = $api.offset(tabs);
+        api.openFrame({
+            name: 'reward_frame',
+            url: './reward_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h + tabsH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false
+        });
+
+      };
+      //切换
+      var tabBtn = document.getElementsByClassName('tab-btn');
+      function checkTab(index) {
+        var i = 0;
+        for (i; i < tabBtn.length; i++) {
+          var thisLi = tabBtn[i];
+          if (index === i) {
+            $api.addCls(thisLi, 'active');
+          } else {
+            if ($api.hasCls(thisLi, 'active')) {
+              $api.removeCls(thisLi, 'active')
+            }
+          }
+        }
+        // api.sendEvent({
+        //     name: 'rewardIndex',
+        //     extra: {
+        //         index: index
+        //     }
+        // });
+        api.execScript({
+            frameName: 'reward_frame',
+            script: 'showHide("'+index+'")'
+        });
+      }
+      //关闭
+      function closewin() {
+        api.closeWin();
+      }
+  </script>
+  </html>

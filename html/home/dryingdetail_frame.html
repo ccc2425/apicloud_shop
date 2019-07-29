@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>晒单详情</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .mr2v{
+            margin-right: 2vw;
+          }
+          .aui-card-list-user-avatar{
+            height: 2rem;
+          }
+          .aui-card-list-user-avatar img{
+            width: 100%;
+            height: 100%;
+          }
+          .aui-card-list-footer{
+            justify-content: flex-start;
+          }
+          .aui-card-list-content-padded div,.aui-card-list-content-padded img{
+            margin-bottom: 10px;
+          }
+          .buy-tit{
+            font-size: 0.7rem;
+            padding: 0.5rem 0.75rem 0.5rem;
+            border-bottom: 1px solid #eee;
+          }
+          .item-img{
+            width: 3.5rem;
+            height: 3.5rem;
+          }
+          .item-name{
+            margin-top: .2rem;
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: .7rem;
+            line-height: 1rem;
+          }
+          .item-name img{
+            width: .7rem;
+            height: .7rem;
+            display: inline-block;
+            margin-right: 1vw;
+            vertical-align: middle;
+          }
+          .item-price{
+            margin-bottom: .5rem;
+            font-size: .55rem;
+            color: #d81e06;
+          }
+          .item-price>div>span{
+            font-size: .7rem;
+          }
+          .look{
+            background-color: #d81e06;
+            color: #fff;
+            padding: 0 3vw;
+            border-radius: 20px;
+            line-height: 1rem;
+          }
+          /*他们也喜欢*/
+          .liker{
+            padding: 0.5rem 0.75rem 0.5rem;
+          }
+          .liker img{
+            display: inline-block;
+            width: 10vw;
+            height: 10vw;
+          }
+          /*评论*/
+          .comment{
+            font-size: .65rem;
+          }
+          .floor{
+            position: absolute;
+            top: .75rem;
+            right: .7rem;
+            font-size: .55rem;
+            color: #aaa;
+          }
+          /*写评论*/
+          .pencil{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            line-height: 50px;
+            background-color: #fff;
+          }
+          .mb50{
+            margin-bottom: 50px;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 内容 -->
+    <div class="aui-card-list">
+        <div class="aui-card-list-header aui-card-list-user aui-border-b aui-clearfix">
+            <div class="aui-card-list-user-avatar">
+                <img src="../../image/header.jpg" class="aui-img-round" />
+            </div>
+            <div class="aui-card-list-user-name">
+                <div>追追追</div>
+                <!-- <small>1天前</small> -->
+            </div>
+            <div class="aui-card-list-user-info">2019-03-02 13:41</div>
+        </div>
+        <div class="aui-card-list-content-padded">
+            <div class="">
+              12345
+            </div>
+            <img src="../../image/la3.png" />
+            <img src="../../image/la3.png" />
+        </div>
+        <div class="aui-card-list-footer aui-border-t">
+            <div class="mr2v"><i class="aui-iconfont aui-icon-comment"></i> 666</div>
+            <div><i class="aui-iconfont aui-icon-laud"></i> 888</div>
+            <!-- <div><i class="aui-iconfont aui-icon-star"></i> 888</div> -->
+        </div>
+    </div>
+    <!-- 购买 -->
+    <div class="aui-card-list">
+      <div class="buy-tit">
+          在这买
+      </div>
+      <div onclick="openItem()" class="aui-card-list-header aui-card-list-user aui-border-b aui-clearfix item-box">
+          <div class="aui-card-list-user-avatar item-img">
+              <img src="../../image/la3.png" class="aui-img-round" />
+          </div>
+          <div class="aui-card-list-user-info item-name"><img src="../../image/tb.png" alt="">进口四海沐浴盐后背祛痘全身有效快来购买</div>
+          <div class="aui-card-list-user-name item-price">
+              <div>券后价<span>￥79</span></div>
+              <span class="look">去看看</span>
+          </div>
+      </div>
+    </div>
+    <!-- 他们也喜欢 -->
+    <div class="aui-card-list">
+      <div class="buy-tit">
+          TA们也喜欢
+      </div>
+      <div class="liker">
+          <img src="../../image/a1.png" alt="">
+          <img src="../../image/a2.png" alt="">
+          <img src="../../image/a3.png" alt="">
+          <img src="../../image/a4.png" alt="">
+          <img src="../../image/a5.png" alt="">
+          <img src="../../image/a6.png" alt="">
+          <img src="../../image/a7.png" alt="">
+          <img src="../../image/a8.png" alt="">
+      </div>
+    </div>
+    <!-- 评论 -->
+    <div class="aui-card-list mb50">
+      <div class="buy-tit">
+          评论
+      </div>
+      <div class="aui-card-list">
+          <div class="aui-card-list-header aui-card-list-user aui-border-b aui-clearfix">
+              <div class="aui-card-list-user-avatar">
+                  <img src="../../image/header.jpg" class="aui-img-round" />
+              </div>
+              <div class="aui-card-list-user-name">
+                  <div>追追追</div>
+                  <!-- <small>1天前</small> -->
+              </div>
+              <div class="aui-card-list-user-info">2019-03-02 13:41</div>
+              <div class="comment">
+                12345
+              </div>
+          </div>
+          <span class="floor">#1</span>
+      </div>
+      <div class="aui-card-list">
+          <div class="aui-card-list-header aui-card-list-user aui-border-b aui-clearfix">
+              <div class="aui-card-list-user-avatar">
+                  <img src="../../image/header.jpg" class="aui-img-round" />
+              </div>
+              <div class="aui-card-list-user-name">
+                  <div>追追追</div>
+                  <!-- <small>1天前</small> -->
+              </div>
+              <div class="aui-card-list-user-info">2019-03-02 13:41</div>
+              <div class="comment">
+                12345
+              </div>
+          </div>
+          <span class="floor">#2</span>
+      </div>
+    </div>
+    <!-- 写评论 -->
+    <div onclick="openWrite()" class="pencil">
+      <i class="aui-iconfont aui-icon-pencil"></i>写评论
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      // 打开商品页面
+      function openItem() {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //写评论
+      function openWrite() {
+        api.openWin({
+            name: 'writecomment',
+            url: './writecomment.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+  </script>
+  </html>

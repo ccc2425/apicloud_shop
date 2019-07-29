@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>代理商中心</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          /*头部*/
+          .aui-list .aui-list-item,.aui-list{
+            background: inherit;
+          }
+          .aui-list .aui-list-item-media{
+            padding: 0.5rem 0.75rem 0.5rem 0.25rem
+          }
+          .aui-list .aui-list-item{
+            padding-right: 0.75rem;
+          }
+          .aui-grid .aui-grid-label{
+            font-size: .8rem;
+          }
+          /**/
+          .inform{
+            margin: 0 auto;
+            box-shadow: 0px 0px 10px #CB4540;
+          }
+          .vip-logo{
+            position: absolute;
+            right: 5vw;
+            width: 8vw;
+            height: 8vw;
+          }
+          .informs>div{
+            width: 30%;
+          }
+          .i-img{
+            width: 30%;
+            margin: 0 auto 5px;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 信息 -->
+    <div class="bgcf pad10a0 mb10">
+      <div class="wid90 boradius5 inform bgcrs">
+        <div class="aui-list aui-media-list">
+          <div class="aui-list-item aui-list-item-middle">
+            <div class="aui-media-list-item-inner">
+              <div onclick="openSet()" class="aui-list-item-media" style="width: 4.8rem;">
+                <img src="../../image/a1.png" class="aui-img-round aui-list-img-sm">
+              </div>
+              <div class="aui-list-item-inner">
+                <div class="aui-list-item-text">
+                  <div class="aui-list-item-title cowhl fs14">追风人<span class="bgcdai fs10 pad0a1v boradius30 ver-middle ml1v">代理商</span></div>
+                </div>
+                <div class="aui-list-item-text coshw fs10">
+                  <span>到期时间：<span>永久有效</span></span>
+                </div>
+              </div>
+              <div class="vip-logo">
+                <img src="" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="just-between text-center fs14 pad10a5v lh22 informs">
+          <div onclick="openEarnings()">
+            <div class="fs16">￥0.44</div>
+            <div class="fs12">累计收入</div>
+          </div>
+          <div onclick="openFansOrder()">
+            <div class="fs16">0</div>
+            <div class="fs12">粉丝订单</div>
+          </div>
+          <div onclick="openTeamFans()">
+            <div class="fs16">0</div>
+            <div class="fs12">累计粉丝</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bgcf padt10">
+      <div class="text-center bold lh40">
+        常用工具
+      </div>
+      <!-- 宫格分类 -->
+      <div class="aui-grid aui-margin-b-15 mb10 pr">
+        <div class="aui-row">
+           <div onclick="openEarnings()" class="aui-col-xs-4">
+               <div class="i-img">
+                 <img src="../../image/a35.png" alt="">
+               </div>
+               <div class="aui-grid-label">收益报表</div>
+           </div>
+           <div onclick="openFansOrder()" class="aui-col-xs-4">
+             <div class="i-img">
+               <img src="../../image/a37.png" alt="">
+             </div>
+             <div class="aui-grid-label">粉丝订单</div>
+           </div>
+           <div onclick="openTeamFans()" class="aui-col-xs-4">
+             <div class="i-img">
+               <img src="../../image/a33.png" alt="">
+             </div>
+               <div class="aui-grid-label">团队粉丝</div>
+           </div>
+           <div onclick="openInvited()" class="aui-col-xs-4">
+             <div class="i-img">
+               <img src="../../image/a32.png" alt="">
+             </div>
+               <div class="aui-grid-label">邀请分享</div>
+           </div>
+           <div onclick="withdrawal()" class="aui-col-xs-4">
+               <div class="i-img">
+                 <img src="../../image/a38.png" alt="">
+               </div>
+               <div class="aui-grid-label">我的钱包</div>
+           </div>
+           <div onclick="openAgentWallet()" class="aui-col-xs-4">
+             <div class="i-img">
+               <img src="../../image/a36.png" alt="">
+             </div>
+             <div class="aui-grid-label">代理钱包</div>
+           </div>
+           <div onclick="openService()" class="aui-col-xs-4">
+             <div class="i-img">
+               <img src="../../image/a34.png" alt="">
+             </div>
+             <div class="aui-grid-label">联系客服</div>
+           </div>
+         </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //收益报表
+      function openEarnings() {
+        api.openWin({
+            name: 'earnings',
+            url: './earnings.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //粉丝订单
+      function openFansOrder() {
+        api.openWin({
+            name: 'fansOrder',
+            url: './order//fansOrder.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //我的钱包
+      function withdrawal() {
+        api.openWin({
+            name: 'withdrawal',
+            url: './withdrawal.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //代理钱包
+      function openAgentWallet() {
+        api.openWin({
+            name: 'agentwallet',
+            url: './agentwallet.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //团队粉丝
+      function openTeamFans() {
+        api.openWin({
+            name: 'teamfans',
+            url: './teamfans.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //客服
+      function openService() {
+        api.openWin({
+            name: 'service',
+            url: './service.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //邀请分享
+      function openInvited() {
+        api.openWin({
+            name: 'invited',
+            url: './invited.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+  </script>
+  </html>

@@ -7,6 +7,7 @@
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
       <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
@@ -29,6 +30,15 @@
             justify-content: space-around;
             line-height: 50px;
             background-color: #fff;
+          }
+          #shopings{
+            z-index: 1;
+            visibility: hidden;
+            position: fixed;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            border-bottom: 1px solid #eee;
           }
           /**/
           .mui-table-view{
@@ -131,52 +141,29 @@
   </head>
   <body>
     <div id="header"></div>
+    <div id="shopings" class="shoping">
+      <div class="shops cored" onclick="shop(0)">好货专场</div>
+      <div class="shops" onclick="shop(1)">必备素材</div>
+      <div class="shops" onclick="shop(2)">商品</div>
+      <div class="shops" onclick="shop(3)">精选单品</div>
+    </div>
     <!-- 轮播图 -->
-    <div id="slider" class="mui-slider" >
-      <div class="mui-slider-group mui-slider-loop">
-        <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-        <div class="mui-slider-item mui-slider-item-duplicate">
-          <a href="#">
-            <img src="../../image/ban1.png">
-          </a>
-        </div>
-        <!-- 第一张 -->
-        <div class="mui-slider-item">
-          <a href="#">
-            <img src="../../image/ban1.png">
-          </a>
-        </div>
-        <!-- 第二张 -->
-        <div class="mui-slider-item">
-          <a href="#">
-            <img src="../../image/ban1.png">
-          </a>
-        </div>
-        <!-- 第三张 -->
-        <div class="mui-slider-item">
-          <a href="#">
-            <img src="../../image/ban1.png">
-          </a>
-        </div>
-        <!-- 第四张 -->
-        <div class="mui-slider-item">
-          <a href="#">
-            <img src="../../image/ban1.png">
-          </a>
-        </div>
-        <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-        <div class="mui-slider-item mui-slider-item-duplicate">
-          <a href="#">
-            <img src="../../image/ban1.png">
-          </a>
-        </div>
+    <div id="aui-slide" class="bgcr">
+      <div class="aui-slide-wrap boradius" >
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
+          <div class="aui-slide-node bg-dark">
+              <img src="../../image/ban1.png" />
+          </div>
       </div>
-      <div class="mui-slider-indicator">
-        <div class="mui-indicator mui-active"></div>
-        <div class="mui-indicator"></div>
-        <div class="mui-indicator"></div>
-        <div class="mui-indicator"></div>
-      </div>
+      <div class="aui-slide-page-wrap no"><!--分页容器--></div>
     </div>
     <div id="shoping" class="shoping">
       <div class="shops cored" onclick="shop(0)">好货专场</div>
@@ -639,24 +626,53 @@
     </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
-  <script type="text/javascript" src="../../script/mui.min.js"></script>
-  <script type="text/javascript" src="../../script/zepto.js"></script>
+  <!-- <script type="text/javascript" src="../../script/zepto.js"></script> -->
+  <script type="text/javascript" src="../../script/aui-slide.js"></script>
   <script type="text/javascript" src="../../script/aui-popup-new.js" ></script>
+  <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
   <script type="text/javascript">
       var wx;
+      var shopH;
+      var header;
+      var headerPos;
       apiready = function(){
-        var header = $api.byId('header');
+        header = $api.byId('header');
         // $api.fixStatusBar(header);
-        var headerPos = $api.offset(header);
+        headerPos = $api.offset(header);
         wx = api.require('wx');
+        //监听接收
+        var slider = $api.byId('aui-slide');
+        var shopings = $api.byId('shopings');
+        $api.fixStatusBar(shopings);
+        var sliderPos = $api.offset(slider);
+        var shopingPos = $api.offset(shoping);
+        shopH = sliderPos.h + shopingPos.h + headerPos.h;
       };
+      //监听滑动
+      var scroll = new auiScroll({
+          listen:true,
+          distance:200 //判断到达底部的距离，isToBottom为true
+      },function(ret){
+        var scrollTop = ret.scrollTop;
+        if (scrollTop>shopH) {
+          // header.style.background = "#fff";
+          shopings.style.visibility = "inherit";
+        }else {
+          // header.style.background = "#transparent";
+          shopings.style.visibility = "hidden";
+        }
+      });
       // 轮播图
-      var slider = mui("#slider");
-      (function() {
-        slider.slider({
-          interval: 1000
-        })
-      }());
+      var slide = new auiSlide({
+         container:document.getElementById("aui-slide"),
+         // "width":300,
+         "height":180,
+         "speed":300,
+         "pageShow":true,
+         "pageStyle":'dot',
+         "loop":true,
+         'dotPosition':'center'
+     })
       // 切换
       function shop(index) {
         var shops = document.getElementsByClassName('shops')

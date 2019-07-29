@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>我的订单</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #fff;
+          }
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .iconfont{
+            left: 0
+          }
+          .par{
+            position: absolute;
+            right: 0;
+          }
+          .active{
+            color: #d81e06;
+            border-bottom: 2px solid #d81e06;
+          }
+          .fansOrder>div{
+            width: 20%;
+          }
+      </style>
+  </head>
+  <body>
+    <div id="head">
+      <!-- 头部 -->
+      <div id="header" class="clearfix text-center header fs16">
+          <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
+          <!-- <img src="" alt=""> -->
+          我的订单
+          <span class="fr mr2v fs12 par">找回订单</span>
+      </div>
+      <!-- 收益 -->
+      <div class="just-center lh24 borderb1e">
+        <diiv onclick="openOredr(0)"  class="pad0a3v active tab mar0a8v">
+          本月收益
+        </diiv>
+        <diiv onclick="openOredr(1)"  class="pad0a3v tab mar0a8v">
+          上月收益
+        </diiv>
+      </div>
+      <div class="just-between text-center fs12 pad10a5v lh22 bgcf borderb1e">
+        <div>
+          <div>付款笔数</div>
+          <div class="fs16 bold">0</div>
+        </div>
+        <div>
+          <div>成交金额</div>
+          <div>￥<span class="fs16 bold">0</span></div>
+        </div>
+        <div>
+          <div>预估收入</div>
+          <div >￥<span class="fs16 bold">0</span></div>
+        </div>
+      </div>
+      <!-- 我的订单 -->
+      <div class="clearfix lh35 text-center fansOrder">
+          <div onclick="fansOrder(0)" class="fl btn active">全部</div>
+          <div onclick="fansOrder(1)" class="fl btn">待付款</div>
+          <div onclick="fansOrder(2)" class="fl btn">代发货</div>
+          <div onclick="fansOrder(3)" class="fl btn">待收货</div>
+          <div onclick="fansOrder(4)" class="fl btn">已收货</div>
+      </div>
+      <div class="text-center fs11 bgcshy lh24">
+        <i class="iconfont fs11">&#xe606;</i>温馨小提醒：订单付款成功后1~10分钟才会同步显示哦~
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+      var btn = document.getElementsByClassName('btn');
+      var tab = document.getElementsByClassName('tab');
+      var leng = btn.length;
+      apiready = function(){
+        var _index = api.pageParam.index;
+        var head = $api.byId('head');
+        $api.fixStatusBar(head);
+        var headH = $api.offset(head);
+        var frames = [];
+        for (var i = 0; i < leng; i++) {
+          frames.push({
+            name:'fansOrder_frame' + i,
+            url:'./fansOrder_frame.html',
+          })
+        }
+        api.openFrameGroup ({
+            name: 'fansOrder',
+            background: '#fff',
+            scrollEnabled: true,
+            rect: {
+                 x: 0,
+                 y: headH.h,
+                 w: 'auto',
+                 h: 'auto'
+            },
+            index: _index,
+            frames: frames
+        }, function(ret, err){
+            checkBtn(ret.index);
+        });
+      };
+      //按钮切换
+      function checkBtn(index) {
+        var i = 0;
+        for (i; i < leng; i++) {
+          var thisLi = btn[i];
+          if (i===index) {
+            $api.addCls(thisLi,'active')
+          }else {
+            if ($api.hasCls(thisLi,'active')) {
+              $api.removeCls(thisLi,'active')
+            }
+          }
+        }
+      }
+      //切换frame页面
+      function fansOrder(index) {
+        checkBtn(index);
+        api.setFrameGroupIndex({
+            name: 'fansOrder',
+            index: index,
+            scroll: true
+        });
+      }
+      //收益切换
+      function openOredr(index) {
+          var i = 0
+          for (i; i < tab.length; i++) {
+            var thisLi = tab[i];
+            if (i===index) {
+              $api.addCls(thisLi,'active')
+            }else {
+              if ($api.hasCls(thisLi,'active')) {
+                $api.removeCls(thisLi,'active')
+            }
+          }
+        }
+      }
+      //
+      function closewin() {
+        api.closeWin();
+      }
+  </script>
+  </html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>团队粉丝</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .wid96{
+            margin: 10px auto;
+            background-color: #fff;
+          }
+          .header-img{
+            width: 12vw;
+            height: 12vw;
+            vertical-align: middle;
+          }
+          .logo{
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+          }
+          .quan{
+            width: 24vw;
+            height: 12vw;
+            padding: 6vw 0;
+            border-radius: 50%;
+            border: 1vw solid #eee;
+            line-height: 6vw;
+          }
+          .active{
+            border: 1vw solid #f3ca7e;
+          }
+          .fansnum{
+            padding: 2vw 0;
+          }
+          .fansnum>div{
+            width: 25%;
+            border-right: 1px solid #eee;
+          }
+          .fansnum>div:last-child{
+            border-right: 0px;
+          }
+          input{
+            width: 88%;
+            font-size: 12px;
+            line-height: 24px;
+            padding: 0 6%;
+            border-radius: 20px;
+            background-color: #eee;
+            outline: none;
+          }
+          .iconfont{
+            right: 6vw;
+            line-height: 24px;
+            color: #aaa;
+          }
+      </style>
+  </head>
+  <body>
+    <!--  -->
+      <div class="wid96 mb10 boradius5">
+        <div class="lh40 borderb1e pad0a2v fs16">你的推荐人</div>
+        <div class="pad3v text-center borderb1e">
+          <div class="disi-b header-img">
+            <img src="" alt="">
+          </div>
+          追梦
+        </div>
+        <div class="just-space pad3v lh20">
+          <div class="">
+            <div class="mb5">
+              <div class="logo disi-b">
+                <img src="" alt="">
+              </div>
+              手机号
+            </div>
+            <div class="fs12">1********1<i></i></div>
+          </div>
+          <div class="">
+            <div class="mb5">
+              <div class="logo disi-b">
+                <img src="" alt="">
+              </div>
+              微信号
+            </div>
+            <div class="fs12">********<i></i></div>
+          </div>
+        </div>
+      </div>
+      <!-- 粉丝数 -->
+      <div class="wid96 mb10 boradius5 text-center">
+        <div class="pad3v just-space borderb1e">
+          <div onclick="checkBtn(0)" class="quan active">
+            <div class="">直邀粉丝</div>
+            <div>0</div>
+          </div>
+          <div onclick="checkBtn(1)" class="quan">
+            <div class="">全部</div>
+            <div>0</div>
+          </div>
+        </div>
+        <div class="pad3v just-space borderb1e fansnum lh24">
+          <div class="">
+            <div class="">今日新增</div>
+            <div>0</div>
+          </div>
+          <div class="">
+            <div class="">昨日新增</div>
+            <div>0</div>
+          </div>
+          <div class="">
+            <div class="">二代粉丝</div>
+            <div>0</div>
+          </div>
+          <div class="">
+            <div class="">二代以后</div>
+            <div>0</div>
+          </div>
+        </div>
+      </div>
+      <!-- 搜索 -->
+      <div class="wid96 boradius5">
+        <div class="pad10a2v pr">
+          <input type="text" name="" value="" onkeyup="search()" placeholder="请输入昵称或手机号查询"><i class="iconfont pa">&#xe627;</i>
+        </div>
+      </div>
+      <div class="">
+        <div class="text-center lh35 fs12 coaaa">暂无数据</div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //切换粉丝信息
+      function checkBtn(index) {
+        chenkFn(index)
+      }
+      // 切换函数
+      function chenkFn(index) {
+        var quan = document.getElementsByClassName('quan');
+        var leng = quan.length;
+        var i = 0;
+        for (i; i < leng; i++) {
+          var thisLi = quan[i]
+          if (i === index) {
+            $api.addCls(thisLi, 'active');
+          }else {
+            if ($api.hasCls(thisLi,'active')) {
+              $api.removeCls(thisLi, 'active');
+            }
+          }
+        }
+      }
+      // function search() {
+      //   // 声明变量
+      //   var input, filter, ul, li, a, i;
+      //   input = document.getElementById('myInput');
+      //   filter = input.value.toUpperCase();
+      //   ul = document.getElementById("myUL");
+      //   li = ul.getElementsByTagName('li');
+      //
+      //   // 循环所有列表，查找匹配项
+      //   for(i = 0; i < li.length; i++) {
+      //       a = li[i].getElementsByTagName("a")[0];
+      //       if(a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      //           li[i].style.display = "";
+      //       } else {
+      //           li[i].style.display = "none";
+      //       }
+      //   }
+      // }
+  </script>
+  </html>

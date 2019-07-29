@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>晒单</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+      <style>
+          body{
+
+          }
+          .aui-list .aui-list-item-media {
+              width: 3rem;
+          }
+          .aui-info{
+            display: inherit;
+          }
+          .mr2v{
+            margin-right: 2vw;
+          }
+          .ml2v{
+            margin-left: 2vw;
+          }
+          .ml1v{
+            margin-left: 1vw;
+          }
+          .aui-info-item > *{
+            display: inline-block;;
+          }
+          .bg{
+            padding-top: 10px;
+            background: url(../../image/header.jpg) no-repeat;
+            background-size: 300% 300%;
+            background-position:center;
+          }
+          .header-img{
+            width: 14vw;
+            height: 14vw;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+          }
+          .header-img img{
+            width: 100%;
+            height: 100%;
+          }
+          .describe{
+            text-align: center;
+            font-size: 0.7rem;
+            line-height: 28px;
+            color: #fff;
+          }
+      </style>
+  </head>
+  <body>
+    <div onclick="openSet()" class="bg">
+      <div class="header-img">
+          <img src="../../image/header.jpg" alt="">
+      </div>
+      <div class="describe">您还没写签名哦~<i class="aui-iconfont aui-icon-pencil"  style="color:#4c5276"></i></div>
+    </div>
+    <div>
+        <ul class="aui-list aui-media-list">
+            <li class="aui-list-item">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media">
+                        <img src="../../image/a3.png"/>
+                    </div>
+                    <div onclick="openDryingDetail()" class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title" style="color:#4c5276">可可可</div>
+                        </div>
+                        <div class="aui-list-item-text" style="color:#333;">
+                            其产品可是为电子信息产品的心脏
+                        </div>
+                        <div class="aui-list-item-text">
+                            <div class="aui-row-padded">
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <p class="aui-margin-t-5 aui-font-size-12">山东潍坊</p> -->
+                        <div class="aui-info aui-font-size-12 aui-clearfix" style="padding-top:0; padding-bottom:0">
+                            <div class="aui-info-item aui-pull-left">1小时前</div>
+                            <div tapmode onclick="openSharebox()" class="aui-info-item aui-pull-right">
+                              <i class="aui-iconfont aui-icon-share"  style="color:#4c5276"></i>
+                            </div>
+                            <div class="aui-info-item aui-pull-right mr2v">
+                                <i class="aui-iconfont aui-icon-laud"  style="color:#4c5276"></i>
+                            </div>
+                            <div class="aui-info-item aui-pull-right mr2v">
+                              <i class="aui-iconfont aui-icon-comment"  style="color:#4c5276"></i><span class="ml1v">1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media">
+                        <img src="../../image/a3.png"/>
+                    </div>
+                    <div onclick="openDryingDetail()" class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title" style="color:#4c5276">可可可</div>
+                        </div>
+                        <div class="aui-list-item-text" style="color:#333;">
+                            其产品可是为电子信息产品的心脏
+                        </div>
+                        <div class="aui-list-item-text">
+                            <div class="aui-row-padded">
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <p class="aui-margin-t-5 aui-font-size-12">山东潍坊</p> -->
+                        <div class="aui-info aui-font-size-12 aui-clearfix" style="padding-top:0; padding-bottom:0">
+                            <div class="aui-info-item aui-pull-left">1小时前</div>
+                            <div tapmode onclick="openSharebox()" class="aui-info-item aui-pull-right">
+                              <i class="aui-iconfont aui-icon-share"  style="color:#4c5276"></i>
+                            </div>
+                            <div class="aui-info-item aui-pull-right mr2v">
+                                <i class="aui-iconfont aui-icon-laud"  style="color:#4c5276"></i>
+                            </div>
+                            <div class="aui-info-item aui-pull-right mr2v">
+                              <i class="aui-iconfont aui-icon-comment"  style="color:#4c5276"></i><span class="ml1v">1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="aui-list-item">
+                <div class="aui-media-list-item-inner">
+                    <div class="aui-list-item-media">
+                        <img src="../../image/a3.png"/>
+                    </div>
+                    <div onclick="openDryingDetail()" class="aui-list-item-inner">
+                        <div class="aui-list-item-text">
+                            <div class="aui-list-item-title" style="color:#4c5276">可可可</div>
+                        </div>
+                        <div class="aui-list-item-text" style="color:#333;">
+                            其产品可是为电子信息产品的心脏
+                        </div>
+                        <div class="aui-list-item-text">
+                            <div class="aui-row-padded">
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                                <div class="aui-col-xs-4">
+                                    <img src="../../image/f1.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <p class="aui-margin-t-5 aui-font-size-12">山东潍坊</p> -->
+                        <div class="aui-info aui-font-size-12 aui-clearfix" style="padding-top:0; padding-bottom:0">
+                            <div class="aui-info-item aui-pull-left">1小时前</div>
+                            <div tapmode onclick="openSharebox()" class="aui-info-item aui-pull-right">
+                              <i class="aui-iconfont aui-icon-share"  style="color:#4c5276"></i>
+                            </div>
+                            <div class="aui-info-item aui-pull-right mr2v">
+                                <i class="aui-iconfont aui-icon-laud"  style="color:#4c5276"></i>
+                            </div>
+                            <div class="aui-info-item aui-pull-right mr2v">
+                              <i class="aui-iconfont aui-icon-comment"  style="color:#4c5276"></i><span class="ml1v">1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-sharebox.js" ></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //打开设置
+      function openSet() {
+        api.openWin({
+            name: 'set',
+            url: '../mine/set.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //晒单详情
+      function openDryingDetail() {
+        api.openWin({
+            name: 'dryingdetail',
+            url: './dryingdetail.html',
+            pageParam: {
+                name: 'test'
+            }
+        });        
+      }
+      //分享
+      var sharebox = new auiSharebox();
+      function openSharebox(){
+          sharebox.init({
+              frameBounces:true,//当前页面是否弹动，（主要针对安卓端）
+              buttons:[{
+                    image:'../../image/wx.png',
+                    text:'保存图片',
+                    value:'save'//可选
+                },{
+                  image:'../../image/wx.png',
+                  text:'微信',
+                  value:'wx'//可选
+              },{
+                  image:'../../image/wx-circle.png',
+                  text:'朋友圈',
+                  value:'wx-circle'
+              },{
+                  image:'../../image/qq.png',
+                  text:'QQ好友',
+                  value:'qq'
+              },{
+                  image:'../../image/qzone.png',
+                  text:'QQ空间',
+                  value:'qq-qzone'
+              }],
+              col:5,
+              cancelTitle:'关闭'//可选,当然也可以采用下面的方式使用图标
+              // cancelTitle:'<i class="aui-iconfont aui-icon-close aui-font-size-16"></i>'//可选
+          },function(ret){
+              // if(ret){
+              //     document.getElementById("button-index").textContent = ret.buttonIndex;
+              //     document.getElementById("button-value").textContent = ret.buttonValue;
+              // }
+          })
+      }
+  </script>
+  </html>

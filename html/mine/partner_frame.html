@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>升级合伙人</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #CB4540;
+          }
+          .bgimg{
+            width: 100vw;
+            height: 240px;
+          }
+          .conditions{
+            border: 1px dotted #CB4540;
+          }
+          .conditions1{
+            width: 23vw;
+            height: 23vw;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1vw solid rgba(255,10,0, 0.1);
+            line-height: 23vw;
+          }
+          .conditions2{
+            width: 23vw;
+            height: 23vw;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1vw solid rgba(128,64,0,0.1);
+            line-height: 23vw;
+          }
+          .up-btn{
+            position: fixed;
+            left: 10vw;
+            bottom: 20px;
+            width: 80vw;
+          }
+          .iconfont{
+            line-height: 84px;
+            font-size: 28px;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 背景图 -->
+    <div class="bgimg">
+      <img src="" alt="">
+    </div>
+    <div class="wid96 m0au10 bgcf boradius5">
+      <div class="pad3v lh24">
+          <h4>升级合伙人后，收益将大幅度提升哦</h4>
+          <p>1、升级合伙人直推订单收益比至尊代理提高200%</p>
+          <p>2、升级合伙人直推铂金会员订单收益比至尊代理提高约60%</p>
+          <p>3、升级合伙人享受服务团队的订单收益</p>
+          <p>4、升级合伙人享受培育直属服务商的培育津贴</p>
+          <p>5、升级合伙人有限享受公司给予的扶持</p>
+          <p>6、升级合伙人将有机会享受公司提供的额外福利</p>
+      </div>
+    </div>
+    <div class="wid96 m0au10 bgcf boradius5 mb80">
+      <div class="pad3v lh24 text-center">
+          <div class="blod mb25">升级条件</div>
+          <div class="mb25">
+            <span class="cored pad0a8v fs13 lh24 conditions boradius30">条件一</span>
+          </div>
+          <div class="mb25 just-space">
+            <div class="">
+                <div class="bgcr conditions1 bold mb15">
+                  50人
+                </div>
+                <div class="fs12">推荐有效直邀粉丝</div>
+                <div class="fs12">当前<span class="cored">0</span>人</div>
+            </div>
+            <div class="">
+              <i class="iconfont">&#xe608;</i>
+            </div>
+            <div class="">
+              <div class="bgcblown conditions2 bold mb15">
+                50人
+              </div>
+              <div class="fs12">推荐有效二代粉丝</div>
+              <div class="fs12">当前<span class="cored">0</span>人</div>
+            </div>
+          </div>
+          <div class="">
+            <div class="fs10 mb25 co999">自购或分享出单的粉丝才算有效粉丝</div>
+            <div class="fs12 mb15 cooo">满足条件一即可自动升级</div>
+            <div class="bold">购买指定商品升级</div>
+          </div>
+      </div>
+    </div>
+    <div class="text-center bgcback up-btn lh40 boradius30">
+      升级合伙人
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      var scroll = new auiScroll({
+          listen:true,
+          distance:200 //判断到达底部的距离，isToBottom为true
+      },function(ret){
+        var scrollTop = ret.scrollTop;
+        console.log(scrollTop);
+        api.sendEvent({
+            name: 'scroll',
+            extra: {
+                scroll: scrollTop,
+            }
+        });
+
+      });
+  </script>
+  </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>资料审核</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #fff;
+          }
+          .img-box{
+            width: 25vw;
+          }
+          .back{
+            border: 1px solid #333;
+            padding: 0 3vw;
+            line-height: 24px;
+            border-radius: 5px;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="text-center pad30a3v lh24">
+        <div class="img-box mar10au">
+          <img src="../../image/e1.png" alt="">
+        </div>
+        <div class="fs16">您的入驻信息正在审核中！</div>
+        <div class="cogry">审核通过后将为您开启店铺权限</div>
+        <div class="mt30">
+          <span onclick="goBack()" class="back">返回</span>
+        </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      function goBack() {
+        api.closeWin({
+            name: 'entry'
+        });
+        api.closeWin()
+      }
+  </script>
+  </html>

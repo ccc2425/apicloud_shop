@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>奖励明细</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .active{
+            background-color: #e8989a;
+            color: #fff;
+          }
+          .tab-btn{
+            width: 25%;
+            padding: 10px 0;
+          }
+          .tab-btns{
+            width: 33.33%;
+            padding: 10px 0;
+          }
+          .dis{
+            display: none;
+          }
+          .block{
+            display: block;
+          }
+      </style>
+  </head>
+  <body>
+      <!-- 邀请明细 -->
+      <div class="dis block">
+        <div class="mt10 bgcf wid96 marau boradius5">
+          <div class="just-between text-center fs12 lh24">
+            <div onclick="checkTabBtn(0)" class="active tab-btn">
+              <div>邀请人数</div>
+              <div class="fs16">0</div>
+            </div>
+            <div onclick="checkTabBtn(1)" class="tab-btn">
+              <div>下单人数</div>
+              <div class="fs16">0</div>
+            </div>
+            <div onclick="checkTabBtn(2)" class="tab-btn">
+              <div>收货人数</div>
+              <div class="fs16">0</div>
+            </div>
+            <div onclick="checkTabBtn(3)" class="tab-btn">
+              <div>无效人数</div>
+              <div class="fs16">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 奖励明细 -->
+      <div class="dis">
+        <div class="mt10 bgcf wid96 marau boradius5">
+          <div class="just-between text-center fs12 lh24">
+            <div onclick="checkTabBtns(0)" class="active tab-btns">
+              <div>邀请人数</div>
+              <div class="fs16">0</div>
+            </div>
+            <div onclick="checkTabBtns(1)" class="tab-btns">
+              <div>下单人数</div>
+              <div class="fs16">0</div>
+            </div>
+            <div onclick="checkTabBtns(2)" class="tab-btns">
+              <div>收货人数</div>
+              <div class="fs16">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //切换
+      var tabBtn = document.getElementsByClassName('tab-btn');
+      function checkTabBtn(index) {
+        var i = 0;
+        for (i; i < tabBtn.length; i++) {
+          var thisLi = tabBtn[i];
+          if ( i === index) {
+            $api.addCls(thisLi, 'active');
+          }else {
+            if ($api.hasCls(thisLi, 'active')) {
+              $api.removeCls(thisLi, 'active');
+
+            }
+          }
+        }
+      }
+      var tabBtns = document.getElementsByClassName('tab-btns')
+      function checkTabBtns(index) {
+        var i = 0;
+        for (i; i < tabBtns.length; i++) {
+          var thisLi = tabBtns[i];
+          if ( i === index) {
+            $api.addCls(thisLi, 'active');
+          }else {
+            if ($api.hasCls(thisLi, 'active')) {
+              $api.removeCls(thisLi, 'active');
+            }
+          }
+        }
+      }
+      //显示隐藏
+      function showHide(index) {
+        var dis = document.getElementsByClassName('dis');
+        if (index == 0) {
+          $api.addCls(dis[0], 'block');
+          $api.removeCls(dis[1], 'block');
+        }else if (index == 1) {
+          $api.removeCls(dis[0], 'block');
+          $api.addCls(dis[1], 'block');
+        }
+      }
+  </script>
+  </html>

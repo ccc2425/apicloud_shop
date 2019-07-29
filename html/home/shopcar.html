@@ -1,57 +1,168 @@
 <!DOCTYPE html>
-  <html>
-  <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>title</title>
-      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
-      <style>
-      .header{
-        height: 40px;
-        line-height: 40px;
-      }
-      .iconfont{
-        left: 0
-      }
-      </style>
-  </head>
-  <body>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>购物车</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/public.css" />
+    <style>
+        * {
+            outline: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .wrap {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+        }
+
+        .flex-1 {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+        }
+
+        .header {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .iconfont {
+            left: 0
+        }
+        /*checkbox*/
+
+        .aui-radio:checked {
+            background-color: #03a9f4;
+            border: solid 1px #03a9f4;
+            text-align: center;
+            background-clip: padding-box;
+        }
+
+        .aui-radio {
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #ffffff;
+            border: solid 1px #dddddd;
+            -webkit-border-radius: 0.6rem;
+            border-radius: 0.6rem;
+            font-size: 0.8rem;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            display: inline-block;
+            vertical-align: sub;
+            cursor: default;
+            -webkit-appearance: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-transition: background-color ease 0.1s;
+            transition: background-color ease 0.1s;
+        }
+
+        .aui-radio:checked:before {
+            content: '';
+            width: 0.5rem;
+            height: 0.3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.25rem;
+            margin-top: -0.25rem;
+            background: transparent;
+            border: 1px solid #ffffff;
+            border-top: none;
+            border-right: none;
+            z-index: 2;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .aui-radio:checked:before {
+            content: '';
+            width: 0.5rem;
+            height: 0.3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.25rem;
+            margin-top: -0.25rem;
+            background: transparent;
+            border: 1px solid #ffffff;
+            border-top: none;
+            border-right: none;
+            z-index: 2;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        .footer{
+          width: 100%;
+          line-height: 50px;
+          border-top: 1px solid #eee;
+        }
+        .total,.buy{
+          width: 28vw;
+        }
+    </style>
+</head>
+
+<body class="wrap">
     <!-- 头部 -->
-    <div id="header" class="clearfix text-center bgcf header">
+    <div id="header" class="clearfix text-center bgco header">
         <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
         <!-- <img src="" alt=""> -->
         购物车
     </div>
-  </body>
-  <script type="text/javascript" src="../../script/api.js"></script>
-  <script type="text/javascript">
-      apiready = function(){
-          var header = $api.byId('header');
-          $api.fixStatusBar(header);
-          var headerPos = $api.offset(header);
-          api.openFrame({
-              name: 'shopcar_frame',
-              url: './shopcar_frame.html',
-              rect: {
-                  x: 0,
-                  y: headerPos.h,
-                  w: 'auto',
-                  h: 'auto'
-              },
-              pageParam: {
-                  name: 'test'
-              },
-              bounces: true,
-          });
+    <section class="flex-1">
 
-      };
-      function closewin() {
+    </section>
+    <div id="footer" class="footer">
+        <label class="ml3v"><input class="aui-radio" type="checkbox" name=""> 全选</label>
+        <div class="fr buy bgco text-center">结算(<span>0</span>)</div>
+        <div class="fr total">合计<span class="cored fs12">￥<span class="fs16">0.00</span></span></div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerPos = $api.offset(header);
+        api.openFrame({
+            name: 'shopcar_frame',
+            url: './shopcar_frame.html',
+            rect: {
+                x: 0,
+                y: headerPos.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+        });
+
+    };
+
+    function closewin() {
         api.closeWin({
             name: 'shopcar'
         });
 
-      }
-  </script>
-  </html>
+    }
+    //
+</script>
+
+</html>

@@ -3,63 +3,420 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>title</title>
+      <title>购物车</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          .ceshi{
-            width: 40vw;
-            height: 20vw;
-            margin: 20px auto;
+        html,body{
+          background-color: #eee;
+        }
+        * {
+            outline: none;
+        }
+        /*checkbox*/
+        .aui-radio:checked {
+            background-color: #03a9f4;
+            border: solid 1px #03a9f4;
             text-align: center;
-          }
+            background-clip: padding-box;
+        }
+
+        .aui-radio {
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #ffffff;
+            border: solid 1px #dddddd;
+            -webkit-border-radius: 0.6rem;
+            border-radius: 0.6rem;
+            font-size: 0.8rem;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            display: inline-block;
+            vertical-align: sub;
+            cursor: default;
+            -webkit-appearance: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-transition: background-color ease 0.1s;
+            transition: background-color ease 0.1s;
+        }
+
+        .aui-radio:checked:before {
+            content: '';
+            width: 0.5rem;
+            height: 0.3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.25rem;
+            margin-top: -0.25rem;
+            background: transparent;
+            border: 1px solid #ffffff;
+            border-top: none;
+            border-right: none;
+            z-index: 2;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+
+        .aui-radio:checked:before {
+            content: '';
+            width: 0.5rem;
+            height: 0.3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.25rem;
+            margin-top: -0.25rem;
+            background: transparent;
+            border: 1px solid #ffffff;
+            border-top: none;
+            border-right: none;
+            z-index: 2;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        .label{
+          display: inline-block;
+          width: .9rem;
+          height: .9rem;
+        }
+        /**/
+        .item-img{
+          width: 20vw;
+          height: 20vw;
+          vertical-align: bottom;
+        }
+        .item-inform{
+          width: 66vw;
+        }
+        .box{
+          font-size: 16px;
+          padding: 0 2vw;
+        }
+        .ipt{
+          display: inline-block;
+          width: 5vw;
+          text-align: center;
+        }
+        .animal{
+          z-index: 999;
+          width: 100%;
+          display: inline-block;
+        }
+        .delete-btn{
+          z-index: 0;
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 16vw;
+        }
+        .checks{
+          margin-top: 8%;
+        }
+        /**/
+        .tishio {
+			    background: rgba(0, 0, 0, .6);
+			    color: #fff;
+			    font-size: 12px;
+			    border-radius: 5px;
+			    position: fixed;
+			    top: 30vh;
+			    left: 50%;
+          transform: translateX(-50%);
+          padding: 0 5vw;
+			    line-height: 30px;
+			    height: 30px;
+			    text-align: center;
+			    display: none;
+			}
+      /*弹窗*/
+      .alerts{
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+      .bg{
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .alert-box{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 5px 5px 0 0;
+      }
+      .icon{
+        top: 10px;
+        right: 3vw;
+      }
+      .content{
+        width: 100%;
+        height: 50vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+      .content-box span{
+
+      }
       </style>
   </head>
   <body>
-      <button onclick="getAjax()" class="ceshi">
-          请求
-      </button>
-      <div id="app"></div>
+      <div class="mt10 bgcf boxs">
+        <div class="clearfix lh35">
+          <label class="ml3v">
+            <input class="aui-radio radio-out" type="checkbox" name="">
+            <div class="label mr3v ml1v"><img src="../../image/tm.png" alt=""></div>
+          </label>
+          <div class="disi-b fs12">
+            味源食品专营 <i class="iconfont fs12">&#xe615;</i>
+          </div>
+          <span class="fr mr2v fs12 edit">编辑</span>
+        </div>
+        <div class="clearfix pad10a0 borderb1e pr">
+          <div class="animal clearfix">
+            <div class="fl mr2v checks">
+              <label class="ml3v">
+                <input class="aui-radio radio-in" type="checkbox" name="">
+              </label>
+            </div>
+            <div class="fl item-img mr2v">
+              <img src="" alt="">
+            </div>
+            <div class="fl item-inform fs12 lh20">
+              <div class="texthiddens">
+                加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+              </div>
+              <div class="bgce clearfix">
+                混合口味<i class="iconfont fr">&#xe756;</i>
+              </div>
+              <div class="cored fs11">比加入时降价￥1.00</div>
+              <div class="clearfix">
+                <span class="cored">￥<span>23.8</span></span>
+                <div class="fr text-center">
+                  <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
+                  <span><input class="iptcob ipt" type="text" name="" value="1"></span>
+                  <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="delete-btn bgco">
+            删除
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <div class="mt10 bgcf boxs">
+        <div class="clearfix lh35">
+          <label class="ml3v">
+            <input class="aui-radio radio-out" type="checkbox" name="">
+            <div class="label mr3v ml1v"><img src="../../image/tm.png" alt=""></div>
+          </label>
+          <div class="disi-b fs12">
+            味源食品专营 <i class="iconfont fs12">&#xe615;</i>
+          </div>
+          <span class="fr mr2v fs12 edit">编辑</span>
+        </div>
+        <div class="clearfix pad10a0 borderb1e pr">
+          <div class="animal clearfix">
+            <div class="fl mr2v checks">
+              <label class="ml3v">
+                <input class="aui-radio radio-in" type="checkbox" name="">
+              </label>
+            </div>
+            <div class="fl item-img mr2v">
+              <img src="" alt="">
+            </div>
+            <div class="fl item-inform fs12 lh20">
+              <div class="texthiddens">
+                加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+              </div>
+              <div class="bgce clearfix">
+                混合口味<i class="iconfont fr">&#xe756;</i>
+              </div>
+              <div class="cored fs11">比加入时降价￥1.00</div>
+              <div class="clearfix">
+                <span class="cored">￥<span>23.8</span></span>
+                <div class="fr text-center">
+                  <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
+                  <span><input class="iptcob ipt" type="text" name="" value="1"></span>
+                  <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="delete-btn bgco">
+            删除
+          </div>
+        </div>
+        <div class="clearfix pad10a0 borderb1e pr">
+          <div class="animal clearfix">
+            <div class="fl mr2v checks">
+              <label class="ml3v">
+                <input class="aui-radio radio-in" type="checkbox" name="">
+              </label>
+            </div>
+            <div class="fl item-img mr2v">
+              <img src="" alt="">
+            </div>
+            <div class="fl item-inform fs12 lh20">
+              <div class="texthiddens">
+                加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+              </div>
+              <div class="bgce clearfix">
+                混合口味<i class="iconfont fr">&#xe756;</i>
+              </div>
+              <div class="cored fs11">比加入时降价￥1.00</div>
+              <div class="clearfix">
+                <span class="cored">￥<span>23.8</span></span>
+                <div class="fr text-center">
+                  <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
+                  <span><input class="iptcob ipt" type="text" name="" value="1"></span>
+                  <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="delete-btn bgco">
+            删除
+          </div>
+        </div>
+      </div>
+
+      <span class="tishio"></span>
+      <!-- <div class="alerts">
+        <div class="bg"></div>
+        <div class="bgcf alert-box">
+          <div class="clearfix pad2v borderb1e pr">
+            <div class="item-img disi-b">
+              <img src="../../image/la3.png" alt="">
+            </div>
+            <div class="disi-b fs11 lh16">
+              <p class="fs14 cored lh24">￥23.8</p>
+              <p>库存:4875</p>
+              <p class="texthiddens">已选：混合口味</p>
+            </div>
+            <div class="icon pa">
+              <i class="iconfont">&#xe73e;</i>
+            </div>
+          </div>
+          <div class="content">
+            <div class="tits pad0a2v lh24">
+              颜色分类
+            </div>
+            <div class="content-box">
+              <span>新伦敦</span>
+              <span>光辉岁月</span>
+              <span>新伦敦</span>
+              <span>光辉岁月</span>
+              <span>新伦敦</span>
+              <span>光辉岁月</span>
+              <span>新伦敦</span>
+              <span>光辉岁月</span>
+              <span>新伦敦</span>
+              <span>光辉岁月</span>
+              <span>新伦敦</span>
+              <span>新伦敦</span>
+            </div>
+          </div>
+          <div class="">
+
+          </div>
+        </div>
+      </div> -->
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-toast.js" ></script>
   <script type="text/javascript" src="../../script/zepto.js"></script>
+  <script type="text/javascript" src="../../script/fx.js" ></script>
   <script type="text/javascript">
       apiready = function(){
-        // api.ajax({
-        //     url: 'http://ntstk.xianlubang.com/',
-        //     method: 'get',
-        //     headers:{
-        //       appid:'1237',
-        //       AppKey:'3b1a71e6bb62a6ad0a2df9150ffcb1a6'
-        //     }
-        // },function(ret, err){
-        //     if (ret) {
-        //         alert( JSON.stringify( ret ) );
-        //     } else {
-        //         alert( JSON.stringify( err ) );
-        //     }
-        // });
 
 
       };
-      function getAjax() {
-        // var appids = $api.byId('app');
-          api.ajax({
-            url: 'http://ntstk.xianlubang.com/apiv4/mobilereg',
-            method: 'get',
-            dataType: 'json',
-            headers: {
-              'Content-Type': 'application/json;charset=utf-8',
-              'X-APICloud-AppId':'A6015374016925',
-            },
-        }, function(ret, err) {
-            if (ret) {
-              console.log($api.jsonToStr(ret));
-            }else {
-              alert($api.jsonToStr(err));
-              console.log($api.jsonToStr(err));
-            }
-        });
-      }
+      //选择checkcox
+      $('.radio-out').on('change',function(){
+        var boxs = this.parentNode.parentNode.parentNode;
+        // var boxs = document.getElementsByClassName('boxs')
+        var boxRadioO = boxs.getElementsByClassName('radio-out');
+        var boxRadioI = boxs.getElementsByClassName('radio-in');
+        for (var i = 0; i < boxRadioI.length; i++) {
+          if (boxRadioO[0].checked) {
+            boxRadioI[i].checked = true;
+          }else {
+            boxRadioI[i].checked = false;
+          }
+        }
+      })
+      $('.radio-in').on('change',function(){
+        var boxs = this.parentNode.parentNode.parentNode.parentNode.parentNode;
+        var boxRadioO = boxs.getElementsByClassName('radio-out');
+        var boxRadioI = boxs.getElementsByClassName('radio-in');
+        var len = boxRadioI.length;
+        for (var i = 0; i < len; i++) {
+          if (boxRadioI[i].checked) {
+            boxRadioO[0].checked = true;
+          }else{
+            boxRadioO[0].checked = false;
+            return false;
+          }
+        }
+      })
+      //点击加减
+      var a;
+      //减
+      $('.box-reduce').on('click',function () {
+        var reduce = this.parentNode;
+        var thisIpt = reduce.getElementsByClassName('ipt');
+        var info = '不能再少了';
+        a = thisIpt[0].value;
+        a --;
+        if (a<1) {
+          a = 1;
+          tishi(info)
+        }
+        thisIpt[0].value = a;
+      })
+      //加
+      $('.box-add').on('click',function () {
+        var add = this.parentNode;
+        var thisIpt = add.getElementsByClassName('ipt');
+        var info = '不能再多了';
+        a = thisIpt[0].value;
+        a ++;
+        if (a>99) {
+          a = 99;
+          tishi(info)
+        }
+        thisIpt[0].value = a;
+      })
+      //编辑删除
+      $('.edit').on('click',function () {
+        var thisBox = this.parentNode.parentNode;
+        var animal = thisBox.getElementsByClassName('animal');
+        $('.animal').animate({marginLeft:'-16vw'})
+      })
+      //提示
+      function tishi(info){
+					$('.tishio')[0].innerHTML = info
+					$('.tishio')[0].style.display='block'
+					setTimeout(()=>{
+						$('.tishio')[0].style.display='none'
+					},2000)
+			}
   </script>
   </html>

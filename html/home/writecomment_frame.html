@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>发表评论</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <style>
+          *{
+            outline: none;
+          }
+          body{
+
+          }
+          .txet{
+            padding: 3vw;
+            background-color: #eee;
+          }
+          .txet textarea{
+            width: 100%;
+            height: 120px;
+            line-height: 1.2rem;
+            resize:none;
+          }
+          .publish{
+            width: 90vw;
+            margin: 10px auto;
+            background-color: #000;
+            color: #fff;
+            line-height: 40px;
+            border-radius: 5px;
+            text-align: center;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="txet">
+        <textarea name="name" rows="8" cols="80" placeholder="请输入至少5个字符"></textarea>
+      </div>
+      <div class="publish">
+          提交
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+  </script>
+  </html>

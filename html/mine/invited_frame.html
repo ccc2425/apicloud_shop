@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <style>
+        html,body {
+          height: 100%;
+          overflow: hidden;
+        }
+          .box {
+          	width:90vw;;
+          	height:80%;
+          	position:relative;
+          	margin:10% auto;
+          }
+          #imgs {
+          	width:100%;
+          	height:100%;
+          	position:relative;
+          	-webkit-transform-style:preserve-3d;
+          	-webkit-perspective:1000px;
+          }
+          #imgs img {
+          	width:100%;
+          	height:100%;
+          	position:absolute;
+          	left:0;
+          	top:0;
+          	-webkit-transform-origin:bottom;
+          	-webkit-transform:rotateY(-180deg);
+          	opacity:0;
+          }
+          #imgs .show {
+          	-webkit-animation:see 1s linear forwards;
+          }
+          #imgs .hide {
+          	-webkit-animation:no 1s linear forwards;
+          }
+          @-webkit-keyframes see {
+          	0% {
+          	-webkit-transform:rotateY(180deg);
+          	opacity:0;
+          }
+          60% {
+          	-webkit-transform:rotateY(20deg);
+          }
+          70% {
+          	-webkit-transform:rotateY(15deg);
+          }
+          80% {
+          	-webkit-transform:rotateY(-15deg);
+          }
+          85% {
+          	-webkit-transform:rotateY(10deg);
+          }
+          90% {
+          	-webkit-transform:rotateY(-10deg);
+          }
+          100% {
+          	-webkit-transform:rotateY(0);
+          	opacity:1;
+          }
+          }@-webkit-keyframes no {
+          	0% {
+          	-webkit-transform:rotateY(0);
+          	opacity:1;
+          }
+          60% {
+          	-webkit-transform:rotateY(-160deg);
+          }
+          70% {
+          	-webkit-transform:rotateY(-165deg);
+          }
+          80% {
+          	-webkit-transform:rotateY(-195deg);
+          }
+          85% {
+          	-webkit-transform:rotateY(-170deg);
+          }
+          90% {
+          	-webkit-transform:rotateY(-190deg);
+          }
+          100% {
+          	-webkit-transform:rotateY(-180deg);
+          	opacity:0;
+          }
+        }
+        #imgs .shows {
+          -webkit-animation:sees 1s linear forwards;
+        }
+        #imgs .hides {
+          -webkit-animation:nos 1s linear forwards;
+        }
+        @-webkit-keyframes sees {
+          0% {
+          -webkit-transform:rotateY(180deg);
+          opacity:0;
+        }
+        60% {
+          -webkit-transform:rotateY(330deg);
+        }
+        70% {
+          -webkit-transform:rotateY(340deg);
+        }
+        80% {
+          -webkit-transform:rotateY(345deg);
+        }
+        85% {
+          -webkit-transform:rotateY(350deg);
+        }
+        90% {
+          -webkit-transform:rotateY(355deg);
+        }
+        100% {
+          -webkit-transform:rotateY(360deg);
+          opacity:1;
+        }
+        }@-webkit-keyframes nos {
+          0% {
+          -webkit-transform:rotateY(360deg);
+          opacity:1;
+        }
+        60% {
+          -webkit-transform:rotateY(510deg);
+        }
+        70% {
+          -webkit-transform:rotateY(520deg);
+        }
+        80% {
+          -webkit-transform:rotateY(525deg);
+        }
+        85% {
+          -webkit-transform:rotateY(530deg);
+        }
+        90% {
+          -webkit-transform:rotateY(535deg);
+        }
+        100% {
+          -webkit-transform:rotateY(540deg);
+          opacity:0;
+        }
+      }
+    </style>
+</head>
+
+<body>
+  <div id='box' class="box">
+      <div id="imgs">
+          <img src="http://www.jq22.com/img/cs/500x300-1.png" alt="" class="show">
+          <img src="http://www.jq22.com/img/cs/500x300-2.png" alt="">
+          <img src="http://www.jq22.com/img/cs/500x300-3.png" alt="">
+          <img src="http://www.jq22.com/img/cs/500x300-4.png" alt="">
+      </div>
+  </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+    var num = 0;
+    function fnnext() {
+      $('img').eq(num).attr('class', 'hides');
+      num++;
+      if (num == $('img').length) {
+          num = 0;
+      }
+      $('img').eq(num).attr('class', 'shows');
+    }
+    function fnpre() {
+      $('img').eq(num).attr('class', 'hide');
+      num--;
+      if (num < 0) {
+          num = 3;
+      }
+      $('img').eq(num).attr('class', 'show');
+    }
+    //-- 获取元素样式，最低兼容ie8
+                function getStyle(obj, name) {
+                    if(window.getComputedStyle) {
+                        return getComputedStyle(obj, null)[name];
+                    } else {
+                        return obj.currentStyle[name];
+                    }
+                }
+    var box = document.getElementById('box')
+    var getOuterWidth = getStyle(box,"width");
+    var widthObject = getOuterWidth.match(/\d*/);
+    var width = widthObject[0];
+     var startX = 0;
+     var moveX = 0;
+     var distanceX = 0;
+     var isMove = false;
+     box.addEventListener('touchstart', function(e){
+         startX = e.touches[0].clientX;  //--触摸点的横坐标
+     });
+     box.addEventListener('touchmove',function(e){
+         moveX = e.touches[0].clientX;//--获取当前手的横坐标
+         distanceX = moveX - startX; //--移动的距离=现在-初始
+         isMove = true;//证明滑动过
+     });
+     box.addEventListener('touchend', function(){
+         if(isMove && Math.abs(distanceX) > width/3){
+             if(distanceX > 0){
+               fnnext()
+             }
+             else if(distanceX < 0){
+               fnpre()
+             }
+         }
+         else if(isMove && Math.abs(distanceX) < width/3){
+         }
+     });
+</script>
+
+</html>

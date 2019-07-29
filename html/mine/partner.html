@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>升级合伙人</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+            background-color: #CB4540;
+            color: #fff;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class=" bgcf header fs16">
+        <i onclick="closewin()" class="iconfont ml3v">&#xe601;</i>
+        <span class="bold">升级合伙人</span>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        api.openFrame({
+            name: 'partner_frame',
+            url: './partner_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false
+        });
+        //监听接收
+        api.addEventListener({
+            name: 'scroll'
+        }, function(ret, err){
+            var scrollTop = ret.value.scroll;
+            if (scrollTop>60) {
+              header.style.backgroundColor = "#fff";
+              header.style.color = "#000";
+            }else {
+              header.style.backgroundColor = "#CB4540";
+              header.style.color = "#fff";
+            }
+        });
+
+      };
+      //
+      function closewin() {
+        api.closeWin();
+      }
+  </script>
+  </html>

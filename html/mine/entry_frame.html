@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>填写资料</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .aui-list-item-inner{
+            border-bottom: 1px solid #eee;
+          }
+          .aui-list-item-input input{
+            font-size: 14px;
+          }
+          .aui-list .aui-list-item-label, .aui-list .aui-list-item-label-icon{
+            width: 42%;
+            line-height: 41px;
+          }
+          .upimg{
+            width: 20vw;
+            height: 20vw;
+            background: url(../../image/upImg.png) no-repeat;
+            background-size: 100% 100%;
+          }
+          .example{
+            border: 1px solid #eee;
+            padding: 0 10px;
+            line-height: 20px;
+            margin-top: 10px;
+            margin-left:
+            border-radius: 5px;
+          }
+          .btn{
+            width: 94vw;
+            margin: 30px auto;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            background-color: #333;
+            font-size: 16px;
+            border-radius: 5px;
+          }
+      </style>
+  </head>
+  <body>
+    <div class="aui-content aui-margin-b-15 mt10">
+      <ul class="aui-list aui-form-list fs15">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    真实姓名
+                </div>
+                <div class="aui-list-item-input">
+                    <input class="" type="text" placeholder="输入真实姓名">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    证件号码
+                </div>
+                <div class="aui-list-item-input">
+                    <input class="" type="password" placeholder="输入证件号码">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner pad10a0">
+                <div class="aui-list-item-label">
+                    手持证件
+                </div>
+                <div class="aui-list-item-input">
+                    <div onclick="upImg(0)" class="upimg"></div>
+                    <span onclick="alertExample()" class="example">示例</span>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner pad10a0">
+                <div class="aui-list-item-label">
+                    证件证明
+                </div>
+                <div class="aui-list-item-input">
+                    <div onclick="upImg(1)" class="upimg"></div>
+                    <span onclick="alertExample()" class="example">示例</span>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner pad10a0">
+                <div class="aui-list-item-label">
+                    证件背面
+                </div>
+                <div class="aui-list-item-input">
+                    <div onclick="upImg(2)" class="upimg"></div>
+                    <span onclick="alertExample()" class="example">示例</span>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    商铺位置
+                </div>
+                <div class="aui-list-item-input">
+                    <input class="" type="password" disabled placeholder="点我进入地图选择位置">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    联系地址
+                </div>
+                <div class="aui-list-item-input">
+                    <input class="" type="password" placeholder="详细店铺地址">
+                </div>
+            </div>
+        </li>
+      </ul>
+    </div>
+    <div onclick="openExamine()" class="btn">
+      下一步
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //上传图片
+      function upImg(index) {
+        api.actionSheet({
+            title: '上传图片',
+            buttons: ['拍照', '从手机相册选择']
+        }, function(ret, err) {
+            var sourceTypes = [
+              "camera",
+              "album"
+            ];
+            api.getPicture({
+                sourceType: sourceTypes[ret.buttonIndex-1],
+                encodingType: 'jpg',
+                mediaValue: 'pic',
+                destinationType: 'url',
+                allowEdit: true,
+                quality: 50,
+                targetWidth: 100,
+                targetHeight: 100,
+                saveToPhotoAlbum: false
+            }, function(ret, err) {
+                getImg(ret,index)
+            });
+        });
+      }
+      function getImg(_data,index_) {
+          var upimg = document.getElementsByClassName('upimg');
+          api.imageCache({
+              url: _data.data
+          }, function(ret, err){
+              upimg[index_].style.background = 'url(' + ret.url  + ')';
+          });
+      }
+      //资料审核
+      function openExamine() {
+        api.openWin({
+            name: 'examine',
+            url: './examine.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //弹窗
+      function alertExample() {
+
+      }
+  </script>
+  </html>

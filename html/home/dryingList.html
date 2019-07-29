@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>晒单</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .l0{
+            left: 0
+          }
+          .r0{
+            right: 0
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class="clearfix text-center bgco header fs16">
+        <i onclick="closewin()" class="iconfont pa ml3v l0">&#xe601;</i>
+        <!-- <img src="" alt=""> -->
+        晒单
+        <i onclick="openWritedrying()" class="iconfont pa mr2v r0 fs20">&#xe6d3;</i>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        api.openFrame({
+            name: 'dryingList_frame',
+            url: './dryingList_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false
+        });
+      };
+      //发布
+      function openWritedrying() {
+        api.openWin({
+            name: 'writedrying',
+            url: './writedrying.html',
+            pageParam: {
+                name: 'test'
+            }
+        });      
+      }
+      function closewin() {
+        api.closeWin();
+      }
+  </script>
+  </html>

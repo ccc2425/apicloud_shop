@@ -29,6 +29,9 @@
           .fansorder>div{
             width: 25%;
           }
+          .fansorder{
+            display: none;
+          }
       </style>
   </head>
   <body>
@@ -37,7 +40,7 @@
         <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
         <!-- <img src="" alt=""> -->
         <diiv class="fs12">
-          <span onclick="openOredr('myOrder')" class="border1c0 pad0a3v lh24 boradiusl3 active">我的订单</span><span  onclick="openOredr('fansOrder')" class="border1c0 pad0a3v lh24">粉丝订单</span>
+          <span onclick="openOredr('pmyOrder')" class="border1c0 pad0a3v lh24 boradiusl3 active tab">我的订单</span><span  onclick="openOredr('pfansOrder')" class="tab border1c0 boradiusr3 pad0a3v lh24">粉丝订单</span>
         </diiv>
         <i class="iconfont fr mr2v boradiusr3">&#xe60c;</i>
     </div>
@@ -61,44 +64,49 @@
   <script type="text/javascript">
         var btnA = document.querySelectorAll('.myorder .btn');
         var btnB = document.querySelectorAll('.fansorder .btn');
+        var tab = document.getElementsByClassName('tab');
+        var oMyOrder = document.getElementsByClassName('myorder');
+        var oFansOrder = document.getElementsByClassName('fansorder');
         var lengA = btnA.length;
-        var lengB = btnA.length;
+        var lengB = btnB.length;
+        var headerH;
         apiready = function(){
+          var _index = api.pageParam.index;
           var header = $api.byId('header');
           $api.fixStatusBar(header);
-          var headerH = $api.offset(header);
+          headerH = $api.offset(header);
           var framesA = [];
           for (var i = 0; i < lengA; i++) {
             framesA.push({
-              name:'myOrder_frame' + i;
-              url:'./myOrder_frame' + i;
+              name:'pmyOrder_frame' + i,
+              url:'./pmyOrder_frame' + i + '.html',
             })
           }
           api.openFrameGroup ({
-              name: 'myOrder',
+              name: 'pmyOrder',
               background: '#fff',
-              scrollEnabled: false,
+              scrollEnabled: true,
               rect: {
                    x: 0,
-                   y: 0,
+                   y: headerH.h + 30,
                    w: 'auto',
                    h: 'auto'
               },
-              index: 0,
-              frames: framesA;
+              index: _index,
+              frames: framesA
           }, function(ret, err){
-
+              checkBtnA(ret.index);
           });
 
         };
         //隐藏frame组
         function hideFrameGroup() {
           api.setFrameGroupAttr({
-              name: 'myOrder',
+              name: 'pmyOrder',
               hidden: true
           });
           api.setFrameGroupAttr({
-              name: 'fansOrder',
+              name: 'pfansOrder',
               hidden: true
           });
         }
@@ -123,7 +131,7 @@
             }
           }
         }
-          function checkBtnB(index) {
+        function checkBtnB(index) {
           var i = 0;
           for (i; i < lengB; i++) {
             var thisLi = btnB[i];
@@ -139,71 +147,83 @@
         //切换frame页面
         function myOrder(index) {
           checkBtnA(index);
-          hideFrameGroup();
-          showFrameGroup('myOrder')
           api.setFrameGroupIndex({
-              name: 'myOrder',
+              name: 'pmyOrder',
               index: index,
               scroll: true
           });
         }
         function fansOrder(index) {
           checkBtnB(index)
-          hideFrameGroup();
-          showFrameGroup('fansOrder');
           api.setFrameGroupIndex({
-              name: 'fansOrder',
+              name: 'pfansOrder',
               index: index,
               scroll: true
           });
         }
         //切换frame组
         function openOredr(type) {
-          if (type === 'myOrder') {
+          if (type === 'pmyOrder') {
+            $api.addCls(tab[0], 'active');
+            if ($api.hasCls(tab[1],'active')) {
+              $api.removeCls(tab[1], 'active');
+            }
+            oMyOrder[0].style.display = "block";
+            oFansOrder[0].style.display = "none";
+            hideFrameGroup();
+            showFrameGroup('pmyOrder')
             var framesA = [];
             for (var i = 0; i < lengA; i++) {
               framesA.push({
-                name:'myOrder_frame' + i;
-                url:'./myOrder_frame' + i;
+                name:'pmyOrder_frame' + i,
+                url:'./pmyOrder_frame' + i + '.html',
               })
             }
             api.openFrameGroup ({
-                name: 'myOrder',
+                name: 'pmyOrder',
                 background: '#fff',
                 scrollEnabled: true,
                 rect: {
                      x: 0,
-                     y: 0,
+                     y: headerH.h + 30,
                      w: 'auto',
                      h: 'auto'
                 },
                 index: 0,
                 frames: framesA,
             }, function(ret, err){
-
+                  checkBtnA(ret.index);
             });
           }else {
+            $api.addCls(tab[1], 'active');
+            if ($api.hasCls(tab[0],'active')) {
+              $api.removeCls(tab[0], 'active');
+            }
+            oMyOrder[0].style.display = "none";
+            oFansOrder[0].style.display = "block";
+            hideFrameGroup();
+            showFrameGroup('pfansOrder');
             var framesB = [];
-            for (var i = 0; i < lengA; i++) {
+            for (var i = 0; i < lengB; i++) {
               framesB.push({
-                name:'fansOrder_frame' + i;
-                url:'./fansOrder_frame' + i;
+                name:'pfansOrder_frame' + i,
+                url:'./pfansOrder_frame' + i + '.html',
               })
             }
             api.openFrameGroup ({
-                name: 'fansOrder',
+                name: 'pfansOrder',
                 background: '#fff',
                 scrollEnabled: true,
                 rect: {
                      x: 0,
-                     y: 0,
+                     y: headerH.h + 30,
                      w: 'auto',
                      h: 'auto'
                 },
                 index: 0,
                 frames: framesB,
             }, function(ret, err){
-
+                checkBtnB(ret.index);
             });
           }
         }

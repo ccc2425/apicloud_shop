@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css" />
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .bgcf{
+            background-color: #fff;
+          }
+          .tips{
+            font-size: 12px;
+            text-align: center;
+            line-height: 24px;
+            background-color: #FFDAAA;
+            color: #BE862F;
+          }
+          .tips>i{
+            font-size: 12px;
+          }
+          .list{
+            width: 100vw;
+            padding: 3vw;
+            line-height: 5vw;
+            border-bottom: 1px solid #eee;
+          }
+          .aui-radio{
+            width: 5vw;
+            height: 5vw;
+            margin-right: 2vw;
+            float: left;
+          }
+          .logo{
+            float: left;
+            width:87vw;
+            font-size: 12px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          .logo img{
+            width: 3vw;
+            height: 3vw;
+            display: inline-block;
+          }
+          .btn{
+            position: fixed;
+            bottom: 3vh;
+            left: 10vw;
+            width: 80vw;
+            color: #fff;
+            background-color: #d81e06;
+            text-align: center;
+            border-radius: 30px;
+            line-height: 36px;
+          }
+      </style>
+  </head>
+  <body>
+    <div class="tips">
+        <i class="iconfont">&#xe606;</i>
+        温馨提醒：只有结算过的有效订单才能晒单哦~
+    </div>
+    <div class="bgcf">
+      <div class="list">
+        <label class="aui-clearfix">
+          <input class="aui-radio" type="radio" name="chose" value="美的电器家用小型多及数据功能全自动点定期会晤i和网球红日u和">
+          <div class="logo">
+            <img src="../../image/tm.png" alt="">
+            美的电器家用小型多及数据功能全自动点定期会晤i和网球红日u和
+          </div>
+        </label>
+      </div>
+      <div class="list">
+        <label class="aui-clearfix">
+          <input class="aui-radio" type="radio" name="chose" value="©2019 Baidu 使用百度前必读 意见反馈 京ICP证030173号京公网安备11000002000001号">
+          <div class="logo">
+            <img src="../../image/tm.png" alt="">
+            ©2019 Baidu 使用百度前必读 意见反馈 京ICP证030173号京公网安备11000002000001号
+          </div>
+        </label>
+      </div>
+      <div class="list">
+        <label class="aui-clearfix">
+          <input class="aui-radio" type="radio" name="chose" value="人工智能是发展的核心技术，做自己让未来不只领先几步；">
+          <div class="logo">
+            <img src="../../image/tm.png" alt="">
+            人工智能是发展的核心技术，做自己让未来不只领先几步；
+          </div>
+        </label>
+      </div>
+      <div class="list">
+        <label class="aui-clearfix">
+          <input class="aui-radio" type="radio" name="chose" value="在这里大家都用无人车代步，AI音箱不仅播放还可以交互；">
+          <div class="logo">
+            <img src="../../image/tm.png" alt="">
+            在这里大家都用无人车代步，AI音箱不仅播放还可以交互；
+          </div>
+        </label>
+      </div>
+      <div class="list">
+        <label class="aui-clearfix">
+          <input class="aui-radio" type="radio" name="chose" value="茶树油型香皂不是茶树油做的？而是来自“白千层">
+          <div class="logo">
+            <img src="../../image/tm.png" alt="">
+            茶树油型香皂不是茶树油做的？而是来自“白千层
+          </div>
+        </label>
+      </div>
+    </div>
+    <div onclick="sendChose()" class="btn">
+      确认
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      var auiRadio = document.getElementsByClassName('aui-radio')
+      function sendChose() {
+        var chose = document.getElementsByName("chose");
+        for(i in chose) {
+          if(chose[i].checked){
+            var choseVal = chose[i].value;
+            api.sendEvent({
+                name: 'choseVal',
+                extra: {
+                    choseVal: choseVal
+                }
+            });
+            api.closeWin();
+
+            // console.log(chose[i].value);
+          }
+        }
+      }
+  </script>
+  </html>

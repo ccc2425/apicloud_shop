@@ -66,6 +66,73 @@
           .aui-list .aui-list-item:active {
               background-color: inherit;
           }
+          /*自定义密令*/
+          .alert-box{
+
+            z-index: 99999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            visibility: hidden;
+          }
+          .alert{
+            z-index: 999999;
+            position: fixed;
+            left: 10vw;
+            top: -35vh;
+            width: 80vw;
+            background-color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            overflow: hidden;
+            animation:custom 1s 0;
+	          -webkit-animation:custom 1s 0; /*Safari 和 Chrome*/
+          }
+          @keyframes custom{
+          	from {top:-30vh;}
+          	to {top:-30vh;}
+          }
+          @keyframes newscustom{
+            0% {top:-30vh;}
+            40% {top:30vh;}
+            55% {top: 28vh;}
+            70% {top:30vh;}
+            85% {top: 28vh;}
+            100% {top: 30vh;}
+          }
+          .alert-tit{
+            background-color: #d81e06;
+            color: #fff;
+            line-height: 48px;
+            font-size: 18px;
+          }
+          .alert-text{
+            background-color: #fff;
+            padding: 5vw 5vw 0;
+          }
+          .alert-text .alert-ipt{
+            width: 100%;
+            font-size: 14px;
+            line-height: 32px;
+            border: 1px solid #d81e06;
+            text-align: center;
+          }
+          .alert-btn{
+            padding: 0 5vw;
+            border-radius: 20px;
+            line-height: 24px;
+            font-size: 13px;
+          }
+          .alert-btn-l{
+            background-color: #eee;
+          }
+          .alert-btn-r{
+            background-color: #d81e06;
+            color: #fff;
+          }
       </style>
   </head>
   <body>
@@ -90,7 +157,7 @@
                   <div class="aui-list-item-text coshw fs10">
                     <span>邀请码：<span>47385</span><i></i></span>
                   </div>
-                  <div class="pa cowhl upgrade">
+                  <div onclick="openUpgrade()" class="pa cowhl upgrade">
                     <span>我要升级</span>
                   </div>
                 </div>
@@ -150,22 +217,22 @@
     <!-- 订单 -->
     <div class="bgcf wid96 mar10au boradius5">
       <div class="pad10a5v borderb1e clearfix">
-        <span class="bold">自营商城订单</span><span class="fr fs13 co666">全部订单</span>
+        <span class="bold">自营商城订单</span><span onclick="openPrivateOrder(0)" class="fr fs13 co666">全部订单</span>
       </div>
       <div class="text-center just-space fs12 pad10a5v lh20">
-        <div class="mt10">
+        <div onclick="openPrivateOrder(1)" class="mt10">
           <i class="iconfont cored fs32">&#xe604;</i>
           <p>待付款</p>
         </div>
-        <div class="mt10">
+        <div onclick="openPrivateOrder(2)" class="mt10">
           <i class="iconfont cored fs32">&#xe60a;</i>
           <p>待发货</p>
         </div>
-        <div class="mt10">
+        <div onclick="openPrivateOrder(3)" class="mt10">
           <i class="iconfont cored fs32">&#xe68e;</i>
           <p>待收货</p>
         </div>
-        <div class="mt10">
+        <div onclick="openPrivateOrder(4)" class="mt10">
           <i class="iconfont cored fs32">&#xe628;</i>
           <p>已收货</p>
         </div>
@@ -173,22 +240,22 @@
     </div>
     <div class="bgcf wid96 mar10au boradius5">
       <div class="pad10a5v borderb1e clearfix">
-        <span class="bold">我的订单</span><span class="fr fs13 co666">查看全部</span>
+        <span class="bold">我的订单</span><span onclick="openMyOrder(0)" class="fr fs13 co666">查看全部</span>
       </div>
       <div class="text-center just-space fs12 pad10a5v lh20">
-        <div class="mt10">
+        <div onclick="openMyOrder(1)" class="mt10">
           <i class="iconfont fs32">&#xe640;</i>
           <p>全部订单</p>
         </div>
-        <div class="mt10">
+        <div onclick="openMyOrder(2)" class="mt10">
           <i class="iconfont fs32">&#xe656;</i>
           <p>已付款</p>
         </div>
-        <div class="mt10">
+        <div onclick="openMyOrder(3)" class="mt10">
           <i class="iconfont fs32">&#xe634;</i>
           <p>已结算</p>
         </div>
-        <div class="mt10">
+        <div onclick="openMyOrder(4)" class="mt10">
           <i class="iconfont fs32">&#xe622;</i>
           <p>已失效</p>
         </div>
@@ -197,7 +264,7 @@
     <!-- 升级合伙人 -->
     <div class="aui-content bgcf wid96 mar10au pad10a5v boradius5">
       <div class="aui-list aui-media-list">
-          <div class="aui-list-item aui-list-item-middle pad0">
+          <div onclick="openPartner()" class="aui-list-item aui-list-item-middle pad0">
             <img src="../../image/b10.png">
               <!-- <div class="aui-media-list-item-inner">
                   <div class="sign-img mr2v">
@@ -218,22 +285,22 @@
     <!-- 代理中心 -->
     <div class="bgcf wid96 mar10au boradius5">
       <div class="pad10a5v borderb1e clearfix">
-        <span class="bold">代理商中心</span><span class="fr fs13 co666">查看更多</span>
+        <span class="bold">代理商中心</span><span onclick="onenAgent()" class="fr fs13 co666">查看更多</span>
       </div>
       <div class="text-center just-space fs12 pad10a5v lh20">
-        <div class="mt10">
+        <div onclick="openEarnings()" class="mt10">
           <i class="iconfont fs32">&#xe610;</i>
           <p>收益报表</p>
         </div>
-        <div class="mt10">
+        <div onclick="openFansOrder()" class="mt10">
           <i class="iconfont fs32">&#xe626;</i>
           <p>粉丝订单</p>
         </div>
-        <div class="mt10">
+        <div onclick="openTeamFans()" class="mt10">
           <i class="iconfont fs32">&#xe654;</i>
           <p>团队粉丝</p>
         </div>
-        <div class="mt10">
+        <div onclick="withdrawal()" class="mt10">
           <i class="iconfont fs32">&#xe630;</i>
           <p>钱包</p>
         </div>
@@ -246,25 +313,25 @@
       </div>
       <div class="aui-grid">
         <div class="aui-row">
-            <div class="aui-col-xs-3">
+            <div onclick="openInvited()" class="aui-col-xs-3">
                 <div class="marau wid40b">
                   <img src="../../image/a21.png" alt="">
                 </div>
                 <div class="aui-grid-label">邀请分享</div>
             </div>
-            <div class="aui-col-xs-3">
+            <div onclick="openCustom()" class="aui-col-xs-3">
                 <div class="marau wid40b">
                   <img src="../../image/a22.png" alt="">
                 </div>
                 <div class="aui-grid-label">设置自定义密令</div>
             </div>
-            <div class="aui-col-xs-3">
+            <div onclick="openFootprint()" class="aui-col-xs-3">
                 <div class="marau wid40b">
                   <img src="../../image/a23.png" alt="">
                 </div>
                 <div class="aui-grid-label">我的足迹</div>
             </div>
-            <div class="aui-col-xs-3">
+            <div onclick="openCollection()" class="aui-col-xs-3">
                 <div class="marau wid40b">
                   <img src="../../image/a24.png" alt="">
                 </div>
@@ -282,13 +349,13 @@
                 </div>
                 <div class="aui-grid-label">消息通知</div>
             </div>
-            <div class="aui-col-xs-3">
+            <div onclick="openHelp()" class="aui-col-xs-3">
                 <div class="marau wid40b">
                   <img src="../../image/a27.png" alt="">
                 </div>
                 <div class="aui-grid-label">帮助中心</div>
             </div>
-            <div class="aui-col-xs-3">
+            <div onclick="openTenants()" class="aui-col-xs-3">
                 <div class="marau wid40b">
                   <img src="../../image/a28.png" alt="">
                 </div>
@@ -300,7 +367,7 @@
                 </div>
                 <div class="aui-grid-label">运营商升级</div>
             </div>
-            <div class="aui-col-xs-3">
+            <div onclick="openRetrieve()" class="aui-col-xs-3">
                 <div class="marau wid40b">
                   <img src="../../image/a30.png" alt="">
                 </div>
@@ -314,6 +381,23 @@
             </div>
         </div>
     </div>
+    </div>
+    <!-- 自定义密令 -->
+    <div class="alert-box">
+      <!-- <div class="alert-bg"></div> -->
+      <div class="alert">
+        <div class="alert-tit">
+          设置邀请码
+        </div>
+        <div class="alert-text">
+          <input type="text" name="" value="" class="alert-ipt mb5" placeholder="请输入邀请码">
+          <p  class="fs12 mb10 lh20 text-left cogry">自定义邀请码仅限设置一次且不可修改，支持中文、数字、字母组合</p>
+          <div class="just-space mb10">
+            <div onclick="closeCustom(0)" class="alert-btn alert-btn-l">取消</div>
+            <div onclick="closeCustom(1)" class="alert-btn alert-btn-r">保存</div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
@@ -365,6 +449,20 @@
       }
       //签到
       function openSignIn() {
+        // api.openFrame({
+        //     name: 'signIn',
+        //     url: '../public/signIn.html',
+        //     rect: {
+        //         x: 0,
+        //         y: 0,
+        //         w: 'auto',
+        //         h: 'auto'
+        //     },
+        //     pageParam: {
+        //         name: 'test'
+        //     },
+        //     bounces: false,
+        // });
         api.openWin({
             name: 'signIn',
             url: '../public/signIn.html',
@@ -372,6 +470,149 @@
                 name: 'test'
             }
         });
+      }
+      //自营订单
+      function openPrivateOrder(index_) {
+        api.openWin({
+            name: 'privateorder',
+            url: './order/privateorder.html',
+            pageParam: {
+                index: index_
+            }
+        });
+      }
+      //我的订单
+      function openMyOrder(index_) {
+        api.openWin({
+            name: 'myorder',
+            url: './order/myorder.html',
+            pageParam: {
+                index: index_
+            }
+        });
+      }
+      //合伙人
+      function openPartner() {
+        api.openWin({
+            name: 'partner',
+            url: './partner.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //代理中心
+      function onenAgent() {
+        api.openWin({
+            name: 'agent',
+            url: './agent.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //粉丝订单
+      function openFansOrder() {
+        api.openWin({
+            name: 'fansOrder',
+            url: './order//fansOrder.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //团队粉丝
+      function openTeamFans() {
+        api.openWin({
+            name: 'teamfans',
+            url: './teamfans.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //我要升级
+      function openUpgrade() {
+        api.openWin({
+            name: 'upgrade',
+            url: './upgrade.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //商家入驻
+      function openTenants() {
+        api.openWin({
+            name: 'tenants',
+            url: './tenants.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //邀请分享
+      function openInvited() {
+        api.openWin({
+            name: 'invited',
+            url: './invited.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //自定义指令
+      var alertBox = document.getElementsByClassName('alert-box');
+      var oAlert = document.getElementsByClassName('alert');
+      function openCustom(index) {
+        alertBox[0].style.visibility = "inherit";
+        oAlert[0].style.animation = "newscustom 1s 1 forwards"
+      }
+      function closeCustom(index) {
+        alertBox[0].style.visibility = "hidden";
+        oAlert[0].style.animation = "custom 1s 1 backwards"
+      }
+      //我的收藏
+      function openCollection() {
+        api.openWin({
+            name: 'collection',
+            url: './collection.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+      //帮助中心
+      function openHelp() {
+        api.openWin({
+            name: 'help',
+            url: './help.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //找回订单
+      function openRetrieve() {
+        api.openWin({
+            name: 'retrieve',
+            url: './retrieve.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //我的足迹
+      function openFootprint() {
+        api.openWin({
+            name: 'footprint',
+            url: './footprint.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
       }
   </script>
   </html>

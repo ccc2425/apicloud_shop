@@ -10,6 +10,9 @@
       <link rel="stylesheet" type="text/css" href="../../css/aui-pull-refresh.css" />
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
+      h1, h2, h3, h4, h5, h6{
+        margin-top: 0;
+      }
         .bgbanner{
           position: fixed;
           /*top: -50px;*/
@@ -473,8 +476,8 @@
               </div>
           </div>
           <div class="activelist">
-            <div><img src="../../image/b5.png"></div>
-            <div><img src="../../image/b6.png"></div>
+            <div onclick="openDryingList()"><img src="../../image/b5.png"></div>
+            <div onclick="openLaxin()"><img src="../../image/b6.png"></div>
             <div onclick="openSignIn()"><img src="../../image/b7.png"></div>
             <div onclick="openRedBag()"><img src="../../image/b8.png"></div>
           </div>
@@ -493,10 +496,12 @@
     						<div onclick="openBeauty()">
                   <img src="../../image/c1.png" />
                 </div>
-    						<div onclick="openMaterKid()">
+                <div onclick="openBeauty()">
+    						<!-- <div onclick="openMaterKid()"> -->
                   <img src="../../image/c2.png" />
                 </div>
-    						<div onclick="openLife()">
+                <div onclick="openBeauty()">
+    						<!-- <div onclick="openLife()"> -->
                   <img src="../../image/c3.png" />
                 </div>
     					</div>
@@ -504,12 +509,12 @@
                 <div onclick="openAdults()">
                   <img src="../../image/c4.png" />
                 </div>
-                <div>
+                <!-- <div>
                   <img src="../../image/c5.png" />
-                </div>
-                <div onclick="openBuyVideo()">
+                </div> -->
+                <!-- <div onclick="openBuyVideo()">
                   <img src="../../image/c4.png" />
-                </div>
+                </div> -->
                 <div onclick="openSpecialty()">
                   <img src="../../image/c5.png" />
                 </div>
@@ -1073,6 +1078,27 @@
         }
     });
   }
+  //晒单
+  function openDryingList() {
+    api.openWin({
+        name: 'dryingList',
+        url: './dryingList.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+  }
+  //拉新
+  function openLaxin() {
+    api.openWin({
+        name: 'laxin',
+        url: './laxin.html',
+        pageParam: {
+            name: 'test'
+        }
+    });
+
+  }
   //红包
   function openRedBag() {
     api.openWin({
@@ -1170,6 +1196,21 @@
   }
   //签到
   function openSignIn() {
+    // api.openFrame({
+    //     name: 'signIn',
+    //     url: '../public/signIn.html',
+    //     rect: {
+    //         x: 0,
+    //         y: 0,
+    //         w: 'auto',
+    //         h: 'auto'
+    //     },
+    //     pageParam: {
+    //         name: 'test'
+    //     },
+    //     bounces: false,
+    // });
+
     api.openWin({
         name: 'signIn',
         url: '../public/signIn.html',

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>发布</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/public.css" />
+    <style>
+        * {
+            outline: none;
+        }
+
+        html,body {
+          background-color: #eee;
+        }
+
+        .txet {
+            padding: 3vw;
+            background-color: #fff;
+        }
+
+        .txet textarea {
+            width: 100%;
+            height: 120px;
+            line-height: 1.2rem;
+            resize: none;
+        }
+
+        .upimg {
+            width: 30vw;
+        }
+
+        .aui-list .aui-list-item {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            padding-left: 0.75rem;
+            color: #212121;
+            position: relative;
+            min-height: 2.2rem;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+        }
+
+        .aui-list .aui-list-item-inner {
+            position: relative;
+            min-height: 2.2rem;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-box-flex: 1;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .aui-list.aui-form-list .aui-list-item-inner {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            padding: 0;
+        }
+
+        .aui-list .aui-list-item-label {
+            color: #212121;
+            width: 35%;
+            min-width: 1.5rem;
+            margin: 0;
+            padding: 0;
+            padding-right: 0.25rem;
+            line-height: 2.2rem;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .aui-list .aui-list-item-input {
+            width: 100%;
+            padding: 0;
+            padding-right: 0.75rem;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            -webkit-flex-shrink: 1;
+            flex-shrink: 1;
+        }
+
+        #ipts {
+            border: none;
+            background-color: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            display: block;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            /*height: 2.2rem;*/
+            line-height: normal;
+            color: #424242;
+            font-family: inherit;
+            box-sizing: border-box;
+            -webkit-user-select: text;
+            user-select: text;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .aui-list-item,
+        .aui-list-item-inner {
+            border-bottom: 0px solid #eee;
+        }
+
+        .aui-list-item-input textarea {
+            font-size: 13px;
+        }
+
+        .aui-list .aui-list-item-label {
+            line-height: 41px;
+        }
+
+        .sure-btn {
+            width: 34vw;
+            line-height: 35px;
+        }
+
+        .aui-list .aui-list-item-label {
+            width: 32%;
+        }
+        .btn{
+          width: 80vw;
+          background-color: #d81e06;
+          color: #fff;
+          line-height: 40px;
+          margin: 30px auto;
+          text-align: center;
+          border-radius: 30px;
+        }
+        #uploadimg{
+          width: 100%;
+        }
+        #uploadimg img{
+          display: inline-block;
+          width: 31vw;
+          padding: 0 1vw;
+          box-sizing: border-box;
+          margin-bottom: 5px;
+        }
+        textarea{
+          resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 文字 -->
+    <div class="txet">
+        <textarea name="name" rows="8" cols="80" placeholder="说说你和宝贝的故事吧"></textarea>
+    </div>
+    <!-- 上传图片 -->
+    <div class="imgs-box pad10a3v borderb1e bgcf">
+        <div id="uploadimg" class="upimg"></div>
+        <div class="upimg">
+            <img onclick="upImg()" src="../../image/upimg.png" alt="">
+        </div>
+    </div>
+    <!-- 选择商品 -->
+    <div class="borderb1e pad10a3v aui-list aui-form-list bgcf">
+        <div class="aui-list-item">
+            <div onclick="openChoseItem()" class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    选择商品
+                </div>
+                <div class="aui-list-item-input">
+                  <div id="ipt" class="iptcob"></div>
+                </div>
+                <div>
+                  <i class="iconfont">&#xe615;</i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lh40 fs12 pad0a3v cogry">
+      请上传图片大小小于2M的图片，系统自动筛选
+    </div>
+    <!-- 确定 -->
+    <div onclick="sure()" class="btn">晒单</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    var ipt;
+    var iptVal;
+    apiready = function() {
+      ipt = $api.byId('ipt');
+        api.addEventListener({
+            name: 'choseVal'
+        }, function(ret, err){
+          iptVal = ret.value.choseVal;
+          ipt.innerText = iptVal
+        });
+
+    };
+    //上传图片
+    function upImg() {
+      var upLoadImg = $api.byId('uploadimg');
+      // var file = imgFile.files[0];
+      // var reader = new FileReader();
+      // reader.readAsDataURL(file);//将文件读取为Data URL小文件   这里的小文件通常是指图像与 html 等格式的文件
+      // reader.onload = function(e){
+      //     $("#zmz").attr("src",e.target.result);
+      // }
+      api.actionSheet({
+          cancelTitle: '取消',
+          buttons: ['系统相册', '拍照或摄像']
+      }, function(ret, err) {
+          var sourceTypes = [
+            "album",
+            "camera"
+          ];
+          api.getPicture({
+              sourceType: sourceTypes[ret.buttonIndex-1],
+              encodingType: 'jpg',
+              mediaValue: 'pic',
+              destinationType: 'url',
+              allowEdit: true,
+              quality: 50,
+              targetWidth: 100,
+              targetHeight: 100,
+              saveToPhotoAlbum: false
+          }, function(ret, err){
+              var img = document.createElement('img');//创建一个标签
+              img.setAttribute('src',ret.data);//给标签定义src链接
+              upLoadImg.appendChild(img);//放到指定的id里
+          });
+      });
+    }
+    //打开选择商品
+    function openChoseItem() {
+      api.openWin({
+          name: 'choseitem',
+          url: './choseitem.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+    }
+    //晒单
+    function sure() {
+      api.closeWin();      
+    }
+</script>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        img{
+          width: 100%;
+          height: 100%;
+        }
+        .bg {
+            position: relative;
+            width: 100vw;
+            height: 100%;
+            background: url(../../image/bg3.png) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .box {
+            position: absolute;
+            ;
+            left: 0;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+        }
+        .pr{
+          position: relative;
+          display: inline-block;
+        }
+        .check-box {
+            color: #fff;
+            font-size: 12px;
+            line-height: 36px;
+        }
+
+        .check-box input {
+            vertical-align: middle;
+            margin-right: 1vw;
+        }
+        .checkboxs {
+            position: absolute;
+            visibility: hidden;
+        }
+        .checkboxs+label {
+            position: absolute;
+            top: 12px;
+            left: -19px;
+            width: 12px;
+            height: 12px;
+            border: 1px solid #A6A6A6;
+            border-radius: 50%;
+            background-color: #DEDEDE;
+        }
+
+        .checkboxs:checked+label:after {
+            content: "";
+            position: absolute;
+            left: 1px;
+            top: 2px;
+            width: 6px;
+            height: 2px;
+            border: 2px solid #424242;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            transform: rotate(-45deg);
+            -ms-transform: rotate(-60deg);
+            -moz-transform: rotate(-60deg);
+            -webkit-transform: rotate(-60deg);
+        }
+
+        .btn {
+            width: 90%;
+            margin: 0 auto 10px;
+            font-size: 16px;
+            color: #F2620C;
+            background-color: #fff;
+            line-height: 40px;
+            border-radius: 8px;
+        }
+        .store{
+          position: fixed;
+          top: 30vh;
+          left: 10vw;
+          z-index: 9;
+          display: flex;
+          width: 80vw;
+          box-sizing: border-box;
+          padding: 30px;
+          justify-content: space-around;
+          background-color: #fff;
+          border-radius: 8px;
+          text-align: center;
+          font-size: 13px;
+        }
+        .store>div>div{
+          width: 13vw;
+          height: 13vw;
+          margin: auto;
+        }
+        .store>div>span{
+          margin-top: 5px;
+        }
+        .bge{
+          width: 100vh;
+          height: 100vh;
+          position: fixed;
+          left: 0;
+          top: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+        .no{
+          display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="box">
+            <div class="check-box text-center bgcf mt30 padt10 cogry">
+              <div class="pr">
+                <input id="checkboxs" class="checkboxs" type="checkbox" name="" value="">
+                <label for="checkboxs"></label>同意入驻协议
+              </div>
+            </div>
+            <div onclick="openAlert()" class="btn">
+                立即入驻
+            </div>
+        </div>
+        <div class="no">
+          <div onclick="closeAlert()" class="bge"></div>
+          <div class="store">
+            <div onclick="openStore(0)" id="pernol">
+              <div class="">
+                <img src="../../image/store1.png" alt="">
+              </div>
+              <span>个人店铺</span>
+            </div>
+            <div onclick="openStore(1)" id="conpany">
+              <div class="">
+                <img src="../../image/store2.png" alt="">
+              </div>
+              <span>企业店铺</span>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    };
+    var no = document.getElementsByClassName('no');
+    //打开选择
+    function openAlert() {
+      no[0].style.display = "block";
+    }
+    //选择入驻商家
+    function openStore() {
+      no[0].style.display = "none";
+      api.openWin({
+          name: 'entry',
+          url: './entry.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+    }
+    //关闭选择
+    function closeAlert() {
+      no[0].style.display = "none";
+    }
+</script>
+
+</html>
