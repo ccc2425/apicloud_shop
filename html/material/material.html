@@ -142,10 +142,10 @@
   <body>
     <div id="header"></div>
     <div id="shopings" class="shoping">
-      <div class="shops cored" onclick="shop(0)">好货专场</div>
-      <div class="shops" onclick="shop(1)">必备素材</div>
-      <div class="shops" onclick="shop(2)">商品</div>
-      <div class="shops" onclick="shop(3)">精选单品</div>
+      <div class="shops cored" onclick="shops(0)">好货专场</div>
+      <div class="shops" onclick="shops(1)">必备素材</div>
+      <div class="shops" onclick="shops(2)">商品</div>
+      <div class="shops" onclick="shops(3)">精选单品</div>
     </div>
     <!-- 轮播图 -->
     <div id="aui-slide" class="bgcr">
@@ -166,10 +166,10 @@
       <div class="aui-slide-page-wrap no"><!--分页容器--></div>
     </div>
     <div id="shoping" class="shoping">
-      <div class="shops cored" onclick="shop(0)">好货专场</div>
-      <div class="shops" onclick="shop(1)">必备素材</div>
-      <div class="shops" onclick="shop(2)">商品</div>
-      <div class="shops" onclick="shop(3)">精选单品</div>
+      <div class="shop cored" onclick="shop(0)">好货专场</div>
+      <div class="shop" onclick="shop(1)">必备素材</div>
+      <div class="shop" onclick="shop(2)">商品</div>
+      <div class="shop" onclick="shop(3)">精选单品</div>
     </div>
     <!-- 好货专场 -->
     <div id="specialty" class="materials disbl">
@@ -675,18 +675,60 @@
      })
       // 切换
       function shop(index) {
-        var shops = document.getElementsByClassName('shops')
+        var shop = document.getElementsByClassName('shop');
+        var shops = document.getElementsByClassName('shops');
+        var len = shop.length
+        var i = 0;
+        var curLi = shop[index];
+        for (i; i < len; i++) {
+            var thisLi = shop[i];
+            var thisLis = shops[i];
+            if (thisLi === curLi) {
+                $api.addCls(thisLi, 'cored');
+                $api.addCls(thisLis, 'cored');
+                continue;
+            } else {
+                if ($api.hasCls(thisLi, 'cored')) {
+                    $api.removeCls(thisLi, 'cored');
+                    $api.removeCls(thisLis, 'cored');
+                }
+            }
+        }
+        //打开子页面
+        var materials = document.getElementsByClassName('materials')
+        var lens = materials.length
+        // console.log(lens);
+        var j = 0;
+        var curLis = materials[index];
+        for (j; j < len; j++) {
+            var thisLi = materials[j];
+            if (thisLi === curLis) {
+                $api.addCls(thisLi, 'disbl');
+                continue;
+            } else {
+                if ($api.hasCls(thisLi, 'disbl')) {
+                    $api.removeCls(thisLi, 'disbl');
+                }
+            }
+        }
+      }
+      function shops(index) {
+        var shop = document.getElementsByClassName('shop');
+        var shops = document.getElementsByClassName('shops');
         var len = shops.length
         var i = 0;
         var curLi = shops[index];
         for (i; i < len; i++) {
             var thisLi = shops[i];
+            var thisLis = shop[i];
             if (thisLi === curLi) {
                 $api.addCls(thisLi, 'cored');
+                $api.addCls(thisLis, 'cored');
                 continue;
             } else {
                 if ($api.hasCls(thisLi, 'cored')) {
                     $api.removeCls(thisLi, 'cored');
+                    $api.removeCls(thisLis, 'cored');
                 }
             }
         }

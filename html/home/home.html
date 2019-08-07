@@ -71,7 +71,7 @@
     <header id="header">
       <div class="serchbox">
         <span onclick="openCode()" class="pad0a2v"><i class="iconfont">&#xe686;</i></span>
-        <span class="ipt fs12"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
+        <span onclick="openSearch()" class="ipt fs12"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
         <span onclick="opebShopcar()"><i class="iconfont">&#xe61b;</i></span>
       </div>
       <div class="classification clearfix">
@@ -303,6 +303,17 @@
                 name: 'test'
             }
         });
+      }
+      //搜索
+      function openSearch() {
+        api.openWin({
+            name: 'search',
+            url: '../public/search.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
       }
   </script>
   </html>

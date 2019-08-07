@@ -108,14 +108,13 @@
         .animal{
           z-index: 999;
           width: 100%;
-          display: inline-block;
         }
         .delete-btn{
           z-index: 0;
           position: absolute;
           top: 0;
           right: 0;
-          height: 100%;
+          height: 99%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -124,8 +123,25 @@
         .checks{
           margin-top: 8%;
         }
+        .bottom{
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100vw;
+          border-top: 1px solid #eee;
+          border-bottom: 1px solid #eee;
+          line-height: 40px;
+          height: 40px;
+          background-color: #fff;
+        }
+        .settlement{
+          width: 24vw;
+          text-align: center;
+        }
+        /*.total*/
         /**/
         .tishio {
+          z-index: 99999;
 			    background: rgba(0, 0, 0, .6);
 			    color: #fff;
 			    font-size: 12px;
@@ -142,9 +158,11 @@
 			}
       /*弹窗*/
       .alerts{
+        z-index: 9999;
         position: fixed;
         top: 0;
         left: 0;
+        display: none;
       }
       .bg{
         width: 100vw;
@@ -156,6 +174,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        height: 0;
         box-sizing: border-box;
         border-radius: 5px 5px 0 0;
       }
@@ -169,8 +188,172 @@
         overflow-y: scroll;
         overflow-x: hidden;
       }
+      .content::-webkit-scrollbar {
+        display: none;
+    }
+      .content-box{
+        padding-left: 2vw;
+      }
       .content-box span{
+        padding: 5px 4vw;
+        background-color: #eee;
+        border-radius: 30px;
+        font-size: 12px;
+        margin-right: 3vw;
+        margin-bottom: 10px;
+      }
+      .alert-sure{
+        width: 96vw;
+        line-height: 40px;
+        margin: 10px auto;
+        text-align: center;
+        color: #fff;
+        background-color: #d81e06;
+        border-radius: 40px;
+      }
+      .active{
+        color: #fff!important;
+        background-color: #d81e06!important;
+      }
+      /*删除弹窗*/
+      /*dialog*/
+      .aui-dialog {
+      	width: 13.5rem;
+      	text-align: center;
+      	position: fixed;
+      	z-index: 999;
+      	left: 50%;
+      	margin-left: -6.75rem;
+      	margin-top: 0;
+      	top: 45%;
+      	border-radius: 0.3rem;
+      	opacity: 0;
+      	background-color: #ffffff;
+      	-webkit-transform: translate3d(0, 0, 0) scale(1.2);
+                	transform: translate3d(0, 0, 0) scale(1.2);
+       	-webkit-transition-property: -webkit-transform, opacity;
+                	transition-property: transform, opacity;
+          /*display: none;*/
+      }
+      .aui-dialog-header {
+          padding: 0.5rem 0.75rem 0 0.75rem;
+          text-align: center;
+          font-size: 1em;
+          color: #212121;
+      }
+      .aui-dialog-body {
+          padding: 0.75rem;
+          overflow: hidden;
+          font-size: 0.875em;
+          color: #757575;
+      }
+      .aui-dialog-body input {
+      	border: 1px solid #dddddd;
+      	height: 1.8rem;
+      	line-height: 1.8rem;
+      	min-height: 1.8rem;
+      	padding-left: 0.25rem;
+      	padding-right: 0.25rem;
+      }
+      .aui-dialog-footer {
+          position: relative;
+          font-size: 1em;
+          border-top: 1px solid #dddddd;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-box-pack: center;
+      	-webkit-justify-content: center;
+      			justify-content: center;
+      }
+      .aui-dialog-btn {
+      	position: relative;
+      	display: block;
+          width: 100%;
+      	padding: 0 0.25rem;
+      	height: 2.2rem;
+      	font-size: 0.8rem;
+      	line-height: 2.2rem;
+      	text-align: center;
+      	color: #0894ec;
+      	border-right: 1px solid #dddddd;
+      	white-space: nowrap;
+      	text-overflow: ellipsis;
+      	overflow: hidden;
+      	-webkit-box-sizing: border-box;
+      			box-sizing: border-box;
+      	-webkit-box-flex: 1;
+      			box-flex: 1;
+      }
+      .aui-dialog-btn:last-child {
+      	border-right: none;
+      }
+      .aui-dialog.aui-dialog-in {
+        z-index: 10000;
+      	opacity: 1;
+      	-webkit-transition-duration: 300ms;
+      	      transition-duration: 300ms;
+      	-webkit-transform: translate3d(0, 0, 0) scale(1);
+      	      transform: translate3d(0, 0, 0) scale(1);
+      }
+      .aui-dialog.aui-dialog-out {
+      	opacity: 0;
+      	-webkit-transition-duration: 300ms;
+      	      transition-duration: 300ms;
+      	-webkit-transform: translate3d(0, 0, 0) scale(0.815);
+      	      transform: translate3d(0, 0, 0) scale(0.815);
+      }
+      @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+          .aui-dialog-footer {
+      		border: none;
+              background-size: 100% 1px;
+      		background-repeat: no-repeat;
+      		background-position: top;
+              background-image: linear-gradient(0,#dddddd,#dddddd 50%,transparent 50%);
+              background-image: -webkit-linear-gradient(90deg,#dddddd,#dddddd 50%,transparent 50%);
+      	}
+      	.aui-dialog-btn {
+      		border: none;
+              background-image: -webkit-linear-gradient(0deg, #dddddd, #dddddd 50%, transparent 50%);
+              background-image: linear-gradient(270deg, #dddddd, #dddddd 50%, transparent 50%);
+              background-size: 1px 100%;
+              background-repeat: no-repeat;
+              background-position: right;
+      	}
+      	.aui-dialog-btn:last-child {
+      		border: none;
+              background-size: 0 100%;
+      	}
+      	.aui-dialog-body input {
+              border: none;
+              background-image: -webkit-linear-gradient(270deg, #dddddd, #dddddd 50%, transparent 50%), -webkit-linear-gradient(180deg, #dddddd, #dddddd 50%, transparent 50%), -webkit-linear-gradient(90deg, #dddddd, #dddddd 50%, transparent 50%), -webkit-linear-gradient(0, #dddddd, #dddddd 50%, transparent 50%);
+              background-image: linear-gradient(180deg, #dddddd, #dddddd 50%, transparent 50%), linear-gradient(270deg, #dddddd, #dddddd 50%, transparent 50%), linear-gradient(0deg, #dddddd, #dddddd 50%, transparent 50%), linear-gradient(90deg, #dddddd, #dddddd 50%, transparent 50%);
+              background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+              background-repeat: no-repeat;
+              background-position: top, right top, bottom, left top;
+          }
+      }
+      .aui-mask {
 
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.3);
+          opacity: 0;
+          z-index: 8;
+          visibility: hidden;
+          -webkit-transition: opacity .3s,-webkit-transform .3s;
+          transition: opacity .3s,transform .3s;
+      }
+      .aui-mask.aui-mask-in {
+        z-index: 9999;
+      	visibility: visible;
+        	opacity: 1;
+      }
+      .aui-mask.aui-mask-out {
+      	opacity: 0;
       }
       </style>
   </head>
@@ -178,7 +361,7 @@
       <div class="mt10 bgcf boxs">
         <div class="clearfix lh35">
           <label class="ml3v">
-            <input class="aui-radio radio-out" type="checkbox" name="">
+            <input class="aui-radio radio-out" type="checkbox" name="radio">
             <div class="label mr3v ml1v"><img src="../../image/tm.png" alt=""></div>
           </label>
           <div class="disi-b fs12">
@@ -186,30 +369,32 @@
           </div>
           <span class="fr mr2v fs12 edit">编辑</span>
         </div>
-        <div class="clearfix pad10a0 borderb1e pr">
-          <div class="animal clearfix">
-            <div class="fl mr2v checks">
-              <label class="ml3v">
-                <input class="aui-radio radio-in" type="checkbox" name="">
-              </label>
-            </div>
-            <div class="fl item-img mr2v">
-              <img src="" alt="">
-            </div>
-            <div class="fl item-inform fs12 lh20">
-              <div class="texthiddens">
-                加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+        <div class="pr list">
+          <div class="clearfix pad10a0 borderb1e pr bgcf animal">
+            <div class="clearfix">
+              <div class="fl mr2v checks">
+                <label class="ml3v">
+                  <input class="aui-radio radio-in" type="checkbox" name="radio">
+                </label>
               </div>
-              <div class="bgce clearfix">
-                混合口味<i class="iconfont fr">&#xe756;</i>
+              <div class="fl item-img mr2v">
+                <img src="" alt="">
               </div>
-              <div class="cored fs11">比加入时降价￥1.00</div>
-              <div class="clearfix">
-                <span class="cored">￥<span>23.8</span></span>
-                <div class="fr text-center">
-                  <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
-                  <span><input class="iptcob ipt" type="text" name="" value="1"></span>
-                  <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+              <div class="fl item-inform fs12 lh20">
+                <div class="texthiddens">
+                  加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+                </div>
+                <div class="bgce clearfix chose-type">
+                  <span>混合口味</span><i class="iconfont fr">&#xe756;</i>
+                </div>
+                <div class="cored fs11">比加入时降价￥1.00</div>
+                <div class="clearfix">
+                  <span class="cored">￥<span class="price">23.8</span></span>
+                  <div class="fr text-center">
+                    <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
+                    <span><input class="iptcob ipt" type="text" name="" value="1"></span>
+                    <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -223,7 +408,7 @@
       <div class="mt10 bgcf boxs">
         <div class="clearfix lh35">
           <label class="ml3v">
-            <input class="aui-radio radio-out" type="checkbox" name="">
+            <input class="aui-radio radio-out" type="checkbox" name="radio">
             <div class="label mr3v ml1v"><img src="../../image/tm.png" alt=""></div>
           </label>
           <div class="disi-b fs12">
@@ -231,30 +416,32 @@
           </div>
           <span class="fr mr2v fs12 edit">编辑</span>
         </div>
-        <div class="clearfix pad10a0 borderb1e pr">
-          <div class="animal clearfix">
-            <div class="fl mr2v checks">
-              <label class="ml3v">
-                <input class="aui-radio radio-in" type="checkbox" name="">
-              </label>
-            </div>
-            <div class="fl item-img mr2v">
-              <img src="" alt="">
-            </div>
-            <div class="fl item-inform fs12 lh20">
-              <div class="texthiddens">
-                加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+        <div class="pr list">
+          <div class="clearfix pad10a0 borderb1e pr bgcf animal">
+            <div class="clearfix">
+              <div class="fl mr2v checks">
+                <label class="ml3v">
+                  <input class="aui-radio radio-in" type="checkbox" name="radio">
+                </label>
               </div>
-              <div class="bgce clearfix">
-                混合口味<i class="iconfont fr">&#xe756;</i>
+              <div class="fl item-img mr2v">
+                <img src="" alt="">
               </div>
-              <div class="cored fs11">比加入时降价￥1.00</div>
-              <div class="clearfix">
-                <span class="cored">￥<span>23.8</span></span>
-                <div class="fr text-center">
-                  <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
-                  <span><input class="iptcob ipt" type="text" name="" value="1"></span>
-                  <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+              <div class="fl item-inform fs12 lh20">
+                <div class="texthiddens">
+                  加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+                </div>
+                <div class="bgce clearfix chose-type">
+                  <span>混合口味</span><i class="iconfont fr">&#xe756;</i>
+                </div>
+                <div class="cored fs11">比加入时降价￥1.00</div>
+                <div class="clearfix">
+                  <span class="cored">￥<span class="price">11.3</span></span>
+                  <div class="fr text-center">
+                    <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
+                    <span><input class="iptcob ipt" type="text" name="" value="1"></span>
+                    <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -263,30 +450,32 @@
             删除
           </div>
         </div>
-        <div class="clearfix pad10a0 borderb1e pr">
-          <div class="animal clearfix">
-            <div class="fl mr2v checks">
-              <label class="ml3v">
-                <input class="aui-radio radio-in" type="checkbox" name="">
-              </label>
-            </div>
-            <div class="fl item-img mr2v">
-              <img src="" alt="">
-            </div>
-            <div class="fl item-inform fs12 lh20">
-              <div class="texthiddens">
-                加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+        <div class="pr list">
+          <div class="clearfix pad10a0 borderb1e pr bgcf animal">
+            <div class="clearfix">
+              <div class="fl mr2v checks">
+                <label class="ml3v">
+                  <input class="aui-radio radio-in" type="checkbox" name="radio">
+                </label>
               </div>
-              <div class="bgce clearfix">
-                混合口味<i class="iconfont fr">&#xe756;</i>
+              <div class="fl item-img mr2v">
+                <img src="" alt="">
               </div>
-              <div class="cored fs11">比加入时降价￥1.00</div>
-              <div class="clearfix">
-                <span class="cored">￥<span>23.8</span></span>
-                <div class="fr text-center">
-                  <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
-                  <span><input class="iptcob ipt" type="text" name="" value="1"></span>
-                  <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+              <div class="fl item-inform fs12 lh20">
+                <div class="texthiddens">
+                  2加大睡觉今日忘记觉得挖掘饿哦骄傲i文件哦囧忘记哦i啊我囧
+                </div>
+                <div class="bgce clearfix chose-type">
+                  <span>混合口味</span><i class="iconfont fr">&#xe756;</i>
+                </div>
+                <div class="cored fs11">比加入时降价￥1.00</div>
+                <div class="clearfix">
+                  <span class="cored">￥<span class="price">20.8</span></span>
+                  <div class="fr text-center">
+                    <span class="box box-reduce"><i class="iconfont">&#xe631;</i></span>
+                    <span><input class="iptcob ipt" type="text" name="" value="1"></span>
+                    <span class="box box-add"><i class="iconfont">&#xe608;</i></span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -296,9 +485,21 @@
           </div>
         </div>
       </div>
-
+      <!-- 底部 -->
+      <div class="bottom clearfix">
+        <label class="ml3v">
+          <input class="aui-radio radio-all" type="checkbox" name=""><span class="ml2v">全选</span>
+        </label>
+        <div class="fr settlement bgcr">
+          结算(<span id="setnum">0</span>)
+        </div>
+        <div class="fr total pad0a3v">
+          合计：<span class="cored">￥</span><span id="paymoney" class="cored">0.00</span>
+        </div>
+      </div>
+      <!-- 提示弹窗部分 -->
       <span class="tishio"></span>
-      <!-- <div class="alerts">
+      <div class="alerts">
         <div class="bg"></div>
         <div class="bgcf alert-box">
           <div class="clearfix pad2v borderb1e pr">
@@ -310,68 +511,78 @@
               <p>库存:4875</p>
               <p class="texthiddens">已选：混合口味</p>
             </div>
-            <div class="icon pa">
+            <div onclick="closeAlert()" class="icon pa">
               <i class="iconfont">&#xe73e;</i>
             </div>
           </div>
           <div class="content">
-            <div class="tits pad0a2v lh24">
+            <div class="tits pad0a2v lh35">
               颜色分类
             </div>
             <div class="content-box">
-              <span>新伦敦</span>
-              <span>光辉岁月</span>
-              <span>新伦敦</span>
-              <span>光辉岁月</span>
-              <span>新伦敦</span>
-              <span>光辉岁月</span>
-              <span>新伦敦</span>
-              <span>光辉岁月</span>
-              <span>新伦敦</span>
-              <span>光辉岁月</span>
-              <span>新伦敦</span>
-              <span>新伦敦</span>
+              <span onclick="choseType(0)" class="active">新伦敦</span>
+              <span onclick="choseType(1)">光辉岁月</span>
+              <span onclick="choseType(2)">新伦敦</span>
+              <span onclick="choseType(3)">光辉岁月</span>
+              <span onclick="choseType(4)">新伦敦</span>
+              <span onclick="choseType(5)">光辉岁月</span>
+              <span onclick="choseType(6)">新伦敦</span>
+              <span onclick="choseType(7)">光辉岁月</span>
+              <span onclick="choseType(8)">新伦敦</span>
+              <span onclick="choseType(9)">光辉岁月</span>
+              <span onclick="choseType(10)">新伦敦</span>
+              <span onclick="choseType(11)">新伦敦</span>
+              <span onclick="choseType(12)">新伦敦</span>
+              <span onclick="choseType(13)">光辉岁月</span>
+              <span onclick="choseType(14)">新伦敦</span>
             </div>
           </div>
-          <div class="">
-
+          <div onclick="sureAlert()" class="alert-sure">
+              确认
           </div>
         </div>
-      </div> -->
+      </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
-  <script type="text/javascript" src="../../script/aui-toast.js" ></script>
+  <!-- <script type="text/javascript" src="../../script/aui-toast.js" ></script> -->
   <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript" src="../../script/fx.js" ></script>
+  <script type="text/javascript" src="../../script/aui-dialog.js" ></script>
   <script type="text/javascript">
       apiready = function(){
 
 
       };
+      var dialog = new auiDialog();
+      var setnum = document.getElementById('setnum');
+      var paymoney = document.getElementById('paymoney');
       //选择checkcox
       $('.radio-out').on('change',function(){
         var boxs = this.parentNode.parentNode.parentNode;
-        // var boxs = document.getElementsByClassName('boxs')
         var boxRadioO = boxs.getElementsByClassName('radio-out');
         var boxRadioI = boxs.getElementsByClassName('radio-in');
+        var radioAll = document.getElementsByClassName('radio-all')
         for (var i = 0; i < boxRadioI.length; i++) {
           if (boxRadioO[0].checked) {
             boxRadioI[i].checked = true;
           }else {
             boxRadioI[i].checked = false;
+            radioAll[0].checked = false;
           }
         }
       })
       $('.radio-in').on('change',function(){
-        var boxs = this.parentNode.parentNode.parentNode.parentNode.parentNode;
+        var boxs = this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
         var boxRadioO = boxs.getElementsByClassName('radio-out');
         var boxRadioI = boxs.getElementsByClassName('radio-in');
+        var radioAll = document.getElementsByClassName('radio-all')
         var len = boxRadioI.length;
         for (var i = 0; i < len; i++) {
           if (boxRadioI[i].checked) {
             boxRadioO[0].checked = true;
           }else{
             boxRadioO[0].checked = false;
+            radioAll[0].checked = false;
             return false;
           }
         }
@@ -390,6 +601,7 @@
           tishi(info)
         }
         thisIpt[0].value = a;
+        shopCompute();
       })
       //加
       $('.box-add').on('click',function () {
@@ -403,13 +615,120 @@
           tishi(info)
         }
         thisIpt[0].value = a;
+        shopCompute();
       })
       //编辑删除
       $('.edit').on('click',function () {
-        var thisBox = this.parentNode.parentNode;
-        var animal = thisBox.getElementsByClassName('animal');
-        $('.animal').animate({marginLeft:'-16vw'})
+        if (this.innerText === '编辑') {
+          this.innerText = '完成'
+          var thisBox = this.parentNode.parentNode;
+          var animal = thisBox.getElementsByClassName('animal');
+          for (var i = 0; i < animal.length; i++) {
+            $(animal[i]).animate({marginLeft:'-16vw'},200)
+          }
+        } else {
+          this.innerText = '编辑'
+          var thisBox = this.parentNode.parentNode;
+          var animal = thisBox.getElementsByClassName('animal');
+          for (var i = 0; i < animal.length; i++) {
+            $(animal[i]).animate({marginLeft:'0'},200)
+          }
+        }
       })
+      //点击删除
+      $('.delete-btn').on('click',function(){
+        // console.log(this.parentNode);
+        var thisBox = this.parentNode;
+        var thisOut = this.parentNode.parentNode;
+        var childDiv = thisOut.getElementsByClassName('list')
+        console.log(childDiv.length);
+        dialog.alert({
+            // title:"弹出提示",
+            msg:'确定要删除这个宝贝吗',
+            buttons:['取消','确定']
+        },function(ret){
+          var index_ = ret.buttonIndex;
+          if (index_ === 2) {
+            thisBox.remove()
+            console.log(childDiv.length);
+            if (childDiv.length === 0) {
+              thisOut.remove()
+            }
+            shopCompute();
+          }
+            // console.log(ret.buttonIndex)
+        })
+      })
+      //全选全不选
+      $('.radio-all').on('change',function(){
+        var radioAll = document.getElementsByClassName('radio-all')
+        var oRadio = document.getElementsByName('radio')
+        for (var i = 0; i < oRadio.length; i++) {
+          if(radioAll[0].checked){
+            oRadio[i].checked = true;
+          }else {
+            oRadio[i].checked = false;
+          }
+        }
+      })
+      $('.aui-radio').on('change',function(){
+        // console.log(this);
+        var oRadio = document.getElementsByName('radio');
+        var radioAll = document.getElementsByClassName('radio-all')
+        var oRadioIn = document.getElementsByClassName('radio-in');
+        var oRadioOut = document.getElementsByClassName('radio-out');
+        shopCompute();
+        for (var i = 0; i < oRadio.length; i++) {
+          if (oRadio[i].checked) {
+            radioAll[0].checked = true;
+          } else {
+            radioAll[0].checked = false;
+            return false;
+          }
+        };
+      })
+      //打开弹窗，选择类别
+      // function choseAlert() {
+      var _this;
+      $('.chose-type').on('click',function(){
+        _this = this;
+        var alerts = document.getElementsByClassName('alerts');
+        var alertBox = document.getElementsByClassName('alert-box');
+        alerts[0].style.display = 'block';
+        $('.alert-box').animate({height:'72vh'})
+      })
+      //选择类别
+      function choseType(index) {
+        var types = document.querySelectorAll('.content-box span')
+        for (var i = 0; i < types.length; i++) {
+          if (i===index) {
+            $api.addCls(types[i], 'active');
+          }else {
+            if ($api.hasCls(types[i], 'active')) {
+              $api.removeCls(types[i], 'active')
+            }
+          }
+        }
+      }
+      //点击确认
+      function sureAlert() {
+        var choseVal = $('.active')[0].innerText;
+        var thisSpan = _this.getElementsByTagName('span')
+        console.log(_this);
+        thisSpan[0].innerText = choseVal;
+        $('.alert-box').animate({height:'0'})
+        setTimeout(function() {
+          $('.alerts').css('display','none')
+        },500)
+        // console.log($('.active')[0].innerText);
+      }
+      //关闭弹窗
+      function closeAlert() {
+        $('.alert-box').animate({height:'0'})
+        setTimeout(function() {
+          $('.alerts').css('display','none')
+        },500)
+      }
       //提示
       function tishi(info){
 					$('.tishio')[0].innerHTML = info
@@ -418,5 +737,27 @@
 						$('.tishio')[0].style.display='none'
 					},2000)
 			}
+      //购物车计算
+      function shopCompute() {
+        var chks=$(".radio-in:checked");
+        // console.log(chks);
+        var leng = chks.length;
+        setnum.innerText = leng;
+        var this_;
+        var prices;
+        var ipts;
+        var all_price = 0;
+        for (var i = 0; i <leng; i++) {
+          this_ = chks[i].parentNode.parentNode.parentNode;
+          prices  = this_.getElementsByClassName('price');
+          ipts  = this_.getElementsByClassName('ipt');
+          console.log(parseFloat(prices[0].innerText));
+          console.log(parseFloat(ipts[0].value));
+          all_price += (parseFloat(prices[0].innerText) * parseFloat(ipts[0].value));
+        }
+        all_price = Math.floor(all_price*100)/100
+        paymoney.innerText = all_price;
+        console.log(all_price);
+      }
   </script>
   </html>

@@ -93,7 +93,7 @@
         </div>
       </div>
       <div class="text-center btn-box bgcf pr padt18v">
-          <div class="btn-sign boradiusr cowhl">签到</div>
+          <div onclick="fnSign()" class="btn-sign boradiusr cowhl">签到</div>
           <!-- <div class="btn-sign boradius30 lh40 bgcor">点击签到</div> -->
           <div class="fs12">您已连续签到<span class="cored">0</span>天，连续签到<span class="cored">15</span>天，可以额外获得<span class="cored">10</span>个集分宝</div>
       </div>
@@ -244,6 +244,11 @@
         var header = $api.byId('header');
         $api.fixStatusBar(header);
       };
+      //签到
+      function fnSign() {
+        console.log(1);
+      }
+      //关闭
       function closewin() {
         api.execScript({
             name: 'signIn',

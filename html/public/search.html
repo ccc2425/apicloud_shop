@@ -6,58 +6,155 @@
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-
+        html,body{
+          background-color: #fff;
+        }
         .aui-content-padded {
             padding: 0.75rem;
             background-color: #ffffff;
             margin-top: 0.75rem;
         }
-        .aui-searchbar .aui-searchbar-cancel {
+        .aui-searchbar{
+          height: 36px;
+        }
+        .aui-searchbar-input{
+          height: 28px;
+        }
+        .aui-searchbar-input input{
+          height: inherit;
+          line-height: 28px;
+        }
+        .aui-searchbar .aui-iconfont{
+          line-height: 28px;
+        }
+        .aui-searchbar .aui-searchbar-btn {
             font-size: 0.7rem;
             color: #666666;
-            margin-right: -2.2rem;
-            width: 2.2rem;
+            margin-right: -3.2rem;
+            width: 3.2rem;
             height: 1.4rem;
             line-height: 1.4rem;
             text-align: center;
             -webkit-transition: all .3s;
             transition: all .3s;
         }
+        .search_history span,.people-search span{
+          margin: 4px 1vw;
+          padding: 0 3.5vw;
+          line-height: 24px;
+          background-color: #eee;
+          border-radius: 20px;
+        }
       </style>
   </head>
   <body>
-    <div class="aui-searchbar" id="search">
-      <div class="aui-searchbar-input aui-border-radius" tapmode onclick="doSearch()">
-          <i class="aui-iconfont aui-icon-search"></i>
-          <form action="javascript:search();">
-              <input type="search" placeholder="请输入搜索内容" id="search-input">
-          </form>
+    <div id="header"></div>
+    <!-- <div class="aui-searchbar" id="search">
+        <div class="aui-searchbar-input aui-border-radius">
+            <i class="aui-iconfont aui-icon-search"></i>
+            <input type="search" placeholder="请输入搜索内容" id="search-input">
+            <div class="aui-searchbar-clear-btn">
+                <i class="aui-iconfont aui-icon-close"></i>
+            </div>
+        </div>
+        <div class="aui-searchbar-btn" tapmode>取消</div>
+    </div> -->
+    <div class="aui-searchbar bgcf" id="search">
+      <i onclick="closewin()" class="iconfont ml2v">&#xe601;</i>
+      <div class="aui-searchbar-input aui-border-radius bgce">
+      <!-- <div class="aui-searchbar-input aui-border-radius bgce lh24" tapmode onclick="doSearch()"> -->
+          <i class="aui-iconfont aui-icon-search fs14"></i>
+          <!-- <form action="javascript:search();"> -->
+              <input type="search" placeholder="请输入搜索内容" id="search-input" class="fs14 lh24">
+          <!-- </form> -->
+          <div class="aui-searchbar-clear-btn">
+              <i class="aui-iconfont aui-icon-close"></i>
+          </div>
       </div>
-      <div class="aui-searchbar-cancel" tapmod>取消</div>
+      <div class="aui-searchbar-btn fs14" tapmod>取消</div>
+      <!-- <div class="aui-searchbar-cancel fs14" tapmod>取消</div> -->
+    </div>
+    <div class="pad0a2v">
+      <div class="fs14 clearfix lh35 co999">
+        历史记录<i onclick="deleteHistry()" class="iconfont fs14 fr">&#xe622;</i>
+      </div>
+      <div class="search_history">
+
+      </div>
+    </div>
+    <div class="pad0a2v">
+      <div class="fs14 clearfix lh35 co999">
+        大家都在搜
+      </div>
+      <div class="people-search fs12">
+        <span>连衣裙</span>
+        <span>零食</span>
+        <span>斜挎包女</span>
+        <span>风扇</span>
+        <span>凉鞋女</span>
+        <span>钻石画</span>
+        <span>裤子女</span>
+        <span>面膜</span>
+        <span>洗发水</span>
+      </div>
     </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
           api.parseTapmode();
       }
-      var searchBar = document.querySelector(".aui-searchbar-input");
+      var searchBar = document.querySelector(".aui-searchbar");
+      var searchBarInput = document.querySelector(".aui-searchbar input");
+      var searchBarBtn = document.querySelector(".aui-searchbar .aui-searchbar-btn");
+      var searchBarClearBtn = document.querySelector(".aui-searchbar .aui-searchbar-clear-btn");
+      var search_history = document.getElementsByClassName('search_history');
       if(searchBar){
-          searchBar.onclick = function(){
-              document.querySelector(".aui-searchbar-cancel").style.marginRight = 0;
+          searchBarInput.onclick = function(){
+              searchBarBtn.style.marginRight = 0;
+          }
+          searchBarInput.oninput = function(){
+              if(this.value.length){
+                  searchBarClearBtn.style.display = 'block';
+                  searchBarBtn.classList.add("aui-text-info");
+                  searchBarBtn.textContent = "搜索";
+              }else{
+                  searchBarClearBtn.style.display = 'none';
+                  searchBarBtn.classList.remove("aui-text-info");
+                  searchBarBtn.textContent = "取消";
+              }
           }
       }
-      document.querySelector(".aui-searchbar-cancel").onclick = function(){
-          this.style.marginRight = "-"+this.offsetWidth+"px";
-          document.getElementById("search-input").value = '';
-          document.getElementById("search-input").blur();
+      searchBarClearBtn.onclick = function(){
+          this.style.display = 'none';
+          searchBarInput.value = '';
+          searchBarBtn.classList.remove("aui-text-info");
+          searchBarBtn.textContent = "取消";
       }
-      function doSearch(){
-          var searchValue = document.getElementById("search-input").value;
-          if(searchValue){
-              alert("您输入的内容是:"+searchValue);
+      searchBarBtn.onclick = function(){
+          var keywords = searchBarInput.value;
+          if(keywords.length){
+              searchBarInput.blur();
+              search_history[0].innerHTML +=  "<span>" + keywords +"</span>";
+              searchBarInput.value = "";
+          }else{
+              this.style.marginRight = "-"+this.offsetWidth+"px";
+              searchBarInput.value = '';
+              searchBarInput.blur();
           }
+      }
+      //删除记录
+      function deleteHistry() {
+        search_history[0].innerHTML =  "";
+      }
+      //关闭该界面
+      function closewin() {
+        api.closeWin();      
       }
   </script>
   </html>
