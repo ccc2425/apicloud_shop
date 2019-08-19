@@ -95,12 +95,12 @@
 <body>
     <div id="nav">
         <ul>
-            <li><a href="#banner" class="active">top</a>
-                <li><a href="#first">first</a>
-                    <li><a href="#second">second</a>
-                        <li><a href="#third">third</a>
-                            <li><a href="#fourth">fourth</a>
-                                <li><a href="#fifth">fifth</a>
+          <li><a href="#banner" class="active">top</a></li>
+          <li><a href="#first">first</a></li>
+          <li><a href="#second">second</a></li>
+          <li><a href="#third">third</a></li>
+          <li><a href="#fourth">fourth</a></li>
+          <li><a href="#fifth">fifth</a></li>
         </ul>
     </div>
 
@@ -174,6 +174,7 @@
 <script type="text/javascript">
     /* show active navigation element */
     $(document).ready(function() {
+      console.log(document);
         $(document).on("scroll", onScroll);
 
         //smooth scrolling
@@ -190,7 +191,6 @@
             $('html, body').stop().animate({
                 'scrollTop': $target.offset().top + 2
             }, 500, 'swing', function() {
-              console.log(111);
                 window.location.hash = target;
                 $(document).on("scroll", onScroll);
             });
@@ -199,15 +199,12 @@
 
     //get scroll position and handle class active
     function onScroll(event) {
-      console.log(222);
         var scrollPos = $(document).scrollTop() + 150;
-        console.log(333);
+        console.log(scrollPos);
         $('#nav li a').each(function() {
-          console.log(444);
             var currLink = $(this);
             var refElement = $(currLink.attr("href"));
             if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-              console.log(555);
                 $('#nav li a').removeClass("active");
                 currLink.addClass("active");
             } else {
@@ -219,7 +216,6 @@
     /* activate sticky navigation */
     $(document).ready(function() {
         var stickyNavTop = $('#nav').offset().top;
-
         var stickyNav = function() {
             var scrollTop = $(window).scrollTop();
 

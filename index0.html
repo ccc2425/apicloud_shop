@@ -6,9 +6,9 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>首页</title>
-    <link rel="stylesheet" type="text/css" href="../css/api.css" />
-    <link rel="stylesheet" type="text/css" href="../css/iconfont.css" />
-    <link rel="stylesheet" type="text/css" href="../css/public.css" />
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="./css/public.css" />
     <style type="text/css">
         html,
         body {
@@ -46,19 +46,19 @@
             justify-content: space-around;
         }
         /* 底部切换按钮样式 */
-        .bbtn01 {background: url(../image/n10.png) no-repeat center 4px; }
-        .bbtn02 {background: url(../image/n20.png) no-repeat center 4px; }
-        .bbtn03 {background: url(../image/n30.png) no-repeat center 4px; }
-        .bbtn04 {background: url(../image/n40.png) no-repeat center 4px; }
-        .bbtn05 {background: url(../image/n50.png) no-repeat center 4px; }
+        .bbtn01 {background: url(./image/n10.png) no-repeat center 4px; }
+        .bbtn02 {background: url(./image/n20.png) no-repeat center 4px; }
+        .bbtn03 {background: url(./image/n30.png) no-repeat center 4px; }
+        .bbtn04 {background: url(./image/n40.png) no-repeat center 4px; }
+        .bbtn05 {background: url(./image/n50.png) no-repeat center 4px; }
         .bottom_btn {width: 100%; padding-top: 32px;background-position-y: 4px; background-size: 24px;  font-size: 10px; color: #333;}
 
         /* 底部按钮激活样式 */
-        .activebtn0 {background: url(../image/n11.png) no-repeat center 4px;}
-        .activebtn1 {background: url(../image/n21.png) no-repeat center 4px;}
-        .activebtn2 {background: url(../image/n31.png) no-repeat center 4px;}
-        .activebtn3 {background: url(../image/n41.png) no-repeat center 4px;}
-        .activebtn4 {background: url(../image/n51.png) no-repeat center 4px;}
+        .activebtn0 {background: url(./image/n11.png) no-repeat center 4px;}
+        .activebtn1 {background: url(./image/n21.png) no-repeat center 4px;}
+        .activebtn2 {background: url(./image/n31.png) no-repeat center 4px;}
+        .activebtn3 {background: url(./image/n41.png) no-repeat center 4px;}
+        .activebtn4 {background: url(./image/n51.png) no-repeat center 4px;}
         .activebtn {color:#d81e06; background-size: 24px;}
         .bottomhover {background-color: #46494B;}
         /*分享*/
@@ -83,19 +83,19 @@
     </section>
     <footer id="footer">
         <ul>
-            <li tapmode="activebtn0 activebtn" onclick="switchframe('home')">
+            <li tapmode="activebtn0 activebtn" onclick="switchframe(0)">
                 <a class="bottom_btn bbtn01 activebtn activebtn0">首页</a>
             </li>
-            <li tapmode="activebtn1 activebtn" onclick="switchframe('classifys')">
+            <li tapmode="activebtn1 activebtn" onclick="switchframe(1)">
                 <a class="bottom_btn bbtn02">分类</a>
             </li>
-            <li tapmode="activebtn2 activebtn" onclick="switchframe('mall)">
+            <li tapmode="activebtn2 activebtn" onclick="switchframe(2)">
                 <a class="bottom_btn bbtn03">自营商城</a>
             </li>
-            <li tapmode="activebtn3 activebtn" onclick="switchframe('material')">
+            <li tapmode="activebtn3 activebtn" onclick="switchframe(3)">
                 <a class="bottom_btn bbtn04">素材</a>
             </li>
-            <li tapmode="activebtn4 activebtn" onclick="switchframe('mine')">
+            <li tapmode="activebtn4 activebtn" onclick="switchframe(4)">
                 <a class="bottom_btn bbtn05">我的</a>
             </li>
         </ul>
@@ -108,31 +108,31 @@
           <ul class="aui-list-share aui-list-noborder just-space">
             <li onclick="share()" class="share-box">
               <div class="share-box-img">
-                <img src="../image/a1.png">
+                <img src="./image/a1.png">
               </div>
               <div class="aui-list-item-inner">微信</div>
             </li>
             <li class="share-box">
               <div class="share-box-img">
-                <img src="../image/a2.png">
+                <img src="./image/a2.png">
               </div>
               <div class="aui-list-item-inner">朋友圈</div>
             </li>
             <li class="share-box">
               <div class="share-box-img">
-                <img src="../image/a3.png">
+                <img src="./image/a3.png">
               </div>
               <div class="aui-list-item-inner">qq好友</div>
             </li>
             <li class="share-box">
               <div class="share-box-img">
-                <img src="../image/a4.png">
+                <img src="./image/a4.png">
               </div>
               <div class="aui-list-item-inner">qq空间</div>
             </li>
             <li class="share-box">
               <div class="share-box-img">
-                <img src="../image/a5.png">
+                <img src="./image/a5.png">
               </div>
               <div class="aui-list-item-inner">新浪微博</div>
             </li>
@@ -141,80 +141,30 @@
       </div>
     </div>
 </body>
-<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
       var footerPos;
       var headerPos;
-      var isFirstOpen = false;
-      var isSecondOpen = false;
-      var isThirdOpen = false;
-      var isForthOpen = false;
-      var isFiveOpen = false;
 // 隐藏所有的一级frame
 function hideAllFrame() {
-  alert('hidden')
-  // api.setFrameAttr({
-  //     name: 'home',
-  //     hidden: true
-  // });
-  api.setFrameAttr({
-      name: 'classifys',
-      hidden: true
+  api.closeFrame({
+      name: 'home'
   });
-  api.setFrameAttr({
-      name: 'mall',
-      hidden: true
+  api.closeFrame({
+      name: 'classifys'
   });
-  api.setFrameAttr({
-      name: 'material',
-      hidden: true
+  api.closeFrame({
+      name: 'mall'
   });
-  api.setFrameAttr({
-      name: 'mine',
-      hidden: true
+  api.closeFrame({
+      name: 'material'
   });
-  api.setFrameGroupAttr({
-      name: 'homefroup',
-      hidden: true
-  });
-  // api.closeFrame({
-  //     name: 'home'
-  // });
-}
-//显示
-function showFrame(type) {
-  api.setFrameAttr({
-      name: type,
-      hidden: false
-  });
-}
-function showframeGroup(type) {
-    api.setFrameGroupAttr({
-        name: type,
-        hidden: false
-    });
-}
-//打开页面
-function openFrames(type) {
-  alert('openframe')
-  api.openFrame({
-      name: type,
-      url: './' + type + '/' + type + '.html',
-      rect: {
-        x: 0,
-        y: 0,
-        h: api.frameHeight - footerPos.h,
-        // marginBottom: footerH, // main页面距离win底部的高度
-        w: 'auto'
-      },
-      pageParam: {
-          name: 'test'
-      },
-      bounces: false,
+  api.closeFrame({
+      name: 'my'
   });
 }
 // 随意切换按钮
-function randomSwitchBtn(index,type) {
+function randomSwitchBtn(index) {
     var lis = $api.domAll('.bottom_btn');
     var i = 0,
         len = lis.length;
@@ -235,10 +185,28 @@ function randomSwitchBtn(index,type) {
 }
     apiready = function() {
         var footer = $api.dom('footer'); // 获取 footer 标签元素
+        // 1.修复开启沉浸式效果带来的顶部Header与手机状态栏重合的问题，最新api.js方法已支持适配iPhoneX；
+        // 2.默认已开启了沉浸式效果 config.xml中 <preference name="statusBarAppearance" value="true"/>
+        // 3.沉浸式效果适配支持iOS7+，Android4.4+以上版本
+        // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
+        // var footerH = $api.fixTabBar(footer);
         footerPos = $api.offset(footer);
         var header = $api.byId('header');
         $api.fixStatusBar(header);
         headerPos = $api.offset(header);
+        // api.openFrame({
+        //     name: 'home',
+        //     url: './html/home/home.html',
+        //     rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
+        //         // marginTop: headerH, // main页面距离win顶部的高度
+        //         // marginBottom: footerH, // main页面距离win底部的高度
+        //         x: 0,
+        //         y: 0,
+        //         h: api.frameHeight - footerPos.h,
+        //         w: 'auto' // main页面的宽度 自适应屏幕宽度
+        //     },
+        //     bounces: false,
+        // });
         api.parseTapmode(); 
         var showGuide = $api.getStorage('showGuide');
         //判断条件 
@@ -252,76 +220,104 @@ function randomSwitchBtn(index,type) {
         // var year = $api.byId('year');
         // year.innerHTML = new Date().getFullYear();
     };
-    function switchframe(type) {
-      switch (type) {
-        case 'home':
-            randomSwitchBtn('home', 0);
-            hideAllFrame();
-            alert('check')
-            if (isFirstOpen) {
-                showframe('home');
-                showframeGroup('homefroup')
-            }
-            else {
-                // openFrames('home', false);
-                isFirstOpen = true;
-            }
-            break;
-            //第二页面
-            case 'classifys':
-                randomSwitchBtn('classifys', 1);
-                hideAllFrame();
-                if (isSecondOpen) {
-                    showframe('classifys');
-                }
-                else {
-                    openFrames('classifys', false);
-                    isSecondOpen = true;
-                }
-                break;
-            //第三页面
-            case 'mall':
-                randomSwitchBtn('mall', 2);
-                hideAllFrame();
-                if (isThirdOpen) {
-                    showframe('mall');
-                }
-                else {
-                    openFrames('mall', false);
-                    isThirdOpen = true;
-                }
-                break;
-            case 'material':
-                randomSwitchBtn('material', 3);
-                hideAllFrame();
-                if (isForthOpen) {
-                    showframe('material');
-                }
-                else {
-                    openFrames('material', false);
-                    isForthOpen = true;
-                }
-                break;
-            case 'mine':
-                randomSwitchBtn('mine', 4);
-                hideAllFrame();
-                if (isFiveOpen) {
-                    showframe('mine');
-                }
-                else {
-                    openFrames('mine', false);
-                    isFiveOpen = true;
-                }
-                break;
-            default:
-                break;
-          }
+    function switchframe(index) {
+      if (index==0) {
+        randomSwitchBtn(0);
+        hideAllFrame();
+        api.openFrame({
+            name: 'home',
+            url: './html/home/home.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }else if (index==1) {
+        randomSwitchBtn(1);
+        hideAllFrame();
+        api.openFrame({
+            name: 'classifys',
+            url: './html/classify/classify.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }else if (index==2) {
+        randomSwitchBtn(2);
+        hideAllFrame();
+        api.openFrame({
+            name: 'mall',
+            url: './html/mall/mall.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }else if (index==3) {
+        randomSwitchBtn(3);
+        hideAllFrame();
+        api.openFrame({
+            name: 'material',
+            url: './html/material/material.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }else if (index==4) {
+        randomSwitchBtn(4);
+        hideAllFrame();
+        api.openFrame({
+            name: 'mine',
+            url: './html/mine/my.html',
+            rect: {
+              x: 0,
+              y: 0,
+              h: api.frameHeight - footerPos.h,
+              // marginBottom: footerH, // main页面距离win底部的高度
+              w: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
+      }
     }
     //打开首页
     function openWelcome() {
       api.openFrame({
           name: 'home',
-          url: './home/home.html',
+          url: './html/home/home.html',
           rect: { // 推荐使用Margin布局，用于适配屏幕的动态变化
               // marginTop: headerH, // main页面距离win顶部的高度
               // marginBottom: footerH, // main页面距离win底部的高度
