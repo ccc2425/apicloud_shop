@@ -1,7 +1,7 @@
 var timestamp,
-appid = 265, // 回拨域名
-appkey = '239e7352c84cce57382417406691037a',
-url = 'http://aidiao.521is.com/',
+appid = 1000, // 回拨域名
+appkey = 'd1c824852fab5e6d13733f102df0d587',
+url = 'http://192.168.0.147/index.php',
 appid2 = 1099, // 淘商城域名
 url2 = 'http://ntstk.xianlubang.com/',
 appkey2 = 'cb11a76cf23aecc65b46276150914967';
@@ -11,6 +11,7 @@ function ajax(data,complete){
   data.url = url + data.url
   data.data = data.data || {}
   timestamp = Date.parse(new Date()) / 1000
+  console.log(timestamp);
   data.data.timeline = timestamp
   data.data.appid=appid
   // 获取sign
@@ -24,6 +25,7 @@ function ajax(data,complete){
       sign += data.data[arr[i]]
     }
   data.data.sign=md5(sign + appkey)
+  console.log(data.data.sign);
   // 请求接口
   // alert(JSON.stringify(data.data))
   api.ajax({

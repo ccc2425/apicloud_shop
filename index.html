@@ -72,7 +72,7 @@
             width: 100%;
             padding-top: 32px;
             background-position-y: 4px;
-            background-size: 24px;
+            background-size: 21px;
             font-size: 10px;
             color: #333;
         }
@@ -100,7 +100,7 @@
 
         .activebtn {
             color: #d81e06;
-            background-size: 24px;
+            background-size: 21px;
         }
 
         .bottomhover {
@@ -220,6 +220,10 @@
             name: 'mine',
             hidden: true
         });
+        api.setFrameAttr({
+            name: 'un_login',
+            hidden: true
+        });
         api.setFrameGroupAttr({
             name: 'homefroup',
             hidden: true
@@ -282,6 +286,8 @@
         }
     }
     apiready = function() {
+
+        $api.setStorage('token', "")
         var footer = $api.dom('footer'); // 获取 footer 标签元素
         footerPos = $api.offset(footer);
         var header = $api.byId('header');

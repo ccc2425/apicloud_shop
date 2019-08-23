@@ -297,9 +297,25 @@
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/mui.min.js"></script>
   <script type="text/javascript" src="../../script/zepto.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
       apiready = function(){
-
+        // axios({
+        //   url: '/api/rmitems/dtkclass',
+        //   data:{
+        //
+        //   }
+        // },function(ret){
+        //   console.log(ret);
+        //   console.log(JSON.stringify(ret));
+        //   // datas = res.data
+        //   // var html = ''
+        //   // for(var i =0 ;i< res.data.length;i++){
+        //   //   html+='<li onclick="xuanzhe('+i+')" tapmode="tap-active"><div>'+res.data[i].name+'<span>'+res.data[i].mobile+'</span><i class="iconfont" onclick="sanchu('+res.data[i].id+',event)" tapmode="tap-active">&#xe600;</i></div><p>'+res.data[i].province+res.data[i].city+res.data[i].county+res.data[i].address+'</p></li>'
+        //   // }
+        //   // $api.dom('.address_list').innerHTML = html
+        // })
       };
       // 排序
       function sort(index) {

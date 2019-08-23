@@ -5,6 +5,7 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
           *{
@@ -70,7 +71,7 @@
             background-color: red;
             color: #fff;
             line-height: 18px;
-            padding: 0 2vw;
+            padding: 0 1vw;
           }
           .vouchers-list4 span{
             vertical-align: top;
@@ -94,8 +95,8 @@
     <!-- 猜你喜欢 -->
     <div class="like bgcf mb10">
       <div class="like-box pad1v bgce">
-        <ul class="clearfix">
-          <li onclick="openitem()" class="vouchers-list fl clearfix">
+        <ul id="list" class="clearfix">
+          <!-- <li onclick="openitem()" class="vouchers-list fl clearfix">
             <div class="vouchers-list-left fl">
               <img src="../../image/la1.png" alt="">
               <div class="peoplenum text-center">自购赚￥0.47</div>
@@ -118,135 +119,63 @@
                 <span class="coupon fr mr3v fs14">2元券</span>
               </div>
             </div>
-          </li>
-          <li onclick="openitem()" class="vouchers-list fl clearfix">
-            <div class="vouchers-list-left fl">
-              <img src="../../image/la1.png" alt="">
-              <div class="peoplenum text-center">自购赚￥0.47</div>
-            </div>
-            <div class="vouchers-list-right fl">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/tm.png">
-                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
-              </div>
-              <div class="fs12 texthidden mb5 cogry">
-                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
-              </div>
-              <div class="vouchers-list3 clearfix cogry mb5">
-                原价：￥<span class="original">11.9</span>
-                <span class="fr">190人已买</span>
-              </div>
-              <div class="vouchers-list4 cooo fs10">
-                <span class="mr2v">券后价</span>
-                ￥<span class="discount mr1v cooo fs16">5.9</span>
-                <span class="coupon fr mr3v fs14">2元券</span>
-              </div>
-            </div>
-          </li>
-          <li onclick="openitem()" class="vouchers-list fl clearfix">
-            <div class="vouchers-list-left fl">
-              <img src="../../image/la1.png" alt="">
-              <div class="peoplenum text-center">自购赚￥0.47</div>
-            </div>
-            <div class="vouchers-list-right fl">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/tm.png">
-                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
-              </div>
-              <div class="fs12 texthidden mb5 cogry">
-                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
-              </div>
-              <div class="vouchers-list3 clearfix cogry mb5">
-                原价：￥<span class="original">11.9</span>
-                <span class="fr">190人已买</span>
-              </div>
-              <div class="vouchers-list4 cooo fs10">
-                <span class="mr2v">券后价</span>
-                ￥<span class="discount mr1v cooo fs16">5.9</span>
-                <span class="coupon fr mr3v fs14">2元券</span>
-              </div>
-            </div>
-          </li>
-          <li onclick="openitem()" class="vouchers-list fl clearfix">
-            <div class="vouchers-list-left fl">
-              <img src="../../image/la1.png" alt="">
-              <div class="peoplenum text-center">自购赚￥0.47</div>
-            </div>
-            <div class="vouchers-list-right fl">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/tm.png">
-                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
-              </div>
-              <div class="fs12 texthidden mb5 cogry">
-                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
-              </div>
-              <div class="vouchers-list3 clearfix cogry mb5">
-                原价：￥<span class="original">11.9</span>
-                <span class="fr">190人已买</span>
-              </div>
-              <div class="vouchers-list4 cooo fs10">
-                <span class="mr2v">券后价</span>
-                ￥<span class="discount mr1v cooo fs16">5.9</span>
-                <span class="coupon fr mr3v fs14">2元券</span>
-              </div>
-            </div>
-          </li>
-          <li onclick="openitem()" class="vouchers-list fl clearfix">
-            <div class="vouchers-list-left fl">
-              <img src="../../image/la1.png" alt="">
-              <div class="peoplenum text-center">自购赚￥0.47</div>
-            </div>
-            <div class="vouchers-list-right fl">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/tm.png">
-                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
-              </div>
-              <div class="fs12 texthidden mb5 cogry">
-                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
-              </div>
-              <div class="vouchers-list3 clearfix cogry mb5">
-                原价：￥<span class="original">11.9</span>
-                <span class="fr">190人已买</span>
-              </div>
-              <div class="vouchers-list4 cooo fs10">
-                <span class="mr2v">券后价</span>
-                ￥<span class="discount mr1v cooo fs16">5.9</span>
-                <span class="coupon fr mr3v fs14">2元券</span>
-              </div>
-            </div>
-          </li>
-          <li onclick="openitem()" class="vouchers-list fl clearfix">
-            <div class="vouchers-list-left fl">
-              <img src="../../image/la1.png" alt="">
-              <div class="peoplenum text-center">自购赚￥0.47</div>
-            </div>
-            <div class="vouchers-list-right fl">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/tm.png">
-                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
-              </div>
-              <div class="fs12 texthidden mb5 cogry">
-                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
-              </div>
-              <div class="vouchers-list3 clearfix cogry mb5">
-                原价：￥<span class="original">11.9</span>
-                <span class="fr">190人已买</span>
-              </div>
-              <div class="vouchers-list4 cooo fs10">
-                <span class="mr2v">券后价</span>
-                ￥<span class="discount mr1v cooo fs16">5.9</span>
-                <span class="coupon fr mr3v fs14">2元券</span>
-              </div>
-            </div>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var frameWidth;
+      var frameHeight
+      var list = document.getElementById('list');
+      var id1;
+      var id2;
+      var pagesize = 8,
+          page = 1,
+          state = true;
+          types = 'all_asc';
       apiready = function(){
-
+          id1 = api.pageParam.id1;
+          id2 = api.pageParam.id2;
+          console.log(id2);
+          if (id2 = "undefined ") {
+            id2 = 0;
+          }
+          // console.log(id1);
+          // console.log(id2);
+          frameWidth = api.frameWidth || '';
+          frameHeight = api.frameHeight || '';
+          opendata()
+          api.addEventListener({
+              name:'scrolltobottom',
+              extra:{
+                  threshold: -1            //设置距离底部多少距离时触发，默认值为0，数字类型
+              }
+          }, function(ret, err){
+            loading()
+          });
+          //下拉刷新
+          api.setRefreshHeaderInfo({
+                visible: true,
+                loadingImg: '../../image/loading_more.gif',
+                bgColor: '#ccc',
+                textColor: '#fff',
+                textDown: '下拉刷新...',
+                textUp: '松开刷新...',
+                showTime: true //显示更新时间
+            }, function(ret, err) {
+              // api.refreshHeaderLoadDone()
+              setTimeout(function(){
+                api.refreshHeaderLoadDone();
+                page = 1;
+                state = true;
+                opendata()
+              },1000)
+                //在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+          });
       };
       //布局变化
       var a = 0;
@@ -277,22 +206,120 @@
             $api.addCls(vouchersLists, 'texthidden');
             $api.removeCls(vouchersLists, 'texthiddens');
           }
-
-
         }
         // listLi.style.width = "97vw";
         // vouchersLeft.style.cssText = "width:33vw,height:120px";
       }
+      //排序
+      var a = 0;
+      var b = 0;
+      var c = 0;
+      var aa;
+      var bb;
+      var cc;
+      // var types;
+      function fnSortframe(index) {
+          if (index === 0) {
+            a++;
+            aa = a%2;
+            if (aa === 1) {
+              types = "all_desc"
+            }else {
+              types = "all_asc"
+            }
+          }else if (index === 1) {
+            b++;
+            bb = b%2;
+            if (bb === 1) {
+              types = "sales_desc"
+            }else {
+              types = "sales_asc"
+            }
+          }else if (index === 2) {
+            c++;
+            cc = c%2;
+            if (cc === 1) {
+              types = "price_desc"
+            }else {
+              types = "price_asc"
+            }
+          }
+          // console.log(types);
+          opendata()
+      }
       //打开商品详情页
-      function openitem() {
+      function openitem(item_id) {
         api.openWin({
             name: 'item',
             url: './item.html',
             pageParam: {
-                name: 'test'
+                item_id: item_id
             }
         });
-
+      }
+      //数据请求
+      var opendata = function () {
+        axios({
+          url: '/api/rmitems/lists',
+          data:{
+            token:$api.getStorage('token'),
+            screenw:frameWidth,
+            screenh:frameHeight,
+            cid:id1,
+            scid:id2,
+            sort:types,
+            page:page,
+            pagesize:pagesize
+          }
+        },function(ret){
+          // console.log(JSON.stringify(ret));
+          var html = "";
+          if (ret.data.length < pagesize) {
+            state = false
+            // $api.dom('.quanbuxians').style.display = 'block'
+          }
+          for (var i = 0; i < ret.data.length; i++) {
+            var type = ret.data[i].item_type;
+            // console.log(type);
+            html += `<li onclick="openitem(${ret.data[i].item_id})" class="vouchers-list fl clearfix">
+              <div class="vouchers-list-left fl">
+                <img src="${ret.data[i].master_image}" alt="">
+                <div class="peoplenum text-center">自购赚￥0.47</div>
+              </div>
+              <div class="vouchers-list-right fl">
+                <div class="vouchers-list1 texthidden mb5">
+                  <img src="../../image/tm.png">
+                  ${ret.data[i].title}
+                </div>
+                <div class="fs12 texthidden mb5 cogry">
+                  <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  原价：￥<span class="original">${ret.data[i].old_price}</span>
+                  <span class="fr">${ret.data[i].sales}人已买</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="mr1v">券后价</span>
+                  ￥<span class="discount mr1v cooo fs16">${ret.data[i].end_price}</span>
+                  <span class="coupon fr fs12">${ret.data[i].coupon_price}元券</span>
+                </div>
+              </div>
+            </li>`
+          }
+          if (page === 1) {
+            list.innerHTML =html
+          } else {
+            list.innerHTML +=html
+          }
+          // $api.dom('.loading').style.display = 'none'
+          api.refreshHeaderLoadDone();
+        })
+      }
+      var loading = function(){
+        if (state){
+          page++
+          opendata()
+        }
       }
   </script>
   </html>

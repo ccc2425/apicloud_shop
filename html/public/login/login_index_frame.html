@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          html,body{
+            height: 100%;
+          }
+          .logo{
+            width: 20vw;
+            height: 20vw;
+            margin: auto;
+          }
+          .wx{
+            width: 80vw;
+            margin: auto;
+            border-radius: 40px;
+            font-size: 16px;
+            box-shadow: 0px 5px 15px #999;
+          }
+          .pf{
+            width: 100vw;
+            bottom: 0;
+          }
+          .clause{
+            margin: 15vh auto 16px;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="padt20">
+        <div class="logo">
+          <img src="../../../image/logo.png" alt="">
+        </div>
+        <div class="text text-center lh50">
+          为你挖掘全网优惠券
+        </div>
+      </div>
+      <div class="pf">
+        <div class="wx text-center bgco lh40">
+          <i class="iconfont fs20 mr3v">&#xe660;</i>微信登录
+        </div>
+        <div class="just-space mt30">
+          <div onclick="register()" class="co999">
+            <i class="iconfont fs14 mr2v">&#xe67b;</i>新用户注册
+          </div>
+          <div onclick="login()" class="co999">
+            <i class="iconfont fs14 mr2v">&#xe642;</i>手机号登录
+          </div>
+        </div>
+        <div class="text-center fs12 clause">
+          登录注册即您表示同意<a href="#">服务条款</a>
+        </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //登录
+      function login() {
+        api.openWin({
+            name: 'login',
+            url: './login.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //注册
+      function register() {
+        api.openWin({
+            name: 'register',
+            url: './register.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+  </script>
+  </html>

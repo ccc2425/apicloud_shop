@@ -20,7 +20,8 @@
             z-index: 99;
             width: 100%;
             position: fixed;
-            background-color: transparent;
+            /*background-color: transparent;*/
+            background: rgba(255, 255, 255, 0);
             /*top: 0;*/
           }
           .icon{
@@ -558,14 +559,43 @@
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
   <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
       var header;
+      var frameWidth;
+      var frameHeight
       apiready = function(){
         header = $api.byId('header');
         $api.fixStatusBar(header);
         var headerH = $api.offset(header);
-        // var header = $api.byId('header');
-        // header.style.top = headerH;
+        var item_id = api.pageParam.item_id;
+        frameWidth = api.frameWidth || '';
+        frameHeight = api.frameHeight || '';
+        axios({
+          url: '/api/rmitems/itemdetail',
+          data:{
+            token:$api.getStorage('token'),
+            screenw:frameWidth,
+            screenh:frameHeight,
+            item_id:item_id
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+
+        })
+        // axios({
+        //   url: '/api/rmitems/lists',
+        //   data:{
+        //     token:$api.getStorage('token'),
+        //     screenw:frameWidth,
+        //     screenh:frameHeight,
+        //     cid:id1,
+        //     scid:id2
+        //   }
+        // },function(ret){
+        //
+        // })
 
       };
       // 轮播图
@@ -587,11 +617,13 @@
        distance:200 //判断到达底部的距离，isToBottom为true
    },function(ret){
      var scrollTop = ret.scrollTop;
+    //  console.log(scrollTop);
      if (scrollTop>300) {
-       header.style.background = "#fff";
-     }else {
-
+       scrollTop = 100;
+       return scrollTop;
      }
+     header.style.background = 'rgba(255,255,255,' + scrollTop / 100 + ')';
+
    });
       // 打开商品
       function openitem() {

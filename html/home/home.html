@@ -24,16 +24,30 @@
             width: 100%;
             margin-top: 5px;
             text-align: center;
+            position: relative;
           }
           .ipt{
             display: inline-block;
-            width: 80vw;
-            height: 20px;
-            background-color: #eee;
+            width: 72vw;
+            height: 30px;
+            background-color: #fff;
             border-radius: 20px;
             text-align: center;
-            line-height:20px;
-            color: #333;
+            line-height:30px;
+            color: #999;
+          }
+          .iconfont{
+            font-size: 20px;
+          }
+          .codes{
+            position: absolute;
+            left: 4vw;
+            top: 5px;
+          }
+          .shops{
+            position: absolute;
+            right: 4vw;
+            top: 5px;
           }
           .serchbox span{
               vertical-align: middle;
@@ -51,7 +65,9 @@
           }
           .classification ul li{
             display:inline-block;
-            padding: 0 5px;
+            margin: 0 10px 5px;
+            padding-bottom: 5px;
+            /*padding: 0 10px 5px;*/
           }
           .classification ul::-webkit-scrollbar {
             display:none
@@ -64,19 +80,22 @@
             background-repeat: no-repeat;
             background-size: 100% 100%;
           }
-
+          .active{
+            font-weight: bolder;
+            border-bottom: 1px solid #fff;
+          }
       </style>
   </head>
   <body>
     <header id="header">
       <div class="serchbox">
-        <span onclick="openCode()" class="pad0a2v"><i class="iconfont">&#xe686;</i></span>
-        <span onclick="openSearch()" class="ipt fs12"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
-        <span onclick="opebShopcar()"><i class="iconfont">&#xe61b;</i></span>
+        <span onclick="openCode()" class="codes"><i class="iconfont">&#xe686;</i></span>
+        <span onclick="openSearch()" class="ipt fs15"><i class="iconfont fs15">&#xe638;</i> 粘贴宝贝标题/输入关键字搜素</span>
+        <span onclick="opebShopcar()" class="shops"><i class="iconfont ">&#xe61b;</i></span>
       </div>
       <div class="classification clearfix">
         <ul>
-          <li class="classifiy bold" onclick="opensingle(0)">全部</li>
+          <li class="classifiy active" onclick="opensingle(0)">全部</li>
           <li class="classifiy" onclick="opensingle(1)">女装</li>
           <li class="classifiy" onclick="opensingle(2)">男装</li>
           <li class="classifiy" onclick="opensingle(3)">鞋品</li>
@@ -126,11 +145,11 @@
       for (i; i < len; i++) {
           var thisLi = lis[i];
           if (thisLi === curLi) {
-              $api.addCls(thisLi, 'bold');
+              $api.addCls(thisLi, 'active');
               continue;
           } else {
-              if ($api.hasCls(thisLi, 'bold')) {
-                  $api.removeCls(thisLi, 'bold');
+              if ($api.hasCls(thisLi, 'active')) {
+                  $api.removeCls(thisLi, 'active');
               }
           }
       }

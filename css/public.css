@@ -25,7 +25,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .co666{color: #666!important;}
 .cogry{color: #ccc!important;}
 .coshw{color: #eee!important;}
-.cooo{color: #e8989a!important;}
+.cooo{color: #F94D4E!important;}
 .cowhl{color: #fff!important;}
 .coyllo{color: yellow;}
 /*定位*/
@@ -112,6 +112,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .pad3v{padding: 3vw;}
 .pad1a3v{padding: 1.5vw 3vw;}
 .padt10{padding-top: 10px;}
+.padt20{padding-top: 20px;}
 .pad20a10v{padding: 20px 10vw;}
 .pad5{padding: 5px;}
 .padb10{padding-bottom: 10px;}
@@ -123,7 +124,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .bgcr{background-color: #d81e06!important; color: #fff;}
 .bgcrs{background-color: #CB4540!important; color: #fff;}
 .bgcf{background-color: #fff; color: #333;}
-.bgco{background-color: #e8989a!important; color:#fff;}
+.bgco{background-color: #DE5E5E!important; color:#fff;}
 .bgcor{background-color: #f3ca7e!important; color: #fff;}
 .bgcp{background-color: #d4237a; color: #fff;}
 .bgcb{background-color: #1296db; color: #fff;}

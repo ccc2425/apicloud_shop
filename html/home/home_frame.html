@@ -5,8 +5,9 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
-      <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/>
+      <!-- <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/> -->
       <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
+      <link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
       <link rel="stylesheet" type="text/css" href="../../css/aui-pull-refresh.css" />
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
@@ -26,7 +27,17 @@
           background: #fff;;
         }
         /*banner图*/
-          #slider img{
+        .swiper-wrapper{
+          /*width: 96vw;*/
+          height: 160px;
+          margin: auto;
+        }
+        .swiper-wrapper .swiper-slide{
+          padding: 0 2vw;
+          box-sizing: border-box;
+          /*width: 100%!important;*/
+        }
+          /*#slider img{
             width: 100%;
             height: 160px;
           }
@@ -34,12 +45,12 @@
             width: 3px;
             height: 3px;
             margin: 1px;
-          }
-          .mui-table-view-cell.mui-collapse .mui-collapse-content{
+          }*/
+          /*.mui-table-view-cell.mui-collapse .mui-collapse-content{
             display: block;
-          }
+          }*/
           .classfial-list{
-            font-size: 10px
+            font-size: 12px
           }
           .classfial-list li{
             float: left;
@@ -67,6 +78,8 @@
           .headlines{
             padding: 0 3vw;
             font-size: 12px;
+            /*margin: 10px auto;*/
+            padding-bottom: 10px;
           }
           .headlines-text{
             margin-right: 3vw;
@@ -75,15 +88,17 @@
            width: 100%;
            text-align: left;
            line-height: 18px;
+           padding-bottom: 10px;
+           border-bottom: 1px solid #eee;
           }
           /* 中间样式 */
           #moocBox {
-           height: 18px;
+           height: 21px;
            overflow: hidden; /* 这个一定要加，超出的内容部分要隐藏，免得撑高中间部分 */
           }
           #mooc ul li {
-           height: 18px;
-           line-height: 18px;
+           height: 21px;
+           line-height: 21px;
           }
           #mooc ul li span {
            float: right;
@@ -103,11 +118,11 @@
           }
           .actcoupon>div{
             width: 48vw;
-            height: 140px
+            height: 48vw;
           }
           .actcoupon>div>div{
             width: 100%;
-            height: 67px
+            height: calc(24vw - 2.5px);
           }
           .activelist{
             display: flex;
@@ -115,7 +130,7 @@
           }
           .activelist div{
             flex: 1;
-            height: 90px;
+            height: 110px;
             margin-right: 2vw;
             border-radius: 8px;
             overflow: hidden;
@@ -127,7 +142,7 @@
           .tit-img-box{
             width: 34vw;
             height: 100%;
-            margin: auto;
+            margin: 0 auto 10px;
           }
           .tit-img{
             width: 20%;
@@ -144,7 +159,7 @@
           }
           .yxzc div{
             flex: 1;
-            height: 120px;
+            height: 170;
             margin-right: 2vw;
             border-radius: 12px 12px 0 0;
             overflow: hidden;
@@ -155,7 +170,7 @@
           .optimization-box div{
             float: left;
             width: 47vw;
-            height: 100px;
+            height: 96px;
             margin-top: 3px;
             margin-bottom: 3px;
           }
@@ -164,8 +179,9 @@
           }
           /*美妆*/
           .beauty{
-            width: 100vw;
+            width: 96vw;
             height: 100px;
+            padding: 0 2vw;
           }
           .beauty-list{
             width: 100%;
@@ -219,8 +235,9 @@
           }
           .vouchers-list{
             width: 100vw;
-            padding: 1vh 1vw;
+            padding: 1vh 2vw;
             background-color: #fff;
+            box-sizing: border-box;
           }
           .vouchers-list:last-child{
             margin-bottom: 0;
@@ -242,12 +259,12 @@
           }
           .vouchers-list-right{
             float: left;
-            width: 63vw;
+            width: 61vw;
             padding: 10px 0;
           }
           .vouchers-list1{
             width: 100%;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 4vw;
           }
           .vouchers-list1 img{
@@ -255,6 +272,10 @@
             height: 4vw;
             margin-right: 2vw;
             vertical-align: top;
+          }
+          .vouchers-list2{
+            font-size: 13px;
+            color: #ccc;
           }
           .vouchers-list3{
             font-size: 12px;
@@ -264,7 +285,9 @@
             text-decoration: line-through;
           }
           .coupon{
-            background-color: red;
+            /*background-color: red;*/
+            background: url(../../image/bg4.png) no-repeat;
+            background-size: 100% 100%;
             color: #fff;
             line-height: 18px;
             padding: 0 2vw;
@@ -274,12 +297,14 @@
             padding: 0 2vw;
             line-height: 18px;
             font-size: 10px;
+            border-radius: 3px;
+            padding-top: 3px;
           }
           .vouchers-list4 span:first-child{
-            background-color: red;
+            background: linear-gradient(to right,#FF4D4D,#F3C148);
           }
           .vouchers-list4 span:last-child{
-            background-color: grey;
+            background: linear-gradient(to right,#735CFF,#FF00CC);
           }
           /**/
           .bottom-line-img{
@@ -297,57 +322,46 @@
             height: 18px;
             /*height: */
           }
+          .aui-slide-page-dot{
+            width: 16px;
+            border-radius: 16px;
+            height: 2px;
+            background: #E6E6E6;
+          }
+          .aui-slide-page-wrap{
+            bottom: -6px;
+          }
+          .aui-slide-page-active{
+            background: #AFAFAF;
+          }
+          .swiper-pagination-bullet-active{
+            background: #fff;
+          }
+          .beauty-list-tit{
+            margin-bottom: 5px;
+          }
+          #demo li>div{
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+          }
+          .discount{
+            font-family: inherit;
+          }
       </style>
   </head>
   <body>
     <div id="banbg" class="bgbanner"></div>
     <section class="aui-refresh-content">
         <!-- 轮播图 -->
-        <div id="slider" class="mui-slider" >
-          <div class="mui-slider-group mui-slider-loop">
-            <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-            <div class="mui-slider-item mui-slider-item-duplicate">
-              <a href="#">
-                <img src="../../image/ban2.png">
-              </a>
-            </div>
-            <!-- 第一张 -->
-            <div class="mui-slider-item">
-              <a href="#">
-                <img src="../../image/ban1.png">
-              </a>
-            </div>
-            <!-- 第二张 -->
-            <div class="mui-slider-item">
-              <a href="#">
-                <img src="../../image/ban2.png">
-              </a>
-            </div>
-            <!-- 第三张 -->
-            <div class="mui-slider-item">
-              <a href="#">
-                <img src="../../image/ban1.png">
-              </a>
-            </div>
-            <!-- 第四张 -->
-            <div class="mui-slider-item">
-              <a href="#">
-                <img src="../../image/ban2.png">
-              </a>
-            </div>
-            <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-            <div class="mui-slider-item mui-slider-item-duplicate">
-              <a href="#">
-                <img src="../../image/ban1.png">
-              </a>
-            </div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="../../image/ban1.png"></div>
+            <div class="swiper-slide"><img src="../../image/ban2.png"></div>
+            <div class="swiper-slide"><img src="../../image/ban1.png"></div>
+            <div class="swiper-slide"><img src="../../image/ban2.png"></div>
           </div>
-          <div class="mui-slider-indicator">
-            <div class="mui-indicator mui-active"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-          </div>
+          <!-- 分页器 -->
+          <div class="swiper-pagination"></div>
         </div>
         <!-- 分类轮播 -->
         <div class="pr bgcf">
@@ -397,28 +411,6 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
-                    <ul>
-                      <li>
-                        <ul class="classfial-list clearfix">
-                          <li onclick="openmall(0)"><img src="../../image/a1.png" alt=""><span>信用卡</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a2.png" alt=""><span>省钱一元购</span></li>
-                          <!-- <li><img src="../../image/taobao.jpg" alt=""><span>京东</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>o2o</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>早起打卡</span></li> -->
-                        </ul>
-                      </li>
-                      <!-- <li>
-                        <ul class="classfial-list clearfix">
-                          <li><img src="../../image/taobao.jpg" alt=""><span>淘宝</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>拼多多</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>京东</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>o2o</span></li>
-                          <li><img src="../../image/taobao.jpg" alt=""><span>早起打卡</span></li>
-                        </ul>
-                      </li> -->
-                    </ul>
-                  </div>
               </div>
               <div class="aui-slide-page-wrap"><!--分页容器--></div>
           </div>
@@ -430,10 +422,7 @@
                     <img src="../../image/l1.png" />
                 </div>
                 <div onclick="openactive(1)" class="aui-slide-node bg-dark">
-                    <img src="../../image/l1.png" />
-                </div>
-                <div onclick="openactive(2)" class="aui-slide-node bg-dark">
-                    <img src="../../image/l1.png" />
+                    <img src="../../image/l3.png" />
                 </div>
             </div>
             <div class="aui-slide-page-wrap no"><!--分页容器--></div>
@@ -443,7 +432,7 @@
           <div class="headlines-text fl">
               <img src="../../image/toutiao.png" alt="">
           </div>
-          <div id="mooc fl">
+          <div id="mooc" class="">
             <div id="moocBox">
              <ul>
               <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li>
@@ -705,8 +694,9 @@
               <img class="tit-img" src="../public/img/index/icon1.png" />
             </h4> -->
             <!--数据列表-->
-            <ul id="demo" class="bgcc vouchersul">
+            <ul id="demo" class="bgcf vouchersul">
               <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="clearfix">
                 <div class="vouchers-list-left">
                   <img src="../../image/la3.png" alt="">
                   <div class="peoplenum text-center">248人已抢</div>
@@ -718,14 +708,16 @@
                   </div>
                   <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
                   <div class="vouchers-list3 cored clearfix">
-                    $<span class="discount mr1v cored fs14">9.9</span>
+                    $<span class="discount mr1v cored fs18">9.9</span>
                     <span class="original">$11.9</span>
                     <span class="coupon fr mr3v">2元券</span>
                   </div>
                   <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                </div>
                 </div>
               </li>
               <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="clearfix">
                 <div class="vouchers-list-left">
                   <img src="../../image/la3.png" alt="">
                   <div class="peoplenum text-center">248人已抢</div>
@@ -737,14 +729,16 @@
                   </div>
                   <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
                   <div class="vouchers-list3 cored clearfix">
-                    $<span class="discount mr1v cored fs14">9.9</span>
+                    $<span class="discount mr1v cored fs18">9.9</span>
                     <span class="original">$11.9</span>
                     <span class="coupon fr mr3v">2元券</span>
                   </div>
                   <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+                </div>
                 </div>
               </li>
               <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+                <div class="clearfix">
                 <div class="vouchers-list-left">
                   <img src="../../image/la3.png" alt="">
                   <div class="peoplenum text-center">248人已抢</div>
@@ -756,12 +750,13 @@
                   </div>
                   <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
                   <div class="vouchers-list3 cored clearfix">
-                    $<span class="discount mr1v cored fs14">9.9</span>
+                    $<span class="discount mr1v cored fs18">9.9</span>
                     <span class="original">$11.9</span>
                     <span class="coupon fr mr3v">2元券</span>
                   </div>
                   <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
                 </div>
+              </div>
               </li>
               <li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
                 <div class="vouchers-list-left">
@@ -775,7 +770,7 @@
                 </div>
                 <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
                 <div class="vouchers-list3 cored clearfix">
-                  $<span class="discount mr1v cored fs14">9.9</span>
+                  $<span class="discount mr1v cored fs18">9.9</span>
                   <span class="original">$11.9</span>
                   <span class="coupon fr mr3v">2元券</span>
                 </div>
@@ -851,9 +846,11 @@
     </section>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
-  <script type="text/javascript" src="../../script/mui.min.js"></script>
+  <!-- <script type="text/javascript" src="../../script/mui.min.js"></script> -->
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
+  <script type="text/javascript" src="../../script/swiper.min.js"></script>
   <script type="text/javascript" src="../../script/aui-pull-refresh.js"></script>
+  <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
   <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript">
       //上拉加载
@@ -902,29 +899,107 @@
         })();
 
       //轮播
-      var slider = mui("#slider");
-      (function() {
-        slider.slider({
-          interval: 1000
-        })
-      }());
-      //监听轮播显示
-      document.querySelector('.mui-slider').addEventListener('slide', function(event) {
-        //注意slideNumber是从0开始的；
-        // console.log(event.detail.slideNumber);
-        var bIndex = event.detail.slideNumber;
+      // var slider = mui("#slider");
+      // (function() {
+      //   slider.slider({
+      //     interval: 1000
+      //   })
+      // }());
+  //     var slide = new auiSlide({
+  //      container:document.getElementById("aui-slide"),
+  //      // "width":300,
+  //      "height":260,
+  //      "speed":300,
+  //      "autoPlay": 3000, //自动播放
+  //      "pageShow":true,
+  //      "pageStyle":'dot',
+  //      "loop":true,
+  //      'dotPosition':'center',
+  //     //  currentPage:currentFun
+  //  })
+   var swiper = new Swiper('.swiper-container', {
+     spaceBetween: 30,
+     centeredSlides: true,
+     autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      on: {
+        slideChangeTransitionStart: function () {
+          var slider = this;
+          // console.log(slider);
+          api.addEventListener({
+              name: 'stopBanner'
+          }, function(ret, err){
+            console.log(ret.value.key1);
+              if( ret ){
+                if (ret.value.key1 === "stop") {
+                  slider.autoplay.stop()
+                }else {
+                  slider.autoplay.start()
+                }
+              }
+          });
+
+            var bIndex = slider.activeIndex
+            // console.log(bIndex);
+            api.sendEvent({
+                name: 'banner',
+                extra: {
+                    key1: bIndex,
+                }
+            });
+        }
+        // , slideChangeTransitionEnd: function () {
+        //   var slider = this;
+        //   if (slider.activeIndex === 1) {
+        //     menuButton.addEventListener('click', openMenu, true);
+        //   }
+        // },
+      }
+    });
+    //监听滑动
+    var scroll = new auiScroll({
+        listen:true,
+        distance:200 //判断到达底部的距离，isToBottom为true
+    },function(ret){
+      var scrollTop = ret.scrollTop;
+      var shopH = 160;
+      if (scrollTop>shopH) {
         api.sendEvent({
-            name: 'banner',
+            name: 'stopBanner',
             extra: {
-                key1: bIndex,
+                key1: 'stop',
             }
         });
-
-      });
-
-    function currentFun(index) {
-        // console.log(index);
-    }
+      }else {
+        api.sendEvent({
+            name: 'stopBanner',
+            extra: {
+                key1: 'start',
+            }
+        });
+      }
+    });
+      //监听轮播显示
+      // document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+      // document.getElementById('aui-slide').addEventListener('click', function(event) {
+      //   console.log(1);
+      //   //注意slideNumber是从0开始的；
+      //   // console.log(event.detail.slideNumber);
+      //   var bIndex = event.detail.slideNumber;
+      //   console.log(bIndex);
+      //   api.sendEvent({
+      //       name: 'banner',
+      //       extra: {
+      //           key1: bIndex,
+      //       }
+      //   });
+      //
+      // });
 
       // 分类轮播
       var slide2 = new auiSlide({
@@ -974,7 +1049,7 @@
           // "width":300,
           "height":120,
           "speed":100,
-          "autoPlay": 1000, //自动播放
+          "autoPlay": 0, //自动播放
           "loop":true,
           "pageShow":true,
           "pageStyle":'line',

@@ -43,11 +43,11 @@
   </head>
   <body>
     <div id="header" class="bgcf">
-      <div class="clearfix text-center header">
+      <!-- <div class="clearfix text-center header">
           <i onclick="closewin()" class="iconfont fl ml3v">&#xe601;</i>
           商品详情
           <i onclick="backhome()" class="iconfont fr mr3v">&#xe6d9;</i>
-      </div>
+      </div> -->
     </div>
     <div id="footer" class="clearfix text-center">
         <div class="fl ml3v footleft">
@@ -72,6 +72,7 @@
         var header = $api.byId('header');
         $api.fixStatusBar(header);
         var headerH = $api.offset(header);
+        var item_id = api.pageParam.item_id;
         api.openFrame({
             name: 'item_frame',
             url: './item_frame.html',
@@ -82,7 +83,7 @@
                 marginBottom:40
             },
             pageParam: {
-                name: 'test'
+                item_id: item_id
             },
             bounces: false,
         });

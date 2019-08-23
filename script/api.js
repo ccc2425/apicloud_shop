@@ -2,6 +2,7 @@
  * APICloud JavaScript Library
  * Copyright (c) 2014 apicloud.com
  */
+ var ajaxUrl = 'http://192.168.0.147/index.php';
 (function(window){
     var u = {};
     var isAndroid = (/android/gi).test(navigator.appVersion);
@@ -213,7 +214,7 @@
 
             return mark;
         }
-        
+
     };
     u.remove = function(el){
         if(el && el.parentNode){
@@ -331,7 +332,7 @@
                     break;
             }
         }
-        
+
     };
     u.prepend = function(el, html){
         if(!u.isElement(el)){
@@ -582,10 +583,8 @@
     };
 
 /*end*/
-    
+
 
     window.$api = u;
 
 })(window);
-
-

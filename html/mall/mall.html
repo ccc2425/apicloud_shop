@@ -27,12 +27,12 @@
         .ipt{
           display: inline-block;
           width: 84vw;
-          height: 20px;
+          height: 30px;
           background-color: #eee;
           border-radius: 20px;
           text-align: center;
-          line-height:20px;
-          color: #333;
+          line-height:30px;
+          color: #999;
         }
         /*轮播*/
         /*分类*/
@@ -45,7 +45,7 @@
         }
         .classification-img{
           width: 100%;
-          height: 80px;
+          height: 68px;
           margin-top: 5px;
         }
         .class-box-row{
@@ -88,7 +88,7 @@
           height: 24px;
           overflow: hidden;
         }
-        .ani-font{
+        /*.ani-font{
           width: 76px;
           animation: fontsize .1s infinite;
           animation-direction:alternate;
@@ -96,10 +96,10 @@
         @keyframes fontsize {
           from {font-size: 11px;}
           to {font-size: 13px;}
-        }
+        }*/
         .act-img>div{
           width: 30vw;
-          height: 120px;
+          height: 150px;
         }
         /**/
         /*数据列表*/
@@ -173,16 +173,28 @@
         .aui-list .aui-list-item{
           padding: 5px 5vw;
         }
+        /**/
+        .icon{
+          position: fixed;
+          right: 5vw;
+          bottom: 5vh;
+        }
+        .icon-img{
+          width: 37px;
+          height: 37px;
+          margin-bottom: 3px;
+          background-color: fff;
+        }
       </style>
   </head>
   <body>
     <!-- 头部 -->
     <div id="header" class="bgcf">
       <div class="serchbox clearfix lh20">
-        <span onclick="openCode()" class="ml2v fl"><i class="iconfont">&#xe601;</i></span>
-        <span class="ipt fs11"><i class="iconfont fs12">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
+        <span onclick="openCode()" class="ml2v fl mt5"><i class="iconfont">&#xe601;</i></span>
+        <span class="ipt fs14"><i class="iconfont fs14">&#xe627;</i> 粘贴宝贝标题/输入关键字搜素</span>
         <!-- <span class="fr" aui-popup-for="top-right">h</span> -->
-        <span class="fr mr2v zdex9999" aui-popup-for="top-right"><i class="iconfont fs18">&#xe62c;</i></span>
+        <span class="fr mr2v zdex9999 mt5" aui-popup-for="top-right"><i class="iconfont fs18">&#xe62c;</i></span>
       </div>
     </div>
 
@@ -207,13 +219,13 @@
     <!-- 分类 -->
     <div class="classification">
       <div class="classification-img">
-        <img src="../../image/l2.png" alt="">
+        <img src="../../image/l4.png" alt="">
       </div>
       <div class="class-box">
         <div class="class-box-row clearfix">
           <div onclick="openItemList()" class="wid20b">
             <div class="marau wid56b">
-              <img src="../../image/a5.png" alt="">
+              <img src="../../image/f1.png" alt="">
             </div>
             <div class="class-box-clo-name">
               女装
@@ -300,7 +312,7 @@
     </div>
     <!-- 活动 -->
     <div class="pad10a0">
-      <div class="text-center mb10">
+      <!-- <div class="text-center mb10">
         <div class="mb5">
           <span class="fs20 ver-middle">品牌钜献</span>
           <i class="iconfont fs12 pad0a2v ver-middle">&#xe73e;</i>
@@ -313,16 +325,16 @@
           </div>
           <div class="pa wh-try-y"></div>
         </div>
-      </div>
+      </div> -->
       <div class="just-space pad0a2v act-img">
         <div class="">
-          <img src="../../image/la3.png" alt="">
+          <img src="../../image/c8.png" alt="">
         </div>
         <div>
-          <img src="../../image/la3.png" alt="">
+          <img src="../../image/c9.png" alt="">
         </div>
         <div>
-          <img src="../../image/la3.png" alt="">
+          <img src="../../image/c10.png" alt="">
         </div>
       </div>
     </div>
@@ -633,10 +645,23 @@
             </ul>
         </div>
     </div>
+    <!-- 图标 -->
+    <div class="icon">
+      <div class="icon-img">
+        <img src="../../image/i7.png" alt="">
+      </div>
+      <div class="icon-img">
+        <img src="../../image/i8.png" alt="">
+      </div>
+      <div class="icon-img">
+        <img src="../../image/i9.png" alt="">
+      </div>
+    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
   <script type="text/javascript" src="../../script/aui-popups.js" ></script>
+  <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
   <script type="text/javascript">
       apiready = function(){
         var header = $api.byId('header');

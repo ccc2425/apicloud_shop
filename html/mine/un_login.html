@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>我的</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          /*头部*/
+          #header{
+            background: url(../../image/bg.png) no-repeat;
+          }
+          .header{
+            height: 120px;
+          }
+          .aui-list .aui-list-item,.aui-list{
+            background: inherit;
+          }
+          .upgrade{
+            right: 0;
+            top: 50%;
+            padding: 0 2vw;
+            transform: translateY(-50%);
+            background-color: rgba(51,51,51,.3);
+            border-radius: 30px 0 0 30px;
+            line-height: 20px;
+          }
+          .aui-list .aui-list-item-media{
+            padding: 0.5rem 0.75rem 0.5rem 0.25rem
+          }
+          .weixin{
+            bottom: 5px;
+            width: 3.8rem;
+            text-align: center;
+            line-height: 12px;
+            font-size: .6rem;
+          }
+          /*信息*/
+          .inform{
+            top: -15px;
+            left: 2vw;
+          }
+          /*签到*/
+          .sign-img{
+            width: 25vw;
+            height: 44px;
+          }
+          p{
+            font-size: 12px;
+          }
+          /**/
+          .aui-list-item-arrow:before{
+            width: .6rem;
+            height: .6rem;
+          }
+          /*宫格*/
+          .aui-grid .aui-grid-label{
+            font-size: 12px;
+          }
+          .aui-list .aui-list-item:active {
+              background-color: inherit;
+          }
+          /*自定义密令*/
+          .alert-box{
+
+            z-index: 99999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            visibility: hidden;
+          }
+          .alert{
+            z-index: 999999;
+            position: fixed;
+            left: 10vw;
+            top: -35vh;
+            width: 80vw;
+            background-color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            overflow: hidden;
+            animation:custom 1s 0;
+	          -webkit-animation:custom 1s 0; /*Safari 和 Chrome*/
+          }
+          @keyframes custom{
+          	from {top:-30vh;}
+          	to {top:-30vh;}
+          }
+          @keyframes newscustom{
+            0% {top:-30vh;}
+            40% {top:30vh;}
+            55% {top: 28vh;}
+            70% {top:30vh;}
+            85% {top: 28vh;}
+            100% {top: 30vh;}
+          }
+          .alert-tit{
+            background-color: #d81e06;
+            color: #fff;
+            line-height: 48px;
+            font-size: 18px;
+          }
+          .alert-text{
+            background-color: #fff;
+            padding: 5vw 5vw 0;
+          }
+          .alert-text .alert-ipt{
+            width: 100%;
+            font-size: 14px;
+            line-height: 32px;
+            border: 1px solid #d81e06;
+            text-align: center;
+          }
+          .alert-btn{
+            padding: 0 5vw;
+            border-radius: 20px;
+            line-height: 24px;
+            font-size: 13px;
+          }
+          .alert-btn-l{
+            background-color: #eee;
+          }
+          .alert-btn-r{
+            background-color: #d81e06;
+            color: #fff;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class="cowhl">
+      <div class="header">
+        <div  onclick="openlogin()" class="text-right lh29">
+          <i class="iconfont mr3v fs20">&#xe628;</i><i class="iconfont mr3v fs20">&#xe60b;</i>
+        </div>
+        <div class="aui-content aui-margin-b-15">
+          <div class="aui-list aui-media-list">
+            <div class="aui-list-item aui-list-item-middle">
+              <div onclick="openlogin()" class="aui-media-list-item-inner">
+                <div onclick="openSet()" class="aui-list-item-media" style="width: 4.8rem;">
+                  <img src="../../image/a1.png" class="aui-img-round aui-list-img-sm">
+                </div>
+                <div class="aui-list-item-inner">
+                  <div class="aui-list-item-text">
+                    <div class="aui-list-item-title cowhl fs14">登录/注册</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 信息 -->
+    <div class="pr wid96 boradius5 inform bgcf">
+      <div onclick="openlogin()" class="just-space text-center fs14 pad10a5v lh22">
+        <div>
+          <div class="fs12"><span class="fs16">0</span></div>
+          <div class="">
+            今日预估
+          </div>
+        </div>
+        <div>
+          <div class="fs12"><span class="fs16">0</span></div>
+          <div class="">
+            本月预估
+          </div>
+        </div>
+        <div>
+          <div class="fs12"><span class="fs16">0</span></div>
+          <div class="">
+            上月预估
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 签到 -->
+    <div onclick="openlogin()" class="pad10a5v clearfix bgcf wid96 mar10au boradius5">
+      <img src="../../image/b9.png" alt="">
+    </div>
+    <!-- 订单 -->
+    <div class="bgcf wid96 mar10au boradius5">
+      <div class="pad10a5v borderb1e clearfix">
+        <span class="bold">我的订单</span><span onclick="openlogin()" class="fr fs13 co666">查看全部</span>
+      </div>
+      <div class="text-center just-space fs12 pad10a5v lh20">
+        <div onclick="openlogin()" class="mt10">
+          <i class="iconfont fs32">&#xe640;</i>
+          <p>全部订单</p>
+        </div>
+        <div onclick="openlogin()" class="mt10">
+          <i class="iconfont fs32">&#xe656;</i>
+          <p>已付款</p>
+        </div>
+        <div onclick="openlogin()" class="mt10">
+          <i class="iconfont fs32">&#xe634;</i>
+          <p>已结算</p>
+        </div>
+        <div onclick="openlogin()" class="mt10">
+          <i class="iconfont fs32">&#xe622;</i>
+          <p>已失效</p>
+        </div>
+      </div>
+    </div>
+    <!-- 升级合伙人 -->
+    <div class="aui-content bgcf wid96 mar10au pad10a5v boradius5">
+      <div class="aui-list aui-media-list">
+          <div onclick="openlogin()" class="aui-list-item aui-list-item-middle pad0">
+            <img src="../../image/b10.png">
+          </div>
+      </div>
+    </div>
+    <!-- 必备工具 -->
+    <div class="bgcf wid96 mar10au boradius5">
+      <div class="pad10a5v borderb1e">
+        <span class="bold">必备工具</span>
+      </div>
+      <div class="aui-grid">
+        <div class="aui-row">
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a21.png" alt="">
+                </div>
+                <div class="aui-grid-label">邀请分享</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a22.png" alt="">
+                </div>
+                <div class="aui-grid-label">设置自定义密令</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a23.png" alt="">
+                </div>
+                <div class="aui-grid-label">我的足迹</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a24.png" alt="">
+                </div>
+                <div class="aui-grid-label">我的收藏</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a25.png" alt="">
+                </div>
+                <div class="aui-grid-label">新手教程</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a26.png" alt="">
+                </div>
+                <div class="aui-grid-label">消息通知</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a27.png" alt="">
+                </div>
+                <div class="aui-grid-label">帮助中心</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a28.png" alt="">
+                </div>
+                <div class="aui-grid-label">商家中心</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a29.png" alt="">
+                </div>
+                <div class="aui-grid-label">运营商升级</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a30.png" alt="">
+                </div>
+                <div class="aui-grid-label">找回订单</div>
+            </div>
+            <div onclick="openlogin()" class="aui-col-xs-3">
+                <div class="marau wid40b">
+                  <img src="../../image/a31.png" alt="">
+                </div>
+                <div class="aui-grid-label">淘宝授权</div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        // var headerH = $api.offset(header);
+      };
+      // 设置
+      function openlogin() {
+          api.openWin({
+              name: 'login_index',
+              url: '../public/login/login_index.html',
+              pageParam: {
+                  name: 'test'
+              }
+          });
+      }
+  </script>
+  </html>

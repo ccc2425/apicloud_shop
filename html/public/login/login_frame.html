@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>登录</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          body{
+
+          }
+          .box{
+            padding: 20px 5vw;
+          }
+          .box>div{
+            padding-top: 10px;
+            border-bottom: 1px solid #eee;
+            line-height: 40px;
+          }
+          i{
+            margin-right: 3vw;
+          }
+          input{
+            outline: none;
+          }
+          #code_btn{
+            background-color: #333;
+            color: #fff;
+            font-size: 11px;
+            border-radius: 20px;
+            padding: 0 3vw;
+            line-height: 22px;
+            margin-top: 8px;
+          }
+          .wx{
+            width: 80vw;
+            margin: 32px auto;
+            border-radius: 40px;
+            font-size: 16px;
+            box-shadow: 0px 5px 15px #999;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="box">
+        <div class="">
+          <i class="iconfont">&#xe642;</i><input id="mobile" type="number" name="" value="" placeholder="请输入您的手机号码">
+        </div>
+        <div class="">
+          <i class="iconfont">&#xe644;</i><input id="password" type="text" name="" value="" placeholder="请输入密码">
+        </div>
+      </div>
+      <div onclick="login()" class="wx text-center bgco lh40">
+        登录
+      </div>
+      <div class="just-space mt30">
+        <div onclick="forgetPassword()" class="co999">
+          <i class="iconfont fs14 mr2v">&#xe67b;</i>忘记密码
+        </div>
+        <div onclick="loginCode()" class="co999">
+          <i class="iconfont fs14 mr2v">&#xe642;</i>验证码登录
+        </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript" src="../../../script/zepto.js"></script>
+  <script type="text/javascript" src="../../../script/md5.js"></script>
+  <script type="text/javascript" src="../../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var mobile = document.getElementById('mobile');
+      var code = document.getElementById('code');
+      var password = document.getElementById('password');
+      var password2 = document.getElementById('password2');
+      var frameWidth;
+      var frameHeight;
+      apiready = function(){
+        frameWidth = api.frameWidth || '';
+        frameHeight = api.frameHeight || '';
+      };
+      //点击注册
+      function login() {
+        var mobileVal = mobile.value;
+        var passwordVal = password.value;
+        // axios({
+        //     url: '/api/rmuser/mobilereg',
+        //     data:{
+        //       token:$api.getStorage('token'),
+        //       screenw:frameWidth,
+        //       screenh:frameHeight,
+        //       mobile: mobileVal,
+        //       code: codeVal,
+        //       password: passwordVal
+        //     }
+        //   },function(ret,err){
+        //     if (ret) {
+        //       console.log(JSON.stringify(ret));
+        //     }else {
+        //       console.log(JSON.stringify(err));
+        //     }
+        //   })
+      }
+      //忘记密码
+      function forgetPassword() {
+          api.openWin({
+              name: 'forgetpassword',
+              url: './forgetpassword.html',
+              pageParam: {
+                  name: 'test'
+              }
+          });
+      }
+      //验证码登录
+      function loginCode() {
+        api.openWin({
+            name: 'login_code',
+            url: './login_code.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+  </script>
+  </html>

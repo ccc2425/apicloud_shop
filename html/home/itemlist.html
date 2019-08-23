@@ -29,7 +29,7 @@
       <div id="header" class="clearfix bgcf text-center borderb1e header">
           <i onclick="closewin()" class="iconfont fl ml3v">&#xe601;</i>
           <!-- <img src="" alt=""> -->
-          衣服
+          <span id="title">衣服</span>
           <i class="iconfont fr mr2v">&#xe627;</i>
       </div>
       <!-- 排序 -->
@@ -47,6 +47,11 @@
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
+        var tit = api.pageParam.tit;
+        var id1 = api.pageParam.id1;
+        var id2 = api.pageParam.id2;
+        var title = $api.byId('title');
+        title.innerText = tit;
         var header = $api.byId('header');
         $api.fixStatusBar(header);
         var headerPos = $api.offset(header);
@@ -60,7 +65,8 @@
                 h: 'auto'
             },
             pageParam: {
-                name: 'test'
+                id1: id1,
+                id2: id2
             },
             bounces: true,
         });
@@ -82,6 +88,12 @@
                 }
             }
         }
+        var fnSort = "fnSortframe(" + index + ");"
+        api.execScript({
+           //  name: 'winName',
+            frameName: 'itemlist_frame',
+            script: fnSort
+        });
        }
        //布局
        function layout() {
