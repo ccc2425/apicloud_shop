@@ -852,6 +852,8 @@
   <script type="text/javascript" src="../../script/aui-pull-refresh.js"></script>
   <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
   <script type="text/javascript" src="../../script/zepto.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
       //上拉加载
         //滚动条到页面底部加载更多案例
@@ -934,7 +936,7 @@
           api.addEventListener({
               name: 'stopBanner'
           }, function(ret, err){
-            console.log(ret.value.key1);
+            // console.log(ret.value.key1);
               if( ret ){
                 if (ret.value.key1 === "stop") {
                   slider.autoplay.stop()
@@ -1015,6 +1017,45 @@
       })
       apiready = function(){
         var banbg = $api.byId('banbg');
+        axios({
+          url: '/api/rmhome/home',
+          data:{
+            token:$api.getStorage('token'),
+          }
+        },function(ret,err){
+            if (err) {
+              console.log("err");
+            }
+            console.log(JSON.stringify(ret));
+            console.log(ret.length);
+            for (var i = 0; i < ret.length; i++) {
+              switch (ret[i].module_type) {
+                case 'banner':
+                    console.log("banner");
+                  break;
+                case 'btn':
+                    console.log("btn");
+                  break;
+                case 'center_banner':
+                    console.log("center_banner");
+                  break;
+                case 'roll_msg':
+                    console.log("roll_msg");
+                  break;
+                case 'one_banner':
+                    console.log("one_banner");
+                  break;
+                case 'thr_m1_btn':
+                    console.log("thr_m1_btn");
+                  break;
+                case 'four_btn':
+                    console.log("four_btn");
+                  break;
+                default:
+              }
+            }
+        })
+        //监听轮播变化
         api.addEventListener({
             name: 'banner'
         }, function(ret, err){

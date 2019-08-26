@@ -1,4 +1,6 @@
 var timestamp,
+ frameWidth,
+ frameHeight,
 appid = 1000, // 回拨域名
 appkey = 'd1c824852fab5e6d13733f102df0d587',
 url = 'http://192.168.0.147/index.php',
@@ -7,6 +9,8 @@ url2 = 'http://ntstk.xianlubang.com/',
 appkey2 = 'cb11a76cf23aecc65b46276150914967';
 function ajax(data,complete){
   // 请求数据及配置
+  frameWidth = api.frameWidth || '';
+  frameHeight = api.frameHeight || '';
   data.method = data.method || 'post'
   data.url = url + data.url
   data.data = data.data || {}
@@ -14,6 +18,8 @@ function ajax(data,complete){
   console.log(timestamp);
   data.data.timeline = timestamp
   data.data.appid=appid
+  data.data.screenw=frameWidth
+  data.data.screenh=frameHeight
   // 获取sign
   var arr = []
   for(var key in data.data){
@@ -49,6 +55,7 @@ function ajax(data,complete){
   }, function(ret, err) {
     if(ret){
       complete(ret)
+      // console.log(JSON.stringify(ret));
     }
   });
 }

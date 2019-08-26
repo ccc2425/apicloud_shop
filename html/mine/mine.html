@@ -570,7 +570,7 @@
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
-        var token = "";
+        var token = $api.getStorage('token');
         var un_login = $api.byId('un_login');
         var logined = $api.byId('logined');
         if (token === "") {

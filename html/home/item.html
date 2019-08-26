@@ -50,29 +50,33 @@
       </div> -->
     </div>
     <div id="footer" class="clearfix text-center">
-        <div class="fl ml3v footleft">
+        <div onclick="collection()" class="fl ml3v footleft">
           <i class="iconfont">&#xe6f2;</i>
           <span>收藏</span>
         </div>
         <div class="fr clearfix footright">
-          <div class="fl">
+          <!-- <div class="fl">
             <i class="iconfont">&#xe614;</i>
             分享赚￥5.52
           </div>
           <div class="fl">
             <i class="iconfont">&#xe614;</i>
             分享赚￥5.52
-          </div>
+          </div> -->
         </div>
     </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var item_id;
       apiready = function(){
         var header = $api.byId('header');
         $api.fixStatusBar(header);
         var headerH = $api.offset(header);
-        var item_id = api.pageParam.item_id;
+        item_id = api.pageParam.item_id;
+        var footright = document.getElementsByClassName('footright');
         api.openFrame({
             name: 'item_frame',
             url: './item_frame.html',
@@ -87,7 +91,34 @@
             },
             bounces: false,
         });
+        api.addEventListener({
+            name: 'shareprice'
+        }, function(ret, err){
+            if( ret ){
+              footright[0].innerHTML = `<div class="fl">
+                <i class="iconfont">&#xe614;</i>
+                分享赚￥${ret.value.share_price}
+              </div>
+              <div class="fl">
+                <i class="iconfont">&#xe614;</i>
+                自购省￥${ret.value.self_price}
+              </div>`
+            }
+        });
+
       };
+      //收藏
+      function collection() {
+        axios({
+          url: '/api/rmitems/collection',
+          data:{
+            token:$api.getStorage('token'),
+            item_id:item_id
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+        })
+      }
       // function closewin() {
       //   api.closeWin({
       //       name: 'item'
