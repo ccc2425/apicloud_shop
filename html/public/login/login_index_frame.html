@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="pf">
-        <div class="wx text-center bgco lh40">
+        <div onclick="openWX()" class="wx text-center bgco lh40">
           <i class="iconfont fs20 mr3v">&#xe660;</i>微信登录
         </div>
         <div class="just-space mt30">
@@ -60,8 +60,9 @@
   </body>
   <script type="text/javascript" src="../../../script/api.js"></script>
   <script type="text/javascript">
+      var wx;
       apiready = function(){
-
+        wx = api.require('wx');
       };
       //登录
       function login() {
@@ -82,6 +83,44 @@
                 name: 'test'
             }
         });
+      }
+      //微信登录
+      function openWX() {
+        var code="";
+        wx.auth({
+            apiKey: 'wx8b035715bb290d46'
+        }, function(ret, err) {
+            if (ret.status) {
+                console.log(JSON.stringify(ret));
+                wx.getToken({
+                apiKey: 'wx8b035715bb290d46',
+                apiSecret: '9b616c7b05ced517a6bf296b81d384a1',
+                code: ret.code
+              }, function(ret, err) {
+                  if (ret.status) {
+                     api.showProgress({
+                        style: 'default',
+                        animationType: 'fade',
+                        title: '授权成功',
+                        text: '绑定处理中...',
+                        modal: true
+                    });
+                     wx.getUserInfo({
+                        accessToken: ret.accessToken,
+                        openId: ret.openId
+                    }, function(ret, err) {
+                        if (ret.status) {
+                            // 绑定成功
+                            WXbindAccount(ret.openid);
+                            api.hideProgress();
+                        }
+                    });
+                } else {
+                  alert(err.code);
+                }
+          });
+        }
+      });
       }
   </script>
   </html>

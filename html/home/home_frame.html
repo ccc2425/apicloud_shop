@@ -37,20 +37,9 @@
           box-sizing: border-box;
           /*width: 100%!important;*/
         }
-          /*#slider img{
-            width: 100%;
-            height: 160px;
-          }
-          .mui-slider-indicator .mui-indicator{
-            width: 3px;
-            height: 3px;
-            margin: 1px;
-          }*/
-          /*.mui-table-view-cell.mui-collapse .mui-collapse-content{
-            display: block;
-          }*/
           .classfial-list{
-            font-size: 12px
+            width: 100%;
+            font-size: 12px;
           }
           .classfial-list li{
             float: left;
@@ -62,6 +51,9 @@
             width: 64%;
             border-radius: 50%;
             margin: 5px auto;
+          }
+          .classfial-list li span{
+            line-height: 15px;
           }
           .home-banner{
             /*width: 80vw;
@@ -79,6 +71,7 @@
             padding: 0 3vw;
             font-size: 12px;
             /*margin: 10px auto;*/
+            padding-top: 10px;
             padding-bottom: 10px;
           }
           .headlines-text{
@@ -101,7 +94,7 @@
            line-height: 21px;
           }
           #mooc ul li span {
-           float: right;
+           /*float: left;;*/
            color: #999;
           }
           /*活动*/
@@ -117,6 +110,11 @@
             flex-direction: row;
           }
           .actcoupon>div{
+            /*display: inline-block;*/
+            width: 48vw;
+            height: calc(24vw - 2.5px);
+          }
+          .actcoupon>div:first-child{
             width: 48vw;
             height: 48vw;
           }
@@ -355,10 +353,7 @@
         <!-- 轮播图 -->
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="../../image/ban1.png"></div>
-            <div class="swiper-slide"><img src="../../image/ban2.png"></div>
-            <div class="swiper-slide"><img src="../../image/ban1.png"></div>
-            <div class="swiper-slide"><img src="../../image/ban2.png"></div>
+            <!-- <div class="swiper-slide"><img src="../../image/ban1.png"></div> -->
           </div>
           <!-- 分页器 -->
           <div class="swiper-pagination"></div>
@@ -367,50 +362,11 @@
         <div class="pr bgcf">
           <div id="aui-slide2">
               <div class="aui-slide-wrap" >
-                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
-                    <ul>
-                      <li>
-                        <ul class="classfial-list clearfix">
+                  <!-- <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                    <ul class="classfial-list clearfix">
                           <li onclick="openmall(0)"><img src="../../image/a1.png" alt=""><span>淘宝</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a2.png" alt=""><span>拼多多</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a3.png" alt=""><span>京东</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a4.png" alt=""><span>o2o</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a5.png" alt=""><span>早起打卡</span></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <ul class="classfial-list clearfix">
-                          <li onclick="openmall(0)"><img src="../../image/a6.png" alt=""><span>天猫</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a7.png" alt=""><span>天猫国际</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a8.png" alt=""><span>抖券</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a9.png" alt=""><span>视频单</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a10.png" alt=""><span>天猫超市</span></li>
-                        </ul>
-                      </li>
                     </ul>
-                  </div>
-                  <div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
-                    <ul>
-                      <li>
-                        <ul class="classfial-list clearfix">
-                          <li onclick="openmall(0)"><img src="../../image/a1.png" alt=""><span>o2o商家中心</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a2.png" alt=""><span>超市入口</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a3.png" alt=""><span>地区代理</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a4.png" alt=""><span>推手中心</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a5.png" alt=""><span>app拉新</span></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <ul class="classfial-list clearfix">
-                          <li onclick="openmall(0)"><img src="../../image/a6.png" alt=""><span>618红包</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a7.png" alt=""><span>出单排行</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a8.png" alt=""><span>京喜红包</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a9.png" alt=""><span>测试专用</span></li>
-                          <li onclick="openmall(0)"><img src="../../image/a10.png" alt=""><span>淘礼金</span></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
+                  </div> -->
               </div>
               <div class="aui-slide-page-wrap"><!--分页容器--></div>
           </div>
@@ -418,30 +374,21 @@
         <!-- 广告轮播图 -->
         <div id="aui-slide3">
             <div class="aui-slide-wrap" >
-                <div onclick="openactive(0)" class="aui-slide-node bg-dark">
+                <!-- <div onclick="openactive(0)" class="aui-slide-node bg-dark">
                     <img src="../../image/l1.png" />
-                </div>
-                <div onclick="openactive(1)" class="aui-slide-node bg-dark">
-                    <img src="../../image/l3.png" />
-                </div>
+                </div> -->
             </div>
             <div class="aui-slide-page-wrap no"><!--分页容器--></div>
         </div>
         <!-- 头条 -->
         <div class="headlines clearfix bgcf">
           <div class="headlines-text fl">
-              <img src="../../image/toutiao.png" alt="">
+              <img id="headlines_img" src="" alt="">
           </div>
           <div id="mooc" class="">
             <div id="moocBox">
              <ul>
-              <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li>
-              <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li>
-              <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li>
-              <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li>
-              <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li>
-              <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li>
-              <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li>
+              <!-- <li><span class="cored bold">严**</span>2秒前获取佣金<span class="cored bold">30.34</span>元</li> -->
              </ul>
             </div>
           </div>
@@ -449,33 +396,33 @@
         <!-- 活动 -->
         <div class="activenews bgcf">
           <div onclick="openGetup()" class="earlypunch boradius mb5">
-              <img src="../../image/b1.png" alt="">
+              <img src="" alt="" class="s_list_box">
           </div>
-          <div class="actcoupon mb5">
+          <div class="actcoupon mb5 clearfix">
               <div onclick="living()" class="mr2v boradius">
-                <img src="../../image/b2.png" alt="">
+                <img src="" alt="" class="d_list_box">
               </div>
               <div>
                 <div onclick="openzero()" class="mb5 boradius">
-                  <img src="../../image/b3.png" alt="">
+                  <img src="" alt="" class="d_list_box">
                 </div>
                 <div class="boradius">
-                  <img src="../../image/b4.png" alt="">
+                  <img src="" alt="" class="d_list_box">
                 </div>
               </div>
           </div>
           <div class="activelist">
-            <div onclick="openDryingList()"><img src="../../image/b5.png"></div>
-            <div onclick="openLaxin()"><img src="../../image/b6.png"></div>
-            <div onclick="openSignIn()"><img src="../../image/b7.png"></div>
-            <div onclick="openRedBag()"><img src="../../image/b8.png"></div>
+            <div onclick="openDryingList()"><img src="" class="f_list_box"></div>
+            <div onclick="openLaxin()"><img src="" class="f_list_box"></div>
+            <div onclick="openSignIn()"><img src="" class="f_list_box"></div>
+            <div onclick="openRedBag()"><img src="" class="f_list_box"></div>
           </div>
         </div>
         <!-- 优选专场 -->
         <div class="optimization pad5a2b bgcf">
               <h4 class="optimization-tit text-center">
                 <div class="tit-img-box">
-                  <img src="../../image/tit1.png" alt="">
+                  <img class="h_list_box" src="" alt="">
                 </div>
     						<!-- <img class="tit-img" src="../public/img/index/icon1.png" />
     						<span>优选专场</br><span class="tit2">热门活动,发现更多好货</span></span>
@@ -483,15 +430,15 @@
     					</h4>
     					<div class="yxzc mb5">
     						<div onclick="openBeauty()">
-                  <img src="../../image/c1.png" />
+                  <img class="t_list_box" src="" />
                 </div>
                 <div onclick="openBeauty()">
     						<!-- <div onclick="openMaterKid()"> -->
-                  <img src="../../image/c2.png" />
+                  <img class="t_list_box" src="" />
                 </div>
                 <div onclick="openBeauty()">
     						<!-- <div onclick="openLife()"> -->
-                  <img src="../../image/c3.png" />
+                  <img class="t_list_box" src="" />
                 </div>
     					</div>
               <div class="optimization-box clearfix mb5">
@@ -518,7 +465,7 @@
         <div class="hot-field bgcf">
           <h4 class="optimization-tit text-center">
             <div class="tit-img-box">
-              <img src="../../image/tit2.png" alt="">
+              <img class="h_list_box" src="" alt="">
             </div>
             <!-- <img class="tit-img" src="../public/img/index/icon1.png" />
             <span>优选专场</br><span class="tit2">热门活动,发现更多好货</span></span>
@@ -848,121 +795,58 @@
   <script type="text/javascript" src="../../script/api.js"></script>
   <!-- <script type="text/javascript" src="../../script/mui.min.js"></script> -->
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
-  <script type="text/javascript" src="../../script/swiper.min.js"></script>
-  <script type="text/javascript" src="../../script/aui-pull-refresh.js"></script>
+  <!-- <script type="text/javascript" src="../../script/aui-pull-refresh.js"></script> -->
   <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
   <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript" src="../../script/md5.js"></script>
   <script type="text/javascript" src="../../script/ajax.js"></script>
+  <script type="text/javascript" src="../../script/swiper.min.js"></script>
   <script type="text/javascript">
       //上拉加载
         //滚动条到页面底部加载更多案例
-      (function() {
-         $('#demo').on('touchmove',function(){
-             //判断最后一个元素是否在底部之上
-             if( $('.aui-card-list').eq($('.aui-card-list').length-1).offset().top-$(window).scrollTop() < $(window).height() ){
-                 $('.bottom-line').css('display','block');
-                 checkPull();
-                //  $('.bottom-line').css('display','none').text('加载中...');
-
-             }
-         });
-         //添加元素方法
-         function checkPull(){
-             var pinNew;
-             pinNew=document.createDocumentFragment();
-             //每次添加5条内容
-             for(var j=5;j>0;j--){
-                 var li=document.createElement('li');
-                 li.className="aui-card-list";
-                 li.innerHTML=`<li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
-                   <div class="vouchers-list-left">
-                     <img src="../../image/la3.png" alt="">
-                     <div class="peoplenum text-center">248人已抢</div>
-                   </div>
-                   <div class="vouchers-list-right">
-                   <div class="vouchers-list1 texthidden mb5">
-                     <img src="../../image/taobao.jpg">
-                     时尚新款单肩背大人小孩通用零钱包
-                   </div>
-                   <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
-                   <div class="vouchers-list3 cored clearfix">
-                     $<span class="discount mr1v cored fs14">9.9</span>
-                     <span class="original">$11.9</span>
-                     <span class="coupon fr mr3v">2元券</span>
-                   </div>
-                   <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
-                 </div>
-                 </li>`;
-                 pinNew.appendChild(li);
-             }
-             $('#demo')[0].appendChild(pinNew);
-         }
-        })();
-
-      //轮播
-      // var slider = mui("#slider");
       // (function() {
-      //   slider.slider({
-      //     interval: 1000
-      //   })
-      // }());
-  //     var slide = new auiSlide({
-  //      container:document.getElementById("aui-slide"),
-  //      // "width":300,
-  //      "height":260,
-  //      "speed":300,
-  //      "autoPlay": 3000, //自动播放
-  //      "pageShow":true,
-  //      "pageStyle":'dot',
-  //      "loop":true,
-  //      'dotPosition':'center',
-  //     //  currentPage:currentFun
-  //  })
-   var swiper = new Swiper('.swiper-container', {
-     spaceBetween: 30,
-     centeredSlides: true,
-     autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-      },
-      on: {
-        slideChangeTransitionStart: function () {
-          var slider = this;
-          // console.log(slider);
-          api.addEventListener({
-              name: 'stopBanner'
-          }, function(ret, err){
-            // console.log(ret.value.key1);
-              if( ret ){
-                if (ret.value.key1 === "stop") {
-                  slider.autoplay.stop()
-                }else {
-                  slider.autoplay.start()
-                }
-              }
-          });
+      //    $('#demo').on('touchmove',function(){
+      //        //判断最后一个元素是否在底部之上
+      //        if( $('.aui-card-list').eq($('.aui-card-list').length-1).offset().top-$(window).scrollTop() < $(window).height() ){
+      //            $('.bottom-line').css('display','block');
+      //            checkPull();
+      //           //  $('.bottom-line').css('display','none').text('加载中...');
+      //
+      //        }
+      //    });
+         //添加元素方法
+        //  function checkPull(){
+        //      var pinNew;
+        //      pinNew=document.createDocumentFragment();
+        //      //每次添加5条内容
+        //      for(var j=5;j>0;j--){
+        //          var li=document.createElement('li');
+        //          li.className="aui-card-list";
+        //          li.innerHTML=`<li onclick="openitem()" class="vouchers-list clearfix aui-card-list">
+        //            <div class="vouchers-list-left">
+        //              <img src="../../image/la3.png" alt="">
+        //              <div class="peoplenum text-center">248人已抢</div>
+        //            </div>
+        //            <div class="vouchers-list-right">
+        //            <div class="vouchers-list1 texthidden mb5">
+        //              <img src="../../image/taobao.jpg">
+        //              时尚新款单肩背大人小孩通用零钱包
+        //            </div>
+        //            <div class="vouchers-list2 texthidden mb25">[联名同款时尚潮包],大人小孩通用零用钱包,2019新款,可爱宝宝单肩圆筒包,时尚卡通,女童斜挎零钱包,引领</div>
+        //            <div class="vouchers-list3 cored clearfix">
+        //              $<span class="discount mr1v cored fs14">9.9</span>
+        //              <span class="original">$11.9</span>
+        //              <span class="coupon fr mr3v">2元券</span>
+        //            </div>
+        //            <div class="vouchers-list4"><span class="mr2v">自购赚$1.19</span><span>升级赚1.16</span></div>
+        //          </div>
+        //          </li>`;
+        //          pinNew.appendChild(li);
+        //      }
+        //      $('#demo')[0].appendChild(pinNew);
+        //  }
+        // })();
 
-            var bIndex = slider.activeIndex
-            // console.log(bIndex);
-            api.sendEvent({
-                name: 'banner',
-                extra: {
-                    key1: bIndex,
-                }
-            });
-        }
-        // , slideChangeTransitionEnd: function () {
-        //   var slider = this;
-        //   if (slider.activeIndex === 1) {
-        //     menuButton.addEventListener('click', openMenu, true);
-        //   }
-        // },
-      }
-    });
     //监听滑动
     var scroll = new auiScroll({
         listen:true,
@@ -986,75 +870,183 @@
         });
       }
     });
-      //监听轮播显示
-      // document.querySelector('.mui-slider').addEventListener('slide', function(event) {
-      // document.getElementById('aui-slide').addEventListener('click', function(event) {
-      //   console.log(1);
-      //   //注意slideNumber是从0开始的；
-      //   // console.log(event.detail.slideNumber);
-      //   var bIndex = event.detail.slideNumber;
-      //   console.log(bIndex);
-      //   api.sendEvent({
-      //       name: 'banner',
-      //       extra: {
-      //           key1: bIndex,
-      //       }
-      //   });
-      //
-      // });
-
-      // 分类轮播
-      var slide2 = new auiSlide({
-          container:document.getElementById("aui-slide2"),
-          // "width":300,
-          "height":180,
-          "speed":300,
-          "autoPlay": 0, //自动播放
-          "pageShow":true,
-          "loop":false,
-          "pageStyle":'dot',
-          'dotPosition':'center'
-      })
       apiready = function(){
         var banbg = $api.byId('banbg');
+        var headlines_img = $api.byId('headlines_img');
+        var auiRefreshContent = document.getElementsByClassName('aui-refresh-content');
+        var s_list_box = document.getElementsByClassName('s_list_box');
+        var d_list_box = document.getElementsByClassName('d_list_box');
+        var f_list_box = document.getElementsByClassName('f_list_box');
+        var t_list_box = document.getElementsByClassName('t_list_box');
+        // var f_list_box = document.getElementsByClassName('f_list_box');
+        // var f_list_box = document.getElementsByClassName('f_list_box');
         axios({
           url: '/api/rmhome/home',
           data:{
             token:$api.getStorage('token'),
           }
         },function(ret,err){
-            if (err) {
-              console.log("err");
-            }
-            console.log(JSON.stringify(ret));
-            console.log(ret.length);
-            for (var i = 0; i < ret.length; i++) {
-              switch (ret[i].module_type) {
+            // console.log(JSON.stringify(ret));
+            // var html = "";
+            var auiSlideWrap = document.getElementsByClassName('aui-slide-wrap')
+            for (var i = 0; i < ret.data.length; i++) {
+              var _data = ret.data[i];
+              switch (_data.module_type) {
                 case 'banner':
-                    console.log("banner");
+                  var html = "";
+                  var swiperWrapper = document.getElementsByClassName('swiper-wrapper')
+                  for (var j = 0; j < _data.data.length; j++) {
+                    html +=`<div class="swiper-slide"><img src="${_data.data[j].image}"></div>`
+                    // swiperWrapper +=`<div onclick="openHref(${_data.data[j].jump_param})" class="swiper-slide"><img src="${_data.data[j].image}"></div>`
+                  }
+                  swiperWrapper[0].innerHTML = html;
+                  //轮播
+                  var swiper = new Swiper('.swiper-container', {
+                    spaceBetween: 30,
+                    centeredSlides: true,
+                    autoplay: {
+                       delay: 3000,
+                       disableOnInteraction: false,
+                     },
+                     pagination: {
+                       el: '.swiper-pagination',
+                     },
+                     on: {
+                       slideChangeTransitionStart: function () {
+                         var slider = this;
+                         // console.log(slider);
+                         api.addEventListener({
+                             name: 'stopBanner'
+                         }, function(ret, err){
+                           // console.log(ret.value.key1);
+                             if( ret ){
+                               if (ret.value.key1 === "stop") {
+                                 slider.autoplay.stop()
+                               }else {
+                                 slider.autoplay.start()
+                               }
+                             }
+                         });
+
+                           var bIndex = slider.activeIndex
+                           // console.log(bIndex);
+                           api.sendEvent({
+                               name: 'banner',
+                               extra: {
+                                   key1: bIndex,
+                               }
+                           });
+                       }
+                       // , slideChangeTransitionEnd: function () {
+                       //   var slider = this;
+                       //   if (slider.activeIndex === 1) {
+                       //     menuButton.addEventListener('click', openMenu, true);
+                       //   }
+                       // },
+                     }
+                   });
                   break;
                 case 'btn':
-                    console.log("btn");
+                  var html = "";
+                  var c;
+                  var d = _data.data.length%10;
+                  if (d!==0) {
+                    c =( _data.data.length - d)/10;
+                    c=c+1
+                  }
+                  for (var j = 0; j < c; j++) {
+                    var htmls = "";
+                    for (var k = 0; k < 10; k++) {
+                      var f = j*10+k;
+                      if (f===_data.data.length) {
+                        break
+                      }
+                        htmls +=`<li onclick="openmall(0)"><img src="${_data.data[f].image}"><span>${_data.data[f].title}</span></li>`
+                    }
+                    html += `<div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+                      <ul class="classfial-list clearfix">
+                      ${htmls}
+                      </ul>
+                    </div>`
+                  }
+                  auiSlideWrap[0].innerHTML = html
+                  // 分类轮播
+                  var slide2 = new auiSlide({
+                      container:document.getElementById("aui-slide2"),
+                      // "width":300,
+                      "height":180,
+                      "speed":300,
+                      "autoPlay": 0, //自动播放
+                      "pageShow":true,
+                      "loop":false,
+                      "pageStyle":'dot',
+                      'dotPosition':'center'
+                  })
                   break;
                 case 'center_banner':
-                    console.log("center_banner");
+                    var html = "";
+                    for (var j = 0; j < _data.data.length; j++) {
+                      html +=`<div onclick="openactive(0)" class="aui-slide-node bg-dark">
+                          <img src="${_data.data[j].image}" />
+                      </div>`;
+                    }
+                    auiSlideWrap[1].innerHTML = html;
                   break;
                 case 'roll_msg':
-                    console.log("roll_msg");
+                    headlines_img.src = _data.data.image;
+                    var moocUl = document.querySelectorAll('#moocBox ul');
+                    var html = "";
+                    for (var j = 0; j < _data.data.msg.length; j++) {
+                      html +=`<li>${_data.data.msg[j]}</li>`
+                    }
+                    moocUl[0].innerHTML = html;
+                    // console.log("roll_msg");
                   break;
                 case 'one_banner':
-                    console.log("one_banner");
+                    s_list_box[0].src = _data.data.image;
+                    // console.log("one_banner");
                   break;
                 case 'thr_m1_btn':
-                    console.log("thr_m1_btn");
+                  for (var j = 0; j < _data.data.length; j++) {
+                    d_list_box[j].src =  _data.data[j].image;
+                  }
                   break;
                 case 'four_btn':
-                    console.log("four_btn");
+                  for (var j = 0; j < _data.data.length; j++) {
+                    f_list_box[j].src =  _data.data[j].image;
+                  }
                   break;
+                case 'thr_m2_btn':
+                  for (var j = 0; j < _data.data.length; j++) {
+                    t_list_box[j].src =  _data.data[j].image;
+                  }
+                  break;
+                case 'delimiter':
+                    if (_data.module_tag ==="delimiter_0") {
+                      h_list_box[0].src = _data.data.image;
+                    } else if (_data.module_tag ==="delimiter_1") {
+                      h_list_box[1].src = _data.data.image;
+                    }
+                //   for (var j = 0; j < _data.data.length; j++) {
+                //     h_list_box[j].src =  _data.data[j].image;
+                //   }
+                //   break;
+                // case 'four_btn':
+                //   for (var j = 0; j < _data.data.length; j++) {
+                //     f_list_box[j].src =  _data.data[j].image;
+                //   }
+                //   break;
+                // case 'four_btn':
+                //   for (var j = 0; j < _data.data.length; j++) {
+                //     f_list_box[j].src =  _data.data[j].image;
+                //   }
+                //   break;
                 default:
               }
             }
+            // auiRefreshContent[0].innerHTML = html;
         })
+
         //监听轮播变化
         api.addEventListener({
             name: 'banner'
@@ -1337,33 +1329,33 @@
   }
 
     // //  上拉刷新下拉加载
-    var pullRefresh = new auiPullToRefresh({
-       container: document.querySelector('.aui-refresh-content'),
-       triggerDistance: 100
-   },function(ret){
-       if(ret.status=="success"){
-           setTimeout(function(){
-               var wrap = document.getElementById("demo")
-               var lis = wrap.querySelectorAll('.aui-card-list');
-              //  for (var i = lis.length, length = i + 10; i < length; i++) {
-              //      var html = '<div class="aui-card-list">'+
-              //              '<div class="aui-card-list-header">'+
-              //                  '卡片布局头部区域'+(i+1)+''+
-              //              '</div>'+
-              //              '<div class="aui-card-list-content-padded">'+
-              //                  '内容区域，卡片列表布局样式可以实现APP中常见的各类样式'+
-              //              '</div>'+
-              //              '<div class="aui-card-list-footer">'+
-              //                  '底部区域'+
-              //              '</div>'+
-              //          '</div>';
-              //      wrap.insertAdjacentHTML('afterbegin', html);
-              //  }
-                window.location.reload();
-               pullRefresh.cancelLoading(); //刷新成功后调用此方法隐藏
-           },1000)
-       }
-   })
+  //   var pullRefresh = new auiPullToRefresh({
+  //      container: document.querySelector('.aui-refresh-content'),
+  //      triggerDistance: 100
+  //  },function(ret){
+  //      if(ret.status=="success"){
+  //          setTimeout(function(){
+  //              var wrap = document.getElementById("demo")
+  //              var lis = wrap.querySelectorAll('.aui-card-list');
+  //             //  for (var i = lis.length, length = i + 10; i < length; i++) {
+  //             //      var html = '<div class="aui-card-list">'+
+  //             //              '<div class="aui-card-list-header">'+
+  //             //                  '卡片布局头部区域'+(i+1)+''+
+  //             //              '</div>'+
+  //             //              '<div class="aui-card-list-content-padded">'+
+  //             //                  '内容区域，卡片列表布局样式可以实现APP中常见的各类样式'+
+  //             //              '</div>'+
+  //             //              '<div class="aui-card-list-footer">'+
+  //             //                  '底部区域'+
+  //             //              '</div>'+
+  //             //          '</div>';
+  //             //      wrap.insertAdjacentHTML('afterbegin', html);
+  //             //  }
+  //               window.location.reload();
+  //              pullRefresh.cancelLoading(); //刷新成功后调用此方法隐藏
+  //          },1000)
+  //      }
+  //  })
 //
   </script>
   </html>
