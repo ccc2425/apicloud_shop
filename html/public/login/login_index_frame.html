@@ -90,11 +90,17 @@
         wx.auth({
             apiKey: 'wx8b035715bb290d46'
         }, function(ret, err) {
+            console.log("aa");
+            if (ret) {
+              alert(JSON.stringify(ret))
+            }else {
+              alert(JSON.stringify(err))
+            }
             if (ret.status) {
                 console.log(JSON.stringify(ret));
                 wx.getToken({
-                apiKey: 'wx8b035715bb290d46',
-                apiSecret: '9b616c7b05ced517a6bf296b81d384a1',
+                apiKey: 'wx4a33a15b1d83deac',
+                apiSecret: 'fe84f132afef4e0ff99f5ca6e25aa2e7',
                 code: ret.code
               }, function(ret, err) {
                   if (ret.status) {
