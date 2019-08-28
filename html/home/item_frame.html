@@ -248,6 +248,26 @@
           .vouchers-list4 span:last-child{
             background-color: #e8989a;
           }
+          .tishi{
+            position: fixed;
+            top: 12vh;
+            left: 5vw;
+            padding: 0 5px;
+            border-radius: 30px;
+            line-height: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 12px;
+            color: #fff;
+            opacity: 0;
+          }
+          .tishi_header{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-top: 5px;
+            margin-right: 5px;
+          }
       </style>
   </head>
   <body>
@@ -269,10 +289,10 @@
       <div class="vouchers-list1 mb5 vouchers_list">
       </div>
       <div class="vouchers-list2 texthidden clearfix vouchers_list">
-        <span class="coupon fl mr3v boradius3">券后</span>￥
+        <!-- <span class="coupon fl mr3v boradius3">券后</span>￥
         <span class="fs18">69</span>
         <span class="original cogry">原价169</span>
-        <span class="fr cogry">24871人已买</span>
+        <span class="fr cogry">24871人已买</span> -->
       </div>
       <div class="upgrade clearfix">
         <span><i></i>现在升级顶级运营商，最高可得佣金￥10.35</span>
@@ -320,76 +340,19 @@
               <img src="../image/muwu.jpg" alt="">
               <div class="peoplenum text-center">自购赚￥0.47</div>
             </div>
-            <div class="vouchers-list-right">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/tm.png">
-                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
-              </div>
-              <div class="fs12 texthidden mb5 cogry">
-                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
-              </div>
-              <div class="vouchers-list3 clearfix cogry mb5">
-                原价：￥<span class="original">￥11.9</span>
-                <span class="fr">190人已买</span>
-              </div>
-              <div class="vouchers-list4 cooo fs10">
-                <span class="mr2v">券后价</span>
-                $<span class="discount mr1v cooo fs16">5.9</span>
-                <span class="coupon fr mr3v fs14">2元券</span>
-              </div>
-            </div>
-          </li>
-          <li onclick="openitem()" class="vouchers-list fl">
-            <div class="vouchers-list-left">
-              <img src="../image/muwu.jpg" alt="">
-              <div class="peoplenum text-center">自购赚￥0.47</div>
-            </div>
-            <div class="vouchers-list-right">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/tm.png">
-                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
-              </div>
-              <div class="fs12 texthidden mb5 cogry">
-                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
-              </div>
-              <div class="vouchers-list3 clearfix cogry mb5">
-                原价：￥<span class="original">￥11.9</span>
-                <span class="fr">190人已买</span>
-              </div>
-              <div class="vouchers-list4 cooo fs10">
-                <span class="mr2v">券后价</span>
-                $<span class="discount mr1v cooo fs16">5.9</span>
-                <span class="coupon fr mr3v fs14">2元券</span>
-              </div>
-            </div>
-          </li>
-          <li onclick="openitem()" class="vouchers-list fl">
-            <div class="vouchers-list-left">
-              <img src="../image/muwu.jpg" alt="">
-              <div class="peoplenum text-center">自购赚￥0.47</div>
-            </div>
-            <div class="vouchers-list-right">
-              <div class="vouchers-list1 texthidden mb5">
-                <img src="../../image/tm.png">
-                光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
-              </div>
-              <div class="fs12 texthidden mb5 cogry">
-                <i class="iconfont cored mr1v fs12">&#xe663;</i>天猫超市
-              </div>
-              <div class="vouchers-list3 clearfix cogry mb5">
-                原价：￥<span class="original">￥11.9</span>
-                <span class="fr">190人已买</span>
-              </div>
-              <div class="vouchers-list4 cooo fs10">
-                <span class="mr2v">券后价</span>
-                $<span class="discount mr1v cooo fs16">5.9</span>
-                <span class="coupon fr mr3v fs14">2元券</span>
-              </div>
-            </div>
           </li> -->
         </ul>
       </div>
     </div>
+    <!-- 以购买提示 -->
+    <diV class="clearfix tishi">
+      <div class="fl tishi_header">
+        <img src="../../image/tm.png" alt="">
+      </div>
+      <div class="fl">
+        某某某购买了该产品
+      </div>
+    </diV>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
@@ -411,6 +374,7 @@
         var vouchers_list = document.getElementsByClassName('vouchers_list');
         var recommend = $api.byId('recommend');
         var item = $api.byId('item');
+        var tishi = document.getElementsByClassName('tishi');
         axios({
           url: '/api/rmitems/itemdetail',
           data:{
@@ -512,6 +476,52 @@
             </li>`
           };
           item.innerHTML = item_html;
+          var rollMsg = ret.data.roll_msg;
+          var roll_html = "";
+          // for (var l = 0; l < rollMsg.length; l++) {
+          //   roll_html = `<div class="fl tishi_header">
+          //     <img src="${rollMsg[l].header}" alt="">
+          //   </div>
+          //   <div class="fl">
+          //     ${rollMsg[l].nickname}${rollMsg[l].msg}
+          //   </div>`
+          // }
+          var l;
+          l = 0;
+          // var t;
+          var t2 = window.setInterval(function() {
+            // t=100;
+            if (l < rollMsg.length) {
+              tishi[0].style.opacity = "1";
+              roll_html = `<div class="fl tishi_header">
+                <img src="${rollMsg[l].header}" alt="">
+              </div>
+              <div class="fl">
+                ${rollMsg[l].nickname}${rollMsg[l].msg}
+              </div>`
+              tishi[0].innerHTML = roll_html;
+              var t3 = setInterval(function() {
+                  tishi[0].style.opacity = "0";
+                  clearInterval(t3)
+              },2000)
+              // tishi[0].style.opacity = "0";
+              l++
+            } else {
+              window.clearInterval(t2)  // 去除定时器
+            }
+          },3000)
+          // var t3 = setInterval(function() {
+          //   if (l < rollMsg.length) {
+          //     t--;
+          //     if (t<0) {
+          //       t=0;
+          //       clearInterval(t3)
+          //     }
+          //     tishi[0].style.opacity = t/100;
+          //   } else {
+          //     window.clearInterval(t2)  // 去除定时器
+          //   }
+          // },10)
           api.sendEvent({
               name: 'shareprice',
               extra: {
@@ -521,33 +531,7 @@
           });
 
         })
-        // axios({
-        //   url: '/api/rmitems/lists',
-        //   data:{
-        //     token:$api.getStorage('token'),
-        //     screenw:frameWidth,
-        //     screenh:frameHeight,
-        //     cid:id1,
-        //     scid:id2
-        //   }
-        // },function(ret){
-        //
-        // })
-
       };
-      // 轮播图
-      //轮播
-  //     var slide = new auiSlide({
-  //      container:document.getElementById("aui-slide"),
-  //      // "width":300,
-  //      "height":260,
-  //      "speed":300,
-  //      "pageShow":true,
-  //      "autoPlay": 1000, //自动播放
-  //      "pageStyle":'dot',
-  //      "loop":true,
-  //      'dotPosition':'center',
-  //  })
    //监听滑动
    var scroll = new auiScroll({
        listen:true,

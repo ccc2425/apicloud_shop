@@ -103,6 +103,8 @@
                 apiSecret: 'fe84f132afef4e0ff99f5ca6e25aa2e7',
                 code: ret.code
               }, function(ret, err) {
+                  alert(JSON.stringify(ret));
+                  alert(JSON.stringify(err));
                   if (ret.status) {
                      api.showProgress({
                         style: 'default',

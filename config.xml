@@ -27,5 +27,5 @@
 	<permission name="fileSystem" />
 	<permission name="internet" />
 	<permission name="bootCompleted" />
-	<permission name="hardware" />  <preference name="appCertificateVerify" value="false" />  <feature name="wx">    <param name="urlScheme" value="wx4a33a15b1d83deac"/>    <param name="apiKey" value="wx4a33a15b1d83deac"/>    <param name="apiSecret" value="fe84f132afef4e0ff99f5ca6e25aa2e7"/>  </feature>
+	<permission name="hardware" />  <preference name="appCertificateVerify" value="false" />  <feature name="wx">    <param name="urlScheme" value="wx8be94f2a89b4291d"/>    <param name="apiKey" value="wx8be94f2a89b4291d"/>    <param name="apiSecret" value="fe12e9d14c7ccd3a6e6afbec5015cd6f"/>  </feature>
 </widget>
