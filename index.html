@@ -286,8 +286,9 @@
         }
     }
     apiready = function() {
-
-        $api.setStorage('token', "")
+        if ($api.getStorage('token') === undefined ) {
+          $api.setStorage('token', "")
+        }
         var footer = $api.dom('footer'); // 获取 footer 标签元素
         footerPos = $api.offset(footer);
         var header = $api.byId('header');

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>修改支付密码</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #fff;
+          }
+          .wx{
+            width: 80vw;
+            margin: 16vh auto;
+            border-radius: 40px;
+            font-size: 16px;
+            box-shadow: 0px 5px 15px #999;
+          }
+      </style>
+  </head>
+  <body>
+    <div onclick="openWX()" class="wx text-center bgco lh40">
+      <i class="iconfont fs20 mr3v">&#xe660;</i>绑定微信
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript" src="../../../script/md5.js"></script>
+  <script type="text/javascript" src="../../../script/ajax.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      function openWX() {
+        var code="";
+        wx.auth({
+            apiKey: 'wx8be94f2a89b4291d'
+        }, function(ret) {
+          // alert(JSON.stringify(ret))
+            console.log(JSON.stringify(ret));
+             WXbindAccount(ret.code);
+      });
+      }
+      //接口传参
+      function WXbindAccount(code) {
+        // console.log($api.getStorage('token'));
+        axios({
+            url: '/api/rmuser/bindwx',
+            data: {
+              code:code
+            }
+          },function(ret,err){
+            // alert(JSON.stringify(ret))
+            console.log(JSON.stringify(ret));
+            if (ret) {
+              if (ret.code===200) {
+                api.toast({
+                    msg: '绑定成功',
+                    duration: 1000,
+                    location: 'middle'
+                });
+                api.sendEvent({
+                    name: 'bind_sucess',
+                    extra: {
+                    }
+                });
+                setTimeout(function() {
+                  api.closeWin();
+                },1000)
+              }else {
+                api.toast({
+                    msg: ret.msg,
+                    duration: 2000,
+                    location: 'middle'
+                });
+              }
+            }
+          })
+      }
+  </script>
+  </html>

@@ -46,35 +46,24 @@
             <i onclick="closewin()" class="iconfont fl ml3v">&#xe601;</i>
             限时抢购
         </div>
-          <div class="classification clearfix mt5 text-center">
-            <ul>
-              <li class="classifiy active" onclick="opensingle(0)"><span class="fs16 bold">00:00</span></br><span class="fs12">昨日开抢</span></li>
-              <li class="classifiy" onclick="opensingle(1)"><span class="fs16 bold">10:00</span></br><span class="fs12">昨日开抢</span></li>
-              <li class="classifiy" onclick="opensingle(2)"><span class="fs16 bold">12:00</span></br><span class="fs12">昨日开抢</span></li>
-              <li class="classifiy" onclick="opensingle(3)"><span class="fs16 bold">15:00</span></br><span class="fs12">昨日开抢</span></li>
-              <li class="classifiy" onclick="opensingle(4)"><span class="fs16 bold">20:00</span></br><span class="fs12">昨日开抢</span></li>
-              <li class="classifiy" onclick="opensingle(5)"><span class="fs16 bold">00:00</span></br><span class="fs12">已开抢</span></li>
-              <li class="classifiy" onclick="opensingle(6)"><span class="fs16 bold">10:00</span></br><span class="fs12">已开抢</span></li>
-              <li class="classifiy" onclick="opensingle(7)"><span class="fs16 bold">12:00</span></br><span class="fs12">即将开抢</span></li>
-              <li class="classifiy" onclick="opensingle(8)"><span class="fs16 bold">15:00</span></br><span class="fs12">即将开抢</span></li>
-              <li class="classifiy" onclick="opensingle(9)"><span class="fs16 bold">20:00</span></br><span class="fs12">即将开抢</span></li>
-              <li class="classifiy" onclick="opensingle(10)"><span class="fs16 bold">00:00</span></br><span class="fs12">即将开抢</span></li>
-              <li class="classifiy" onclick="opensingle(11)"><span class="fs16 bold">10:00</span></br><span class="fs12">即将开抢</span></li>
-              <li class="classifiy" onclick="opensingle(12)"><span class="fs16 bold">12:00</span></br><span class="fs12">即将开抢</span></li>
-              <li class="classifiy" onclick="opensingle(13)"><span class="fs16 bold">15:00</span></br><span class="fs12">即将开抢</span></li>
-              <li class="classifiy" onclick="opensingle(14)"><span class="fs16 bold">20:00</span></br><span class="fs12">即将开抢</span></li>
+          <!-- <div class="classification clearfix mt5 text-center">
+            <ul id="time">
+              <li class="classifiy active"><span class="fs16 bold">00:00</span></br><span class="fs12">昨日开抢</span></li>
             </ul>
-          </div>
+          </div> -->
       </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
       var headerH;
+      // var hour_type;
+      var time = document.getElementById('time')
       apiready = function(){
         var header = $api.byId('header');
         $api.fixStatusBar(header);
         headerH = $api.offset(header);
-
         api.openFrame({
             name: 'active0_frame',
             url: './active0_frame.html',
@@ -87,61 +76,106 @@
             pageParam: {
                 name: 'test'
             },
-            bounces: true,
+            bounces: false,
         });
-
+        // openData()
+        // //获取时间
+        // axios({
+        //   url: '/api/rmitems/fastbuy',
+        //   data:{
+        //     token:$api.getStorage('token'),
+        //   }
+        // },function(ret,err){
+        //     console.log(JSON.stringify(ret));
+        //     // var classifiy = document.getElementsByClassName('classifiy')
+        //     if (ret.code === 200) {
+        //       var html = "";
+        //       for (var i = 0; i < ret.data.hour_list.length; i++) {
+        //         if (i === 7) {
+        //           html += `<li class="classifiy active" onclick="opensingle(${i},${ret.data.hour_list[i].hour_type})"><span class="fs16 bold">${ret.data.hour_list[i].hour}</span></br><span class="fs12">${ret.data.hour_list[i].msg}</span></li>`
+        //         }else {
+        //           html += `<li class="classifiy" onclick="opensingle(${i},${ret.data.hour_list[i].hour_type})"><span class="fs16 bold">${ret.data.hour_list[i].hour}</span></br><span class="fs12">${ret.data.hour_list[i].msg}</span></li>`
+        //         }
+        //       }
+        //       // alert(html);
+        //       time.innerHTML = html;
+        //     }
+        // })
       };
-      // 随意切换按钮
-      function randomSwitchBtn(index) {
-        var lis = $api.domAll('.classifiy');
-        var i = 0;
-        var len = lis.length;
-        var curLi = lis[index]
-        for (i; i < len; i++) {
-          var thisLi = lis[i];
-          if (thisLi === curLi) {
-            $api.addCls(thisLi, 'active');
-            continue;
-          }else {
-            if ($api.hasCls(thisLi,'active')) {
-              $api.removeCls(thisLi, 'active');
-            }
-          }
-        }
-
-      }
-      // 隐藏所有的一级frame
-      function hideAllFrame() {
-          api.setFrameAttr({
-              name: 'malllist_frame',
-              hidden: true
-          });
-      }
-    //打开分类页面
-      function opensingle(index) {
-        randomSwitchBtn(index)
-        hideAllFrame()
-        api.openFrame({
-            name: 'active0_frame',
-            url: './active0_frame.html',
-            rect: {
-                x: 0,
-                y: headerH.h,
-                w: 'auto',
-                h: 'auto'
-            },
-            pageParam: {
-              name:'test'
-            },
-            bounces: true,
-        });
-      }
+    //   // 随意切换按钮
+    //   function randomSwitchBtn(index) {
+    //     var lis = $api.domAll('.classifiy');
+    //     var i = 0;
+    //     var len = lis.length;
+    //     var curLi = lis[index]
+    //     for (i; i < len; i++) {
+    //       var thisLi = lis[i];
+    //       if (thisLi === curLi) {
+    //         $api.addCls(thisLi, 'active');
+    //         continue;
+    //       }else {
+    //         if ($api.hasCls(thisLi,'active')) {
+    //           $api.removeCls(thisLi, 'active');
+    //         }
+    //       }
+    //     }
+    //   }
+    //   // 隐藏所有的一级frame
+    //   function hideAllFrame() {
+    //       api.setFrameAttr({
+    //           name: 'malllist_frame',
+    //           hidden: true
+    //       });
+    //   }
+    // //打开分类页面
+    //   function opensingle(index,hour_type) {
+    //     randomSwitchBtn(index)
+    //     // hideAllFrame()
+    //     api.openFrame({
+    //         name: 'active0_frame',
+    //         url: './active0_frame.html',
+    //         rect: {
+    //             x: 0,
+    //             y: headerH.h + 53,
+    //             w: 'auto',
+    //             h: 'auto'
+    //         },
+    //         pageParam: {
+    //           hour_type:hour_type
+    //         },
+    //         bounces: true,
+    //     });
+    //   }
     //关闭该页面
     function closewin() {
       api.closeWin({
           name: 'active0'
       });
-
     }
+    //获取时间
+    var openData = function () {
+        axios({
+          url: '/api/rmitems/fastbuy',
+          data:{
+            token:$api.getStorage('token'),
+            // hour_type:hour_type
+          }
+        },function(ret,err){
+            console.log(JSON.stringify(ret));
+            // var classifiy = document.getElementsByClassName('classifiy')
+            if (ret.code === 200) {
+              var html = "";
+              for (var i = 0; i < ret.data.hour_list.length; i++) {
+                if (i === 7) {
+                  html += `<li class="classifiy active" onclick="opensingle(${i},${ret.data.hour_list[i].hour_type})"><span class="fs16 bold">${ret.data.hour_list[i].hour}</span></br><span class="fs12">${ret.data.hour_list[i].msg}</span></li>`
+                }else {
+                  html += `<li class="classifiy" onclick="opensingle(${i},${ret.data.hour_list[i].hour_type})"><span class="fs16 bold">${ret.data.hour_list[i].hour}</span></br><span class="fs12">${ret.data.hour_list[i].msg}</span></li>`
+                }
+              }
+              // alert(html);
+              time.innerHTML = html;
+            }
+        })
+      }
   </script>
   </html>

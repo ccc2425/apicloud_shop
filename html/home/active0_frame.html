@@ -7,6 +7,9 @@
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
+          #vouchersul{
+            margin-top: 53px;
+          }
           /*精选好券*/
           .vouchers-list{
             border-bottom: 1px solid #ddd;
@@ -85,14 +88,49 @@
           .vouchers-list4 span:last-child{
             background-color: grey;
           }*/
+          .classification{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 99;
+          }
+          .classification ul{
+            width:100%;
+            display: inline;
+            white-space: nowrap;
+            overflow-x:scroll;
+            float:left;
+            overflow-y:hidden;
+          }
+          .classification ul li{
+            display:inline-block;
+            width: 16vw;
+            height: 42px;
+            margin: 3px 3vw;
+            line-height: 18px;
+          }
+          .classification ul::-webkit-scrollbar {
+            display:none
+          }
+          .classifiy>span:first-child{margin-top: 3px;}
+          .active{
+            background-color: #fff;
+            color: #d4237a;
+            border-radius: 5px;
+          }
       </style>
   </head>
   <body>
+    <div class="classification clearfix text-center bgcp">
+      <ul id="time" class="mt5">
+        <li class="classifiy active"><span class="fs16 bold">00:00</span></br><span class="fs12">昨日开抢</span></li>
+      </ul>
+    </div>
     <ul id="vouchersul" class="bgcc vouchersul">
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
+      <!-- <li onclick="openitem(0)" class="vouchers-list clearfix">
         <div class="vouchers-list-left">
           <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
         </div>
         <div class="vouchers-list-right fs12">
           <div class="vouchers-list1 texthidden mb10">
@@ -110,226 +148,136 @@
           <div class="vouchers-list3 cored clearfix">
             ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
             <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
+            <span class="bgcr fr mr2v fs12 rightgo mt5">马上抢</span>
           </div>
         </div>
-      </li>
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
-        </div>
-        <div class="vouchers-list-right fs12">
-          <div class="vouchers-list1 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            相当当抹茶水果蛋糕两箱1000g
-          </div>
-          <div class="vouchers-list2 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            已抢<span class="cored fs18">288</span>件
-          </div>
-          <div class="vouchers-list4 clearfix mb5">
-            <span class="coupon fl mr3v">10元券</span>
-            <span class="fr cored"><span class="fs10">自购赚</span>￥1.19</span>
-          </div>
-          <div class="vouchers-list3 cored clearfix">
-            ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
-            <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
-          </div>
-        </div>
-      </li>
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
-        </div>
-        <div class="vouchers-list-right fs12">
-          <div class="vouchers-list1 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            相当当抹茶水果蛋糕两箱1000g
-          </div>
-          <div class="vouchers-list2 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            已抢<span class="cored fs18">288</span>件
-          </div>
-          <div class="vouchers-list4 clearfix mb5">
-            <span class="coupon fl mr3v">10元券</span>
-            <span class="fr cored"><span class="fs10">自购赚</span>￥1.19</span>
-          </div>
-          <div class="vouchers-list3 cored clearfix">
-            ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
-            <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
-          </div>
-        </div>
-      </li>
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
-        </div>
-        <div class="vouchers-list-right fs12">
-          <div class="vouchers-list1 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            相当当抹茶水果蛋糕两箱1000g
-          </div>
-          <div class="vouchers-list2 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            已抢<span class="cored fs18">288</span>件
-          </div>
-          <div class="vouchers-list4 clearfix mb5">
-            <span class="coupon fl mr3v">10元券</span>
-            <span class="fr cored"><span class="fs10">自购赚</span>￥1.19</span>
-          </div>
-          <div class="vouchers-list3 cored clearfix">
-            ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
-            <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
-          </div>
-        </div>
-      </li>
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
-        </div>
-        <div class="vouchers-list-right fs12">
-          <div class="vouchers-list1 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            相当当抹茶水果蛋糕两箱1000g
-          </div>
-          <div class="vouchers-list2 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            已抢<span class="cored fs18">288</span>件
-          </div>
-          <div class="vouchers-list4 clearfix mb5">
-            <span class="coupon fl mr3v">10元券</span>
-            <span class="fr cored"><span class="fs10">自购赚</span>￥1.19</span>
-          </div>
-          <div class="vouchers-list3 cored clearfix">
-            ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
-            <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
-          </div>
-        </div>
-      </li>
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
-        </div>
-        <div class="vouchers-list-right fs12">
-          <div class="vouchers-list1 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            相当当抹茶水果蛋糕两箱1000g
-          </div>
-          <div class="vouchers-list2 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            已抢<span class="cored fs18">288</span>件
-          </div>
-          <div class="vouchers-list4 clearfix mb5">
-            <span class="coupon fl mr3v">10元券</span>
-            <span class="fr cored"><span class="fs10">自购赚</span>￥1.19</span>
-          </div>
-          <div class="vouchers-list3 cored clearfix">
-            ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
-            <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
-          </div>
-        </div>
-      </li>
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
-        </div>
-        <div class="vouchers-list-right fs12">
-          <div class="vouchers-list1 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            相当当抹茶水果蛋糕两箱1000g
-          </div>
-          <div class="vouchers-list2 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            已抢<span class="cored fs18">288</span>件
-          </div>
-          <div class="vouchers-list4 clearfix mb5">
-            <span class="coupon fl mr3v">10元券</span>
-            <span class="fr cored"><span class="fs10">自购赚</span>￥1.19</span>
-          </div>
-          <div class="vouchers-list3 cored clearfix">
-            ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
-            <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
-          </div>
-        </div>
-      </li>
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
-        </div>
-        <div class="vouchers-list-right fs12">
-          <div class="vouchers-list1 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            相当当抹茶水果蛋糕两箱1000g
-          </div>
-          <div class="vouchers-list2 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            已抢<span class="cored fs18">288</span>件
-          </div>
-          <div class="vouchers-list4 clearfix mb5">
-            <span class="coupon fl mr3v">10元券</span>
-            <span class="fr cored"><span class="fs10">自购赚</span>￥1.19</span>
-          </div>
-          <div class="vouchers-list3 cored clearfix">
-            ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
-            <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
-          </div>
-        </div>
-      </li>
-      <li onclick="openitem(0)" class="vouchers-list clearfix">
-        <div class="vouchers-list-left">
-          <img src="../image/muwu.jpg" alt="">
-          <!-- <div class="peoplenum text-center">248人已抢</div> -->
-        </div>
-        <div class="vouchers-list-right fs12">
-          <div class="vouchers-list1 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            相当当抹茶水果蛋糕两箱1000g
-          </div>
-          <div class="vouchers-list2 texthidden mb10">
-            <img src="../../image/taobao.jpg">
-            已抢<span class="cored fs18">288</span>件
-          </div>
-          <div class="vouchers-list4 clearfix mb5">
-            <span class="coupon fl mr3v">10元券</span>
-            <span class="fr cored"><span class="fs10">自购赚</span>￥1.19</span>
-          </div>
-          <div class="vouchers-list3 cored clearfix">
-            ￥<span class="discount mr1v cored fs14 lh29">16.90</span>
-            <span class="original">￥26.90</span>
-            <span class="bgcr fr mr2v fs16 rightgo">马上抢</span>
-          </div>
-        </div>
-      </li>
+      </li> -->
     </ul>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var hour_types;
       apiready = function(){
-
+        var vouchersul = $api.byId('vouchersul');
+        // var hour_type = api.pageParam.hour_type;
+        axios({
+          url: '/api/rmitems/fastbuy',
+          data:{
+            token:$api.getStorage('token'),
+            // hour_type:hour_type
+          }
+        },function(ret,err){
+            // console.log(JSON.stringify(ret));
+            // var classifiy = document.getElementsByClassName('classifiy')
+            if (ret.code === 200) {
+              var html = "";
+              for (var i = 0; i < ret.data.hour_list.length; i++) {
+                if (i === ret.data.hour_type_now-1) {
+                  html += `<li class="classifiy active" onclick="opensingle(${i},${ret.data.hour_list[i].hour_type})"><span class="fs16 bold">${ret.data.hour_list[i].hour}</span></br><span class="fs12">${ret.data.hour_list[i].msg}</span></li>`
+                }else {
+                  html += `<li class="classifiy" onclick="opensingle(${i},${ret.data.hour_list[i].hour_type})"><span class="fs16 bold">${ret.data.hour_list[i].hour}</span></br><span class="fs12">${ret.data.hour_list[i].msg}</span></li>`
+                }
+              }
+              // alert(html);
+              time.innerHTML = html;
+              hour_types = ret.data.hour_type_now;
+              openData()
+            }
+        })
       };
-      function openitem() {
+      function openitem(item_id,tit,old_price,end_price) {
+        console.log(item_id);
+        console.log(hour_types);
         api.openWin({
-            name: 'item',
-            url: './item.html',
+            name: 'item_time',
+            url: './item_time.html',
             pageParam: {
-                name: 'test'
+                hour_type:hour_types,
+                item_id: item_id,
+                tit:tit,
+                old_price:old_price,
+                end_price:end_price
             }
         });
-
+      }
+      // 随意切换按钮
+      function randomSwitchBtn(index) {
+        var lis = $api.domAll('.classifiy');
+        var i = 0;
+        var len = lis.length;
+        var curLi = lis[index]
+        for (i; i < len; i++) {
+          var thisLi = lis[i];
+          if (thisLi === curLi) {
+            $api.addCls(thisLi, 'active');
+            continue;
+          }else {
+            if ($api.hasCls(thisLi,'active')) {
+              $api.removeCls(thisLi, 'active');
+            }
+          }
+        }
+      }
+    //打开分类页面
+      function opensingle(index,hour_type) {
+        randomSwitchBtn(index)
+        openData(hour_type)
+        console.log(hour_type);
+        hour_types = hour_type;
+        // hideAllFrame()
+      }
+    var openData = function (hour_type) {
+      // alert(hour_type)
+      if (hour_type === undefined) {
+        hour_type = hour_types;
+      }
+      //获取时间
+      axios({
+        url: '/api/rmitems/fastbuy',
+        data:{
+          hour_type:hour_type
+        }
+      },function(ret,err){
+          console.log(JSON.stringify(ret));
+          // var classifiy = document.getElementsByClassName('classifiy')
+          if (ret.code === 200) {
+            vouchersul.innerHTML = "";
+            for (var i = 0; i < ret.data.item_list.length; i++) {
+                vouchersul.innerHTML += `<li onclick="openitem(${ret.data.item_list[i].item_id},'${ret.data.item_list[i].title}',${ret.data.item_list[i].old_price},${ret.data.item_list[i].end_price})" class="vouchers-list clearfix">
+                  <div class="vouchers-list-left">
+                    <img src="${ret.data.item_list[i].master_image}" alt="">
+                  </div>
+                  <div class="vouchers-list-right fs12">
+                    <div class="vouchers-list1 texthidden mb10">
+                      <img src="../../image/${ret.data.item_list[i].item_type}.jpg">
+                      ${ret.data.item_list[i].title}
+                    </div>
+                    <div class="vouchers-list2 texthidden mb10">
+                      <img src="../../image/${ret.data.item_list[i].item_type}.jpg">
+                      已抢<span class="cored fs18">${ret.data.item_list[i].sales}</span>件
+                    </div>
+                    <div class="vouchers-list4 clearfix mb5">
+                      <span class="coupon fl mr3v">${ret.data.item_list[i].coupon_price}元券</span>
+                      <span class="fr cored"><span class="fs10">自购赚</span>￥${ret.data.item_list[i].commission_rate}</span>
+                    </div>
+                    <div class="vouchers-list3 cored clearfix">
+                      ￥<span class="discount mr1v cored fs14 lh29">${ret.data.item_list[i].end_price}</span>
+                      <span class="original">￥${ret.data.item_list[i].old_price}</span>
+                      <span class="bgcrss fr mr2v fs12 rightgo mt5">马上抢</span>
+                    </div>
+                  </div>
+                </li>`;
+                var rightgo = document.getElementsByClassName('rightgo');
+                if (ret.data.item_list[i].is_buy === 0) {
+                  rightgo[i].style.backgroundColor = "#ddd"
+                }
+            }
+            // alert(html);
+            // vouchersul.innerHTML = html;
+          }
+      })
       }
   </script>
   </html>

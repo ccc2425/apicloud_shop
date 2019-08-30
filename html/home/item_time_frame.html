@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          *{
+            box-sizing: border-box;
+          }
+          body{
+            line-height: 21px;
+          }
+          .tit{
+            font-size: 24px;
+            padding-bottom: 25px;
+            line-height: 50px;
+          }
+          .video-box{
+            position: relative;
+            top: -25px;
+            padding: 0 3vw;
+          }
+          .new_box{
+            width: 80vw;
+            margin: auto;
+            padding: 8px 16px;
+            line-height: 24px;
+            background-color: #fff;
+            text-align: center;
+            box-shadow: 0 1px 5px #d81e06;
+            border-radius: 5px;
+          }
+          .video{
+            width: 80vw;
+            margin: 20px auto 10px;
+            height: 260px;
+          }
+          .text{
+            line-height: 20px;
+            text-indent: 2rem;
+          }
+          .show-box{
+            margin-top: -25px;
+            background-color: #eee;
+            padding: 5px 2vw;
+          }
+          #show_box{
+            padding: 10px 3vw;
+          }
+          /*底部*/
+          #footer{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 50px;
+            line-height: 40px;
+            padding: 5px 2vw;
+            box-sizing: border-box;
+          }
+          .buy{
+            padding: 0 5vw;
+            height: 30px;
+            border-radius: 30px;
+            background-color: #fff;
+            text-align: center;
+            color: #333;
+            margin-top: 5px;
+            line-height: 30px;
+            margin-right: 2vw;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="tit bgcr text-center">
+        精选好货限时秒杀
+      </div>
+      <div class="video-box">
+        <div class="new_box">
+            <div class="time">2019-08-29 12:0:0开始</div>
+            <div class="lh35 fs16 bold state">已开抢</div>
+            <div class="msg fs12">20只装了的哈</div>
+            <div class="mt5">自购省<span class="self cored fs18 bold">￥1.18</span></div>
+        </div>
+        <div id="video_box">
+          <!-- <div class="video">
+            <img src="" alt="">
+          </div> -->
+        </div>
+        <div id="text1" class="text">
+
+        </div>
+        <div class="">
+          <img src="" alt="" id="video_img">
+        </div>
+      </div>
+      <div class="show-box mb50">
+        <div class="text-center lh35">称心如意·验货实拍</div>
+        <div id="show_box" class="bgcf">
+          <div class="text">
+          </div>
+          <div class="">
+            <img src="" alt="">
+          </div>
+          <div class="text">
+          </div>
+          <div class="">
+            <img src="" alt="">
+          </div>
+        </div>
+      </div>
+      <div id="footer" class="bgcpr clearfix">
+          <!-- <div class="fl fs12"><span>￥</span><span class="fs18 bold mr2v">9.90</span><span class="coshw">原价14.90元</span></div>
+          <div class="fr buy">领券购买</div> -->
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var item_id;
+      var hour_type;
+      var old_price;
+      var end_price;
+      var time = document.getElementsByClassName('time');
+      var state = document.getElementsByClassName('state');
+      var msg = document.getElementsByClassName('msg');
+      var self = document.getElementsByClassName('self');
+      var video_box = document.getElementById('video_box');
+      var text1 = document.getElementById('text1');
+      var video_img = document.getElementById('video_img');
+      var show_box = document.getElementById('show_box');
+      var footer = document.getElementById('footer');
+      var status;//状态
+      apiready = function(){
+        item_id = api.pageParam.item_id;
+        hour_type = api.pageParam.hour_type;
+        old_price = api.pageParam.old_price;
+        end_price = api.pageParam.end_price;
+        opendata()
+      }
+      //数据请求
+      var opendata = function () {
+        axios({
+          url: '/api/rmitems/fastbuydetail',
+          data:{
+            item_id:item_id,
+            hour_type:hour_type
+          }
+        },function(ret){
+          // console.log(JSON.stringify(ret));
+          if (ret.code === 200) {
+            status = ret.data.is_buy;
+            //头部信息
+            time[0].innerText = ret.data.start_time;
+            if (ret.data.is_buy === 1) {
+              state[0].innerText = '已开抢';
+            } else if(ret.data.is_buy === 0){
+              state[0].innerText = '不可抢';
+            }
+            msg[0].innerText = ret.data.short_title;
+            self[0].innerText = ret.data.self_price;
+            //视频
+            var html = "";
+            for (var i = 0; i < 2; i++) {
+              html +=`<div class="video">
+                <img onclick="openVideo('${ret.data.video_url}')" src="${ret.data.item_pic}" alt="">
+              </div>`
+            }
+            video_box.innerHTML = html;
+            //描述
+            text1.innerText = ret.data.item_desc;
+            video_img.src = ret.data.item_pic;
+            //展示图片
+            var htmls = "";
+            for (var j = 0; j < ret.data.sec_content.length; j++) {
+              htmls += `<div class="text">
+                  ${ret.data.sec_content[j].text}
+              </div>
+              <div class="">
+                <img src="${ret.data.sec_content[j].img}" alt="">
+              </div>`
+            }
+            show_box.innerHTML = htmls;
+            footer.innerHTML = `<div class="fl fs12"><span>￥</span><span class="fs18 bold mr2v">${end_price}</span><span class="coshw">原价${old_price}元</span></div>
+            <div onclick="openitem(${ret.data.item_id})" class="fr buy">领券购买</div>`
+          }
+        })
+      }
+      //领券购买
+      function openitem(item_id) {
+        console.log($api.getStorage('token'));
+        if (status === '1') {
+          api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+              item_id: item_id
+            }
+          });
+        } else {
+          api.toast({
+              msg: '不可抢',
+              duration: 2000,
+              location: 'middle'
+          });
+        }
+      }
+      //点击播放视频
+      function openVideo(url) {
+        console.log(url);
+        var videoPlayer = api.require('videoPlayer');
+        videoPlayer.play({
+            texts: {
+                head: {
+                    title: '限时抢购'
+                }
+            },
+            styles: {
+                head: {
+                    bg: 'rgba(0.5,0.5,0.5,0.7)',
+                    height: 20,
+                    titleSize: 16,
+                    titleColor: '#fff',
+                    backSize: 16,
+                    setSize: 16,
+                },
+                foot: {
+                    bg: 'rgba(0.5,0.5,0.5,0.7)',
+                    height: 20,
+                    playSize: 16,
+                    playImg: 'fs://img/back.png',
+                    pauseImg: 'fs://img/back.png',
+                    nextSize: 16,
+                    nextImg: 'fs://img/back.png',
+                    timeSize: 14,
+                    timeColor: '#fff',
+                    sliderImg: 'fs://img/slder.png',
+                    progressColor: '#696969',
+                    progressSelected: '#76EE00'
+                }
+            },
+            path: url, //（可选项）字符串类型；文档的路径，支持网络和本地（fs://）路径；默认：未传值时不播放
+            //在 android 平台上不支持 widget://
+            autoPlay: true //（可选项）布尔类型；打开时是否自动播放；默认：true（自动播放）
+        }, function(ret, err) {
+            if (ret) {
+                // alert(JSON.stringify(ret));
+            } else {
+                // alert(JSON.stringify(err));
+            }
+        });
+      }
+  </script>
+  </html>

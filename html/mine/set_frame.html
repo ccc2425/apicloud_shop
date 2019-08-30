@@ -26,6 +26,31 @@
           .aui-list .aui-list-item-label{
             line-height: 3.2rem;
           }
+          /*提示框*/
+          .aui-dialog {
+              width: 72vw;
+              text-align: center;
+              position: fixed;
+              z-index: 999;
+              left: 50%;
+              margin-top: 0;
+              margin-left: -36vw;
+              top: 45%;
+              border-radius: 0.3rem;
+              opacity: 0;
+              background-color: #ffffff;
+              -webkit-transform: translate3d(0, 0, 0) scale(1.2);
+              transform: translate3d(-50%, 0, 0) scale(1.2);
+              -webkit-transition-property: -webkit-transform, opacity;
+              transition-property: transform, opacity;
+              /* display: none; */
+          }
+          .aui-dialog-header{
+            font-size: 18px;
+          }
+          .aui-dialog-btn,.aui-dialog-body{
+            font-size: 14px;
+          }
       </style>
   </head>
   <body>
@@ -44,7 +69,7 @@
                     昵称
                 </div>
                 <div class="aui-list-item-input">
-                    <input class="iptcob" type="text" placeholder="小小">
+                    <input class="iptcob ipt_box" type="text" placeholder="">
                 </div>
             </div>
         </li>
@@ -54,7 +79,7 @@
                     个人签名
                 </div>
                 <div class="aui-list-item-input">
-                    <input type="text" placeholder="记录此刻心情！">
+                    <input class="ipt_box" type="text" placeholder="记录此刻心情！">
                 </div>
             </div>
         </li>
@@ -64,7 +89,7 @@
                     微信号
                 </div>
                 <div class="aui-list-item-input">
-                    <input type="text" placeholder="请填写微信号">
+                    <input class="ipt_box" type="text" placeholder="请填写微信号">
                 </div>
             </div>
         </li>
@@ -85,7 +110,7 @@
                 </div>
                 <div class="aui-list-item-input clearfix">
                     <i class="iconfont fr fs14">&#xe615;</i>
-                    <span class="fr cogry mr2v">199****0580</span>
+                    <span id="mobile" class="fr cogry mr2v">199****0580</span>
                 </div>
             </div>
         </li>
@@ -99,14 +124,14 @@
                 </div>
             </div>
         </li>
-        <li class="aui-list-item lh24">
+        <li onclick="openSetFrame('wx')" class="aui-list-item lh24">
             <div class="aui-list-item-inner">
                 <div class="aui-list-item-label">
                     绑定微信
                 </div>
                 <div class="aui-list-item-input clearfix">
                     <i class="iconfont fr fs14">&#xe615;</i>
-                    <span class="fr cogry mr2v">小小</span>
+                    <span id="wx_id" class="fr cogry mr2v"></span>
                 </div>
             </div>
         </li>
@@ -140,7 +165,7 @@
                 </div>
                 <div class="aui-list-item-input clearfix">
                     <i class="iconfont fr fs14">&#xe615;</i>
-                    <span class="fr cogry mr2v">当前版本2.5.21</span>
+                    <span id="app" class="fr cogry mr2v">当前版本2.5.21</span>
                 </div>
             </div>
         </li>
@@ -150,8 +175,32 @@
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/aui-dialog.js" ></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var headImg = document.getElementById('headImg');//头像
+      var ipt_box = document.getElementsByClassName('ipt_box');//输入框
+      var app = document.getElementById('app');//版本号
+      var wx_id = document.getElementById('wx_id');//微信号
+      var mobile = document.getElementById('mobile');//手机号
+      var huancun = document.getElementById('huancun');//缓存
       apiready = function(){
+        getPersonalInform();//获取个人数据
+        //获取缓存
+        api.getCacheSize(function(ret) {
+            var size = ret.size;
+            size = (size/1024)/1024;
+            size = Math.floor(size*100)/100;
+            huancun.innerText = size + "M";
+        });
+        //监听获取绑定成功与否
+        api.addEventListener({
+            name: 'bind_sucess'
+        }, function(ret, err){
+            if( ret ){
+                 window.location.reload()
+            }
+        });
 
       };
       //头像
@@ -182,7 +231,6 @@
       }
       //
       function getImg(_data) {
-          var headImg = $api.byId('headImg');
           api.imageCache({
               url: _data.data
           }, function(ret, err){
@@ -193,13 +241,50 @@
       }
       //设置页面
       function openSetFrame(type) {
-        api.openWin({
-            name: type,
-            url: './seting/' + type + '.html',
-            pageParam: {
-                name: 'test'
+        var mobileVal = mobile.innerText;
+        if (type === 'wx') {
+          if (wx_id.innerText !== "") {
+            api.toast({
+                msg: '已绑定微信号',
+                duration: 2000,
+                location: 'middle'
+            });
+          }else {
+            api.openWin({
+                name: 'bindWX',
+                url: './seting/bindWX.html',
+                pageParam: {
+                    name: 'test'
+                }
+            });
+          }
+        }else {
+          if (mobileVal === "") {
+            if (type === "changePhone") {
+              api.openWin({
+                name: type,
+                url: './seting/' + type + '.html',
+                pageParam: {
+                  mobileVal: mobileVal
+                }
+              });
+            }else {
+              api.toast({
+                  msg: '请先绑定手机号',
+                  duration: 2000,
+                  location: 'middle'
+              });
             }
-        });
+          } else {
+            api.openWin({
+              name: type,
+              url: './seting/' + type + '.html',
+              pageParam: {
+                mobileVal: mobileVal
+              }
+            });
+          }
+        }
       }
       //清除缓存
       function clearChache() {
@@ -211,8 +296,37 @@
             buttons:['取消','确定']
         },function(ret){
             if (ret.buttonIndex === 2) {
-              huancun.innerHTML = '0M';
+              api.clearCache(function() {
+                  api.toast({
+                      msg: '清除完成'
+                  });
+                  huancun.innerHTML = '0M';
+              });
             }
+        })
+      }
+      //获取个人信息
+      var getPersonalInform = function () {
+        axios({
+          url: '/api/rmuser/getuserinfo',
+          data:{
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          if (ret.code === 200) {
+            headImg.style.background = 'url(' + ret.data.avatar  + ')';//获取头像
+            headImg.style.backgroundSize = '100% 100%';
+            headImg.style.backgroundRepeat = "no-repeat";
+            ipt_box[0].value = ret.data.nickname;//昵称
+            console.log(ipt_box.length);
+            ipt_box[1].value = ret.data.signature;//签名
+            ipt_box[2].value = ret.data.wx_account;//微信号
+            wx_id.innerText = ret.data.nickname;//绑定微信
+            mobile.innerText = ret.data.mobile;//手机号
+            //版本号
+            var appVersion = api.appVersion;
+            app.innerText = "当前版本"+appVersion;
+          }
         })
       }
   </script>

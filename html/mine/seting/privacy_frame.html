@@ -19,7 +19,7 @@
              <div class="aui-list-item-inner">
                  <div class="aui-list-item-title">手机号对上下级可见</div>
                  <div class="aui-list-item-right">
-                     <input type="checkbox" class="aui-switch" checked>
+                     <input id="lookphone" type="checkbox" class="aui-switch" checked>
                  </div>
              </div>
          </li>
@@ -40,7 +40,11 @@
       apiready = function(){
 
       };
+      var lookphone = document.getElementById('lookphone');
       var lookWeiXin = document.getElementById('lookweixin');
+      lookphone.onchange = function () {
+        console.log(lookphone.checked);
+      }
       lookWeiXin.onchange = function(){
         if (lookWeiXin.checked) {
           var dialog = new auiDialog();

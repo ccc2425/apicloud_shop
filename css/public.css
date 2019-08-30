@@ -58,6 +58,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .boradiusl3{border-radius: 3px 0 0 3px;}
 .boradiusr3{border-radius: 0 3px 3px 0;}
 .boradius5b{border-radius: 0 0 8px 8px;}
+.boradius5t{border-radius: 5px 5px 0 0;overflow: hidden;}
 /*浮动*/
 .fl{float: left;}
 .fr{float: right;}
@@ -80,6 +81,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .mb5{margin-bottom: 5px}
 .mb10{margin-bottom: 10px;}
 .mb15{margin-bottom: 15px;}
+.mb20{margin-bottom: 20px;}
 .mb25{margin-bottom: 25px;}
 .mb48{margin-bottom: 48px;}
 .mb50{margin-bottom: 50px;}
@@ -123,6 +125,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .bgcc{background-color: #ccc;}
 .bgce{background-color: #eee;}
 .bgcr{background-color: #d81e06!important; color: #fff;}
+.bgcrss{background-color: #d81e06; color: #fff;}
 .bgcrs{background-color: #CB4540!important; color: #fff;}
 .bgcf{background-color: #fff; color: #333;}
 .bgco{background-color: #DE5E5E!important; color:#fff;}
@@ -137,6 +140,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .bgcblown{background-color: #804000;color: #fff;}
 .bgcback{background-color: #000;color: #fff;}
 .bgcred{background-color: #D63336;color: #fff;}
+.bgcpr{background-color: #F03F3F;color: #fff;}
 /**/
 .borderb1e{border-bottom: 1px solid #eee;}
 .border1c0{border: 1px solid #000;}
@@ -155,6 +159,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 img{width:100%;height:100%;}
 .texthidden{overflow: hidden;/*超出部分隐藏*/ white-space: nowrap;/*不换行*/ text-overflow: ellipsis;/*超出部分文字以...显示*/}
 .texthiddens{text-overflow: -o-ellipsis-lastline; overflow: hidden;text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;}
+.texthidden3{text-overflow: -o-ellipsis-lastline; overflow: hidden;text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical;}
 .no{display: none}
 .disi-b{display: inline-block;}
 .just-space{display: flex;justify-content: space-around;}

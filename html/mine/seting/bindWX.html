@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>修改密码</title>
+      <title>绑定微信</title>
       <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
@@ -22,7 +22,7 @@
     <div id="header" class="clearfix text-center bgcf header fs16">
         <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
         <!-- <img src="" alt=""> -->
-        修改密码
+        绑定微信
     </div>
   </body>
   <script type="text/javascript" src="../../../script/api.js"></script>
@@ -31,10 +31,9 @@
           var header = $api.byId('header');
           $api.fixStatusBar(header);
           var headerH = $api.offset(header);
-          var mobileVal = api.pageParam.mobileVal;
           api.openFrame({
-              name: 'changePassword_frame',
-              url: './changePassword_frame.html',
+              name: 'bindWX_frame',
+              url: './bindWX_frame.html',
               rect: {
                   x: 0,
                   y: headerH.h,
@@ -42,16 +41,14 @@
                   h: 'auto'
               },
               pageParam: {
-                  mobileVal: mobileVal
+                  name: 'test'
               },
               bounces: false,
           });
         };
         //
         function closewin() {
-          api.closeWin({
-              name: 'changePassword'
-          });
+          api.closeWin();
         }
   </script>
   </html>

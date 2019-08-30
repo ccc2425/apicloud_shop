@@ -148,7 +148,7 @@
           </div>
           <div class="aui-content aui-margin-b-15">
             <div class="aui-list aui-media-list">
-              <div class="aui-list-item aui-list-item-middle">
+              <div id="personal_inform" class="aui-list-item aui-list-item-middle">
                 <div class="aui-media-list-item-inner">
                   <div onclick="openSet()" class="aui-list-item-media" style="width: 4.8rem;">
                     <img src="../../image/a1.png" class="aui-img-round aui-list-img-sm">
@@ -176,7 +176,7 @@
         <div class="bgcdai pr pad10a5v">
           <div class="">
             <div class="">
-              <span class="mr2v">账户余额</span><span>￥0.44</span>
+              <span class="mr2v">账户余额￥</span><span id="balance">0.44</span>
             </div>
             <div class="fs11 cogry">
               <span>每月28号提现<i class="iconfont fs11">&#xe615;</i></span>
@@ -568,11 +568,16 @@
     </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var personal_inform = document.getElementById('personal_inform');//个人信息
+      var balance = document.getElementById('balance');//账户余额
       apiready = function(){
         var token = $api.getStorage('token');
         var un_login = $api.byId('un_login');
         var logined = $api.byId('logined');
+        console.log(token);
         if (token === "") {
           un_login.style.display = "block";
           logined.style.display = "none";
@@ -583,12 +588,22 @@
           logined.style.display = "block";
           var header = $api.byId('header');
           $api.fixStatusBar(header);
+          getPersonalInform()
         }
         // var header = $api.byId('header');
         // $api.fixStatusBar(header);
         // var headers = $api.byId('headers');
         // $api.fixStatusBar(headers);
         // var headerH = $api.offset(header);
+        //成功登录刷新
+        api.addEventListener({
+            name: 'login_sucess'
+        }, function(ret, err){
+            if( ret ){
+                 window.location.reload()
+            }
+        });
+
       };
       // 设置
       function openSet() {
@@ -806,6 +821,42 @@
                   name: 'test'
               }
           });
+      }
+      //获取个人信息
+      var getPersonalInform = function () {
+        axios({
+          url: '/api/rmuser/getuserinfo',
+          data:{
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          if (ret.code === 200) {
+            var wx_account = "";
+            if (ret.data.wx_account === "") {
+              wx_account = "填写微信号"
+            }else {
+              wx_account = ret.data.wx_account;
+            }
+            personal_inform.innerHTML = `<div class="aui-media-list-item-inner">
+              <div onclick="openSet()" class="aui-list-item-media" style="width: 4.8rem;">
+                <img src="${ret.data.avatar}" class="aui-img-round aui-list-img-sm">
+                <span class="pa weixin bgcshy boradius30">${wx_account}</span>
+              </div>
+              <div class="aui-list-item-inner">
+                <div class="aui-list-item-text">
+                  <div class="aui-list-item-title cowhl fs14">${ret.data.nickname}<span class="bgcdai fs10 pad0a1v boradius30 ver-middle ml1v">代理商</span></div>
+                </div>
+                <div class="aui-list-item-text coshw fs10">
+                  <span>邀请码：<span>${ret.data.reg_code}</span><i class="iconfont fs10">&#xe61d;</i></span>
+                </div>
+                <div onclick="openUpgrade()" class="pa cowhl upgrade">
+                  <span>我要升级</span>
+                </div>
+              </div>
+            </div>`;
+            balance.innerText = ret.data.balance;
+          }
+        })
       }
   </script>
   </html>

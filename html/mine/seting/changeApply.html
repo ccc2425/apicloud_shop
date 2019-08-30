@@ -31,6 +31,7 @@
           var header = $api.byId('header');
           $api.fixStatusBar(header);
           var headerH = $api.offset(header);
+          var mobileVal = api.pageParam.mobileVal;
           api.openFrame({
               name: 'changeApply_frame',
               url: './changeApply_frame.html',
@@ -41,7 +42,7 @@
                   h: 'auto'
               },
               pageParam: {
-                  name: 'test'
+                  mobileVal: mobileVal
               },
               bounces: false,
           });

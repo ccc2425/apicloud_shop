@@ -362,7 +362,13 @@
   <script type="text/javascript">
       var header;
       var frameWidth;
-      var frameHeight
+      var frameHeight;
+      var id1 = 0;
+      var id2 = 0;
+      var pagesize = 8,
+        page = 1,
+        state = true;
+        types = 'all_asc';
       apiready = function(){
         header = $api.byId('header');
         $api.fixStatusBar(header);
@@ -378,17 +384,14 @@
         axios({
           url: '/api/rmitems/itemdetail',
           data:{
-            token:$api.getStorage('token'),
-            screenw:frameWidth,
-            screenh:frameHeight,
             item_id:item_id
           }
-        },function(ret){
-          // console.log(JSON.stringify(ret));
+        },function(ret,err){
+          console.log(JSON.stringify(ret));
           var html = "";
           var imgLength = ret.data.item_image.length;
           for (var i = 0; i < imgLength; i++) {
-            console.log(ret.data.item_image[i]);
+            // console.log(ret.data.item_image[i]);
             html += `<div class="aui-slide-node bg-dark">
                 <img src="${ret.data.item_image[i]}" />
             </div>`
@@ -464,7 +467,7 @@
                   <i class="iconfont cored mr1v fs12">&#xe663;</i>${ret.data.recommend[k].item_id}
                 </div>
                 <div class="vouchers-list3 clearfix cogry mb5">
-                  原价：￥<span class="original">￥${ret.data.recommend[k].old_price}</span>
+                  原价：<span class="original">￥${ret.data.recommend[k].old_price}</span>
                   <span class="fr">${ret.data.recommend[k].sales}人已买</span>
                 </div>
                 <div class="vouchers-list4 cooo fs10">
@@ -531,6 +534,15 @@
           });
 
         })
+        //监听滑动底部加载
+        api.addEventListener({
+            name:'scrolltobottom',
+            extra:{
+                threshold: -1            //设置距离底部多少距离时触发，默认值为0，数字类型
+            }
+        }, function(ret, err){
+          loading()
+        });
       };
    //监听滑动
    var scroll = new auiScroll({
@@ -561,6 +573,64 @@
         api.closeWin({
             name: 'item'
         });
+      }
+      //数据请求
+      var opendata = function () {
+        axios({
+          url: '/api/rmitems/lists',
+          data:{
+            token:$api.getStorage('token'),
+            screenw:frameWidth,
+            screenh:frameHeight,
+            cid:id1,
+            scid:id2,
+            sort:types,
+            page:page,
+            pagesize:pagesize
+          }
+        },function(ret){
+          // console.log(JSON.stringify(ret));
+          var html = "";
+          if (ret.data.length < pagesize) {
+            state = false
+            // $api.dom('.quanbuxians').style.display = 'block'
+          }
+          for (var i = 0; i < ret.data.length; i++) {
+            var type = ret.data[i].item_type;
+            // console.log(type);
+            html += `<li onclick="openitem(${ret.data[i].item_id})" class="vouchers-list fl">
+              <div class="vouchers-list-left">
+                <img src="${ret.data[i].master_image}" alt="">
+              </div>
+              <div class="vouchers-list-right">
+                <div class="vouchers-list1 texthidden mb5">
+                  <img src="../../image/${ret.data[i].type}.png">
+                  ${ret.data[i].title}
+                </div>
+                <div class="fs12 texthidden mb5 cogry">
+                  <i class="iconfont cored mr1v fs12">&#xe663;</i>${ret.data[i].type}
+                </div>
+                <div class="vouchers-list3 clearfix cogry mb5">
+                  原价：<span class="original">￥${ret.data[i].old_price}</span>
+                  <span class="fr">${ret.data[i].sales}人已买</span>
+                </div>
+                <div class="vouchers-list4 cooo fs10">
+                  <span class="">券后价</span>
+                  ￥<span class="discount mr1v cooo fs16">${ret.data[i].end_price}</span>
+                  <span class="coupon fr fs12">${ret.data[i].coupon_price}元券</span>
+                </div>
+              </div>
+            </li>`
+          }
+          item.innerHTML += html
+          api.refreshHeaderLoadDone();
+        })
+      }
+      var loading = function(){
+        if (state){
+          page++
+          opendata()
+        }
       }
   </script>
   </html>

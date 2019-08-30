@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>店名</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+      .header{
+        height: 40px;
+        line-height: 40px;
+      }
+      .iconfont{
+        left: 0
+      }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class="clearfix text-left bgcf header">
+        <span onclick="closewin()" class="pa ml3v fs16 bold">
+          <i class="iconfont">&#xe601;</i>
+          <!-- <img src="" alt=""> -->
+          <span id="tit"></span>
+        </span>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var tit = api.pageParam.tit;
+        var brand_id = api.pageParam.brand_id;
+        var title = $api.byId('tit');
+        title.innerText = tit;
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+          api.openFrame({
+              name: 'Brandstore_frame',
+              url: './Brandstore_frame.html',
+              rect: {
+                  x: 0,
+                  y: headerH.h,
+                  w: 'auto',
+                  h: 'auto'
+              },
+              pageParam: {
+                  brand_id: brand_id
+              },
+              bounces: true,
+          });
+
+      };
+      function closewin() {
+        api.closeWin();
+      }
+  </script>
+  </html>

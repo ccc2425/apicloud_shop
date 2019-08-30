@@ -608,6 +608,7 @@
             for (var i = 0; i < ret.data.length; i++) {
               var _data = ret.data[i];
               switch (_data.module_type) {
+                //头部轮播图
                 case 'banner':
                   var html = "";
                   var swiperWrapper = document.getElementsByClassName('swiper-wrapper')
@@ -662,6 +663,7 @@
                      }
                    });
                   break;
+                //商家选择
                 case 'btn':
                   var html = "";
                   var c;
@@ -677,7 +679,7 @@
                       if (f===_data.data.length) {
                         break
                       }
-                        htmls +=`<li onclick="openmall(0)"><img src="${_data.data[f].image}"><span>${_data.data[f].title}</span></li>`
+                        htmls +=`<li onclick="openmall(${f})"><img src="${_data.data[f].image}"><span>${_data.data[f].title}</span></li>`
                     }
                     html += `<div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
                       <ul class="classfial-list clearfix">
@@ -699,6 +701,7 @@
                       'dotPosition':'center'
                   })
                   break;
+                //活动限时抢购
                 case 'center_banner':
                     var html = "";
                     for (var j = 0; j < _data.data.length; j++) {
@@ -708,6 +711,7 @@
                     }
                     auiSlideWrap[1].innerHTML = html;
                   break;
+                //头条信息
                 case 'roll_msg':
                     headlines_img.src = _data.data.image;
                     var moocUl = document.querySelectorAll('#moocBox ul');
@@ -718,6 +722,7 @@
                     moocUl[0].innerHTML = html;
                     // console.log("roll_msg");
                   break;
+                //早起挑战
                 case 'one_banner':
                     if (_data.module_tag ==="one_banner_0") {
                       s_list_box[0].src = _data.data.image;
@@ -860,25 +865,25 @@
           loading()
         });
         //下拉刷新
-        api.setRefreshHeaderInfo({
-              visible: true,
-              loadingImg: '../../image/loading_more.gif',
-              bgColor: '#ccc',
-              textColor: '#fff',
-              textDown: '下拉刷新...',
-              textUp: '松开刷新...',
-              showTime: true //显示更新时间
-          }, function(ret, err) {
-            // api.refreshHeaderLoadDone()
-            setTimeout(function(){
-              api.refreshHeaderLoadDone();
-              page = 1;
-              state = true;
-              window.location.reload()
-              // opendata()
-            },1000)
+        // api.setRefreshHeaderInfo({
+        //       visible: true,
+        //       loadingImg: '../../image/loading_more.gif',
+        //       bgColor: '#ccc',
+        //       textColor: '#fff',
+        //       textDown: '下拉刷新...',
+        //       textUp: '松开刷新...',
+        //       showTime: true //显示更新时间
+        //   }, function(ret, err) {
+        //     // api.refreshHeaderLoadDone()
+        //     setTimeout(function(){
+        //       api.refreshHeaderLoadDone();
+        //       page = 1;
+        //       state = true;
+        //       window.location.reload()
+        //       // opendata()
+        //     },1000)
               //在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
-        });
+        // });
       };
       // 广告轮播
       var slide3 = new auiSlide({
@@ -919,16 +924,27 @@
 
 //打开其他页面
   // 打开分类商城页面
-  function openmall() {
-    api.openWin({
+  function openmall(f) {
+    if (f>10) {
+      api.openWin({
+          name: 'BrandGoods',
+          url: './BrandGoods.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+    }else {
+      api.openWin({
         name: 'malllist',
         url: './malllist.html',
         pageParam: {
-            name: 'test'
+          name: 'test'
         }
-    });
+      });
+    }
   }
-  // 打开活动页面
+  // 打开活动页面限时抢购
   function openactive(index) {
       api.openWin({
           // name: 'active'+index,

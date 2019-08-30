@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>店内</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          *{
+            box-sizing: border-box;
+          }
+          html,body{
+            background: #eee;
+          }
+          #store{
+            padding-top: 10px;
+          }
+          .box{
+            width: 96vw;
+            margin: 0 auto 10px;
+          }
+          .img_box{
+            width: 24vw;
+            height: 72px;
+          }
+          .img_boxs{
+            width: 24vw;
+            height: 96px;
+          }
+          .text_box{
+            width: 66vw;
+          }
+          .header_img{
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+          }
+          .quan{
+            background: url(../../image/bg4.png) no-repeat;
+            background-size: 100% 100%;
+            color: #fff;
+            padding: 0 3vw;
+            line-height: 18px;
+            font-size: 12px;
+          }
+          .news{
+            width: 70vw;
+          }
+      </style>
+  </head>
+  <body>
+    <div id="store">
+      <!-- <div class="bgcf mb10 box pad2v clearfix">
+        <div class="img_box fl mr2v">
+          <img src="" alt="">
+        </div>
+        <div class="text_box fl">
+          <div class="content texthidden3 fs12 co999 lh20">
+            三至破i撒覅u额佛i骄傲欸哦房价额u覅欧锦i案件佛i请勿入脾u我就怕人家阿婆我i我让破人破案我尽快发送看见了活塞和付款了老客户决赛都i阿苏覅哦啊u我
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div id="item" class="pad0a2v">
+        <!-- <div class="bgcf clearfix">
+          <div class="img_boxs fl mr2v">
+            <img src="" alt="">
+          </div>
+          <div class="pad2v fl news">
+            <div class="texthiddens bold fs13 lh20 mb5">
+              <img src="../../image/tm.png" alt="" class="header_img mr1v">白菜价是两家酒店覅据我哈佛还是尽快发货氨基酸的废话话费读取和挖苦哈克就会打开老咔叽四点零分加我啊就会肉i阿黄为人父
+            </div>
+            <div class="fs11 cored mb5">
+              自购省 ￥1.28
+            </div>
+            <div class="clearfix">
+              <span class="quan">券￥3</span>
+              <div class="fr fs12">券后价<span class="cored">￥</span><span class="cored fs18">16</span></div>
+            </div>
+          </div>
+        </div> -->
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var brand_id;
+      var store = document.getElementById('store');
+      var item = document.getElementById('item');
+      apiready = function(){
+          brand_id = api.pageParam.brand_id;
+          openData()
+      };
+      //数据请求
+      var openData = function () {
+        axios({
+          url: '/api/rmitems/brandshop',
+          data: {
+            token:$api.getStorage('token'),
+            brand_id:brand_id
+          }
+        },function(ret){
+          // console.log(JSON.stringify(ret));
+          if (ret.code === 200) {
+            store.innerHTML = `<div class="bgcf mb10 box pad2v clearfix">
+              <div class="img_box fl mr2v">
+                <img src="${ret.data.brand_logo}" alt="">
+              </div>
+              <div class="text_box fl">
+                <div class="content texthidden3 fs12 co999 lh20">
+                  ${ret.data.simple_label}
+                </div>
+              </div>
+            </div>`;
+            var html = "";
+            var _data = ret.data.item;
+            for (var i = 0; i < _data.length; i++) {
+              html += `<div onclick="openitem(${_data[i].item_id})" class="bgcf clearfix mb10">
+                <div class="img_boxs fl mr2v">
+                  <img src="${_data[i].master_image}" alt="">
+                </div>
+                <div class="pad2v fl news">
+                  <div class="texthiddens bold fs13 lh20 mb5">
+                    <img src="../../image/${_data[i].item_type}.png" alt="" class="header_img mr1v">${_data[i].title}
+                  </div>
+                  <div class="fs11 cored mb5">
+                    自购省 ￥1.28
+                  </div>
+                  <div class="clearfix">
+                    <span class="quan">券￥${_data[i].coupon_price}</span>
+                    <div class="fr fs12">券后价<span class="cored">￥</span><span class="cored fs18">${_data[i].end_price}</span></div>
+                  </div>
+                </div>
+              </div>`
+            }
+            item.innerHTML = html;
+          }
+        })
+      }
+      function openitem(item_id) {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                item_id: item_id
+            }
+        });
+
+      }
+  </script>
+  </html>

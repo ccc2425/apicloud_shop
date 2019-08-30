@@ -15,7 +15,8 @@ function ajax(data,complete){
   data.url = url + data.url
   data.data = data.data || {}
   timestamp = Date.parse(new Date()) / 1000
-  console.log(timestamp);
+  // console.log(timestamp);
+  data.data.token = $api.getStorage('token')
   data.data.timeline = timestamp
   data.data.appid=appid
   data.data.screenw=frameWidth
@@ -31,7 +32,7 @@ function ajax(data,complete){
       sign += data.data[arr[i]]
     }
   data.data.sign=md5(sign + appkey)
-  console.log(data.data.sign);
+  // console.log(data.data.sign);
   // 请求接口
   // alert(JSON.stringify(data.data))
   api.ajax({
@@ -56,6 +57,8 @@ function ajax(data,complete){
     if(ret){
       complete(ret)
       // console.log(JSON.stringify(ret));
+    }else {
+        // console.log(JSON.stringify(err));
     }
   });
 }
