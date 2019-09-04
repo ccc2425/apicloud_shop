@@ -198,6 +198,7 @@
     var isThirdOpen = false;
     var isForthOpen = false;
     var isFiveOpen = false;
+    var states;
     // 隐藏所有的一级frame
     function hideAllFrame() {
             api.setFrameAttr({
@@ -306,6 +307,15 @@
         // 获取当前年份时间，并加载显示到页面
         // var year = $api.byId('year');
         // year.innerHTML = new Date().getFullYear();
+        exitNowApp()
+        api.addEventListener({
+            name: 'PhotoState'
+        }, function(ret, err){
+            if( ret ){
+                 states = ret.value.state
+            }
+        });
+
     };
 
     function switchframe(type) {
@@ -430,6 +440,35 @@
     //分享
     function fnOpenshare() {
         console.log(1);
+    }
+    //点击返回按钮
+    function exitNowApp() {
+      var photoBrowser = api.require('photoBrowser');
+      api.addEventListener({
+          name: 'keyback'
+      }, function(ret, err){
+          if( ret ){
+            if (states==='1') {
+              api.execScript({
+                  frameName: 'material',
+                  script: 'closePhoto();'
+              });
+            } else {
+              api.confirm({
+                  title: '退出提示',
+                  msg: '确定要退出程序吗',
+                  buttons: ['确定', '取消']
+              }, function(ret, err) {
+                if (ret.buttonIndex === 1) {
+                  api.closeWidget({
+                    silent : true
+                  });
+                }
+              });
+            }
+          }
+      });
+
     }
 </script>
 

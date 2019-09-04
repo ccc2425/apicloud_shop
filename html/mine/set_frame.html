@@ -171,7 +171,7 @@
         </li>
     </ul>
     <!-- 退出登录 -->
-    <div class="exit text-center lh40 bgcf">退出登录</div>
+    <div onclick="outLog()" class="exit text-center lh40 bgcf">退出登录</div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript" src="../../script/aui-dialog.js" ></script>
@@ -184,6 +184,9 @@
       var wx_id = document.getElementById('wx_id');//微信号
       var mobile = document.getElementById('mobile');//手机号
       var huancun = document.getElementById('huancun');//缓存
+      var wx_status;
+      var mobile_status;
+      var imgSrc;
       apiready = function(){
         getPersonalInform();//获取个人数据
         //获取缓存
@@ -221,10 +224,9 @@
                 destinationType: 'url',
                 allowEdit: true,
                 quality: 50,
-                targetWidth: 100,
-                targetHeight: 100,
                 saveToPhotoAlbum: false
             }, function(ret, err) {
+                imgSrc = ret.data;
                 getImg(ret)
             });
         });
@@ -280,7 +282,8 @@
               name: type,
               url: './seting/' + type + '.html',
               pageParam: {
-                mobileVal: mobileVal
+                mobileVal: mobileVal,
+                mobile_status:mobile_status
               }
             });
           }
@@ -305,6 +308,20 @@
             }
         })
       }
+      //退出登录
+      function outLog() {
+        $api.rmStorage('token');
+        api.sendEvent({
+            name: 'loginout',
+            extra: {
+            }
+        });
+
+        api.closeToWin({
+            name: 'root'
+        });
+        // api.closeWin();
+      }
       //获取个人信息
       var getPersonalInform = function () {
         axios({
@@ -317,6 +334,7 @@
             headImg.style.background = 'url(' + ret.data.avatar  + ')';//获取头像
             headImg.style.backgroundSize = '100% 100%';
             headImg.style.backgroundRepeat = "no-repeat";
+            imgSrc = ret.data.avatar;
             ipt_box[0].value = ret.data.nickname;//昵称
             console.log(ipt_box.length);
             ipt_box[1].value = ret.data.signature;//签名
@@ -326,7 +344,39 @@
             //版本号
             var appVersion = api.appVersion;
             app.innerText = "当前版本"+appVersion;
+            if (ret.data.mobile === "") {
+              mobile_status = 0
+            } else {
+              mobile_status = 1
+            }
           }
+        })
+      }
+      //上传修改信息
+      var upData = function () {
+        var nicknameVal = ipt_box[0].value;
+        var signatureVal = ipt_box[1].value;
+        var wx_accountVal = ipt_box[2].value;
+        // alert(imgSrc)
+        axios({
+          url: '/api/rmuser/edituserinfo',
+          data:{
+            avatar:imgSrc,
+            nickname:nicknameVal,
+            signature:signatureVal,
+            wx_account:wx_accountVal
+          }
+        },function(ret){
+            console.log(JSON.stringify(ret));
+            if (ret.code === 200) {
+              api.sendEvent({
+                  name: 'updata_sucess',
+                  extra: {
+                  }
+              });
+
+              api.closeWin();
+            }
         })
       }
   </script>

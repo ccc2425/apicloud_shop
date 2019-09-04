@@ -341,13 +341,13 @@
                   </div>
                   <div class="aui-grid-label">我的收藏</div>
               </div>
-              <div class="aui-col-xs-3">
+              <div onclick="openNovice()" class="aui-col-xs-3">
                   <div class="marau wid40b">
                     <img src="../../image/a25.png" alt="">
                   </div>
                   <div class="aui-grid-label">新手教程</div>
               </div>
-              <div class="aui-col-xs-3">
+              <div onclick="openNews()" class="aui-col-xs-3">
                   <div class="marau wid40b">
                     <img src="../../image/a26.png" alt="">
                   </div>
@@ -416,7 +416,7 @@
             <div class="aui-list aui-media-list">
               <div class="aui-list-item aui-list-item-middle">
                 <div onclick="openlogin()" class="aui-media-list-item-inner">
-                  <div onclick="openSet()" class="aui-list-item-media" style="width: 4.8rem;">
+                  <div onclick="openlogin()" class="aui-list-item-media" style="width: 4.8rem;">
                     <img src="../../image/a1.png" class="aui-img-round aui-list-img-sm">
                   </div>
                   <div class="aui-list-item-inner">
@@ -573,12 +573,14 @@
   <script type="text/javascript">
       var personal_inform = document.getElementById('personal_inform');//个人信息
       var balance = document.getElementById('balance');//账户余额
+      var _balance;
       apiready = function(){
-        var token = $api.getStorage('token');
         var un_login = $api.byId('un_login');
         var logined = $api.byId('logined');
-        console.log(token);
-        if (token === "") {
+        if ($api.getStorage('token') === undefined ) {
+          $api.setStorage('token', "")
+        }
+        if ($api.getStorage('token') === ""||$api.getStorage('token') === undefined) {
           un_login.style.display = "block";
           logined.style.display = "none";
           var headers = $api.byId('headers');
@@ -603,7 +605,30 @@
                  window.location.reload()
             }
         });
-
+        //退出登录
+        api.addEventListener({
+            name: 'loginout'
+        }, function(ret, err){
+            if( ret ){
+                 window.location.reload()
+            }
+        });
+        //修改资料成功
+        api.addEventListener({
+            name: 'updata_sucess'
+        }, function(ret, err){
+            if( ret ){
+                 window.location.reload()
+            }
+        });
+        //签到成功
+        api.addEventListener({
+            name: 'signin_sucess'
+        }, function(ret, err){
+            if( ret ){
+                 window.location.reload()
+            }
+        });
       };
       // 设置
       function openSet() {
@@ -645,6 +670,17 @@
             }
         });
       }
+      //新手教程
+      function openNovice() {
+        api.openWin({
+            name: 'novice',
+            url: './novice.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
       //签到
       function openSignIn() {
         // api.openFrame({
@@ -665,7 +701,7 @@
             name: 'signIn',
             url: '../public/signIn.html',
             pageParam: {
-                name: 'test'
+                _balance: _balance
             }
         });
       }
@@ -855,6 +891,7 @@
               </div>
             </div>`;
             balance.innerText = ret.data.balance;
+            _balance = ret.data.balance;
           }
         })
       }

@@ -21,8 +21,8 @@
       </style>
   </head>
   <body>
-    <div class="pad16a3v">
-        <div class="pad10a2v bgcf mb10">
+    <div id="list" class="pad16a3v">
+        <!-- <div class="pad10a2v bgcf mb10">
             <div class="clearfix mb5">
               <div class="news-img fl">
                 <img src="../../image/news1.png" alt="">
@@ -35,30 +35,95 @@
             <div class="clearfix fs10 cogry">
               <span>来自 挖券儿</span><span class="fr">2019-05-29 00:28:35</span>
             </div>
-        </div>
-        <div class="pad10a2v bgcf mb10">
-            <div class="clearfix mb5">
-              <div class="news-img fl">
-                <img src="../../image/news1.png" alt="">
-              </div>
-              <div class="news-text fl lh24">
-                  <div class="texthidden">好券抖起来</div>
-                  <div class="texthidden fs12">精选好券抖起来，边看视频边领券</div>
-              </div>
-            </div>
-            <div class="clearfix fs10 cogry">
-              <span>来自 挖券儿</span><span class="fr">2019-04-15 15:47:59</span>
-            </div>
-        </div>
+        </div> -->
     </div>
     <div class="text-center cogry fs13">
       我是有底线的
     </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var page = 1;
+      var pagesize = 8;
+      var state = true;
+      var list = document.getElementById('list');
       apiready = function(){
-
+        getData()
+        api.addEventListener({
+          name:'scrolltobottom',
+          extra:{
+              threshold: -1            //设置距离底部多少距离时触发，默认值为0，数字类型
+          }
+        }, function(ret, err){
+            loading()
+        });
+        //下拉刷新
+        api.setRefreshHeaderInfo({
+              visible: true,
+              loadingImg: '../../image/loading_more.gif',
+              bgColor: '#ccc',
+              textColor: '#fff',
+              textDown: '下拉刷新...',
+              textUp: '松开刷新...',
+              showTime: true //显示更新时间
+          }, function(ret, err) {
+            // api.refreshHeaderLoadDone()
+            setTimeout(function(){
+              page = 1;
+              state = true;
+              window.location.reload()
+              api.refreshHeaderLoadDone();
+            },1000)
+              // 在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+        });
       };
+      //获取消息数据
+      var getData = function () {
+        axios({
+          url: '/api/rmapp/getmessage',
+          data:{
+            type:'system',
+            page:page,
+            pagesize:pagesize
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          if (ret.code === 200) {
+            if (ret.data.length < pagesize) {
+                state = false
+            }
+            var html = "";
+            for (var i = 0; i < ret.data.length; i++) {
+              html += `<div class="pad10a2v bgcf mb10">
+                  <div class="clearfix mb5">
+                    <div class="news-img fl">
+                      <img src="${ret.data[i].avatar}" alt="">
+                    </div>
+                    <div class="news-text fl lh24">
+                        <div class="texthidden">${ret.data[i].title}</div>
+                        <div class="texthidden fs12">${ret.data[i].synopsis}</div>
+                    </div>
+                  </div>
+                  <div class="clearfix fs10 cogry">
+                    <span>来自 淘客</span><span class="fr">${ret.data[i].create_time}</span>
+                  </div>
+              </div>`
+            }
+            if (page === 1) {
+              list.innerHTML = html;
+            }else {
+              list.innerHTML += html;
+            }
+          }
+        })
+      }
+      var loading = function () {
+        if (state) {
+          page++;
+          getData()
+        }
+      }
   </script>
   </html>

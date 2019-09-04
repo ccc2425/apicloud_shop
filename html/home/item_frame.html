@@ -109,9 +109,10 @@
             padding: 10px 2vw;
           }
           .price{
-            width: 20vw;
+            /*width: 24vw;*/
             height: 50px;
             padding-left: 3vw;
+            margin-right: 2vw;
           }
           .time{
             width: 48vw;
@@ -303,7 +304,7 @@
     <div class="coupon-box bgce clearfix">
       <div class="bgle clearfix vouchers_list">
       </div>
-      <div class="getcoupon lh50 text-center">
+      <div onclick="getCoupon()" class="getcoupon lh50 text-center">
         <!-- 立即领券 -->
       </div>
     </div>
@@ -361,32 +362,31 @@
   <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
       var header;
-      var frameWidth;
-      var frameHeight;
       var id1 = 0;
       var id2 = 0;
       var pagesize = 8,
         page = 1,
         state = true;
         types = 'all_asc';
+      var item_id;
       apiready = function(){
         header = $api.byId('header');
         $api.fixStatusBar(header);
         var headerH = $api.offset(header);
-        var item_id = api.pageParam.item_id;
-        frameWidth = api.frameWidth || '';
-        frameHeight = api.frameHeight || '';
+        item_id = api.pageParam.item_id;
         var banner = $api.byId('banner');
         var vouchers_list = document.getElementsByClassName('vouchers_list');
         var recommend = $api.byId('recommend');
         var item = $api.byId('item');
         var tishi = document.getElementsByClassName('tishi');
+        console.log(item_id);
         axios({
           url: '/api/rmitems/itemdetail',
           data:{
             item_id:item_id
           }
         },function(ret,err){
+          console.log(url);
           console.log(JSON.stringify(ret));
           var html = "";
           var imgLength = ret.data.item_image.length;
@@ -529,7 +529,8 @@
               name: 'shareprice',
               extra: {
                   share_price: ret.data.share_price,
-                  self_price: ret.data.self_price
+                  self_price: ret.data.self_price,
+                  is_collect: ret.data.is_collect
               }
           });
 
@@ -568,6 +569,30 @@
             }
         });
       }
+      //领券
+      function getCoupon() {
+        console.log(item_id);
+        axios({
+          url:"/api/rmitems/exchange",
+          data:{
+            item_id:item_id
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          if (ret.code===200) {
+            // window.location.href = ret.data.coupon_url;
+            var coupon_url = ret.data.coupon_url;
+            api.openWin({
+                name: 'store',
+                url: '../public/store.html',
+                pageParam: {
+                    coupon_url: coupon_url
+                }
+            });
+            // window.location.href = 'https://www.baidu.com';
+          }
+        })
+      }
       //关闭该页面
       function closewin() {
         api.closeWin({
@@ -579,9 +604,6 @@
         axios({
           url: '/api/rmitems/lists',
           data:{
-            token:$api.getStorage('token'),
-            screenw:frameWidth,
-            screenh:frameHeight,
             cid:id1,
             scid:id2,
             sort:types,

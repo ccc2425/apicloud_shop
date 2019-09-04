@@ -3,21 +3,271 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>title</title>
+      <title>收藏列表</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
           body{
 
           }
+          .tishis{
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 10px;
+            line-height: 24px;
+            padding: 0 4vw;
+          }
+          .hide{
+            width: 8vw;
+            text-align: right;
+          }
+          .vouchers-list{
+            margin-bottom: 10px;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 100vw;
+            padding: 1vh 2vw;
+            background-color: #fff;
+            box-sizing: border-box;
+          }
+          .vouchers-list:last-child{
+            margin-bottom: 0;
+          }
+          .vouchers-list-left{
+            float: left;
+            position: relative;
+            width: 32vw;
+            height: 120px;
+            margin-right: 3vw;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            float: left;
+            width: 61vw;
+            padding: 10px 0;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 16px;
+            line-height: 4vw;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: top;
+          }
+          .vouchers-list2{
+            font-size: 13px;
+            color: #ccc;
+            margin: 10px 0 40px;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            /*background-color: red;*/
+            background: url(../../image/bg4.png) no-repeat;
+            background-size: 100% 100%;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .vouchers-list4 span{
+            color: #fff;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 10px;
+            border-radius: 3px;
+            padding-top: 3px;
+          }
+          .vouchers-list4 span:first-child{
+            background: linear-gradient(to right,#FF4D4D,#F3C148);
+          }
+          .vouchers-list4 span:last-child{
+            background: linear-gradient(to right,#735CFF,#FF00CC);
+          }
+          .aui-dialog{
+            width: 64vw;
+            margin-left:-32vw;
+            top: 40%;
+          }
+          .aui-dialog-header,.aui-dialog-footer{
+            font-size: 16px;
+          }
+          .aui-dialog-btn,.aui-dialog-body{
+            font-size: 14px;
+          }
+          .aui-dialog-btn{
+            height: 32px;
+          }
       </style>
   </head>
   <body>
-      暂无数据
+    <div class="tishis clearfix">
+      <i class="iconfont fs10 mr2v">&#xe606;</i>长按宝贝信息可从收藏夹中移除哦<i onclick="hideTishi()" class="iconfont fr fs12 hide">&#xe73e;</i>
+    </div>
+    <ul id="demo" class="bgcf vouchersul">
+      <!-- <li data-id="${ret.data.item_id}" class="vouchers-list clearfix aui-card-list" ontouchstart="gtouchstart(this)" ontouchmove="gtouchmove()" ontouchend="gtouchend()">
+        <div class="clearfix">
+        <div class="vouchers-list-left">
+          <img src="../../image/la3.png" alt="">
+          <div class="peoplenum text-center fs12">248人已抢</div>
+        </div>
+        <div class="vouchers-list-right">
+          <div class="vouchers-list1 texthidden mb5">
+            <img class="disi-b" src="../../image/taobao.jpg">时尚新款单肩背大人小孩通用零钱包
+          </div>
+          <div class="vouchers-list2 texthidden fs11 clearfix">
+            原价
+            <span class="original">￥11.9</span>
+            <span class="fr">6人已买</span>
+          </div>
+          <div class="vouchers-list3 cored clearfix ver-top">
+            <span class="bgcr fs10 pad0a2v lh20 boradius3">券后价</span>
+            <span class="ver-super">￥</span><span class="discount mr1v cored fs18 ver-top">9.9</span>
+            <span class="coupon fr mr3v">2元券</span>
+          </div>
+        </div>
+        </div>
+      </li> -->
+    </ul>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/aui-dialog.js" ></script>
+  <script type="text/javascript" src="../../script/zepto.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var tishis = document.getElementsByClassName('tishis');
+      var list = document.getElementById('demo');
       apiready = function(){
-
+        getData()
+        api.addEventListener({
+          name: 'collection_load'
+        }, function(ret, err){
+          if( ret ){
+            window.location.reload()
+          }
+        });
       };
+      //长按删除功能
+      var timeOutEvent=0;//定时器
+      //开始按
+      function gtouchstart(ind){
+          timeOutEvent = setTimeout(function() {
+            timeOutEvent = 0;
+            var dialog = new auiDialog();
+           dialog.alert({
+               title:"取消收藏",
+               msg:'是否确认删除该商品',
+               buttons:['取消','确定']
+           },function(ret){
+               if (ret.buttonIndex === 2) {
+                 var item_id = ind.dataset.id;
+                 cansleCollection(item_id)
+                 ind.remove()
+               }
+           })
+          },500);//这里设置定时器，定义长按500毫秒触发长按事件，时间可以自己改，个人感觉500毫秒非常合适
+          return false;
+      };
+      //手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件
+      function gtouchend(ind){
+          clearTimeout(timeOutEvent);//清除定时器
+          if(timeOutEvent!=0){
+              //这里写要执行的内容（尤如onclick事件）
+              var item_id = ind.dataset.id;
+              api.openWin({
+                  name: 'item',
+                  url: '../home/item.html',
+                  pageParam: {
+                      item_id: item_id
+                  }
+              });
+
+          }
+          return false;
+      };
+      //如果手指有移动，则取消所有事件，此时说明用户只是要移动而不是长按
+      function gtouchmove(){
+          clearTimeout(timeOutEvent);//清除定时器
+          timeOutEvent = 0;
+      };
+       //关闭提示
+      function hideTishi() {
+        tishis[0].style.display = 'none';
+      }
+      //获取数据
+      var getData = function() {
+        axios({
+          url: '/api/rmitems/colleclist',
+          data:{
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          var html = ""
+          for (var i = 0; i < ret.data.length; i++) {
+            html += `<li data-id="${ret.data[i].item_id}" class="vouchers-list clearfix aui-card-list" ontouchstart="gtouchstart(this)" ontouchmove="gtouchmove()" ontouchend="gtouchend(this)">
+              <div class="clearfix">
+              <div class="vouchers-list-left">
+                <img src="${ret.data[i].master_image}" alt="">
+                <!-- <div class="peoplenum text-center fs12">自购省1.9</div> -->
+              </div>
+              <div class="vouchers-list-right">
+                <div class="vouchers-list1 texthidden mb5">
+                  <img class="disi-b" src="../../image/${ret.data[i].item_type}.jpg">${ret.data[i].title}
+                </div>
+                <div class="vouchers-list2 texthidden fs11 clearfix">
+                  原价
+                  <span class="original">￥${ret.data[i].old_price}</span>
+                  <span class="fr">${ret.data[i].sales}人已买</span>
+                </div>
+                <div class="vouchers-list3 cored clearfix ver-top">
+                  <span class="bgcr fs10 pad0a2v lh20 boradius3">券后价</span>
+                  <span class="ver-super">￥</span><span class="discount mr1v cored fs18 ver-top">${ret.data[i].end_price}</span>
+                  <span class="coupon fr mr3v">${ret.data[i].coupon_price}元券</span>
+                </div>
+              </div>
+              </div>
+            </li>`
+          }
+          list.innerHTML = html;
+        })
+      }
+      //取消收藏
+      var cansleCollection = function(item_id) {
+        axios({
+          url: '/api/rmitems/collection',
+          data:{
+            item_id:item_id
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          if (ret.code === 200) {
+          }
+        })
+      }
   </script>
   </html>

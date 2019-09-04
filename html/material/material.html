@@ -51,10 +51,11 @@
             position: absolute;
             top: 50%;
             right: 3vw;
+            height: 21px;
             -webkit-transform: translateY(-50%);
             transform: translateY(-50%);
             border-radius: 30px;
-            line-height: 1;
+            line-height: 16px;
             font-size: 12px;
             padding: 3px 2vw;
           }
@@ -142,38 +143,26 @@
   <body>
     <div id="header"></div>
     <div id="shopings" class="shoping">
-      <div class="shops cored" onclick="shops(0)">好货专场</div>
-      <div class="shops" onclick="shops(1)">必备素材</div>
-      <div class="shops" onclick="shops(2)">商品</div>
-      <div class="shops" onclick="shops(3)">精选单品</div>
+      <div class="shops cored" onclick="shops(0,'hhzc')">好货专场</div>
+      <div class="shops" onclick="shops(1),'bbsc'">必备素材</div>
+      <div class="shops" onclick="shops(2),'jxdp'">商品</div>
+      <div class="shops" onclick="shops(3),'hwlj'">精选单品</div>
     </div>
     <!-- 轮播图 -->
     <div id="aui-slide" class="bgcr">
-      <div class="aui-slide-wrap boradius" >
-          <div class="aui-slide-node bg-dark">
-              <img src="../../image/ban1.png" />
-          </div>
-          <div class="aui-slide-node bg-dark">
-              <img src="../../image/ban1.png" />
-          </div>
-          <div class="aui-slide-node bg-dark">
-              <img src="../../image/ban1.png" />
-          </div>
-          <div class="aui-slide-node bg-dark">
-              <img src="../../image/ban1.png" />
-          </div>
+      <div id="slides" class="aui-slide-wrap boradius" >
       </div>
-      <div class="aui-slide-page-wrap no"><!--分页容器--></div>
+      <div class="aui-slide-page-wrap"><!--分页容器--></div>
     </div>
     <div id="shoping" class="shoping">
-      <div class="shop cored" onclick="shop(0)">好货专场</div>
-      <div class="shop" onclick="shop(1)">必备素材</div>
-      <div class="shop" onclick="shop(2)">商品</div>
-      <div class="shop" onclick="shop(3)">精选单品</div>
+      <div class="shop cored" onclick="shop(0,'hhzc')">好货专场</div>
+      <div class="shop" onclick="shop(1,'bbsc')">必备素材</div>
+      <div class="shop" onclick="shop(2,'jxdp')">商品</div>
+      <div class="shop" onclick="shop(3,'hwlj')">精选单品</div>
     </div>
     <!-- 好货专场 -->
     <div id="specialty" class="materials disbl">
-      <div class="mui-table-view">
+      <!-- <div class="mui-table-view">
         <div class="mui-table-view-cell mui-media">
             <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
             <div class="mui-media-body">
@@ -185,8 +174,8 @@
         <div class="specialty-box">
           <div class="specialty-boxi">
             <div class="specialty-text">
-              <p class="cored bold">榜单榜</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
+              <p class="cored bold fs16">榜单榜</p>
+              <p class="fs14">每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
             </div>
             <ul class="specialty-img clearfix">
               <li onclick="openitem()"><img src="../../image/la1.png"></li>
@@ -201,166 +190,11 @@
             </ul>
           </div>
         </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19</p>
-            </div>
-            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p class="cored bold">榜单榜</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19</p>
-            </div>
-            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p class="cored bold">榜单榜</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19</p>
-            </div>
-            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p class="cored bold">榜单榜</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19</p>
-            </div>
-            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p class="cored bold">榜单榜</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19</p>
-            </div>
-            <span onclick="share()" class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>4058</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p class="cored bold">榜单榜</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      </div> -->
     </div>
     <!-- 必备素材 -->
     <div id="necessary" class="materials">
-      <div class="mui-table-view">
+      <!-- <div class="mui-table-view">
         <div class="mui-table-view-cell mui-media">
             <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
             <div class="mui-media-body">
@@ -379,73 +213,7 @@
             </ul>
           </div>
         </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19 18:52:00</p>
-            </div>
-            <span class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>一键分享</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p>每天上班挤公交车挤地铁都不能穿美丽的裙子看看这些休闲的修身的裤装满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-                <li onclick="openitem()"><img src="../../image/a3.png"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19 18:52:00</p>
-            </div>
-            <span class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>一键分享</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p>每天上班挤公交车挤地铁都不能穿美丽的裙子看看这些休闲的修身的裤装满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-                <li onclick="openitem()"><img src="../../image/a3.png"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19 18:52:00</p>
-            </div>
-            <span class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>一键分享</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p>每天上班挤公交车挤地铁都不能穿美丽的裙子看看这些休闲的修身的裤装满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-                <li onclick="openitem()"><img src="../../image/a3.png"></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      </div> -->
     </div>
     <!-- 商品 -->
     <div id="commodity" class="materials">
@@ -453,7 +221,7 @@
     </div>
     <!-- 精选单品 -->
     <div id="selected" class="materials">
-      <div class="mui-table-view">
+      <!-- <div class="mui-table-view">
         <div class="mui-table-view-cell mui-media">
           <a href="javascript:;">
             <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
@@ -485,103 +253,7 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19</p>
-            </div>
-            <span class="bgcr buy">领券购买</span>
-            <span class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>280</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p class="cored bold">自购赚￥1.17</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-            </ul>
-            <div class="clearfix mt10b5">
-              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
-              <div class="copy fr">复制评论</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19</p>
-            </div>
-            <span class="bgcr buy">领券购买</span>
-            <span class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>280</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p class="cored bold">自购赚￥1.17</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-            </ul>
-            <div class="clearfix mt10b5">
-              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
-              <div class="copy fr">复制评论</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mui-table-view">
-        <div class="mui-table-view-cell mui-media">
-          <a href="javascript:;">
-            <img class="mui-media-object mui-pull-left" src="../../image/a3.png">
-            <div class="mui-media-body">
-              小编推荐
-              <p class='mui-ellipsis'>2019-6-19</p>
-            </div>
-            <span class="bgcr buy">领券购买</span>
-            <span class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>280</span>
-          </a>
-        </div>
-        <div class="specialty-box">
-          <div class="specialty-boxi">
-            <div class="specialty-text">
-              <p class="cored bold">自购赚￥1.17</p>
-              <p>每天上班挤公交车挤地铁</br>都不能穿美丽的裙子</br>看看这些休闲的修身的裤装</br>满足你所有的需求</p>
-            </div>
-            <ul class="specialty-img clearfix">
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la3.png"></li>
-              <li onclick="openitem()"><img src="../../image/la2.png"></li>
-              <li onclick="openitem()"><img src="../../image/la1.png"></li>
-            </ul>
-            <div class="clearfix mt10b5">
-              <div class="password fl">汽车纳米水晶镀膜剂全车镀金车漆防水液体喷雾正品套装用品黑科技|专享口令$淘口令$</div>
-              <div class="copy fr">复制评论</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div> -->
     </div>
     <!--  -->
     <div id="shareout">
@@ -630,11 +302,22 @@
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
   <script type="text/javascript" src="../../script/aui-popup-new.js" ></script>
   <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
       var wx;
       var shopH;
       var header;
       var headerPos;
+      var slides = document.getElementById('slides');
+      var page = 1;
+      var pagesize = 8;
+      var state = true;
+      var specialty = document.getElementById('specialty');
+      var necessary = document.getElementById('necessary');
+      var commodity = document.getElementById('commodity');
+      var selected = document.getElementById('selected');
+      var img_box = [];
       apiready = function(){
         header = $api.byId('header');
         // $api.fixStatusBar(header);
@@ -647,6 +330,36 @@
         var sliderPos = $api.offset(slider);
         var shopingPos = $api.offset(shoping);
         shopH = sliderPos.h + shopingPos.h + headerPos.h;
+        getBanner()
+        getData()
+        api.addEventListener({
+            name:'scrolltobottom',
+            extra:{
+                threshold: -1            //设置距离底部多少距离时触发，默认值为0，数字类型
+            }
+        }, function(ret, err){
+          loading()
+        });
+        //下拉刷新
+        api.setRefreshHeaderInfo({
+              visible: true,
+              loadingImg: '../../image/loading_more.gif',
+              bgColor: '#ccc',
+              textColor: '#fff',
+              textDown: '下拉刷新...',
+              textUp: '松开刷新...',
+              showTime: true //显示更新时间
+          }, function(ret, err) {
+            // api.refreshHeaderLoadDone()
+            setTimeout(function(){
+              page = 1;
+              state = true;
+              window.location.reload()
+              // getData()
+              api.refreshHeaderLoadDone();
+            },1000)
+              // 在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+        });
       };
       //监听滑动
       var scroll = new auiScroll({
@@ -654,7 +367,8 @@
           distance:200 //判断到达底部的距离，isToBottom为true
       },function(ret){
         var scrollTop = ret.scrollTop;
-        if (scrollTop>shopH) {
+        if (scrollTop>240) {
+        // if (scrollTop>shopH) {
           // header.style.background = "#fff";
           shopings.style.visibility = "inherit";
         }else {
@@ -662,19 +376,9 @@
           shopings.style.visibility = "hidden";
         }
       });
-      // 轮播图
-      var slide = new auiSlide({
-         container:document.getElementById("aui-slide"),
-         // "width":300,
-         "height":180,
-         "speed":300,
-         "pageShow":true,
-         "pageStyle":'dot',
-         "loop":true,
-         'dotPosition':'center'
-     })
       // 切换
-      function shop(index) {
+      function shop(index,type) {
+        getData(type)
         var shop = document.getElementsByClassName('shop');
         var shops = document.getElementsByClassName('shops');
         var len = shop.length
@@ -712,7 +416,8 @@
             }
         }
       }
-      function shops(index) {
+      function shops(index,type) {
+        getData(type)
         var shop = document.getElementsByClassName('shop');
         var shops = document.getElementsByClassName('shops');
         var len = shops.length
@@ -776,12 +481,296 @@
         });
         }
        // 打开物品
-       function openitem() {
-         api.openWin({
-             name: 'item',
-             url: '../home/item.html',
-             pageParam: {
-                 name: 'test'
+       function openitem(type,item_id,i) {
+        //  console.log(JSON.stringify(img_box));
+        //  console.log(type);
+          if (type === "img") {
+            var photoBrowser = api.require('photoBrowser');
+            photoBrowser.open({
+                images: img_box[i],
+                bgColor: '#000'
+            }, function(ret, err) {
+                if (ret) {
+                    api.sendEvent({
+                        name: 'PhotoState',
+                        extra: {
+                            state: '1',
+                        }
+                    });
+                    //点击关闭图片
+                    if (ret.eventType == 'click') {
+                      closePhoto()
+                    }
+                }
+            });
+          } else if (type === "item") {
+             api.openWin({
+                 name: 'item',
+                 url: '../home/item.html',
+                 pageParam: {
+                     item_id: item_id
+                 }
+             });
+          }
+       }
+       function openitems() {
+        //  api.openWin({
+        //      name: 'item',
+        //      url: '../home/item.html',
+        //      pageParam: {
+        //          item_id: item_id
+        //      }
+        //  });
+       }
+       //banner图获取
+       var getBanner = function () {
+         axios({
+           url: '/api/rmaterial/home',
+           data:{
+           }
+         },function(ret){
+            console.log(JSON.stringify(ret));
+            var html = "";
+            for (var i = 0; i < ret.data.banner.length; i++) {
+              html += '<div class="aui-slide-node bg-dark"><img src="' + ret.data.banner[i].image + '" /></div>'
+            }
+            slides.innerHTML = html;
+            // 轮播图
+            var slide = new auiSlide({
+               container:document.getElementById("aui-slide"),
+               // "width":300,
+               "height":240,
+               "speed":300,
+               "pageShow":true,
+               "pageStyle":'dot',
+               "autoPlay":3000,
+               "loop":true,
+               'dotPosition':'center'
+           })
+         })
+       }
+
+       //数据请求
+       var getData = function(type) {
+         if (type === undefined) {
+           type = ""
+         }
+         axios({
+           url: '/api/rmaterial/getlist',
+           data:{
+             type:type,
+             page:page,
+             pagesize:pagesize
+           }
+         },function(ret){
+            console.log(JSON.stringify(ret));
+            var html = "";
+            if (type === "hhzc" || type === "") {
+              if (ret.data.length < pagesize) {
+								state = false
+							}
+              for (var i = 0; i < ret.data.length; i++) {
+                img_box[i] = [];
+                var htmls = "";
+                for (var j = 0; j < ret.data[i].img_list.length; j++) {
+                  htmls += `<li onclick="openitem('${ret.data[i].img_list[j].type}',${ret.data[i].img_list[j].param},${i})"><img src="${ret.data[i].img_list[j].img_url}"></li>`
+                  if (ret.data[i].img_list[j].type === "img") {
+                    img_box[i].push(ret.data[i].img_list[j].img_url)
+                  }
+                }
+                html += `<div class="mui-table-view">
+                  <div class="mui-table-view-cell mui-media">
+                      <img class="mui-media-object mui-pull-left" src="${ret.data[i].header_img}">
+                      <div class="mui-media-body">
+                        ${ret.data[i].nickname}
+                        <p class='mui-ellipsis'>${ret.data[i].createtime}</p>
+                      </div>
+                      <span class="bgcr share aui-btn" onclick="shareBtn(${ret.data[i].id})"><i class="iconfont fs12">&#xe61f;</i>${ret.data[i].share_num}</span>
+                  </div>
+                  <div class="specialty-box">
+                    <div class="specialty-boxi">
+                      <div class="specialty-text">
+                        <p class="cored bold fs16">${ret.data[i].text}</p>
+                        <p class="fs14">${ret.data[i].copy_text}</p>
+                      </div>
+                      <ul class="specialty-img clearfix">
+                      ${htmls}
+                      </ul>
+                    </div>
+                  </div>
+                </div>`
+              }
+              if (page === 1) {
+                specialty.innerHTML = html
+              }else {
+                specialty.innerHTML += html
+              }
+            } else if (type === "bbsc") {
+              if (ret.data.length < pagesize) {
+								state = false
+							}
+              for (var i = 0; i < ret.data.length; i++) {
+                img_box[i] = [];
+                var htmls = "";
+                for (var j = 0; j < ret.data[i].img_list.length; j++) {
+                  htmls += `<li onclick="openitem('${ret.data[i].img_list[j].type}',${ret.data[i].img_list[j].param},${i})"><img src="${ret.data[i].img_list[j].img_url}"></li>`
+                  if (ret.data[i].img_list[j].type === "img") {
+                    img_box[i].push(ret.data[i].img_list[j].img_url)
+                  }
+                }
+                html += `<div class="mui-table-view">
+                  <div class="mui-table-view-cell mui-media">
+                      <img class="mui-media-object mui-pull-left" src="${ret.data[i].header_img}">
+                      <div class="mui-media-body">
+                        ${ret.data[i].nickname}
+                        <p class='mui-ellipsis'>${ret.data[i].createtime}</p>
+                      </div>
+                      <span class="bgcr share"><i class="iconfont fs12">&#xe61f;</i>一键分享</span>
+                  </div>
+                  <div class="specialty-box">
+                    <div class="specialty-boxi">
+                      <div class="specialty-text">
+                        <p class="fs14">${ret.data[i].copy_text}</p>
+                      </div>
+                      <ul class="specialty-img clearfix">
+                        ${htmls}
+                      </ul>
+                    </div>
+                  </div>
+                </div>`
+                img_box.push(img_box[i])
+              }
+              if (page === 1) {
+                necessary.innerHTML = html
+              }else {
+                necessary.innerHTML += html
+              }
+            } else if (type === "jxdp") {
+              if (ret.data.length < pagesize) {
+								state = false
+							}
+              for (var i = 0; i < ret.data.length; i++) {
+                img_box[i] = [];
+                var htmls = "";
+                for (var j = 0; j < ret.data[i].img_list.length; j++) {
+                  htmls += `<li onclick="openitem('${ret.data[i].img_list[j].type}',${ret.data[i].img_list[j].param},${i})"><img src="${ret.data[i].img_list[j].img_url}"></li>`
+                  if (ret.data[i].img_list[j].type === "img") {
+                    img_box[i].push(ret.data[i].img_list[j].img_url)
+                  }
+                }
+                html += `<div class="mui-table-view">
+                  <div class="mui-table-view-cell mui-media">
+                      <img class="mui-media-object mui-pull-left" src="${ret.data[i].header_img}">
+                      <div class="mui-media-body">
+                        ${ret.data[i].nickname}
+                        <p class='mui-ellipsis'>${ret.data[i].createtime}</p>
+                      </div>
+                      <span class="bgcr share aui-btn" onclick="shareBtn(${ret.data[i].id})"><i class="iconfont fs12">&#xe61f;</i>${ret.data[i].share_num}</span>
+                  </div>
+                  <div class="specialty-box">
+                    <div class="specialty-boxi">
+                      <div class="specialty-text">
+                        <p class="cored bold fs16">${ret.data[i].text}</p>
+                        <p class="fs14">${ret.data[i].copy_text}</p>
+                      </div>
+                      <ul class="specialty-img clearfix">
+                      ${htmls}
+                      </ul>
+                    </div>
+                  </div>
+                </div>`
+              }
+              if (page === 1) {
+                commodity.innerHTML = html
+              }else {
+                commodity.innerHTML += html
+              }
+            } else if (type === "hwlj") {
+              if (ret.data.length < pagesize) {
+								state = false
+							}
+              for (var i = 0; i < ret.data.length; i++) {
+                img_box[i] = [];
+                var htmls = "";
+                for (var j = 0; j < ret.data[i].img_list.length; j++) {
+                  htmls += `<li onclick="openitem('${ret.data[i].img_list[j].type}',${ret.data[i].img_list[j].param},${i})"><img src="${ret.data[i].img_list[j].img_url}"></li>`
+                  if (ret.data[i].img_list[j].type === "img") {
+                    img_box[i].push(ret.data[i].img_list[j].img_url)
+                  }
+                }
+                html += `  <div class="mui-table-view">
+                    <div class="mui-table-view-cell mui-media">
+                      <a href="javascript:;">
+                        <img class="mui-media-object mui-pull-left" src="${ret.data[i].header_img}">
+                        <div class="mui-media-body">
+                          ${ret.data[i].nickname}
+                          <p class='mui-ellipsis'>${ret.data[i].createtime}</p>
+                        </div>
+                        <span class="bgcr buy mr2v" onclick="openitems()">领券购买</span>
+                        <span class="bgcr share aui-btn" onclick="shareBtn(${ret.data[i].id})"><i class="iconfont fs12">&#xe61f;</i>${ret.data[i].share_num}</span>
+                      </a>
+                    </div>
+                    <div class="specialty-box">
+                      <div class="specialty-boxi">
+                        <div class="specialty-text">
+                          <p class="cored bold fs16">${ret.data[i].text}</p>
+                          <p class="fs14">${ret.data[i].copy_text}</p>
+                        </div>
+                        <ul class="specialty-img clearfix">
+                            ${htmls}
+                        </ul>
+                        <div class="clearfix mt10b5">
+                          <div class="password fl">${ret.data[i].copy_text}</div>
+                          <div class="copy fr">复制评论</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>`
+                html += `<div class="mui-table-view">
+                  <div class="mui-table-view-cell mui-media">
+                      <img class="mui-media-object mui-pull-left" src="${ret.data[i].header_img}">
+                      <div class="mui-media-body">
+                        ${ret.data[i].nickname}
+                        <p class='mui-ellipsis'>${ret.data[i].createtime}</p>
+                      </div>
+                      <span class="bgcr share aui-btn" onclick="shareBtn(${ret.data[i].id})"><i class="iconfont fs12">&#xe61f;</i>${ret.data[i].share_num}</span>
+                  </div>
+                  <div class="specialty-box">
+                    <div class="specialty-boxi">
+                      <div class="specialty-text">
+                        <p class="cored bold fs16">${ret.data[i].text}</p>
+                        <p class="fs14">${ret.data[i].copy_text}</p>
+                      </div>
+                      <ul class="specialty-img clearfix">
+                      ${htmls}
+                      </ul>
+                    </div>
+                  </div>
+                </div>`
+              }
+              if (page === 1) {
+                selected.innerHTML = html
+              }else {
+                selected.innerHTML += html
+              }
+            }
+         })
+       }
+       //加载
+       var loading = function(){
+         if (state){
+           page++
+           getData()
+         }
+       }
+       //关闭图片
+       function closePhoto() {
+         var photoBrowser = api.require('photoBrowser');
+         photoBrowser.close()
+         api.sendEvent({
+             name: 'PhotoState',
+             extra: {
+                 state: '0',
              }
          });
        }

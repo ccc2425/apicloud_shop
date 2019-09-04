@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>其他app</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <style>
+          body{
+
+          }
+      </style>
+  </head>
+  <body>
+      <div id="header" class="">
+
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var coupon_url = api.pageParam.coupon_url
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        // api.openFrame({
+        //     name: 'store_frame',
+        //     url: './store_frame.html',
+            // rect: {
+            //     x: 0,
+            //     y: headerH.h,
+            //     w: 'auto',
+            //     h: 'auto'
+            // },
+        //     pageParam: {
+        //         coupon_url: coupon_url
+        //     },
+        //     bounces: false
+        // });
+        api.openFrame({
+            name: 'store_frame',
+            url: coupon_url,
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false
+        });
+
+      };
+  </script>
+  </html>

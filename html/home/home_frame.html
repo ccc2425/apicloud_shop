@@ -5,10 +5,8 @@
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
       <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
-      <!-- <link rel="stylesheet" type="text/css" href="../../css/mui.min.css"/> -->
       <link rel="stylesheet" type="text/css" href="../../css/aui-slide.css" />
       <link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
-      <link rel="stylesheet" type="text/css" href="../../css/aui-pull-refresh.css" />
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
       h1, h2, h3, h4, h5, h6{
@@ -546,9 +544,7 @@
     </section>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
-  <!-- <script type="text/javascript" src="../../script/mui.min.js"></script> -->
   <script type="text/javascript" src="../../script/aui-slide.js"></script>
-  <!-- <script type="text/javascript" src="../../script/aui-pull-refresh.js"></script> -->
   <script type="text/javascript" src="../../script/aui-scroll.js" ></script>
   <script type="text/javascript" src="../../script/zepto.js"></script>
   <script type="text/javascript" src="../../script/md5.js"></script>
@@ -865,25 +861,25 @@
           loading()
         });
         //下拉刷新
-        // api.setRefreshHeaderInfo({
-        //       visible: true,
-        //       loadingImg: '../../image/loading_more.gif',
-        //       bgColor: '#ccc',
-        //       textColor: '#fff',
-        //       textDown: '下拉刷新...',
-        //       textUp: '松开刷新...',
-        //       showTime: true //显示更新时间
-        //   }, function(ret, err) {
-        //     // api.refreshHeaderLoadDone()
-        //     setTimeout(function(){
-        //       api.refreshHeaderLoadDone();
-        //       page = 1;
-        //       state = true;
-        //       window.location.reload()
-        //       // opendata()
-        //     },1000)
-              //在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
-        // });
+        api.setRefreshHeaderInfo({
+              visible: true,
+              loadingImg: '../../image/loading_more.gif',
+              bgColor: '#ccc',
+              textColor: '#fff',
+              textDown: '下拉刷新...',
+              textUp: '松开刷新...',
+              showTime: true //显示更新时间
+          }, function(ret, err) {
+            // api.refreshHeaderLoadDone()
+            setTimeout(function(){
+              page = 1;
+              state = true;
+              window.location.reload()
+              opendata()
+              api.refreshHeaderLoadDone();
+            },1000)
+              // 在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+        });
       };
       // 广告轮播
       var slide3 = new auiSlide({
@@ -925,6 +921,20 @@
 //打开其他页面
   // 打开分类商城页面
   function openmall(f) {
+    switch (f) {
+      case "8":
+        api.openWin({
+            name: 'O2O',
+            url: './recond/O2O.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+        break;
+      default:
+
+    }
     if (f>10) {
       api.openWin({
           name: 'BrandGoods',
@@ -933,7 +943,6 @@
               name: 'test'
           }
       });
-
     }else {
       api.openWin({
         name: 'malllist',
@@ -1193,8 +1202,11 @@
           </div>
           </div>
         </li>`
+      }if (page===1) {
+        bottom_list.innerHTML = html
+      }else {
+        bottom_list.innerHTML += html      
       }
-      bottom_list.innerHTML += html
       api.refreshHeaderLoadDone();
     })
   }

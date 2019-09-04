@@ -31,6 +31,7 @@
           var header = $api.byId('header');
           $api.fixStatusBar(header);
           var headerH = $api.offset(header);
+          var mobile_status = api.pageParam.mobile_status;
           api.openFrame({
               name: 'privacy_frame',
               url: './privacy_frame.html',
@@ -41,7 +42,7 @@
                   h: 'auto'
               },
               pageParam: {
-                  name: 'test'
+                  mobile_status: mobile_status
               },
               bounces: false,
           });

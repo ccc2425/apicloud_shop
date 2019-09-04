@@ -3,21 +3,121 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>title</title>
-      <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+      <title>提现记录</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          body{
-
-          }
+        .money-list>li{
+          padding: 5px 2vw;
+          line-height: 20px;
+          border-bottom: 1px solid #eee;
+        }
+        .list-inform{
+          padding-right: 16vw;
+        }
+        .money-num{
+          top: 50%;
+          right: 2vw;
+          transform: translateY(-50%);
+        }
       </style>
   </head>
   <body>
-暂无数据
-  </body>
-  <script type="text/javascript" src="../script/api.js"></script>
-  <script type="text/javascript">
-      apiready = function(){
+    <div class="mt16 padt10 bgcf">
+        <div class="text-center lh24 padb10 borderb1e">
+          <div class="fs12">可用余额（元）</div>
+          <div class="fs24 bold">0.44</div>
+        </div>
+        <ul id="money_list" class="money-list">
+          <!-- <li class="pr">
+            <div class="fs12 list-inform">
+              <div class="">满额结算佣金</div>
+              <div class="cogry">2019-06-26 01:00:27</div>
+            </div>
+            <div class="money-num pa bold">+0.24</div>
+          </li> -->
+        </ul>
+    </div>
 
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var status = true;
+      var page = 1;
+      var pagesize = 12;
+      var money_list = document.getElementById('money_list');
+      apiready = function(){
+        var valanceValue = api.pageParam.valanceValue;
+        openData()
+        api.addEventListener({
+            name: 'scrolltobottom',
+            extra:{
+              threshold:-1
+            }
+        }, function(ret, err){
+            loading()
+        });
+        //下拉刷新
+        api.setRefreshHeaderInfo({
+              visible: true,
+              loadingImg: '../../image/loading_more.gif',
+              bgColor: '#ccc',
+              textColor: '#fff',
+              textDown: '下拉刷新...',
+              textUp: '松开刷新...',
+              showTime: true //显示更新时间
+          }, function(ret, err) {
+            // api.refreshHeaderLoadDone()
+            setTimeout(function(){
+              page = 1;
+              state = true;
+              window.location.reload()
+              openData()
+              api.refreshHeaderLoadDone();
+            },1000)
+              // 在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+        });
       };
+      //数据请求
+      var openData = function() {
+        axios({
+          url: '/api/rmuser/getaccountdetail',
+          data:{
+            type:'withdraw',
+            page:page,
+            pagesize:pagesize
+          }
+        },function(ret){
+            console.log(JSON.stringify(ret));
+            var html = "";
+            if (ret.data.length < pagesize) {
+              state = false
+              // $api.dom('.quanbuxians').style.display = 'block'
+            }
+            for (var i = 0; i < ret.data.length; i++) {
+              html += `<li class="pr">
+                <div class="fs12 list-inform">
+                  <div class="">${ret.data[i].remark}</div>
+                  <div class="cogry">${ret.data[i].create_time}</div>
+                </div>
+                <div class="money-num pa bold">+${ret.data[i].balance}</div>
+              </li>`
+            }
+            if (page === 1) {
+              money_list.innerHTML = html
+            } else {
+              money_list.innerHTML += html
+            }
+        })
+      }
+      //下拉加载
+      var loading = function() {
+        if (status) {
+          page++;
+          openData()
+        }
+      }
   </script>
   </html>

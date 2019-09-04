@@ -94,7 +94,22 @@
         }, function(ret) {
           // alert(JSON.stringify(ret))
             console.log(JSON.stringify(ret));
+            if (ret.status) {
+               api.showProgress({
+                  style: 'default',
+                  animationType: 'fade',
+                  title: '授权成功',
+                  text: '绑定处理中...',
+                  modal: true
+              });
              WXbindAccount(ret.code);
+           }else {
+             api.toast({
+                 msg: '授权失败',
+                 duration: 2000,
+                 location: 'middle'
+             });
+           }
         //     if (ret.status) {
         //         console.log(JSON.stringify(ret));
         //         code = ret.code;
@@ -144,13 +159,21 @@
             // alert(JSON.stringify(ret))
             console.log(JSON.stringify(ret));
             if (ret.code===200) {
+
               $api.setStorage('token', ret.data.token)
               console.log($api.getStorage('token'));
+              // api.toast({
+              //     msg: '登录成功',
+              //     duration: 2000,
+              //     location: 'middle'
+              // });
+
             api.sendEvent({
                 name: 'login_sucess',
                 extra: {
                 }
             });
+              api.closeWin();
 
             }
             // alert(JSON.stringify(err))

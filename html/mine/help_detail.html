@@ -3,35 +3,25 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>设置</title>
+      <title>教程详情</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
-      <!-- <link rel="stylesheet" type="text/css" href="../../css/aui.css"/> -->
       <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          html,body{
-            background-color: #eee;
-          }
           .header{
             height: 40px;
             line-height: 40px;
           }
-          .header .iconfont:first-child{
+          .iconfont{
             left: 0
           }
-          .header .iconfont:last-child{
-            right: 0
-          }
-
       </style>
   </head>
   <body>
     <!-- 头部 -->
-    <div id="header" class="text-center bgcf header fs16 borderb1e">
+    <div id="header" class="clearfix text-center bgcf header fs16">
         <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
-        <!-- <img src="" alt=""> -->
-        设置
-        <i onclick="modify()" class="iconfont pa mr2v">&#xe714;</i>
+        <span id="title"></span>
     </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
@@ -40,9 +30,13 @@
         var header = $api.byId('header');
         $api.fixStatusBar(header);
         var headerH = $api.offset(header);
+        var tit = api.pageParam.tit;
+        var id = api.pageParam.id;
+        var title = $api.byId('title');
+        title.innerText = tit
         api.openFrame({
-            name: 'set_frame',
-            url: './set_frame.html',
+            name: 'help_detail_frame',
+            url: './help_detail_frame.html',
             rect: {
                 x: 0,
                 y: headerH.h,
@@ -50,24 +44,14 @@
                 h: 'auto'
             },
             pageParam: {
-                name: 'test'
+                id: id
             },
             bounces: false
         });
-      };
-      //关闭
-      function closewin() {
-        api.closeWin({
-            name: 'set'
-        });
-      }
-      //修改
-      function modify() {
-        api.execScript({
-            frameName: 'set_frame',
-            script: 'upData();'
-        });
 
+      };
+      function closewin() {
+        api.closeWin();
       }
   </script>
   </html>

@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>帮助中心</title>
+      <title>新手教程</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
@@ -82,8 +82,8 @@
       //打开教程详情页
       function openNoviceDetail(id,tit) {
         api.openWin({
-            name: 'help_detail',
-            url: './help_detail.html',
+            name: 'nvice_detail',
+            url: './nvice_detail.html',
             pageParam: {
                 id: id,
                 tit: tit
@@ -94,7 +94,7 @@
       //获取数据
       var getData = function () {
         axios({
-          url: '/api/rmapp/gethelplist',
+          url: '/api/rmapp/gettutoriallist',
           data:{
             page:page,
             pagesize:pagesize

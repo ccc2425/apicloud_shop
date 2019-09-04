@@ -51,6 +51,7 @@
             var header = $api.byId('header');
             $api.fixStatusBar(header);
             headerH = $api.offset(header);
+            var valanceValue = api.pageParam.value;
             api.openFrameGroup ({
                 name: 'touchBalanceGroup',
                 background: '#eee',
@@ -65,11 +66,17 @@
                 frames: [{
                     name: 'touchBalance_frame0',
                     url: 'touchBalance_frame0.html',
-                    bgColor: '#eee'
+                    bgColor: '#eee',
+                    pageParam:{
+                      valanceValue:valanceValue
+                    }
                 },{
                     name: 'touchBalance_frame1',
                     url: 'touchBalance_frame1.html',
-                    bgColor: '#eee'
+                    bgColor: '#eee',
+                    pageParam:{
+                      valanceValue:valanceValue
+                    }
                 }]
             }, function(ret, err){
                 checkTab(ret.index)

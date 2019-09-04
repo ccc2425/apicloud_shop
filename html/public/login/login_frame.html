@@ -70,36 +70,47 @@
   <script type="text/javascript" src="../../../script/ajax.js"></script>
   <script type="text/javascript">
       var mobile = document.getElementById('mobile');
-      var code = document.getElementById('code');
       var password = document.getElementById('password');
-      var password2 = document.getElementById('password2');
-      var frameWidth;
-      var frameHeight;
       apiready = function(){
-        frameWidth = api.frameWidth || '';
-        frameHeight = api.frameHeight || '';
       };
       //点击注册
       function login() {
         var mobileVal = mobile.value;
         var passwordVal = password.value;
-        // axios({
-        //     url: '/api/rmuser/mobilereg',
-        //     data:{
-        //       token:$api.getStorage('token'),
-        //       screenw:frameWidth,
-        //       screenh:frameHeight,
-        //       mobile: mobileVal,
-        //       code: codeVal,
-        //       password: passwordVal
-        //     }
-        //   },function(ret,err){
-        //     if (ret) {
-        //       console.log(JSON.stringify(ret));
-        //     }else {
-        //       console.log(JSON.stringify(err));
-        //     }
-        //   })
+        axios({
+            url: '/api/rmuser/login',
+            data:{
+              mobile: mobileVal,
+              password: passwordVal
+            }
+          },function(ret,err){
+            if (ret) {
+              if (ret.code === 200) {
+                $api.setStorage('token', ret.data.token)
+                api.toast({
+                    msg: '登录成功',
+                    duration: 1000,
+                    location: 'middle'
+                });
+                api.sendEvent({
+                    name: 'login_sucess',
+                    extra: {
+                    }
+                });
+                setTimeout(function() {
+                  api.closeToWin({
+                    name: 'root'
+                  });
+                },1000)
+              }else {
+                api.toast({
+                    msg: ret.msg,
+                    duration: 2000,
+                    location: 'middle'
+                });
+              }
+            }
+          })
       }
       //忘记密码
       function forgetPassword() {

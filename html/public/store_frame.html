@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>签到</title>
+      <title>title</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <style>
           body{
@@ -17,24 +17,9 @@
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
-        var _balance = api.pageParam._balance
-        api.openFrame({
-            name: 'signIn_frame',
-            url: './signIn_frame.html',
-            rect: {
-                x: 0,
-                y: 0,
-                w: 'auto',
-                h: 'auto'
-            },
-            pageParam: {
-                _balance: _balance
-            },
-            bounces: false
-        });
+        var store_frame = api.pageParam.store_frame
+        // window.location.href = store_frame;
+        window.location.href = 'https://www.baidu.com';
       };
-      function closewin() {
-        api.closeWin();
-      }
   </script>
   </html>

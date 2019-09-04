@@ -51,7 +51,7 @@
     </div>
     <div id="footer" class="clearfix text-center">
         <div onclick="collection()" class="fl ml3v footleft">
-          <i class="iconfont">&#xe6f2;</i>
+          <i id="icon" class="iconfont">&#xe6f2;</i>
           <span>收藏</span>
         </div>
         <div class="fr clearfix footright">
@@ -71,6 +71,7 @@
   <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
       var item_id;
+      var icon_collection = document.getElementById('icon')
       apiready = function(){
         var header = $api.byId('header');
         $api.fixStatusBar(header);
@@ -102,22 +103,54 @@
               <div class="fl">
                 <i class="iconfont">&#xe614;</i>
                 自购省￥${ret.value.self_price}
-              </div>`
+              </div>`;
+              if (ret.value.is_collect === 0) {
+                icon_collection.innerHTML = "&#xe6f2;"
+                icon_collection.style.color = "#333"
+              } else {
+                icon_collection.innerHTML = "&#xe60d;"
+                icon_collection.style.color = "#d81e06"
+              }
             }
         });
-
+        console.log($api.getStorage('token'));
       };
       //收藏
       function collection() {
-        axios({
-          url: '/api/rmitems/collection',
-          data:{
-            token:$api.getStorage('token'),
-            item_id:item_id
-          }
-        },function(ret){
-          console.log(JSON.stringify(ret));
-        })
+        if ($api.getStorage('token') === "") {
+          api.openWin({
+              name: 'login_index',
+              url: '../public/login/login_index.html',
+              pageParam: {
+                  name: 'test'
+              }
+          });
+
+        }else {
+          axios({
+            url: '/api/rmitems/collection',
+            data:{
+              item_id:item_id
+            }
+          },function(ret){
+            console.log(JSON.stringify(ret));
+            if (ret.code === 200) {
+              if (ret.data.is_collection === 1) {
+                icon_collection.innerHTML = "&#xe60d;"
+                icon_collection.style.color = "#d81e06"
+              } else {
+                icon_collection.innerHTML = "&#xe6f2;"
+                icon_collection.style.color = "#333"
+              }
+              api.sendEvent({
+                  name: 'collection_load',
+                  extra: {
+                  }
+              });
+
+            }
+          })
+        }
       }
       // function closewin() {
       //   api.closeWin({

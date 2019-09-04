@@ -88,7 +88,7 @@
             <span class="pa r0 mr3v">签到规则</span>
         </div>
         <div class="text-center cowhl pad30a0 pr">
-            <div class="fs50 bold">44</div>
+            <div id="balance_num" class="fs50 bold">44</div>
             <div class="fs12">我的集分宝余额</div>
         </div>
       </div>
@@ -98,11 +98,11 @@
           <div class="fs12">您已连续签到<span class="cored">0</span>天，连续签到<span class="cored">15</span>天，可以额外获得<span class="cored">10</span>个集分宝</div>
       </div>
       <!-- 每日任务 -->
-      <div class="bgcf pad3v wid90 boradius5b mar10au">
+      <div id="work_day" class="bgcf pad3v wid90 boradius5b mar10au">
           <div class="">
             <div class="text-center bold lh35"><i class="iconfont">&#xe631;</i> 每日任务 <i class="iconfont">&#xe631;</i></div>
           </div>
-          <div class="bgcf clearfix pad10a0 work-list borderb1e">
+          <!-- <div class="bgcf clearfix pad10a0 work-list borderb1e">
               <div class="fl work-head mr4v">
                 <img src="../../image/i1.png" alt="">
               </div>
@@ -115,85 +115,11 @@
               <div class="fr">
                   <span class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
               </div>
-          </div>
-          <div class="bgcf clearfix pad10a0 work-list borderb1e">
-              <div class="fl work-head mr4v">
-                <img src="../../image/i1.png" alt="">
-              </div>
-              <div class="fl lh20">
-                  <div class="fs12">
-                    每日浏览1件商品<span class="ml2v mr2v">+1</span><span class="work-logo"><img src="../../image/i6.png" alt=""></span>
-                  </div>
-                  <div class="fs11 cogry">完成 0/1</div>
-              </div>
-              <div class="fr">
-                  <span class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
-              </div>
-          </div>
-          <div class="bgcf clearfix pad10a0 work-list borderb1e">
-              <div class="fl work-head mr4v">
-                <img src="../../image/i1.png" alt="">
-              </div>
-              <div class="fl lh20">
-                  <div class="fs12">
-                    每日浏览1件商品<span class="ml2v mr2v">+1</span><span class="work-logo"><img src="../../image/i6.png" alt=""></span>
-                  </div>
-                  <div class="fs11 cogry">完成 0/1</div>
-              </div>
-              <div class="fr">
-                  <span class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
-              </div>
-          </div>
-          <div class="bgcf clearfix pad10a0 work-list borderb1e">
-              <div class="fl work-head mr4v">
-                <img src="../../image/i2.png" alt="">
-              </div>
-              <div class="fl lh20">
-                  <div class="fs12">
-                    每日浏览1件商品<span class="ml2v mr2v">+1</span><span class="work-logo"><img src="../../image/i6.png" alt=""></span>
-                  </div>
-                  <div class="fs11 cogry">完成 0/1</div>
-              </div>
-              <div class="fr">
-                  <span class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
-              </div>
-          </div>
-          <div class="bgcf clearfix pad10a0 work-list borderb1e">
-              <div class="fl work-head mr4v">
-                <img src="../../image/i3.png" alt="">
-              </div>
-              <div class="fl lh20">
-                  <div class="fs12">
-                    每日浏览1件商品<span class="ml2v mr2v">+1</span><span class="work-logo"><img src="../../image/i6.png" alt=""></span>
-                  </div>
-                  <div class="fs11 cogry">完成 0/1</div>
-              </div>
-              <div class="fr">
-                  <span class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
-              </div>
-          </div>
+          </div> -->
       </div>
       <!-- 新手任务 -->
-      <div class="bgcf pad3v wid90 boradius5 mar10au">
-          <div class="pad10a3v">
-            <div class="text-center bold lh35"><i class="iconfont">&#xe631;</i> 新手任务 <i class="iconfont">&#xe631;</i></div>
-          </div>
-          <div class="bgcf clearfix pad10a0 work-list borderb1e">
-              <div class="fl work-head mr4v">
-                <img src="../../image/i4.png" alt="">
-              </div>
-              <div class="fl lh20">
-                  <div class="fs12">
-                    每日浏览1件商品<span class="ml2v mr2v">+1</span><span class="work-logo"><img src="../../image/i6.png" alt=""></span>
-                  </div>
-                  <div class="fs11 cogry">完成 0/1</div>
-                  <div class="fs11 cogry">注：有效订单包含自购或分享订单</div>
-              </div>
-              <div class="fr">
-                  <span class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
-              </div>
-          </div>
-          <div class="bgcf clearfix pad10a0 work-list borderb1e">
+      <div id="work_new" class="bgcf pad3v wid90 boradius5 mar10au">
+          <!-- <div class="bgcf clearfix pad10a0 work-list borderb1e">
               <div class="fl work-head mr4v">
                 <img src="../../image/i4.png" alt="">
               </div>
@@ -221,32 +147,52 @@
               <div class="fr">
                   <span class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
               </div>
-          </div>
-          <div class="bgcf clearfix pad10a0 work-list borderb1e">
-              <div class="fl work-head mr4v">
-                <img src="../../image/i5.png" alt="">
-              </div>
-              <div class="fl lh20">
-                  <div class="fs12">
-                    每日浏览1件商品<span class="ml2v mr2v">+1</span><span class="work-logo"><img src="../../image/i6.png" alt=""></span>
-                  </div>
-                  <div class="fs11 cogry">完成 0/1</div>
-              </div>
-              <div class="fr">
-                  <span class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
-              </div>
-          </div>
+          </div> -->
       </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var _balance;
+      var balance_num = document.getElementById('balance_num');
+      var work_day = document.getElementById('work_day');
+      var work_new = document.getElementById('work_new');
       apiready = function(){
         var header = $api.byId('header');
         $api.fixStatusBar(header);
+        _balance = api.pageParam._balance;
+        balance_num.innerText = _balance;
+        getWorkData()
       };
       //签到
       function fnSign() {
-        console.log(1);
+        axios({
+          url: '/api/rmapp/signin',
+          data:{
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          if (ret.code === 200) {
+            api.toast({
+                msg: '签到成功',
+                duration: 1000,
+                location: 'middle'
+            });
+            api.sendEvent({
+                name: 'signin_sucess',
+                extra: {
+                }
+            });
+            balance_num.innerText = _balance + ret.data.amount;
+          } else {
+            api.toast({
+                msg: ret.msg,
+                duration: 2000,
+                location: 'middle'
+            });
+          }
+        })
       }
       //关闭
       function closewin() {
@@ -254,6 +200,55 @@
             name: 'signIn',
             script: 'closewin();'
         });
+      }
+      //获取任务列表
+      var getWorkData = function() {
+        axios({
+          url: '/api/rmapp/gettasklist',
+          data:{
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          var html_day = "";
+          var html_nws = "";
+          for (var i = 0; i < ret.data.length; i++) {
+            if (ret.data[i].type === "today") {
+              html_day += `<div class="bgcf clearfix pad10a0 work-list borderb1e">
+              <div class="fl work-head mr4v">
+              <img src="${ret.data[i].icon_image}" alt="">
+              </div>
+              <div class="fl lh20">
+              <div class="fs12">
+              ${ret.data[i].title}<span class="ml2v mr2v">+${ret.data[i].amount}</span><span class="work-logo"><img src="../../image/i6.png" alt=""></span>
+              </div>
+              <div class="fs11 cogry">完成 0/${ret.data[i].task_num}</div>
+              <div class="fs11 cogry">${ret.data[i].remark}</div>
+              </div>
+              <div class="fr">
+              <span onclick="closewin()" class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
+              </div>
+              </div>`
+            }else if (ret.data[i].type === "novice"){
+              html_nws += `<div class="bgcf clearfix pad10a0 work-list borderb1e">
+              <div class="fl work-head mr4v">
+              <img src="${ret.data[i].icon_image}" alt="">
+              </div>
+              <div class="fl lh20">
+              <div class="fs12">
+              ${ret.data[i].title}<span class="ml2v mr2v">+${ret.data[i].amount}</span><span class="work-logo"><img src="../../image/i6.png" alt=""></span>
+              </div>
+              <div class="fs11 cogry">完成 0/${ret.data[i].task_num}</div>
+              <div class="fs11 cogry">${ret.data[i].remark}</div>
+              </div>
+              <div class="fr">
+              <span onclick="closewin()" class="pad0a3v lh20 fs12 finish boradius30">去完成</span>
+              </div>
+              </div>`
+            }
+          }
+          work_day.innerHTML += html_day;
+          work_new.innerHTML += html_nws
+        })
       }
   </script>
   </html>

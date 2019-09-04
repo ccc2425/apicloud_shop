@@ -46,7 +46,10 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .text-center{text-align: center;}
 .text-right{text-align: right;}
 .text-left{text-align: left;}
+.ver-top{vertical-align: top;}
 .ver-middle{vertical-align: middle;}
+.ver-bottom{vertical-align: bottom;}
+.ver-super{vertical-align: super;}
 /*圆滑*/
 .boradius50{border-radius: 50%; overflow: hidden;}
 .boradius{border-radius: 8px; overflow: hidden;}
@@ -84,6 +87,7 @@ html,body {/*height: 100%;*/font-size: 14px;}
 .mb20{margin-bottom: 20px;}
 .mb25{margin-bottom: 25px;}
 .mb48{margin-bottom: 48px;}
+.mb45{margin-bottom: 45px;}
 .mb50{margin-bottom: 50px;}
 .mb80{margin-bottom: 80px!important;}
 .mt10b5{margin: 10px 0 5px;}

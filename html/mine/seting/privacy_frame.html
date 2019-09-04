@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>title</title>
+      <title>隐私设置</title>
       <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../../css/aui.css"/>
       <style>
@@ -19,7 +19,7 @@
              <div class="aui-list-item-inner">
                  <div class="aui-list-item-title">手机号对上下级可见</div>
                  <div class="aui-list-item-right">
-                     <input id="lookphone" type="checkbox" class="aui-switch" checked>
+                     <input id="lookphone" type="checkbox" class="aui-switch">
                  </div>
              </div>
          </li>
@@ -36,14 +36,42 @@
   </body>
   <script type="text/javascript" src="../../../script/api.js"></script>
   <script type="text/javascript" src="../../../script/aui-dialog.js" ></script>
+  <script type="text/javascript" src="../../../script/md5.js"></script>
+  <script type="text/javascript" src="../../../script/ajax.js"></script>
   <script type="text/javascript">
+      var lookphoneChecked;
+      var lookweixinChecked;
+      var status_phone;
+      var status_wx;
+      var mobile_status=0;
       apiready = function(){
-
+        mobile_status = api.pageParam.mobile_status;
       };
       var lookphone = document.getElementById('lookphone');
       var lookWeiXin = document.getElementById('lookweixin');
       lookphone.onchange = function () {
-        console.log(lookphone.checked);
+        // console.log(lookphone.checked);
+        lookphoneChecked = lookphone.checked;
+        lookweixinChecked = lookWeiXin.checked;
+        if (mobile_status === 0) {
+          var dialog = new auiDialog();
+          dialog.alert({
+              title:"您还未绑定手机号",
+              msg:'点击前往绑定手机号',
+              buttons:['取消','确定']
+          },function(ret){
+              if (ret.buttonIndex === 1) {
+                lookphone.checked = false;
+              }else {
+                api.closeWin({
+                    name: 'privacy'
+                });
+
+              }
+          })
+        } else {
+          checkeStatus()
+        }
       }
       lookWeiXin.onchange = function(){
         if (lookWeiXin.checked) {
@@ -64,6 +92,31 @@
               }
           })
         }
+      }
+      //状态转换
+      function checkeStatus() {
+        if (lookphoneChecked) {
+          status_phone = 1;
+        } else {
+          status_phone = 0;
+        }
+        if (lookweixinChecked) {
+          status_wx = 1
+        } else {
+          status_wx = 0
+        }
+      }
+      //数据请求
+      var openData = function () {
+        axios({
+          url:'/api/rmuser/privacyset',
+          data:{
+            mobile_show_switch:status_phone,
+            wx_show_switch:status_wx
+          }
+        },function (ret) {
+          console.log(JSON.stringify(ret));
+        })
       }
   </script>
   </html>
