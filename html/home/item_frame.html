@@ -323,7 +323,7 @@
       <div class="text-center fs13 lh29">
         商品详情
       </div>
-      <div>
+      <div id="detail">
         <img src="../../image/cbd.jpg" alt="">
         <img src="../../image/gouwu.png" alt="">
       </div>
@@ -369,6 +369,7 @@
         state = true;
         types = 'all_asc';
       var item_id;
+      var detail = document.getElementById('detail')
       apiready = function(){
         header = $api.byId('header');
         $api.fixStatusBar(header);
@@ -409,7 +410,7 @@
              "loop":true,
              'dotPosition':'center',
          })
-          vouchers_list[0].innerHTML = `<img src="../../image/${ret.data.item_type}.jpg">${ret.data.title}`;
+          vouchers_list[0].innerHTML = `<img src="../../image/${ret.data.item_type}.png">${ret.data.title}`;
           vouchers_list[1].innerHTML = `<span class="coupon fl mr3v boradius3">券后</span>￥
                                         <span class="fs18">${ret.data.end_price}</span>
                                         <span class="original cogry">原价${ret.data.old_price}</span>
@@ -479,6 +480,8 @@
             </li>`
           };
           item.innerHTML = item_html;
+
+          detail.innerHTML = '<img src="'+ret.data.master_image+'" alt="">';
           var rollMsg = ret.data.roll_msg;
           var roll_html = "";
           // for (var l = 0; l < rollMsg.length; l++) {
@@ -589,7 +592,13 @@
                     coupon_url: coupon_url
                 }
             });
-            // window.location.href = 'https://www.baidu.com';
+          }else {
+            api.toast({
+                msg: ret.msg,
+                duration: 1000,
+                location: 'middle'
+            });
+
           }
         })
       }

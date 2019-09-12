@@ -262,31 +262,31 @@
         <div class="aui-popup-arrow"></div>
         <div class="aui-popup-content text-center">
           <ul class="aui-list-share aui-list-noborder just-space">
-            <li onclick="share()" class="share-box">
+            <li onclick="share(0)" class="share-box">
               <div class="share-box-img">
                 <img src="../../image/a1.png">
               </div>
               <div class="aui-list-item-inner">微信</div>
             </li>
-            <li class="share-box">
+            <li onclick="share(1)" class="share-box">
               <div class="share-box-img">
                 <img src="../../image/a2.png">
               </div>
               <div class="aui-list-item-inner">朋友圈</div>
             </li>
-            <li class="share-box">
+            <li onclick="share(2)" class="share-box">
               <div class="share-box-img">
                 <img src="../../image/a3.png">
               </div>
               <div class="aui-list-item-inner">qq好友</div>
             </li>
-            <li class="share-box">
+            <li onclick="share(3)" class="share-box">
               <div class="share-box-img">
                 <img src="../../image/a4.png">
               </div>
               <div class="aui-list-item-inner">qq空间</div>
             </li>
-            <li class="share-box">
+            <li onclick="share(4)" class="share-box">
               <div class="share-box-img">
                 <img src="../../image/a5.png">
               </div>
@@ -479,6 +479,21 @@
                 alert(err.code);
             }
         });
+        }
+        //复制评论
+        function copyComment(val) {
+          var clipBoard = api.require('clipBoard');
+          clipBoard.set({
+              value: val
+          }, function(ret, err) {
+              if (ret) {
+                api.toast({
+                    msg: '复制成功',
+                    duration: 1000,
+                    location: 'middle'
+                });
+              }
+          });
         }
        // 打开物品
        function openitem(type,item_id,i) {
@@ -721,7 +736,7 @@
                         </ul>
                         <div class="clearfix mt10b5">
                           <div class="password fl">${ret.data[i].copy_text}</div>
-                          <div class="copy fr">复制评论</div>
+                          <div onclick="copyComment('${ret.data[i].copy_text}')" class="copy fr">复制评论</div>
                         </div>
                       </div>
                     </div>

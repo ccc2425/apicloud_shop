@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>O2O</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/aui-slide.css" />
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+        .serchbox{
+          width: 100%;
+          margin-top: 5px;
+          text-align: center;
+          box-sizing: border-box;
+          padding: 10px 0;
+        }
+        .ipt{
+          display: inline-block;
+          width: 84vw;
+          height: 30px;
+          background-color: #eee;
+          border-radius: 20px;
+          text-align: center;
+          line-height:30px;
+          color: #999;
+        }
+        /*轮播*/
+        /*分类*/
+        .class-box{
+          width: 96%;
+          padding: 0 2%;
+          background-color: #ffffff;
+          display: table;
+          table-layout: fixed;
+        }
+        .classification-img{
+          width: 100%;
+          height: 68px;
+          margin-top: 5px;
+        }
+        .class-box-row{
+          overflow: hidden;
+          margin: 0;
+        }
+        .class-box-row>div{
+          display: table-cell;
+          position: relative;
+          text-align: center;
+          vertical-align: middle;
+          padding: 1rem 0;
+          float: left;
+        }
+        .class-box-clo-name{
+          font-size: 12px;
+          display: block;
+          position: relative;
+          margin-top: 0.25rem;
+        }
+        /*礼包*/
+        .gift{
+          width: 100%;
+          box-sizing: border-box;
+        }
+        /*活动*/
+        .wh-try-l{
+          left: 0;
+          bottom: 0;
+          border: 12px solid #1296db;
+          border-left: 7px solid #fff;
+        }
+        .wh-try-y{
+          right: 0;
+          bottom: 0;
+          border: 12px solid #1296db;
+          border-right: 7px solid #fff;
+        }
+        .height24{
+          height: 24px;
+          overflow: hidden;
+        }
+        .act-img>div{
+          width: 30vw;
+        }
+        .act-img>div>div.img_box{
+          width: 30vw;
+          height: 30vw;
+        }
+        /**/
+        .icon{
+          position: fixed;
+          right: 5vw;
+          bottom: 5vh;
+        }
+        .icon-img{
+          width: 37px;
+          height: 37px;
+          margin-bottom: 3px;
+          background-color: fff;
+        }
+        .profit{
+          display: inline-block;
+          padding: 0 2vw;
+          background: rgba(255, 204, 221, 0.5);
+          line-height: 18px;
+        }
+        /*店*/
+        .list_img_box{
+          width: 20vw;
+          height: 20vw;
+          margin-right: 2vw;
+        }
+        .list_news{
+          width: 60vw;
+        }
+        .optimization-box div{
+          float: left;
+          width: 47vw;
+          height: 96px;
+          margin-top: 3px;
+          margin-bottom: 3px;
+        }
+        .optimization-box div:nth-child(2n-1){
+          margin-right: 2vw;
+        }
+        #recommend>div{
+          margin-right: 2vw;
+        }
+        #recommend>div:nth-child(3n){
+          margin-right: 0;
+        }
+      </style>
+  </head>
+  <body>
+    <!-- 轮播 -->
+    <div id="aui-slide" class="bgcf slid">
+      <div class="aui-slide-wrap boradius" >
+          <!-- <div class="aui-slide-node bg-dark">
+              <img src="../../../image/ban1.png" />
+          </div> -->
+      </div>
+      <div class="aui-slide-page-wrap"><!--分页容器--></div>
+    </div>
+    <!-- 推荐店 -->
+    <div class="optimization-box clearfix mb5 gift pad2v">
+      <div>
+        <img class="f_d_list_box" src="../../../image/c4.png" />
+      </div>
+      <div>
+        <img class="f_d_list_box" src="../../../image/c5.png" />
+      </div>
+    </div>
+    <!-- 分类 -->
+    <div class="classification">
+      <div class="classification-img">
+        <img src="../../../image/l4.png" alt="">
+      </div>
+      <div class="class-box">
+        <div id="classifications" class="class-box-row clearfix">
+
+        </div>
+      </div>
+    </div>
+    <!-- 活动 -->
+    <div class="pad10a0">
+      <div class="lh35 pad0a2v bold">星选好货推荐</div>
+      <div id="recommend" class="clearfix pad0a2v act-img">
+      </div>
+    </div>
+    <!-- 附近的店 -->
+    <div class="bgce">
+      <div class="fs18 bold bgcf pad2v">
+        附近的店
+      </div>
+      <ul id="list" class="list">
+        <li class="clearfix bgcf pad2v mb5">
+          <div class="list_img_box fl boradius3">
+            <img src="../../../image/la3.png" alt="">
+          </div>
+          <div class="fl list_news fs12">
+            <div class="clearfix">
+              <div class="fs16 bold disi-b texthidden wid80b lh29">高新区增势i我就爱喝覅ui就问人家安徽</div>
+            </div>
+            <div>
+              <span class="padr4v borderr1e">川湘菜</span><span class="ml4v">人气3113</span>
+            </div>
+            <div class="fs12 texthidden lh24">武侯区一周大袋暗杀会计恒等式卡夫卡噶就发给卡霍夫事故负有</div>
+          </div>
+          <div class="fr coaaa fs12 mr2v">1000m</div>
+        </li>
+        <li class="clearfix bgcf pad2v mb5">
+          <div class="list_img_box fl boradius3">
+            <img src="../../../image/la3.png" alt="">
+          </div>
+          <div class="fl list_news fs12">
+            <div class="clearfix">
+              <div class="fs16 bold disi-b texthidden wid80b lh29">高新区增势i我就爱喝覅ui就问人家安徽</div>
+            </div>
+            <div>
+              <span class="padr4v borderr1e">川湘菜</span><span class="ml4v">人气3113</span>
+            </div>
+            <div class="fs12 texthidden lh24">武侯区一周大袋暗杀会计恒等式卡夫卡噶就发给卡霍夫事故负有</div>
+          </div>
+          <div class="fr coaaa fs12 mr2v">469m</div>
+        </li>
+      </ul>
+    </div>
+    <!--  -->
+    <!-- 图标 -->
+    <div class="icon" style="display:none">
+      <div class="icon-img">
+        <img src="../../../image/i7.png" alt="">
+      </div>
+      <div class="icon-img">
+        <img src="../../../image/i8.png" alt="">
+      </div>
+      <div class="icon-img">
+        <img src="../../../image/i9.png" alt="">
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript" src="../../../script/aui-slide.js"></script>
+  <script type="text/javascript" src="../../../script/aui-scroll.js" ></script>
+  <script type="text/javascript" src="../../../script/md5.js"></script>
+  <script type="text/javascript" src="../../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var classifications = document.getElementById('classifications');
+      var auiSlideWrap = document.getElementsByClassName('aui-slide-wrap');
+      var optimizationBox = document.getElementsByClassName('optimization-box');
+      var recommend = document.getElementById('recommend');
+      var list = document.getElementById('list');
+      var cityList = ['上海省','四川省'];
+      console.log(cityList[1]);
+      var page = 1;
+      var pagesize = 6;
+      var state = true;
+      var lng = 104.0647600000;
+      var lat = 30.5702000000;
+      apiready = function(){
+        classificationData();//分类列表
+        homeData();//首页数据
+        shopData();//店铺数据
+        //下拉刷新
+        api.setRefreshHeaderInfo({
+              visible: true,
+              loadingImg: '../../image/loading_more.gif',
+              bgColor: '#ccc',
+              textColor: '#fff',
+              textDown: '下拉刷新...',
+              textUp: '松开刷新...',
+              showTime: true //显示更新时间
+          }, function(ret, err) {
+            // api.refreshHeaderLoadDone()
+            setTimeout(function(){
+              page = 1;
+              state = true;
+              window.location.reload()
+              api.refreshHeaderLoadDone();
+            },1000)
+              // 在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+        });
+        //上拉加载
+        api.addEventListener({
+            name:'scrolltobottom',
+            extra:{
+                threshold: -1            //设置距离底部多少距离时触发，默认值为0，数字类型
+            }
+        }, function(ret, err){
+          loading()
+        });
+
+        // //定位
+        // api.startLocation({
+        //     accuracy: '100m',
+        //     filter: 1,
+        //     autoStop: true
+        // }, function(ret, err){
+        //     if(ret && ret.status){
+        //          //获取位置信息成功
+        //          alert(JSON.stringify(ret));
+        //          console.log(JSON.stringify(ret));
+        //     }else{
+        //
+        //          alert(JSON.stringify(err));
+        //     }
+        // });
+      };
+      //  分类打开列表
+      function openstore(id,tit) {
+        api.openWin({
+            name: 'oto_shop',
+            url: './oto_shop.html',
+            pageParam: {
+                id: id,
+                tit: tit
+            }
+        });
+      }
+      //打开商品详情
+      function openitem(item_id) {
+        console.log(item_id);
+        api.openWin({
+            name: 'oto_item',
+            url: './oto_item.html',
+            pageParam: {
+                item_id: item_id
+            }
+        });
+
+      }
+      //打开店铺
+      function openshops(id,tit) {
+        api.openWin({
+            name: 'shops',
+            url: './shops.html',
+            pageParam: {
+                id: id,
+                tit:tit
+            }
+        });
+
+      }
+      //获取首页数据
+      var homeData = function functionName() {
+        axios({
+          url: '/api/rmo2o/getmaindata',
+          data:{
+            lng:lng,
+            lat:lat
+          }
+        },function(ret){
+          // console.log(JSON.stringify(ret));
+          //轮播图部分
+          var html_swiper = "";
+          for (var i = 0; i < ret.data.swiper.length; i++) {
+            html_swiper += '<div class="aui-slide-node bg-dark"><img src="'+ret.data.swiper[i].image+'" /></div>'
+          }
+          auiSlideWrap[0].innerHTML = html_swiper;
+          //轮播
+          var slide = new auiSlide({
+               container:document.getElementById("aui-slide"),
+               // "width":300,
+               "height":160,
+               "speed":300,
+               "autoPlay": 2000, //自动播放
+               "pageShow":true,
+               "pageStyle":'dot',
+               "loop":true,
+               'dotPosition':'center',
+              //  currentPage:currentFun
+           })
+           //广告图
+           var html_ad = "";
+           for (var j = 0; j < ret.data.banner.length; j++) {
+             html_ad += '<div><img class="f_d_list_box" src="'+ret.data.banner[j].image+'" /></div>'
+           }
+           optimizationBox[0].innerHTML = html_ad;
+          //好货推荐
+          var html_recommend = "";
+          for (var k = 0; k < ret.data.stargoods.length; k++) {
+            html_recommend += `<div onclick="openitem(${ret.data.stargoods[k].id})" class="border1ca fl">
+              <div class="img_box">
+                <img src="${ret.data.stargoods[k].goods_image}" alt="">
+              </div>
+              <div class="pad10a2v fs12">
+                <div class="texthiddens mb5 fs14">
+                  ${ret.data.stargoods[k].goods_name}
+                </div>
+                <div class="bold cored">￥<span class="fs15">${ret.data.stargoods[k].price}</span></div>
+                <div class="co999 line-through">￥${ret.data.stargoods[k].price_o}</div>
+                <div class="cored profit">收益 ￥2.61</div>
+              </div>
+            </div>`
+          }
+          recommend.innerHTML = html_recommend;
+        })
+      }
+      //获取分类列表数据
+      var classificationData = function() {
+        axios({
+          url: '/api/rmo2o/getclasslist',
+          data:{
+          }
+        },function(ret){
+          // console.log(JSON.stringify(ret));
+          var html = "";
+          for (var i = 0; i < ret.data.length; i++) {
+            html += `<div onclick="openstore(${ret.data[i].id},'${ret.data[i].name}')" class="wid20b">
+              <div class="marau wid56b">
+                <img src="${ret.data[i].image}" alt="">
+              </div>
+              <div class="class-box-clo-name">
+                ${ret.data[i].name}
+              </div>
+            </div>`
+          }
+          classifications.innerHTML = html
+        })
+      }
+      //获取店铺列表
+      var shopData = function () {
+        axios({
+          url: '/api/rmo2o/shoplist',
+          data:{
+            lng:lng,
+            lat:lat,
+            field:"",
+            showgoods:'N',
+            showgoods_num:0,
+            province:'四川省',
+            tid:0,
+            nearby:'N',
+            star:'N',
+            strict:'N',
+            page:page,
+            pagesize:pagesize
+          }
+        },function(ret){
+            console.log(JSON.stringify(ret));
+            var html = "";
+            if (ret.data.length < pagesize) {
+              state = false
+            }
+            if (ret.data.length === 0) {
+              html = '<div class="text-center lh35">暂无数据</div>'
+            } else {
+              for (var i = 0; i < ret.data.length; i++) {
+                html += `<li onclick="openshops(${ret.data[i].id},'${ret.data[i].shop_name}')" class="clearfix bgcf pad2v mb5">
+                <div class="list_img_box fl boradius3">
+                <img src="${ret.data[i].shop_image}" alt="">
+                </div>
+                <div class="fl list_news fs12">
+                <div class="clearfix">
+                <div class="fs16 bold disi-b texthidden wid80b lh29">${ret.data[i].shop_name}</div>
+                </div>
+                <div>
+                <span class="padr4v borderr1e">川湘菜</span><span class="ml4v">人气${ret.data[i].sale}</span>
+                </div>
+                <div class="fs12 texthidden lh24">${ret.data[i].district}${ret.data[i].address}</div>
+                </div>
+                <div class="fr coaaa fs12 mr2v">${ret.data[i].km}m</div>
+                </li>`
+              }
+            }
+            if (page===1) {
+              list.innerHTML = html;
+            }else {
+              list.innerHTML += html
+            }
+        })
+      }
+      //上拉加载
+      var loading = function(){
+        if (state){
+          page++
+          shopData()
+        }
+      }
+  </script>
+  </html>

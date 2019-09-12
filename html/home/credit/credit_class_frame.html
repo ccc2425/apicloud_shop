@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>银行</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .list{
+            padding: 10px 2vw 15px;
+          }
+          .list_img{
+            width: 35vw;
+            height: 80px;
+            box-shadow: 2px 4px 10px #ddd;
+          }
+          .list_inform{
+            width: 58vw;
+            height: 80px;
+          }
+          .name{
+            margin-bottom: 15px;
+          }
+          .discount span{
+            padding: 0 1vw;
+            border: 1px solid #d81e06;
+            border-radius: 3px;
+            color: #d81e06;
+            line-height: 14px;
+          }
+          .profit{
+            bottom: 0;
+          }
+          .profit span{
+            padding: 2px 1vw 0;
+            line-height: 18px;
+            border-radius: 3px;
+          }
+      </style>
+  </head>
+  <body>
+    <div class="list_box bgcf">
+      <div onclick="openCreat()" class="list borderb1e clearfix">
+        <div class="fl list_img boradius5 mr3v">
+          <img src="../../../image/la4.png" alt="">
+        </div>
+        <div class="fl list_inform pr">
+          <div class="name lh24 texthidden">兴业桃花金卡兴业桃花金卡兴业桃花金卡</div>
+          <div class="discount fs10"><span class="mr2v">减免年费</span><span class="mr2v">积分优惠</span></div>
+          <div class="profit fs10 pa">
+            <span class="bgcy mr2v">预估赚￥9.00</span><span class="bgcback">升级赚￥22.50</span>
+          </div>
+        </div>
+      </div>
+      <div onclick="openCreat()" class="list borderb1e clearfix">
+        <div class="fl list_img boradius5 mr3v">
+          <img src="../../../image/la4.png" alt="">
+        </div>
+        <div class="fl list_inform pr">
+          <div class="name lh24 texthidden">兴业桃花金卡兴业桃花金卡兴业桃花金卡</div>
+          <div class="profit fs10 pa">
+            <span class="bgcy mr2v">预估赚￥9.00</span><span class="bgcback">升级赚￥22.50</span>
+          </div>
+        </div>
+      </div>
+      <div onclick="openCreat()" class="list borderb1e clearfix">
+        <div class="fl list_img boradius5 mr3v">
+          <img src="../../../image/la4.png" alt="">
+        </div>
+        <div class="fl list_inform pr">
+          <div class="name lh24 texthidden">兴业桃花金卡兴业桃花金卡兴业桃花金卡</div>
+          <div class="profit fs10 pa">
+            <span class="bgcy mr2v">预估赚￥9.00</span><span class="bgcback">升级赚￥22.50</span>
+          </div>
+        </div>
+      </div>
+      <div onclick="openCreat()" class="list borderb1e clearfix">
+        <div class="fl list_img boradius5 mr3v">
+          <img src="../../../image/la4.png" alt="">
+        </div>
+        <div class="fl list_inform pr">
+          <div class="name lh24 texthidden">兴业桃花金卡兴业桃花金卡兴业桃花金卡</div>
+          <div class="discount fs10"><span class="mr2v">减免年费</span><span class="mr2v">积分优惠</span></div>
+          <div class="profit fs10 pa">
+            <span class="bgcy mr2v">预估赚￥9.00</span><span class="bgcback">升级赚￥22.50</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      function openCreat() {
+        api.openWin({
+            name: 'credit_details',
+            url: './credit_details.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+  </script>
+  </html>

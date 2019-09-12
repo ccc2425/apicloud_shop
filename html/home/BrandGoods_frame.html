@@ -136,6 +136,25 @@
         }, function(ret, err){
           loading()
         });
+        //下拉刷新
+        api.setRefreshHeaderInfo({
+              visible: true,
+              loadingImg: '../../image/loading_more.gif',
+              bgColor: '#ccc',
+              textColor: '#fff',
+              textDown: '下拉刷新...',
+              textUp: '松开刷新...',
+              showTime: true //显示更新时间
+          }, function(ret, err) {
+            // api.refreshHeaderLoadDone()
+            setTimeout(function(){
+              page = 1;
+              state = true;
+              window.location.reload()
+              api.refreshHeaderLoadDone();
+            },1000)
+              // 在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+        });
       };
       // 随意切换按钮
       function randomSwitchBtn(index) {

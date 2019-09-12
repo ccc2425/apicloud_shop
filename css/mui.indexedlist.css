@@ -4,14 +4,15 @@
 	border-bottom: solid 1px #e3e3e3;
 	overflow: hidden;
 	background-color: #fafafa;
+	height: 300px;
 	cursor: default;
 }
-/*.mui-indexed-list-inner {
+.mui-indexed-list-inner {
 	margin: 0px;
 	padding: 0px;
 	overflow-y: auto;
 	border: none;
-}*/
+}
 .mui-indexed-list-inner::-webkit-scrollbar {
 	width: 0px;
 	height: 0px;
@@ -32,10 +33,15 @@
 }
 .mui-ios .mui-indexed-list-inner {
 	width: calc(100% + 10px);
-	padding-left: 20vw;
-	height: calc(100vh - 85px);
-	overflow-x: hidden;
-	overflow-y: scroll;
+}
+.mui-indexed-list-group,
+.mui-indexed-list-item {
+	padding-right: 45px;
+}
+.mui-ios .mui-indexed-list-group,
+.mui-ios .mui-indexed-list-item,
+.mui-ios .mui-indexed-list-empty-alert {
+	padding-right: 55px;
 }
 .mui-indexed-list-group {
 	background-color: #f7f7f7;
@@ -57,23 +63,22 @@
 	background-color: #fafafa;
 }
 .mui-indexed-list-bar {
-	width: 20vw;
-	background-color: #fff;
+	width: 23px;
+	background-color: lightgrey;
 	position: absolute;
 	height: 100%;
 	z-index: 10;
-	left: 0px;
+	right: 0px;
 	-webkit-transition: .2s;
-	border-right: 1px solid #eee;
 }
 .mui-indexed-list-bar a {
 	display: block;
 	text-align: center;
+	font-size: 11px;
 	padding: 0px;
 	margin: 0px;
-	font-size: 13px;
-	line-height: 40px;
-	color: #333;
+	line-height: 15px;
+	color: #aaa;
 }
 .mui-indexed-list-bar.active {
 	background-color: rgb(200,200,200);

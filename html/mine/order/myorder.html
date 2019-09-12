@@ -108,6 +108,17 @@
         }, function(ret, err){
             checkBtn(ret.index);
         });
+        //监听接受收益数据
+        api.addEventListener({
+            name: 'myorder_profit'
+        }, function(ret, err){
+            if( ret ){
+                 alert( JSON.stringify( ret ) );
+                 console.log(JSON.stringify( ret ));
+                //  month_pay_num = ret.value.profit.month.pay_num
+            }
+        });
+
       };
       //按钮切换
       function checkBtn(index) {

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>确认订单</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          html,body{
+            background: #eee;
+          }
+          #top-right{
+            display: none;
+          }
+          .aui-list{
+            font-size: 14px;
+          }
+          .adress_box{
+            padding: 10px 3vw;
+            display: flex;
+            align-items: center;
+          }
+          .icon{
+            width: 5vw;
+          }
+          .adress_news{
+            width: 80vw;
+          }
+          .name{
+            width: 20vw;
+          }
+          /**/
+          .item_img{
+            width: 20vw;
+            height: 20vw;
+          }
+          .item_inform{
+            width: 72vw;
+            height: 100%;
+          }
+          .message .ipt{
+            width: 72vw;
+            display: inline-block;
+            color: #333;
+          }
+          .switch{
+            width: 2.3rem;
+            height: 1.2rem;
+            position: relative;
+            vertical-align: top;
+            border: 1px solid #dddddd;
+            background-color: #dddddd;
+            border-radius: 0.6rem;
+            background-clip: content-box;
+            display: inline-block;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            -webkit-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+          }
+          .switch:before {
+              width: 1.1rem;
+              height: 1.1rem;
+              position: absolute;
+              top: 0;
+              left: 0;
+              border-radius: 0.6rem;
+              background-color: #fff;
+              content: '';
+              -webkit-transition: left 0.2s;
+              transition: left 0.2s;
+          }
+          .switch:checked {
+              border-color: #03a9f4;
+              background-color: #03a9f4;
+          }
+          .switch:checked:before {
+              left: 1.1rem;
+          }
+          .radios{
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #ffffff;
+            border: solid 1px #dddddd;
+            -webkit-border-radius: 0.6rem;
+            border-radius: 0.6rem;
+            font-size: 0.8rem;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            cursor: default;
+            -webkit-appearance: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-transition: background-color ease 0.1s;
+            transition: background-color ease 0.1s;
+          }
+
+          .radios:checked {
+            background-color: #03a9f4;
+            border: solid 1px #03a9f4;
+            text-align: center;
+            background-clip: padding-box;
+          }
+          .radios:checked:before {
+            content: '';
+            width: 0.5rem;
+            height: 0.3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.25rem;
+            margin-top: -0.25rem;
+            background: transparent;
+            border: 1px solid #ffffff;
+            border-top: none;
+            border-right: none;
+            z-index: 2;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+          .radios:checked:after {
+            content: '';
+            width: 0.5rem;
+            height: 0.3rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.25rem;
+            margin-top: -0.25rem;
+            background: transparent;
+            border: 1px solid #ffffff;
+            border-top: none;
+            border-right: none;
+            z-index: 2;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+          }
+          .apply_logo{
+            width: 20px;
+            height: 20px;
+          }
+          .footer{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            font-size: 13px;
+          }
+          .footer div:first-child{
+            width:72vw;
+          }
+          .footer div:last-child{
+            width:28vw;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 地址 -->
+    <div onclick="addAdress()" class="adress_box clearfix bgcf">
+      <div class="fl icon mr2v">
+        <i class="iconfont">&#xe7e0;</i>
+      </div>
+      <div class="fl adress_news fs12">
+        <div class="">
+          <div class="disi-b bold name">
+            某某某
+          </div>
+          <div class="disi-b bold">
+            12345678901
+          </div>
+          <div class="adress texthidden">
+            四川省成都市高新区天府五街按时间就开始方按时时间裂缝将
+          </div>
+        </div>
+      </div>
+      <div class="fr icon">
+        <i class="iconfont">&#xe615;</i>
+      </div>
+    </div>
+    <!-- 商品 -->
+    <div class="bgcf mb10">
+      <div class="pad0a3v lh40">
+        <i class="iconfont mr2v">&#xe663;</i>亦时尚
+      </div>
+      <div class="clearfix bgce pad3v">
+        <div class="item_img fl mr2v">
+          <img src="../../../image/la3.png" alt="">
+        </div>
+        <div class="item_inform fl lh20">
+          <div class="texthiddens fs13">
+            【测试商品不发货】小包包2018新款女包超薄沙克康师傅回馈社会罗莎莉发哈亏看傻了货到付款哈哈是覅和看啥开发和卡拉谁
+          </div>
+          <div class="fs12 co999">
+            规格：<span>黑色-大</span>
+          </div>
+          <div class="clearfix">
+            <span class="cored bold fs13">￥39.90</span><span class="fr fs12">x1</span>
+          </div>
+        </div>
+      </div>
+      <div class="pad10a2v0">
+        <div class="fs13 lh24">
+          <span>配送方式</span><span class="fr mr2v pad0a3v lh22 border1ca boradius3">普通快递</span>
+        </div>
+        <div class="cored fs12 lh35">
+          免运费
+        </div>
+        <div class="fs13 message">
+          <span>买家留言：</span><input class="ipt" type="text" name="" value=""placeholder="选填，可填写您与卖家达成一致的要求">
+        </div>
+        <div class="bordert1e text-right fs13 lh40">
+            <span>店铺合计：</span><span class="cored bold fs5">￥39.90</span>
+        </div>
+      </div>
+    </div>
+    <div class="lh40 mb10 clearfix pad0a3v bgcf">
+      <spam>商品总额</spam><span class="cored fr">￥39.90</span>
+    </div>
+    <div class="bgcf mb50">
+      <div class="pad2v borderb1e fs12">
+        剩余应付金额<span class="cored">￥39.90</span> 请选择以下支付方式支付
+      </div>
+      <div class="pad5a2v">
+        <div class="clearfix fs13 pad5a0">
+          <div class="fl apply_logo mr2v">
+            <img src="../../../image/tm.png" alt="">
+          </div>
+          <div class="fl">
+            钱包余额 <span class="cored">4.97</span>
+          </div>
+          <div class="fr">
+            <input class="switch" type="checkbox" name="" value="" checked="">
+          </div>
+        </div>
+        <div class="clearfix fs13 pad5a0">
+          <div class="fl apply_logo mr2v">
+            <img src="../../../image/tm.png" alt="">
+          </div>
+          <div class="fl">
+            支付宝
+          </div>
+          <div class="fr">
+            <label for="">
+              <input type="radio" name="apply" value="" class="radios">
+            </label>
+          </div>
+        </div>
+        <div class="clearfix fs13 pad5a0">
+          <div class="fl apply_logo mr2v">
+            <img src="../../../image/tm.png" alt="">
+          </div>
+          <div class="fl">
+            微信支付
+          </div>
+          <div class="fr">
+            <label for="">
+              <input type="radio" name="apply" value="" class="radios">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer lh40 clearfix">
+        <div class="text-right pad0a3v fl">
+          总合计：<span class="cored">￥39.90</span>
+        </div>
+        <div class="bgcb text-center fr">
+          提交订单
+        </div>
+    </div>
+    <div class="aui-popup aui-popup-top-right" id="top-right">
+        <div class="aui-popup-arrow"></div>
+        <div class="aui-popup-content">
+            <ul class="aui-list aui-list-noborder">
+                <li onclick="openShopCar()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe61b;</i>
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-middle">
+                        购物车
+                    </div>
+                </li>
+                <li onclick="openClassfy()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe61c;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        分类
+                    </div>
+                </li>
+                <li onclick="openSerch()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe627;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        搜索
+                    </div>
+                </li>
+                <li onclick="openShopCar()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe630;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        卡券包
+                    </div>
+                </li>
+                <li onclick="openHome()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe6d9;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        首页
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript" src="../../../script/aui-popups.js" ></script>
+  <script type="text/javascript">
+          apiready = function(){
+          };
+          function openlist() {
+            var popup = new auiPopup();
+            document.getElementById("top-right").style.display="block"
+            popup.show(document.getElementById("top-right"))
+          }
+          //添加收货地址
+          function addAdress() {
+            api.openWin({
+                name: 'add_adress',
+                url: './add_adress.html',
+                pageParam: {
+                    name: 'test'
+                }
+            });
+
+          }
+  </script>
+  </html>

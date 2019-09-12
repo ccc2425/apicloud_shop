@@ -53,7 +53,7 @@
               vertical-align: middle;
           }
           .classification ul{
-            width:100%;
+            width:88%;
             height: 1.9rem;
             display: inline;
             margin: 10px 0;
@@ -84,6 +84,12 @@
             font-weight: bolder;
             border-bottom: 1px solid #fff;
           }
+          .icons{
+            margin: 10px 0;
+            padding: 0 2vw;
+            line-height: 20px;
+            border-left: 1px solid #eee;
+          }
       </style>
   </head>
   <body>
@@ -112,6 +118,7 @@
           <li class="classifiy" onclick="opensingle(14)">户外运动</li>
           <li class="classifiy" onclick="opensingle(15)">其他</li>
         </ul>
+        <i class="iconfont fr icons">&#xe62c;</i>
       </div>
     </header>
     <div class="bgbanner">
@@ -161,6 +168,7 @@
         // var footer = $api.dom('footer'); // 获取 footer 标签元素
         headerH = $api.fixStatusBar(header);
         var classifiy = document.getElementsByClassName('classifiy');
+
         // 最新api.js为了适配iPhoneX增加的方法，修复底部Footer部分与iPhoneX的底部虚拟横条键重叠的问题；
         // var footerH = $api.fixTabBar(footer);
         var group = [];
@@ -181,7 +189,7 @@
         api.openFrameGroup ({
             name: 'homefroup',
             background: '#fff',
-            scrollEnabled: false,
+            scrollEnabled: true,
             rect: {
                  marginTop: headerH,
                  marginBottom: 50,
@@ -195,7 +203,6 @@
                  randomSwitchBtn(ret.index)
             }
         });
-
         // 监听banner
         api.addEventListener({
             name: 'banner'

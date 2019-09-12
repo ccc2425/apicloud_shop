@@ -577,7 +577,7 @@
       apiready = function(){
         var un_login = $api.byId('un_login');
         var logined = $api.byId('logined');
-        if ($api.getStorage('token') === undefined ) {
+        if ($api.getStorage('token') === undefined || $api.getStorage('token')==='undefined') {
           $api.setStorage('token', "")
         }
         if ($api.getStorage('token') === ""||$api.getStorage('token') === undefined) {
@@ -629,6 +629,14 @@
                  window.location.reload()
             }
         });
+        //提现成功
+        api.addEventListener({
+            name: 'cash_sucess'
+        }, function(ret, err){
+            if( ret ){
+                 window.location.reload()
+            }
+        });
       };
       // 设置
       function openSet() {
@@ -656,7 +664,7 @@
             name: 'withdrawal',
             url: './withdrawal.html',
             pageParam: {
-                name: 'test'
+                _balance: _balance
             }
         });
       }
@@ -683,20 +691,6 @@
       }
       //签到
       function openSignIn() {
-        // api.openFrame({
-        //     name: 'signIn',
-        //     url: '../public/signIn.html',
-        //     rect: {
-        //         x: 0,
-        //         y: 0,
-        //         w: 'auto',
-        //         h: 'auto'
-        //     },
-        //     pageParam: {
-        //         name: 'test'
-        //     },
-        //     bounces: false,
-        // });
         api.openWin({
             name: 'signIn',
             url: '../public/signIn.html',
@@ -749,7 +743,7 @@
       function openFansOrder() {
         api.openWin({
             name: 'fansOrder',
-            url: './order//fansOrder.html',
+            url: './order/fansOrder.html',
             pageParam: {
                 name: 'test'
             }
@@ -892,6 +886,9 @@
             </div>`;
             balance.innerText = ret.data.balance;
             _balance = ret.data.balance;
+            $api.setStorage('mobile', ret.data.mobile);
+            $api.setStorage('ali_account', ret.data.ali_account);
+            $api.setStorage('ali_name', ret.data.ali_name);
           }
         })
       }

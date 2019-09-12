@@ -58,7 +58,7 @@ function ajax(data,complete){
       complete(ret)
       // console.log(JSON.stringify(ret));
     }else {
-        // console.log(JSON.stringify(err));
+        console.log(JSON.stringify(err));
     }
   });
 }

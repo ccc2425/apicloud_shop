@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>确认订单</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+        #header{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 9999;
+        }
+        #header div{
+          height: 35px;
+        }
+        .ipt{
+          display: inline-block;
+          width: 72vw;
+        }
+        span{
+          height: 35px;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="header" class="bgcf">
+      <div class="clearfix text-center lh35">
+        <span onclick="closewin()" class="ml2v fl"><i class="iconfont fs18">&#xe601;</i></span>
+        <span class="ipt fs18 texthidden">确认订单</span>
+        <!-- <span class="fr" aui-popup-for="top-right">h</span> -->
+        <span onclick="openlist()" class="fr mr2v" aui-popup-for="top-right"><i class="iconfont fs18">&#xe62c;</i></span>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        api.openFrame({
+            name: 'ordet_pay_frame',
+            url: './ordet_pay_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'id'
+            },
+            bounces: false,
+        });
+      };
+      //打开frame购物车等
+      function openlist() {
+        api.execScript({
+            frameName: 'ordet_pay_frame',
+            script: 'openlist();'
+        });
+
+      }
+      //关闭页面
+      function closewin() {
+        api.closeWin();
+      }
+  </script>
+  </html>

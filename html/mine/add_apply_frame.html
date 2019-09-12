@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>绑定支付宝</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          body{
+
+          }
+          .boxs{
+            padding: 5vh 0;
+            border-top: 1px solid #eee;
+          }
+          .logo{
+            width: 16vw;
+            height: 16vw;
+            margin: auto;
+          }
+          .box{
+            padding: 20px 5vw;
+          }
+          .box>div{
+            padding-top: 10px;
+            border-bottom: 1px solid #eee;
+            line-height: 40px;
+          }
+          i{
+            margin-right: 3vw;
+          }
+          input{
+            outline: none;
+          }
+          #code_btn{
+            background-color: #333;
+            color: #fff;
+            font-size: 11px;
+            border-radius: 20px;
+            padding: 0 3vw;
+            line-height: 22px;
+            margin-top: 8px;
+          }
+          .cash{
+            width: 90vw;
+            margin: 10px auto;
+            line-height: 40px;
+            background-color: #1296db;
+            color: #fff;
+            border-radius: 30px;
+          }
+      </style>
+  </head>
+  <body>
+    <div class="text-center boxs bgcf">
+        <div class="logo">
+          <img src="../../image/a6.png" alt="">
+        </div>
+        <div class="lh30 mt10 mb5 fs12">
+          添加支付宝账号
+        </div>
+    </div>
+    <div class="box">
+      <div class="">
+        <i class="iconfont">&#xe67b;</i><input id="ali_name" type="text" name="" value="" placeholder="请输入支付宝真实姓名">
+      </div>
+      <div class="">
+        <i class="iconfont">&#xe62b;</i><input id="ali_account" type="text" name="" value="" placeholder="请输入支付宝账号">
+      </div>
+      <div class="">
+        <i class="iconfont">&#xe642;</i><input id="mobile" type="number" name="" value="" disabled>
+      </div>
+      <div class="clearfix">
+        <i class="iconfont">&#xe62f;</i><input id="code" type="number" name="" value="" placeholder="请输入手机验证码">
+        <input onclick="openCode(this)" id="code_btn" class="fr" type="button" name="" value="获取验证码" >
+      </div>
+    </div>
+    <div onclick="addAliId()" class="cash text-center">
+      确定添加
+    </div>
+    <div class="text-center fs12 mt30">注：请仔细核对用户信息</div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var mobile = document.getElementById('mobile');
+      var ali_name = document.getElementById('ali_name');
+      var ali_account = document.getElementById('ali_account');
+      var code = document.getElementById('code');
+      apiready = function(){
+        mobile.value = $api.getStorage('mobile')
+        ali_name.value = $api.getStorage('ali_name')
+        ali_account.value = $api.getStorage('ali_account')
+      };
+      //获取验证码
+      var counts = 60;
+      function openCode(val) {
+          settime(val)
+          getCode()
+      }
+      //验证码倒计时
+      function settime(val) {
+          if(counts == 0) {
+          // if(counts == 0) {
+             val.removeAttribute("disabled");
+             val.value = "重新发送";
+             counts = 60;
+             return false;
+          } else {
+             val.setAttribute("disabled", true);
+             val.value = counts + "秒后重发";
+             counts--;
+          }
+          setTimeout(function() {
+             settime(val);
+          }, 1000);
+      }
+      //点击注册
+      function register() {
+        if (!ali_name.value) {
+          api.toast({
+              msg: '请输入支付宝真实姓名',
+              duration: 1000,
+              location: 'middle'
+          });
+          return false;
+        }else if (!ali_account.value) {
+          api.toast({
+              msg: '请输入支付宝账号',
+              duration: 1000,
+              location: 'middle'
+          });
+          return false;
+        }else if (!code.value) {
+          api.toast({
+              msg: '请输入手机验证码',
+              duration: 1000,
+              location: 'middle'
+          });
+          return false;
+        }else {
+          regData()
+        }
+      }
+      //发送验证码请求
+      var getCode = function () {
+          axios({
+            url: '/api/rmuser/sendsmscode',
+            data:{
+              // mobile:19906920580
+              mobile:mobile.value
+            }
+          },function(ret){
+            console.log(JSON.stringify(ret));
+            if (ret.code === 200) {
+              api.toast({
+                msg: ret.msg,
+                duration: 2000,
+                location: 'middle'
+              });
+            }
+          })
+      }
+      //注册请求
+      var addAliId = function () {
+        axios({
+          url: '/api/rmuser/bindali',
+          data:{
+            mobile: mobile.value,
+            code: code.value,
+            ali_name: ali_name.value,
+            ali_account: ali_account.value
+          }
+        },function(ret,err){
+          if (ret) {
+            console.log(JSON.stringify(ret));
+            if (ret.code === 200) {
+              $api.setStorage('ali_name', ali_name.value)
+              $api.setStorage('ali_account', ali_account.value)
+              api.toast({
+                  msg: '绑定成功',
+                  duration: 1000,
+                  location: 'middle'
+              });
+              api.sendEvent({
+                  name: 'ali_sucess',
+                  extra: {
+                  }
+              });
+              setTimeout(function() {
+                api.closeWin();
+              },1000)
+            }else {
+              api.toast({
+                  msg: ret.msg,
+                  duration: 2000,
+                  location: 'middle'
+              });
+
+            }
+          }
+        })
+      }
+  </script>
+  </html>

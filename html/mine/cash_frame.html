@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>余额提现</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          body{
+
+          }
+          .apply_box{
+            padding: 10px 3vw;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            margin-bottom: 20px;
+          }
+          .appli_logo{
+            width: 40px;
+            height: 40px;
+            margin-right: 3vw;
+          }
+          .ipt{
+            width: 100%;
+            padding: 10px 3vw;
+            line-height: 24px;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            outline: none;
+            box-sizing: border-box;
+          }
+          .cash{
+            width: 100%;
+            margin: 10px auto;
+            line-height: 40px;
+            background-color: #1296db;
+            color: #fff;
+            border-radius: 30px;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="pad2v">
+        <div onclick="addApply()" class="clearfix apply_box">
+          <div class="fl appli_logo">
+            <img src="../../image/a29.png" alt="">
+          </div>
+          <div class="fl fs12 lh20">
+            <div id="ali_name" class="fs14">支付宝</div>
+            <div id="ali_account" class="co999">还没有添加支付账户，点击添加</div>
+          </div>
+          <div class="fr lh40"><i id="icon" class="iconfont">&#xe615;</i></div>
+        </div>
+        <div>
+          <input id="amount" class="ipt" type="number" name="" value="" placeholder="请输入要提现的金额">
+        </div>
+        <div class="lh40 fs13 mt10">
+          当前可提现<span id="money_num" class="cored bold">4.97</span>元
+        </div>
+        <div onclick="getCash()" class="text-center cash">
+          确认提现
+        </div>
+        <div class="">
+          <div class="lh40">
+            温馨提示
+          </div>
+          <div class="fs12 co666 lh20 mb20">
+            <p>1、提现最迟24小时到账，节假日顺延</p>
+            <p>2、请注意支付宝账号和姓名一致，否则会提现失败被退回（提示：姓名为支付宝实名姓名，不是昵称之类的）</p>
+            <p>3、提现必须有自购订单（不限制金额、商品）</p>
+            <p>4、集分宝换算比例为100:1</p>
+          </div>
+          <div class="fs12 lh20">注意：为了方便转账，集分宝提现需要填写1000的倍数（如：1000、2000），造成不便还望谅解！</div>
+        </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var _balance;
+      var amount = document.getElementById('amount');
+      apiready = function(){
+        _balance = api.pageParam._balance;
+        var money_num = $api.byId('money_num');
+        money_num.innerText = _balance;
+        var ali_name = $api.byId('ali_name');
+        var ali_account = $api.byId('ali_account');
+        var icon = $api.byId('icon');
+        if ($api.getStorage('ali_name') === "" || $api.getStorage('ali_account') === "") {
+          ali_name.innerText = '支付宝';
+          ali_account.innerText = '还没有添加支付账户，点击添加';
+          icon.innerHTML = '&#xe615;';
+        } else {
+          ali_name.innerText = $api.getStorage('ali_name');
+          ali_account.innerText = $api.getStorage('ali_account');
+          icon.innerHTML = '&#xe629;';
+        }
+        api.addEventListener({
+            name: 'ali_sucess'
+        }, function(ret, err){
+            window.location.reload()
+        });
+
+      };
+      //添加支付宝账号
+      function addApply() {
+        api.openWin({
+            name: 'add_apply',
+            url: './add_apply.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //提现
+      function getCash() {
+        cashBalance()
+      }
+      //提现
+      var cashBalance = function () {
+        axios({
+          url: '/api/rmuser/withdraw',
+          data:{
+            amount:amount.value
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          if (ret.code === 200) {
+            api.toast({
+                msg: '提现成功',
+                duration: 1000,
+                location: 'middle'
+            });
+            api.sendEvent({
+                name: 'cash_sucess',
+                extra: {
+                }
+            });
+            setTimeout(function() {
+              api.closeToWin({
+                  name: 'root'
+              });
+            },1000)
+          }else {
+            api.toast({
+                msg: ret.msg,
+                duration: 1000,
+                location: 'middle'
+            });
+
+          }
+        })
+      }
+  </script>
+  </html>

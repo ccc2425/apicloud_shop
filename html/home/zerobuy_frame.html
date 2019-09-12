@@ -7,12 +7,12 @@
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
-          body{
-
+          html,body{
+            background-color: #D83E24;
           }
           .bg{
             width: 100%;
-            height: 55vh;
+            /*height: 240px;*/
           }
           .rules{
             top: 28%;
@@ -22,9 +22,12 @@
             opacity: .4;
           }
           .qualification{
-            background-color: #666;
+            width: 87vw;
+            margin: auto;
+            background: url(../../image/bg8.png) no-repeat;
+            background-size: 100% 100%;
             opacity: .8;
-            color: #fff;
+            color: #F04023;
           }
           .item-nav{
             display: flex;
@@ -35,17 +38,33 @@
             top: 72%;
             background: linear-gradient(to right,#e8989a,#aaa);
           }
+          .item{
+            width: 94vw;
+            margin: 0 auto 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+          }
+          .item_img{
+            width: 24vw;
+            height: 90px;
+          }
+          .item_text{
+            width: 60vw;
+          }
+          .btn{
+            margin-top: -5px;
+          }
       </style>
   </head>
   <body>
     <div class="bg">
-      <img src="../../image/chongzhibg.png">
+      <img src="../../image/bg6.png">
       <div class="rules pf pad5a2v boradiusl">
         活动规则
       </div>
     </div>
-    <div class="bgb bgco">
-        <div class="text-center qualification lh29 fs12">
+    <div class="bgb bgcrss">
+        <div class="text-center qualification lh40 fs15">
           当前您拥有<span class="bold">2</span>次参与活动资格
         </div>
         <div class="text-center fs11 lh29">
@@ -56,8 +75,40 @@
             <div onclick="tabbtn(1)" class="item-navs">未开始商品</div>
             <div onclick="tabbtn(2)" class="item-navs">已结束商品</div>
         </div>
-        <div class="item text-center">
-            <img src="../../image/11.png">
+        <div class="item-list">
+          <div class="item pad3v clearfix bgcf">
+            <div class="item_img fl mr2v">
+              <img src="../../../image/la4.png" alt="">
+            </div>
+            <div class="item_text fl">
+              <div class="texthiddens lh20 mb10">
+                网红渔夫帽女日系百搭太阳帽子夏季薄款防晒紫外线遮阳网红渔夫帽女日系百搭太阳帽子夏季薄款防晒紫外线遮阳
+              </div>
+              <div class="coaaa line-through fs12 mb10">
+                原价：￥38
+              </div>
+              <div class="clearfix fs13">
+                <span class="cored ">券后价：￥28</span><span class="bgcrss pad0a3v lh24 fr btn">0元抢购</span>
+              </div>
+            </div>
+          </div>
+          <div class="item pad3v clearfix bgcf">
+            <div class="item_img fl mr2v">
+              <img src="../../../image/la4.png" alt="">
+            </div>
+            <div class="item_text fl">
+              <div class="texthiddens lh20 mb10">
+                网红渔夫帽女日系百搭太阳帽子夏季薄款防晒紫外线遮阳网红渔夫帽女日系百搭太阳帽子夏季薄款防晒紫外线遮阳
+              </div>
+              <div class="coaaa line-through fs12 mb10">
+                原价：￥38
+              </div>
+              <div class="clearfix fs13">
+                <span class="cored ">券后价：￥28</span><span class="bgcrss pad0a3v lh24 fr btn">0元抢购</span>
+              </div>
+            </div>
+          </div>
+          <img class="no" src="../../image/11.png">
             <!-- 还没有该商品类型哟 -->
         </div>
         <div class="qualification-get pf boradiusr pad5a2v">

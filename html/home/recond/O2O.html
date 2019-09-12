@@ -3,21 +3,92 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-      <title>title</title>
+      <title>O2O</title>
       <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
       <style>
           body{
 
           }
+          .serchbox{
+            width: 100%;
+            margin-top: 5px;
+            text-align: center;
+            box-sizing: border-box;
+            padding: 10px 0;
+          }
+          .ipt{
+            display: inline-block;
+            width: 54vw;
+            height: 30px;
+            background-color: #eee;
+            border-radius: 20px;
+            text-align: center;
+            line-height:30px;
+            color: #999;
+          }
+          #position{
+            width: 20vw;
+          }
       </style>
   </head>
   <body>
-
+    <!-- 头部 -->
+    <div id="header" class="bgcf">
+      <div class="serchbox clearfix lh20">
+        <span onclick="openarea()" class="ml2v fl mt5"><i class="iconfont icon ver-top">&#xe7e0;</i><span id="position" class="disi-b texthidden">天府软件园哈萨克</span></span>
+        <span class="ipt fs12 fl"><i class="iconfont fs12">&#xe627;</i>搜索武侯区附近的小店</span>
+        <span onclick="closewin()" class="fr mr3v mt5"><i class="iconfont fs18">&#xe73e;</i></span>
+        <span onclick="openorder()" class="fr mr3v mt5"><i class="iconfont fs18">&#xe626;</i></span>
+      </div>
+    </div>
   </body>
   <script type="text/javascript" src="../../../script/api.js"></script>
   <script type="text/javascript">
       apiready = function(){
-
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        api.openFrame({
+            name: 'O2O_frame',
+            url: './O2O_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: false,
+        });
       };
+      //打开订单页面
+      function openorder() {
+        api.openWin({
+            name: 'privateorder',
+            url: '../../mine/order/privateorder.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //打开城市选择
+      function openarea() {
+        api.openWin({
+            name: 'chosecity',
+            url: './chosecity.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+      }
+      //关闭页面
+      function closewin() {
+        api.closeWin();
+      }
   </script>
   </html>

@@ -161,64 +161,27 @@
   <body>
     <div id="header" class="bgcf">
         <div class="search-box">
-            <div class="search text-center boradius30 bgce">
+            <div onclick="openSearch()" class="search text-center boradius30 bgce">
                 <i class="iconfont fs15 mr2v">&#xe638;</i>请输入搜索内容
             </div>
         </div>
     </div>
     <div id="nav">
-      <div class="mui-indexed-list-bar">
-          <div>
+      <div id="nav_list" class="mui-indexed-list-bar">
+          <!-- <div>
               <a href="#classify1" class="active">女装</a>
-          </div>
-          <div>
-              <a href="#classify2">男装</a>
-          </div>
-          <div>
-              <a href="#classify3">美食</a>
-          </div>
-          <div>
-              <a href="#classify4">美妆</a>
-          </div>
-          <div>
-              <a href="#classify5">居家日用</a>
-          </div>
-          <div>
-              <a href="#classify6">鞋品</a>
-          </div>
-          <div>
-              <a href="#classify7">数码家电</a>
-          </div>
-          <div>
-              <a href="#classify8">文娱车品</a>
-          </div>
-          <div>
-              <a href="#classify9">内衣</a>
-          </div>
-          <div>
-              <a href="#classify10">母婴</a>
-          </div>
-          <div>
-              <a href="#classify11">箱包</a>
-          </div>
-          <div>
-              <a href="#classify12">配饰</a>
-          </div>
-          <div>
-              <a href="#classify13">家装家纺</a>
-          </div>
-          <div>
-              <a href="#classify14">户外运动</a>
-          </div>
+          </div> -->
       </div>
     </div>
     <ul id="items" class="mui-table-view clearfix">
-      <div id="classify1" class="classify">
+      <div id="classify0" class="classify">
         <!-- <li class="mui-table-view-divider mui-indexed-list-group">${ret.data[i].class_name}<span onclick="openmore((${ret.data[i].cid})" class="fr">查看更多</span></li>
         <li>
           <ul class="clearfix classify-list">
           </ul>
         </li> -->
+      </div>
+      <div id="classify1" class="classify">
       </div>
       <div id="classify2" class="classify">
       </div>
@@ -244,7 +207,6 @@
       </div>
       <div id="classify13" class="classify">
       </div>
-      <div id="classify14" class="classify">
     </ul>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
@@ -254,42 +216,55 @@
   <script type="text/javascript">
       apiready = function() {
           var headers = $api.byId('header');
+          var nav_list = $api.byId('nav_list');
+          var items = $api.byId('items');
           $api.fixStatusBar(headers);
           // $api.getStorage('token');
           // console.log(token);
-          var frameWidth = api.frameWidth || '';
-          var frameHeight = api.frameHeight || '';
           console.log($api.getStorage('token'));
-          console.log(frameWidth);
-          console.log(frameHeight);
           axios({
             url: '/api/rmitems/dtkclass',
             data:{
-              token:$api.getStorage('token'),
-              screenw:frameWidth,
-              screenh:frameHeight
             }
           },function(ret){
-            // console.log(ret.data.length);
+            // console.log(JSON.stringify(ret));
             var classify = document.getElementsByClassName('classify')
             var length = ret.data.length;
+            console.log(length);
+            var list_html = "";
+            var item_html = "";
             for (var i = 0; i < length; i++) {
-              classify[i].innerHTML = `<li class="mui-table-view-divider mui-indexed-list-group">${ret.data[i].class_name}<span onclick="openmore(${ret.data[i].cid},'${ret.data[i].class_name}')" class="fr fs12">查看更多</span></li>
-              <li>
-                <ul class="clearfix classify-list">
-                </ul>
-              </li>`;
-              var classifyList = document.getElementsByClassName('classify-list');
+              // 导航栏
+              if (i===0) {
+                list_html += '<div><a href="#classify'+i+'" class="active">'+ret.data[i].class_name+'</a></div>'
+              }else {
+                list_html += '<div><a href="#classify'+i+'">'+ret.data[i].class_name+'</a></div>'
+              }
+              //分类盒
               var leng = ret.data[i].children.length;
+              var classifyList_html = "";
               for (var j = 0; j < leng; j++) {
-                classifyList[i].innerHTML += `<li onclick="itemlist(${ret.data[i].cid},${ret.data[i].children[j].cid},'${ret.data[i].children[j].class_name}')" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
-                  <div>
-                    <img src="${ret.data[i].children[j].class_image}" alt="">
-                  </div>
-                  <span>${ret.data[i].children[j].class_name}</span>
+                classifyList_html += `<li onclick="itemlist(${ret.data[i].cid},${ret.data[i].children[j].cid},'${ret.data[i].children[j].class_name}')" data-value="" data-tags="" class="mui-table-view-cell mui-indexed-list-item">
+                <div>
+                <img src="${ret.data[i].children[j].class_image}" alt="">
+                </div>
+                <span>${ret.data[i].children[j].class_name}</span>
                 </li>`
               }
+              //分类
+              item_html += `<div id="classify${i}" class="classify">
+                <li class="mui-table-view-divider mui-indexed-list-group">${ret.data[i].class_name}<span onclick="openmore(${ret.data[i].cid},'${ret.data[i].class_name}')" class="fr fs12">查看更多</span></li>
+                <li>
+                  <ul class="clearfix classify-list">
+                  ${classifyList_html}
+                  </ul>
+                </li>
+              </div>`;
+
             }
+            nav_list.innerHTML = list_html;
+            items.innerHTML = item_html;
+            scrolls()
           })
       };
       //打开分类页面
@@ -320,25 +295,38 @@
       var listA = document.querySelectorAll('.mui-indexed-list-bar a');
       var len = list.length;
       /* show active navigation element */
-      $(document).ready(function() {
+      // $(document).ready(function() {
+      var old_h = 0;
+      var old_hs;
+      function scrolls() {
         // $('#items').on("scroll", onScroll);
           // $(document).on("scroll", onScroll);
           //smooth scrolling
           $('a[href^="#"]').on('click', function(e) {
-              e.preventDefault();
-              $(document).off("scroll");
+              // e.preventDefault();
+              // $(document).off("scroll");
               $('a').each(function() {
                   $(this).removeClass('active');
               })
               $(this).addClass('active');
-              var index_ = $(this.parentNode).index();
-              var _index = index_ * 366;
-              // var target = this.hash,
-              //     nav = target;
-              // $target = $(target);
-              $('#items').stop().animate({
+              var now_h = $($(this).attr("href")).offset().top - 85;
+              old_h = $('#items').scrollTop();
+              old_hs = now_h + old_h;
+              console.log(old_hs);
+              console.log(JSON.stringify($($(this).attr("href")).offset()));
+              console.log(JSON.stringify($('#items').scrollTop()));
+              // $("#items").animate({scrollTop: $($(this).attr("href")).offset().top + "px"}, 500);
+              // return false;//不要这句会有点卡顿
+              // var index_ = $(this.parentNode).index();
+              // console.log(index_);
+              // var _index = index_ * 366;
+              // // var target = this.hash,
+              // //     nav = target;
+              // // $target = $(target);
+              $('#items').animate({
+              // $('html, body').stop().animate({
                   // 'scrollTop': $target.offset().top
-                  'scrollTop': _index
+                  'scrollTop': old_hs
               }, 500, 'swing', function() {
                   // window.location.hash = target;
                   // $(document).on("scroll", onScroll);
@@ -346,36 +334,21 @@
                   // $('#items').on("scroll", onScroll);
               });
           });
-      });
+      }
+      // });
       //get scroll position and handle class active
       $('#item').scroll(function() {
         console.log(11);
       });
-      // function onScroll(event) {
-      //   console.log(1);
-      //     // var scrollPos = $(document).scrollTop();
-      //     var scrollPos = $('#item').scrollTop();
-      //       $('#nav div div a').each(function() {
-      //         var currLink = $(this);
-      //         var refElement = $(currLink.attr("href"));
-      //         if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-      //             $('#nav div div a').removeClass("active");
-      //             currLink.addClass("active");
-      //         } else {
-      //             currLink.removeClass("active");
-      //         }
-      //     });
-      // }
-      /* activate sticky navigation */
-      // $(document).ready(function() {
-      //     var stickyNavTop = $('#nav').offset().top;
-      //     var stickyNav = function() {
-      //         var scrollTop = $(window).scrollTop();
-      //     };
-      //     stickyNav();
-      //     $(window).scroll(function() {
-      //         stickyNav();
-      //     });
-      // });
+      //打开搜索页
+      function openSearch() {
+        api.openWin({
+            name: 'search',
+            url: '../public/search.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
   </script>
   </html>

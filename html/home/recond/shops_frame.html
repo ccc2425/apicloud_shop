@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>店铺</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          body{
+
+          }
+          .bg_img{
+            width: 100%;
+            height: 160px;
+            margin-bottom: 20px;
+          }
+          .header{
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            transform: translateX(-50%);
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            overflow: hidden;
+          }
+          .describe{
+            box-sizing: border-box;
+            padding: 0 5vw;
+          }
+          .classfial{
+            background: rgba(255, 229, 200, 0.5);
+            color: #ffd262;
+            padding: 0 3vw;
+            line-height: 20px;
+            border-radius: 30px;
+          }
+          /*数据列表*/
+          .vouchers-list{
+            width: 47vw;
+            background-color: #fff;
+            margin-bottom: 10px;
+          }
+          .vouchers-list:nth-child(2n+1){
+            margin-right: 2vw;
+          }
+          .vouchers-list-left{
+            position: relative;
+            width: 100%;
+            height: 160px;
+          }
+          .vouchers-list-right{
+            width: 100%;
+            padding-top: 10px;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 18px;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+      </style>
+  </head>
+  <body>
+    <div class="bg_img pr">
+        <img src="../../../image/bg.png" alt="">
+        <div class="header">
+          <img src="../../../image/header.jpg" alt="">
+        </div>
+    </div>
+    <div class="describe text-center fs12 bgcf">
+        <div class="title lh35 fs14">
+            益联旗舰店
+        </div>
+        <div class="mb5">
+          <span class="classfial">手机数码</span>
+        </div>
+        <div class="lh24">
+          正好赶上可以出去旅游用，提着满满的一箱零食去短途旅行，这么一个礼盒里面的零食买来很是赞啊，里面的东西种类多，各种各样的味道，室友都快跟她抢起来了，满满的一大箱，推的蛮桌子都是，特别好吃，山药碎片小朋友特别好吃，回来就吃完了，值得购买！
+        </div>
+    </div>
+    <div class="item-box">
+      <div class="text-center bold bgcf lh35">全部商品</div>
+      <ul class="pad2v bgce clearfix">
+        <li onclick="openitem()" class="vouchers-list fl clearfix">
+          <div class="vouchers-list-left fl">
+            <img src="../../../image/la1.png" alt="">
+          </div>
+          <div class="vouchers-list-right fl pad2v">
+            <div class="vouchers-list1 texthiddens mb5 fs12">
+              光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+            </div>
+            <div class="vouchers-list3 clearfix cogry mb5">
+              ￥<span class="original">11.9</span>
+              <span class="fr">已售0</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+            </div>
+          </div>
+        </li>
+        <li onclick="openitem()" class="vouchers-list fl clearfix">
+          <div class="vouchers-list-left fl">
+            <img src="../../../image/la1.png" alt="">
+          </div>
+          <div class="vouchers-list-right fl pad2v">
+            <div class="vouchers-list1 texthiddens mb5 fs12">
+              光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+            </div>
+            <div class="vouchers-list3 clearfix cogry mb5">
+              ￥<span class="original">11.9</span>
+              <span class="fr">已售0</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+            </div>
+          </div>
+        </li>
+        <li onclick="openitem()" class="vouchers-list fl clearfix">
+          <div class="vouchers-list-left fl">
+            <img src="../../../image/la1.png" alt="">
+          </div>
+          <div class="vouchers-list-right fl pad2v">
+            <div class="vouchers-list1 texthiddens mb5 fs12">
+              光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+            </div>
+            <div class="vouchers-list3 clearfix cogry mb5">
+              ￥<span class="original">11.9</span>
+              <span class="fr">已售0</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+            </div>
+          </div>
+        </li>
+        <li onclick="openitem()" class="vouchers-list fl clearfix">
+          <div class="vouchers-list-left fl">
+            <img src="../../../image/la1.png" alt="">
+          </div>
+          <div class="vouchers-list-right fl pad2v">
+            <div class="vouchers-list1 texthiddens mb5 fs12">
+              光庆夹心海苔芝麻味40g/罐休闲零食儿童孕妇紫菜海苔将爱心脆片
+            </div>
+            <div class="vouchers-list3 clearfix cogry mb5">
+              ￥<span class="original">11.9</span>
+              <span class="fr">已售0</span>
+            </div>
+            <div class="vouchers-list4 cooo fs10">
+              ￥<span class="discount mr1v cooo fs16">5.9</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--  -->
+    <div class="aui-popup aui-popup-top-right" id="top-right">
+        <div class="aui-popup-arrow"></div>
+        <div class="aui-popup-content">
+            <ul class="aui-list aui-list-noborder">
+                <li onclick="openShopCar()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe61b;</i>
+                    </div>
+                    <div class="aui-list-item-inner aui-list-item-middle">
+                        购物车
+                    </div>
+                </li>
+                <li onclick="openClassfy()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe61c;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        分类
+                    </div>
+                </li>
+                <li onclick="openSerch()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe627;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        搜索
+                    </div>
+                </li>
+                <li onclick="openShopCar()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe630;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        卡券包
+                    </div>
+                </li>
+                <li onclick="openHome()" class="aui-list-item">
+                    <div class="aui-list-item-label-icon">
+                        <i class="iconfont">&#xe6d9;</i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        首页
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript" src="../../../script/aui-popups.js" ></script>
+  <script type="text/javascript" src="../../../script/md5.js"></script>
+  <script type="text/javascript" src="../../../script/ajax.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+        var id = api.pageParam.id;
+        getData()
+      };
+      function openlist() {
+        var popup = new auiPopup();
+        function showPopup(){
+            popup.show(document.getElementById("top-right"))
+        }
+      }
+      //数据请求
+      var getData = function () {
+        axios({
+          url: '/api/rmo2o/getshopdetail',
+          data:{
+            id:4
+          }
+        },function(ret,err){
+          console.log(JSON.stringify(ret));
+        })
+      }
+  </script>
+  </html>

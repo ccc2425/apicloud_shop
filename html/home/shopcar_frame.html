@@ -140,22 +140,6 @@
         }
         /*.total*/
         /**/
-        .tishio {
-          z-index: 99999;
-			    background: rgba(0, 0, 0, .6);
-			    color: #fff;
-			    font-size: 12px;
-			    border-radius: 5px;
-			    position: fixed;
-			    top: 30vh;
-			    left: 50%;
-          transform: translateX(-50%);
-          padding: 0 5vw;
-			    line-height: 30px;
-			    height: 30px;
-			    text-align: center;
-			    display: none;
-			}
       /*弹窗*/
       .alerts{
         z-index: 9999;
@@ -498,7 +482,6 @@
         </div>
       </div>
       <!-- 提示弹窗部分 -->
-      <span class="tishio"></span>
       <div class="alerts">
         <div class="bg"></div>
         <div class="bgcf alert-box">
@@ -731,11 +714,11 @@
       }
       //提示
       function tishi(info){
-					$('.tishio')[0].innerHTML = info
-					$('.tishio')[0].style.display='block'
-					setTimeout(()=>{
-						$('.tishio')[0].style.display='none'
-					},2000)
+          api.toast({
+              msg: info,
+              duration: 1000,
+              location: 'middle'
+          });
 			}
       //购物车计算
       function shopCompute() {

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>选择店列表</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/public.css" />
+    <style>
+        #header{
+          background: url(../../../image/bg.png) no-repeat;
+          background-size: 100% 100%;
+        }
+        .header {
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+        }
+
+        .iconfont {
+            left: 0
+        }
+        .ipt-box{
+          padding: 10px 3vw;
+        }
+        .ipt_box{
+          width: 81vw;
+          padding: 8px 2vw;
+          background-color: #eee;
+          border-radius: 3px;
+          box-sizing: border-box;
+          margin-right: 2vw;
+        }
+        .search{
+          display: inline-block;
+          width: 11vw;
+          color: #fff;
+          line-height: 27px;
+          text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div id="header">
+        <div class="clearfix text-center header borderb1e">
+            <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
+            <!-- <img src="" alt=""> -->
+            <span id="title"></span>
+        </div>
+        <div class="ipt-box clearfix">
+          <div class="fl ipt_box fs12">
+              <i class="iconfont fs12 mr2v">&#xe638;</i><input type="text" name="" value="" placeholder="搜索附近的小店">
+          </div>
+          <span class="search">搜索</span>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        var tit = api.pageParam.tit;
+        var id = api.pageParam.id;
+        var title = $api.byId('title');
+        title.innerText = tit;
+        api.openFrame({
+            name: 'oto_shop_frame',
+            url: './oto_shop_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                id: id
+            },
+            bounces: false
+        });
+
+    };
+
+    function closewin() {
+        api.closeWin();
+    }
+</script>
+</html>

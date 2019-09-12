@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>钱包</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+          .iconfont{
+            left: 0
+          }
+          .par{
+            right: 0;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 头部 -->
+    <div id="header" class="clearfix text-center bgcf header fs16">
+        <i onclick="closewin()" class="iconfont pa ml3v">&#xe601;</i>
+        <!-- <img src="" alt=""> -->
+        余额提现
+        <span onclick="openTouchBalance()" class="par pa mr2v">提现记录</span>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript">
+      var _balance;
+      apiready = function(){
+          var header = $api.byId('header');
+          $api.fixStatusBar(header);
+          var headerH = $api.offset(header);
+          _balance = api.pageParam._balance;
+          api.openFrame({
+              name: 'cash_frame',
+              url: './cash_frame.html',
+              rect: {
+                  x: 0,
+                  y: headerH.h,
+                  w: 'auto',
+                  h: 'auto'
+              },
+              pageParam: {
+                  _balance: _balance
+              },
+              bounces: false,
+          });
+
+      };
+      //关闭该界面
+      function closewin() {
+        api.closeWin();
+      }
+      //打开提现记录
+      function openTouchBalance() {
+        api.openWin({
+            name: 'touchBalance',
+            url: './touchBalance.html',
+            pageParam: {
+                _balance: _balance
+            }
+        });
+      }
+  </script>
+  </html>

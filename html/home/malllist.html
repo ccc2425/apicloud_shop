@@ -44,12 +44,12 @@
         <div class="clearfix text-center bgcr header">
             <i onclick="closewin()" class="iconfont fl ml3v">&#xe601;</i>
             <!-- <img src="" alt=""> -->
-            淘宝
+            <span id="tit">淘宝</span>
             <i class="iconfont fr mr2v">&#xe627;</i>
         </div>
           <div class="classification clearfix bgcf">
-            <ul>
-              <li class="classifiy active" onclick="opensingle(0)">全部</li>
+            <ul id="nav">
+              <!-- <li class="classifiy active" onclick="opensingle(0)">全部</li>
               <li class="classifiy" onclick="opensingle(1)">女装</li>
               <li class="classifiy" onclick="opensingle(2)">男装</li>
               <li class="classifiy" onclick="opensingle(3)">鞋品</li>
@@ -64,35 +64,85 @@
               <li class="classifiy" onclick="opensingle(12)">内衣</li>
               <li class="classifiy" onclick="opensingle(13)">家装家纺</li>
               <li class="classifiy" onclick="opensingle(14)">户外运动</li>
-              <li class="classifiy" onclick="opensingle(15)">其他</li>
+              <li class="classifiy" onclick="opensingle(15)">其他</li> -->
             </ul>
           </div>
       </div>
   </body>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
       var headerH;
+      var type;
+      var classifiy;
+      var cid = 0;
+      var nav = document.getElementById('nav');
+      var length;
       apiready = function(){
+        var bb = document.getElementsByClassName('bb');
         var header = $api.byId('header');
         $api.fixStatusBar(header);
         headerH = $api.offset(header);
-
-        api.openFrame({
-            name: 'malllist_frame',
-            url: './malllist_frame.html',
+        console.log(  bb[0].style.top );
+        var tit = $api.byId('tit');
+        var title = api.pageParam.title;
+        tit.innerText = title;
+        if (title === "淘宝") {
+          type = "tb"
+        }else if (title === "京东") {
+          type = "jd"
+        }else if (title === "拼多多") {
+          type = "pdd"
+        }
+        // 请求头部
+        //延迟打开
+        // setTimeout(function () {
+          getClassify()
+        // },100)
+      };
+      //打开frame组
+      function openGroup() {
+        var frames = [];
+        var cid = [];
+        for (var i = 0; i < classifiy.length; i++) {
+          cid.push(classifiy[i].dataset.cid)
+          if (i===0) {
+            frames.push({
+              name: 'malllist_frame',
+              url: './malllist_frame.html',
+              pageParam: {
+                  type: type,
+                  cid: cid[i]
+              },
+            })
+          }else {
+            frames.push({
+              name: 'malllist_frame' + i,
+              url: './malllist_frame0.html',
+              pageParam: {
+                  type: type,
+                  cid: cid[i]
+              },
+            })
+          }
+        }
+        api.openFrameGroup ({
+            name: 'malllistGroup',
+            background: '#fff',
+            scrollEnabled: true,
             rect: {
                 x: 0,
-                y: headerH.h,
+                y: headerH.h + 31,
                 w: 'auto',
                 h: 'auto'
             },
-            pageParam: {
-                name: 'test'
-            },
-            bounces: true,
+            index: 0,
+            frames: frames
+        }, function(ret, err){
+            randomSwitchBtn(ret.index)
         });
-
-      };
+      }
       // 随意切换按钮
       function randomSwitchBtn(index) {
         var lis = $api.domAll('.classifiy');
@@ -110,48 +160,41 @@
             }
           }
         }
-
       }
-      // 隐藏所有的一级frame
-      function hideAllFrame() {
-          api.setFrameAttr({
-              name: 'malllist_frame',
-              hidden: true
-          });
-      }
-    //打开分类页面
       function opensingle(index) {
         randomSwitchBtn(index)
-        hideAllFrame()
-        api.openFrame({
-            name: 'malllist_frame',
-            url: './malllist_frame.html',
-            rect: {
-                x: 0,
-                y: headerH.h,
-                w: 'auto',
-                h: 'auto'
-            },
-            pageParam: {
-                index: 'index'
-            },
-            bounces: true,
+        api.setFrameGroupIndex({
+            name: 'malllistGroup',
+            index: index,
+            scroll: true
         });
-        api.sendEvent({
-            name: 'ind',
-            extra: {
-                key: index,
-            }
-        });
-
       }
-
     //关闭该页面
     function closewin() {
       api.closeWin({
           name: 'malllist'
       });
-
+    }
+    //请求头部分类
+    var getClassify = function() {
+      axios({
+          url: '/api/rmitems/dtkclass',
+          data:{
+          }
+        },function(ret){
+          var html = "";
+          html = '<li class="classifiy active" data-cid="0" onclick="opensingle(0)">全部</li>'
+          for (var i = 0; i < ret.data.length; i++) {
+            var ii = i+1;
+            html += '<li class="classifiy" data-cid="'+ret.data[i].cid+'" onclick="opensingle('+ii+')">'+ret.data[i].class_name+'</li>'
+          }
+          nav.innerHTML = html;
+          classifiy = document.getElementsByClassName('classifiy');
+          //延迟打开，否则会卡顿
+          setTimeout(function () {
+            openGroup()
+          },100)
+      })
     }
   </script>
   </html>

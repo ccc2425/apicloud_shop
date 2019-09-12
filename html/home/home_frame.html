@@ -469,7 +469,7 @@
           <div onclick="actSpecial()" class="beauty">
             <img class="s_list_box" src="../../image/d1.png" />
           </div>
-          <div class="beauty-list">
+          <div class="beauty-list" ontouchstart="gtouchstart(this)" ontouchmove="gtouchmove()" ontouchend="gtouchend(this)">
             <!-- <div onclick="openitem()" class="beauty-list-box">
               <div class="beauty-list-img">
                 <img src="../../image/la1.png" />
@@ -481,7 +481,7 @@
           <div onclick="actSpecial()" class="beauty">
             <img class="s_list_box" src="../../image/d2.png" />
           </div>
-          <div class="beauty-list">
+          <div class="beauty-list" ontouchstart="gtouchstart(this)" ontouchmove="gtouchmove()" ontouchend="gtouchend(this)">
             <!-- <div onclick="openitem()" class="beauty-list-box">
               <div class="beauty-list-img">
                 <img src="../../image/la2.png" />
@@ -640,7 +640,6 @@
                                }
                              }
                          });
-
                            var bIndex = slider.activeIndex
                            // console.log(bIndex);
                            api.sendEvent({
@@ -675,7 +674,7 @@
                       if (f===_data.data.length) {
                         break
                       }
-                        htmls +=`<li onclick="openmall(${f})"><img src="${_data.data[f].image}"><span>${_data.data[f].title}</span></li>`
+                        htmls +=`<li onclick="openmall(${f},'${_data.data[f].title}')"><img src="${_data.data[f].image}"><span>${_data.data[f].title}</span></li>`
                     }
                     html += `<div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
                       <ul class="classfial-list clearfix">
@@ -920,22 +919,45 @@
 
 //打开其他页面
   // 打开分类商城页面
-  function openmall(f) {
-    switch (f) {
-      case "8":
-        api.openWin({
-            name: 'O2O',
-            url: './recond/O2O.html',
-            pageParam: {
-                name: 'test'
-            }
-        });
-
-        break;
-      default:
-
-    }
-    if (f>10) {
+  function openmall(f,title) {
+    console.log(f);
+    // switch (f) {
+    //   case "8":
+    //     api.openWin({
+    //         name: 'O2O',
+    //         url: './recond/O2O.html',
+    //         pageParam: {
+    //             name: 'test'
+    //         }
+    //     });
+    //     break;
+    //   default:
+    // }
+    if (f===8) {
+      api.openWin({
+          name: 'O2O',
+          url: './recond/O2O.html',
+          pageParam: {
+              name: 'test'
+          }
+      })
+    }else if (f===6) {
+      api.openWin({
+          name: 'credit',
+          url: './credit/credit.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+    }else if (f===3) {
+      api.openWin({
+          name: 'other_shop',
+          url: './shop_mall/other_shop.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+    }else if (f>10) {
       api.openWin({
           name: 'BrandGoods',
           url: './BrandGoods.html',
@@ -948,7 +970,7 @@
         name: 'malllist',
         url: './malllist.html',
         pageParam: {
-          name: 'test'
+          title: title
         }
       });
     }
@@ -1108,7 +1130,6 @@
             name: 'test'
         }
     });
-
   }
   //母婴
   function openMaterKid() {
@@ -1156,7 +1177,37 @@
         }
     });
   }
-
+  //滑动防止
+  //开始按
+  function gtouchstart(ind){
+    // 阻止frame的默认滑动
+    api.setFrameGroupAttr({
+        name: 'homefroup',
+        scrollEnabled: false
+    });
+      return false;
+  };
+  //如果手指有移动，则取消所有事件，此时说明用户只是要移动而不是长按
+  function gtouchmove(){
+    api.setFrameAttr({
+        name: 'home_frame',
+        bounces: false
+    })
+  };
+  //手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件
+  function gtouchend(ind){
+    // 恢复frame的默认滑动
+    api.setFrameGroupAttr({
+      name: 'homefroup',
+      scrollEnabled: true
+    })
+    //  恢复水平滑动禁止frame上下抖动
+    api.setFrameAttr({
+      name: 'home_frame',
+      bounces: true
+    })
+    return false;
+  };
   //刷新请求
   //数据请求
   var opendata = function () {
@@ -1202,10 +1253,11 @@
           </div>
           </div>
         </li>`
-      }if (page===1) {
+      }
+      if (page===1) {
         bottom_list.innerHTML = html
       }else {
-        bottom_list.innerHTML += html      
+        bottom_list.innerHTML += html
       }
       api.refreshHeaderLoadDone();
     })

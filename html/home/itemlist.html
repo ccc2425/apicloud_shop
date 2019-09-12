@@ -22,6 +22,10 @@
             background-color: #fff;
             color: #aaa;
           }
+          .paixu{
+            width: 8px;
+            height: 10px;
+          }
       </style>
   </head>
   <body>
@@ -35,9 +39,9 @@
       <!-- 排序 -->
       <div id="sorting" class="clearfix bgcf">
         <div class="sorting fl fs12">
-          <div class="sorts cobck" onclick="sort(0)">综合</div>
-          <div class="sorts" onclick="sort(1)">销量</div>
-          <div class="sorts" onclick="sort(2)">价格</div>
+          <div class="sorts cobck" onclick="sort(0)">综合 <i><img class="paixu" src="../../image/i10.png" alt=""></i></div>
+          <div class="sorts" onclick="sort(1)">销量 <i><img class="paixu" src="../../image/i10.png" alt=""></i></div>
+          <div class="sorts" onclick="sort(2)">价格 <i><img class="paixu" src="../../image/i10.png" alt=""></i></div>
         </div>
         <div onclick="layout()" class="fr lh40 mr2v">
           <i class="iconfont">&#xe61c;</i>
@@ -46,6 +50,7 @@
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
+      var paixu = document.getElementsByClassName('paixu');
       apiready = function(){
         var tit = api.pageParam.tit;
         var id1 = api.pageParam.id1;
@@ -72,6 +77,12 @@
         });
       };
       // 排序
+      var a = 0;
+      var b = 0;
+      var c = 0;
+      var aa;
+      var bb;
+      var cc;
       function sort(index) {
         var sorts = document.getElementsByClassName('sorts')
         var len = sorts.length
@@ -87,6 +98,31 @@
                     $api.removeCls(thisLi, 'cobck');
                 }
             }
+        }
+        if (index === 0) {
+          a++;
+          aa = a%2;
+          if (aa === 1) {
+            paixu[0].src = '../../image/i11.png'
+          }else {
+            paixu[0].src = '../../image/i12.png'
+          }
+        }else if (index === 1) {
+          b++;
+          bb = b%2;
+          if (bb === 1) {
+            paixu[1].src = '../../image/i11.png'
+          }else {
+            paixu[1].src = '../../image/i12.png'
+          }
+        }else if (index === 2) {
+          c++;
+          cc = c%2;
+          if (cc === 1) {
+            paixu[2].src = '../../image/i11.png'
+          }else {
+            paixu[2].src = '../../image/i12.png'
+          }
         }
         var fnSort = "fnSortframe(" + index + ");"
         api.execScript({

@@ -31,10 +31,12 @@
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
   <script type="text/javascript">
+      var _balance;
       apiready = function(){
           var header = $api.byId('header');
           $api.fixStatusBar(header);
           var headerH = $api.offset(header);
+          _balance = api.pageParam._balance;
           api.openFrame({
               name: 'withdrawal_frame',
               url: './withdrawal_frame.html',
@@ -45,7 +47,7 @@
                   h: 'auto'
               },
               pageParam: {
-                  name: 'test'
+                  _balance: _balance
               },
               bounces: false,
           });
@@ -61,7 +63,7 @@
             name: 'touchBalance',
             url: './touchBalance.html',
             pageParam: {
-                value: 'withdrawal'
+                _balance: _balance
             }
         });
       }

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>信用卡详情</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .img_box{
+            width: 100%;
+            /*padding: 3vw;*/
+            box-sizing: border-box;
+          }
+          .bank{
+            border: 1px solid #aaa;
+            color: #aaa;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 12px;
+            border-radius: 3px;
+          }
+          .profit span{
+            padding: 2px 2vw 0;
+            line-height: 18px;
+            border-radius: 3px;
+          }
+          .tit{
+            border-left: 2px solid #333;
+            padding-left: 1vw;
+          }
+          .equity_img{
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;;
+          }
+          .footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            padding: 5px 3vw;
+            border-top: 1px solid #eee;
+            box-sizing: border-box;
+          }
+          .btn{
+            padding: 5px 8vw;
+            border-radius: 3px;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="img_box">
+        <img src="../../../image/la4.png" alt="">
+      </div>
+      <div class="bgcf pad2v mb10">
+        <div class="mb10 lh24">兴业桃花金卡</div>
+        <div class="mb10"><span class="bank">银联</span></div>
+        <div class="profit fs10 mb10">
+          <span class="bgcy mr3v">预估赚￥9.00</span><span class="bgcback">升级赚￥22.50</span>
+        </div>
+        <div class="fs12 coaaa mb10">佣金规则：新户核卡</div>
+        <div class="fs12 cored lh20 mb5">
+          信用卡实际申请过程中可能存在因为门槛资质而降级的情况，导致佣金未达到预估标准，而佣金以银行实际结算为标准，感谢支持！
+        </div>
+      </div>
+      <div class="pad2v bgcf mb10">
+        <div class="mb10 bold tit">
+          权益
+        </div>
+        <div class="pad2v">
+          <div class="bold">
+            <div class="equity_img disi-b">
+              <img src="../../../image/a39.png" alt="">
+            </div>
+            保险
+          </div>
+          <div class="pad2v fs12 coaaa lh24">
+            <li>200万航意险</li>
+          </div>
+        </div>
+        <div class="pad2v">
+          <div class="bold">
+            <div class="equity_img disi-b">
+              <img src="../../../image/a40.png" alt="">
+            </div>
+            车主
+          </div>
+          <div class="pad2v fs12 coaaa lh24">
+            <li>至尊租车礼遇</li>
+          </div>
+        </div>
+      </div>
+      <div class="pad2v bgcf mb55">
+        <div class="mb10 bold tit">
+          规则
+        </div>
+        <div class="fs13 lh24">
+          积分：<span class="coaaa fs12">消费人民币1元=1积分 取现1元=1积分</span>
+        </div>
+        <div class="fs13 lh24">
+          年费：<span class="coaaa fs12">200元/年，免首年年费</span>
+        </div>
+      </div>
+      <!-- 底部 -->
+      <div class="footer bgcf clearfix text-center fs12 ">
+        <div onclick="openCreat()" class="fl wid20 lh16 padt5">
+          <div class="">
+            <i class="iconfont fs18">&#xe6d9;</i>
+          </div>
+          首页
+        </div>
+        <div class="fr bgcy pad0a8v btn">
+          <p>赚￥9.00</p>
+          <p>自己办卡</p>
+        </div>
+        <div onclick="openShare()" class="fr mr3v bgcback btn">
+          <p>赚￥9.00</p>
+          <p>分享办卡</p>
+        </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+      apiready = function(){
+
+      };
+      //返回信用卡推广页
+      function openCreat() {
+        api.closeToWin({
+            name: 'credit'
+        });
+      }
+      //打开分享办卡页面
+      function openShare() {
+        api.openWin({
+            name: 'credit_share',
+            url: './credit_share.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+  </script>
+  </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
-    <title>title</title>
+    <title>邀请分享</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <style>
         html,body {
@@ -150,18 +150,20 @@
 <body>
   <div id='box' class="box">
       <div id="imgs">
-          <img src="http://www.jq22.com/img/cs/500x300-1.png" alt="" class="show">
+          <!-- <img src="http://www.jq22.com/img/cs/500x300-1.png" alt="" class="show">
           <img src="http://www.jq22.com/img/cs/500x300-2.png" alt="">
           <img src="http://www.jq22.com/img/cs/500x300-3.png" alt="">
-          <img src="http://www.jq22.com/img/cs/500x300-4.png" alt="">
+          <img src="http://www.jq22.com/img/cs/500x300-4.png" alt=""> -->
       </div>
   </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript" src="../../script/zepto.js"></script>
+<script type="text/javascript" src="../../script/md5.js"></script>
+<script type="text/javascript" src="../../script/ajax.js"></script>
 <script type="text/javascript">
     apiready = function() {
-
+      getData()
     };
     var num = 0;
     function fnnext() {
@@ -181,13 +183,13 @@
       $('img').eq(num).attr('class', 'show');
     }
     //-- 获取元素样式，最低兼容ie8
-                function getStyle(obj, name) {
-                    if(window.getComputedStyle) {
-                        return getComputedStyle(obj, null)[name];
-                    } else {
-                        return obj.currentStyle[name];
-                    }
-                }
+      function getStyle(obj, name) {
+          if(window.getComputedStyle) {
+              return getComputedStyle(obj, null)[name];
+          } else {
+              return obj.currentStyle[name];
+          }
+      }
     var box = document.getElementById('box')
     var getOuterWidth = getStyle(box,"width");
     var widthObject = getOuterWidth.match(/\d*/);
@@ -216,6 +218,26 @@
          else if(isMove && Math.abs(distanceX) < width/3){
          }
      });
+     //数据请求
+     var getData = function () {
+       var imgs = document.getElementById('imgs');
+       axios({
+          url: '/api/rmapp/getsharelist',
+          data:{
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          var html="";
+          for (var i = 0; i < ret.data.length; i++) {
+            if (i===0) {
+              html += '<img src="' + ret.data[i] + '" alt="" class="show">'
+            }else {
+              html += '<img src="' + ret.data[i] + '" alt="">'
+            }
+          }
+          imgs.innerHTML = html;
+        })
+     }
 </script>
 
 </html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>信用卡分享</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          html,body{
+            background-color: #eee;
+          }
+          .img_box{
+            width: 50vw;
+            margin: auto;
+            /*padding: 3vw;*/
+            box-sizing: border-box;
+          }
+          .bank{
+            border: 1px solid #aaa;
+            color: #aaa;
+            padding: 0 2vw;
+            line-height: 18px;
+            font-size: 12px;
+            border-radius: 3px;
+          }
+          .profit span{
+            padding: 2px 2vw 0;
+            line-height: 18px;
+            border-radius: 3px;
+          }
+          .tit{
+            border-left: 2px solid #333;
+            padding-left: 3vw;
+          }
+          .share_box{
+            /*width: 25vw;*/
+          }
+          .share_img_box{
+            width: 12vw;
+            margin: 5px auto;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="bgcf pad5a0 mb10">
+        <div class="img_box">
+          <img src="../../../image/la4.png" alt="">
+        </div>
+      </div>
+      <div class="bgcf pad2v mb10">
+        <div class="mb10 lh24">兴业桃花金卡</div>
+        <div class="mb10"><span class="bank">银联</span></div>
+        <div class="profit fs10 mb10">
+          <span class="bgcy mr3v">预估赚￥9.00</span><span class="bgcback">升级赚￥22.50</span>
+        </div>
+      </div>
+      <div class="pad2v bgcf borderb1e">
+        <div class="mb10 bold tit">
+          分享文案
+        </div>
+        <div id="copy_writing" class="fs13 lh24 coaaa padl3v">
+          兴业桃花金卡</br>兴业桃花金卡，网购笔笔计积分</br>https://www.baidu.com
+        </div>
+      </div>
+      <div class="bgcf just-space text-center fs13 pad10a0">
+          <div onclick="copy()" class="share_box">
+            <div class="share_img_box">
+              <img src="../../../image/a37.png" alt="">
+            </div>
+            复制文案
+          </div>
+          <div class="share_box">
+            <div class="share_img_box">
+              <img src="../../../image/WX.png" alt="">
+            </div>
+            微信
+          </div>
+          <div class="share_box">
+            <div class="share_img_box">
+              <img src="../../../image/WX_.png" alt="">
+            </div>
+            朋友圈
+          </div>
+          <div class="share_box">
+            <div class="share_img_box">
+              <img src="../../../image/QQ.png" alt="">
+            </div>
+            QQ
+          </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+      var copy_writing = document.getElementById('copy_writing');
+      apiready = function(){
+
+      };
+      //复制文案
+      function copy() {
+        var clipBoard = api.require('clipBoard');
+        clipBoard.set({
+            value: copy_writing.innerText
+        }, function(ret, err) {
+            if (ret) {
+
+            }
+        });
+      }
+  </script>
+  </html>

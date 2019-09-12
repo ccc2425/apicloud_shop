@@ -77,14 +77,16 @@
       function login() {
         var mobileVal = mobile.value;
         var passwordVal = password.value;
+        console.log(passwordVal);
         axios({
             url: '/api/rmuser/login',
             data:{
-              mobile: mobileVal,
+              username: mobileVal,
               password: passwordVal
             }
           },function(ret,err){
             if (ret) {
+              console.log(JSON.stringify(ret));
               if (ret.code === 200) {
                 $api.setStorage('token', ret.data.token)
                 api.toast({

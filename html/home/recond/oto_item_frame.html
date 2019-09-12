@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>商品详情</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <!-- <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css"/> -->
+      <link rel="stylesheet" type="text/css" href="../../../css/aui-slide.css" />
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          *{
+            box-sizing: border-box;
+          }
+          body{
+            line-height: 21px;
+          }
+          html,body{
+            background: #eee;
+          }
+          #header{
+            z-index: 99;
+            width: 100%;
+            position: fixed;
+            /*background-color: transparent;*/
+            background: rgba(255, 255, 255, 0);
+            /*top: 0;*/
+          }
+          .icon{
+              display: block;
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              background-color: rgba(0, 0, 0, 0.3);
+              line-height: 32px;
+          }
+          .header{
+            height: 40px;
+            line-height: 40px;
+          }
+      /*banner图*/
+          .mui-slider-indicator .mui-indicator{
+            width: 3px;
+            height: 3px;
+            margin: 1px;
+          }
+          .mui-table-view-cell.mui-collapse .mui-collapse-content{
+            display: block;
+          }
+          .classfial-list{
+            font-size: 10px
+          }
+          .classfial-list li{
+            float: left;
+            width: 20%;
+            text-align: center;
+          }
+          .mui-slider .mui-slider-group .mui-slider-item .classfial-list li img{
+            display: block;
+            width: 64%;
+            border-radius: 50%;
+            margin: 5px auto 0;
+          }
+          /*商品信息*/
+          .item-box{
+            width: 100vw;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 20px;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: text-bottom;
+          }
+          .vouchers-list2{
+            font-size: 12px;
+            color: #d4237a;
+            margin: 10px 0
+          }
+          .original{
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .upgrade{
+            width: 94vw;
+            margin: auto;
+            padding: 3px 2vw;
+            background: #f3ca7e;
+            border-radius: 5px;
+            color: #dd6572;
+            font-size: 12px;
+          }
+          /*领券*/
+          .bgle{
+            float: left;
+            width: 100%;
+            background: url(../../../image/quan1.png) no-repeat;
+            background-size: 100% 100%;
+          }
+          .coupon-box{
+            width: 100vw;
+            padding: 10px 2vw;
+          }
+          .price{
+            /*width: 24vw;*/
+            height: 50px;
+            padding-left: 3vw;
+            margin-right: 2vw;
+          }
+          .time{
+            width: 48vw;
+            padding: 5px 0
+          }
+          .getcoupon{
+            position: absolute;
+            right: 2vw;
+            height: 50px;
+            width: 28vw;
+            background: url(../../../image/quan2.png) no-repeat;
+            background-size: 100% 100%;
+          }
+          /*推荐*/
+          .recommended{
+            /*padding: 10px 3vw;*/
+          }
+          /*商品评价*/
+          .evaluation-name img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: text-bottom;
+            border-radius: 50%;
+          }
+          .evaluation-img img{
+            float: left;
+            margin-right: 2vw;
+            width: 23vw;
+            height: 23vw;
+          }
+          /*商家名字*/
+          .store-name img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: text-bottom;
+          }
+          .store-go{
+            padding: 0 3vw;
+            border-radius: 20px;
+          }
+          .store-evaluation{
+            display: flex;
+            justify-content: space-between;
+          }
+          .store-evaluation div{
+            margin: 0 3vw;
+          }
+          /*猜你喜欢*/
+          .like-tit img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: text-bottom;
+          }
+          .like-box ul li{
+            margin: 0 .5vw 5px;
+            /*margin-right: 1vw;*/
+          }
+          .vouchers-list{
+            margin-bottom: 10px;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 48vw;
+            padding: 1vh 1vw;
+            background-color: #fff;
+          }
+          .vouchers-list-left{
+            position: relative;
+            width: 100%;
+            height: 160px;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            width: 100%;
+            padding-top: 10px;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 18px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: top;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 1vw;
+          }
+          .vouchers-list4 span{
+            vertical-align: top;
+          }
+          .vouchers-list4 span:first-child{
+            color: #fff;
+            padding: 0 1vw;
+            line-height: 18px;
+            font-size: 10px;
+          }
+          .vouchers-list4 span:first-child{
+            background-color: #e8989a;
+            border-radius: 3px;
+          }
+          .vouchers-list4 span:last-child{
+            background-color: #e8989a;
+          }
+          .tishi{
+            position: fixed;
+            top: 12vh;
+            left: 5vw;
+            padding: 0 5px;
+            border-radius: 30px;
+            line-height: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 12px;
+            color: #fff;
+            opacity: 0;
+          }
+          .tishi_header{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-top: 5px;
+            margin-right: 5px;
+          }
+          #footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 56px;
+            padding: 10px 1vw;
+            border-bottom: 1px solid #eee;
+            line-height: 36px;
+            background-color: #fff;
+          }
+          .footright{
+            width: 60vw;
+          }
+          .footright div{
+            width: 50%;
+          }
+          .footright div:first-child{
+            background-color: #515151;
+            color: #fff;
+            border-radius: 40px 0 0 40px;
+          }
+          .footright div:last-child{
+            background-color: #d4237a;
+            color: #fff;
+            border-radius: 0 40px 40px 0;
+          }
+          /*弹窗*/
+          .alerts{
+            z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+          }
+          .bg{
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+          }
+          .alert-box{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            box-sizing: border-box;
+            border-radius: 5px 5px 0 0;
+          }
+          .icon{
+            top: 10px;
+            right: 3vw;
+            text-align: center;
+          }
+          .item-img {
+              width: 20vw;
+              height: 20vw;
+              vertical-align: bottom;
+          }
+          .content{
+            width: 100%;
+            height: 50vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+          }
+          .content::-webkit-scrollbar {
+            display: none;
+        }
+          .content-box{
+            padding-left: 2vw;
+          }
+          .content-box span{
+            padding: 5px 4vw;
+            background-color: #eee;
+            border-radius: 30px;
+            font-size: 12px;
+            margin-right: 3vw;
+            margin-bottom: 10px;
+          }
+          .alert-sure{
+            width: 96vw;
+            line-height: 40px;
+            margin: 10px auto;
+            text-align: center;
+            color: #fff;
+            background-color: #d81e06;
+            border-radius: 40px;
+          }
+          .active{
+            color: #fff!important;
+            background-color: #d81e06!important;
+          }
+          /*删除弹窗*/
+      </style>
+  </head>
+  <body>
+    <div id="header" class="">
+      <div class="clearfix text-center header fs18">
+          <span class="fl ml3v icon"><i onclick="closewin()" class="iconfont iwh">&#xe601;</i></span>
+          商品详情
+          <span class="fr mr3v icon"><i onclick="backhome()" class="iconfont iwh">&#xe6d9;</i></span>
+      </div>
+    </div>
+    <!-- 轮播图 -->
+    <div id="aui-slide" class="">
+      <div id="banner" class="aui-slide-wrap boradius" >
+      </div>
+      <div class="aui-slide-page-wrap"><!--分页容器--></div>
+    </div>
+    <!-- 商品信息 -->
+    <div class="item-box pad10a2v bgcf">
+      <div class="vouchers-list1 mb5 vouchers_list">
+      </div>
+      <div class="vouchers-list2 texthidden clearfix vouchers_list">
+        <!-- <span class="coupon fl mr3v boradius3">券后</span>￥
+        <span class="fs18">69</span>
+        <span class="original cogry">原价169</span>
+        <span class="fr cogry">24871人已买</span> -->
+      </div>
+      <div class="upgrade clearfix">
+        <span><i></i>现在升级顶级运营商，最高可得佣金￥10.35</span>
+        <span class="fr">立即升级></span>
+      </div>
+    </div>
+    <!-- 商品评价 -->
+    <!-- <div class="evaluation pad10a3v fs12 bgcf mb10 vouchers_list">
+    </div>
+    <div class="store pad10a3v bgcf mb10 vouchers_list">
+    </div> -->
+    <!-- 商品详情 -->
+    <div class="details bgcf mb10">
+      <div class="text-center fs13 lh29">
+        商品详情
+      </div>
+      <div id="detail">
+        <img src="../../../image/cbd.jpg" alt="">
+        <img src="../../../image/gouwu.png" alt="">
+      </div>
+    </div>
+    <!--  -->
+    <div id="footer" class="clearfix text-center">
+        <div class="fl ml3v footleft">
+          <div class="disi-b cored fs12">￥<span class="fs18 prices">0.5</span></div>
+          <div class="disi-b fs12 coaaa">原价<span class="line-through prices">￥1</span></div>
+        </div>
+        <div class="fr clearfix footright fs12">
+          <div class="fl">
+            <i class="iconfont fs12">&#xe614;</i>
+            分享得￥5.52
+          </div>
+          <div class="fl buyChose">
+            立即购买
+          </div>
+        </div>
+    </div>
+    <!-- 提示弹窗部分 -->
+    <div class="alerts">
+      <div class="bg"></div>
+      <div class="bgcf alert-box">
+        <div class="clearfix pad2v borderb1e pr">
+          <div class="item-img disi-b">
+            <img src="../../../image/la3.png" alt="">
+          </div>
+          <div class="disi-b fs11 lh16">
+            <p class="fs14 cored lh24">￥23.8</p>
+            <p>库存:4875</p>
+            <p class="texthiddens">已选：混合口味</p>
+          </div>
+          <div onclick="closeAlert()" class="icon pa">
+            <i class="iconfont">&#xe73e;</i>
+          </div>
+        </div>
+        <div class="content">
+          <div class="tits pad0a2v lh35">
+            颜色分类
+          </div>
+          <div class="content-box">
+            <span onclick="choseType(0)" class="active">新伦敦</span>
+            <span onclick="choseType(1)">光辉岁月</span>
+            <span onclick="choseType(2)">新伦敦</span>
+            <span onclick="choseType(3)">光辉岁月</span>
+            <span onclick="choseType(4)">新伦敦</span>
+            <span onclick="choseType(5)">光辉岁月</span>
+            <span onclick="choseType(6)">新伦敦</span>
+            <span onclick="choseType(7)">光辉岁月</span>
+            <span onclick="choseType(8)">新伦敦</span>
+            <span onclick="choseType(9)">光辉岁月</span>
+            <span onclick="choseType(10)">新伦敦</span>
+            <span onclick="choseType(11)">新伦敦</span>
+            <span onclick="choseType(12)">新伦敦</span>
+            <span onclick="choseType(13)">光辉岁月</span>
+            <span onclick="choseType(14)">新伦敦</span>
+          </div>
+        </div>
+        <div onclick="sureAlert()" class="alert-sure">
+            确认
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript" src="../../../script/aui-slide.js"></script>
+  <script type="text/javascript" src="../../../script/aui-scroll.js" ></script>
+  <script type="text/javascript" src="../../../script/zepto.js"></script>
+  <script type="text/javascript" src="../../../script/fx.js" ></script>
+  <script type="text/javascript" src="../../../script/md5.js"></script>
+  <script type="text/javascript" src="../../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var header;
+      var id1 = 0;
+      var id2 = 0;
+      var pagesize = 8,
+        page = 1,
+        state = true;
+        types = 'all_asc';
+      var item_id;
+      var detail = document.getElementById('detail');
+      var prices = document.getElementsByClassName('prices');
+      apiready = function(){
+        header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        item_id = api.pageParam.item_id;
+        var banner = $api.byId('banner');
+        var vouchers_list = document.getElementsByClassName('vouchers_list');
+        var recommend = $api.byId('recommend');
+        var item = $api.byId('item');
+        var tishi = document.getElementsByClassName('tishi');
+        console.log(item_id);
+        axios({
+          url: '/api/rmo2o/goodsdetail',
+          data:{
+            id:item_id
+          }
+        },function(ret,err){
+          console.log(JSON.stringify(ret));
+          var html = "";
+          var imgLength = ret.data.goods_images.length;
+          // for (var i = 0; i < imgLength; i++) {
+            for (var i = 0; i < 3; i++) {
+            // console.log(ret.data.item_image[i]);
+            html += `<div class="aui-slide-node bg-dark">
+                <img src="../../../image/ban1.png" />
+                <!-- <img src="${ret.data.goods_images[i]}" /> -->
+            </div>`
+          };
+          banner.innerHTML = html;
+          //轮播
+          var slide = new auiSlide({
+             container:document.getElementById("aui-slide"),
+             // "width":300,
+             "height":260,
+             "speed":300,
+             "pageShow":true,
+             "autoPlay": 1000, //自动播放
+             "pageStyle":'dot',
+             "loop":true,
+             'dotPosition':'center',
+         })
+          vouchers_list[0].innerText =  ret.data.goods_name;
+          vouchers_list[1].innerHTML = `<span class="coupon fl mr3v boradius3">优惠价</span>￥
+                                        <span class="fs18">${ret.data.price}</span>
+                                        <span class="original cogry">原价${ret.data.price_o}</span>
+                                        <span class="fr cogry">${ret.data.goods_sales}人已买</span>`;
+          detail.innerHTML = '<div class="pad2v">'+ret.data.goods_desc+'</div>'
+        //   var evaluationImg = document.getElementsByClassName('evaluation-img');
+        //   for (var j = 0; j < ret.data.evaluate.last.last_img.length; j++) {
+        //     evaluationImg[0].innerHTML += `<img src="${ret.data.evaluate.last.last_img[j]}">`
+        //   }
+        //   var rollMsg = ret.data.roll_msg;
+        //   var roll_html = "";
+        prices[0].innerText = ret.data.price;
+        prices[1].innerText = ret.data.price_o;
+        })
+        //监听滑动底部加载
+        api.addEventListener({
+            name:'scrolltobottom',
+            extra:{
+                threshold: -1            //设置距离底部多少距离时触发，默认值为0，数字类型
+            }
+        }, function(ret, err){
+          loading()
+        });
+      };
+   //监听滑动
+   var scroll = new auiScroll({
+       listen:true,
+       distance:200 //判断到达底部的距离，isToBottom为true
+   },function(ret){
+     var scrollTop = ret.scrollTop;
+    //  console.log(scrollTop);
+     if (scrollTop>300) {
+       scrollTop = 100;
+       return scrollTop;
+     }
+     header.style.background = 'rgba(255,255,255,' + scrollTop / 100 + ')';
+
+   });
+      //关闭该页面
+      function closewin() {
+        api.closeWin();
+      }
+      //打开弹窗，选择类别
+      // function choseAlert() {
+      var _this;
+      $('.buyChose').on('click',function(){
+        _this = this;
+        var alerts = document.getElementsByClassName('alerts');
+        var alertBox = document.getElementsByClassName('alert-box');
+        alerts[0].style.display = 'block';
+        $('.alert-box').animate({height:'72vh'})
+      })
+      //选择类别
+      function choseType(index) {
+        var types = document.querySelectorAll('.content-box span')
+        for (var i = 0; i < types.length; i++) {
+          if (i===index) {
+            $api.addCls(types[i], 'active');
+          }else {
+            if ($api.hasCls(types[i], 'active')) {
+              $api.removeCls(types[i], 'active')
+            }
+          }
+        }
+      }
+      //点击确认
+      function sureAlert() {
+        api.openWin({
+            name: 'order_pay',
+            url: './order_pay.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+        var choseVal = $('.active')[0].innerText;
+        console.log(_this);
+        $('.alert-box').animate({height:'0'})
+        setTimeout(function() {
+          $('.alerts').css('display','none')
+        },0)
+      }
+      //关闭弹窗
+      function closeAlert() {
+        $('.alert-box').animate({height:'0'})
+        setTimeout(function() {
+          $('.alerts').css('display','none')
+        },500)
+      }
+  </script>
+  </html>

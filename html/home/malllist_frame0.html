@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>商城分类子页面</title>
+      <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+      <style>
+          .mallall-img{
+            width: 100%;
+            height: 160px;
+          }
+          /*商品列表*/
+          .vouchers-list{
+            border-bottom: 1px solid #ddd;
+          }
+          .vouchers-tit{
+            border-bottom: 1px solid #ccc;
+          }
+          .titimg{
+            width: 5vw;
+            height: 5vw;
+            margin-bottom: 5px;
+          }
+          .vouchers-list{
+            width: 96vw;
+            padding: 1vh 2vw;
+            background-color: #fff;
+          }
+          .vouchers-list-left{
+            float: left;
+            position: relative;
+            width: 32vw;
+            height: 120px;
+            margin-right: 3vw;
+          }
+          .peoplenum{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            font-size: 12px;
+            line-height: 16px;
+            background: linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.5),rgba(0,0,0,.3));
+          }
+          .vouchers-list-right{
+            float: left;
+            width: 61vw;
+            padding: 10px 0;
+            height: 100px;
+          }
+          .vouchers-list1{
+            width: 100%;
+            font-size: 14px;
+            line-height: 4vw;
+          }
+          .vouchers-list1 img{
+            width: 4vw;
+            height: 4vw;
+            margin-right: 2vw;
+            vertical-align: top;
+          }
+          .vouchers-list2{
+            font-size: 12px;
+            color: #ccc;
+          }
+          .vouchers-list3{
+            font-size: 12px;
+          }
+          .original{
+            color: #ccc;
+            text-decoration: line-through;
+          }
+          .coupon{
+            background-color: red;
+            color: #fff;
+            line-height: 18px;
+            padding: 0 2vw;
+          }
+          .vouchers-list3 span{
+            line-height: 18px;
+            vertical-align: top;
+          }
+          .vouchers-list3 span:first-child{
+            color: #fff;
+            padding: 0 1vw;
+            font-size: 10px;
+            border-radius: 3px;
+            background-color: red;
+          }
+      </style>
+  </head>
+  <body>
+      <div id="mallallimg" class="mallall-img no">
+        <img src="../../image/ban1.png" alt="">
+      </div>
+      <div class="malllist">
+          <ul id="list">
+            <!-- <li class="malllist-item"></li> -->
+            <!-- <ul id="vouchersul" class="bgcc vouchersul"> -->
+              <!-- <li onclick="openitem()" class="vouchers-list clearfix">
+                <div class="vouchers-list-left">
+                  <img src="../image/muwu.jpg" alt="">
+                  <div class="peoplenum text-center">自购赚￥0.66</div>
+                </div>
+                <div class="vouchers-list-right">
+                  <div class="vouchers-list1 texthidden mb10">
+                    <img src="../../image/taobao.jpg">
+                    新鲜桃子水蜜桃脆甜毛桃脆桃新鲜水果3/5现摘现发迎击时令水蜜桃
+                  </div>
+                  <div class="vouchers-list2 texthidden mb48 clearfix">原价
+                    <span class="original">￥11.9</span>
+                    <span class="fr">24871人已买</span>
+                  </div>
+                  <div class="vouchers-list3 cored clearfix">
+                    <span class="mr2v">券后价</span>
+                    <span class="discount mr1v cored fs16">￥9.9</span>
+                    <span class="coupon fr mr3v">2元券</span>
+                  </div>
+                </div>
+              </li> -->
+          </ul>
+      </div>
+  </body>
+  <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var mallAllImg = document.getElementById('mallallimg');
+      var pagesize = 8,
+          page = 1,
+          state = true;
+      var type;
+      var list = document.getElementById('list');
+      var cid;
+      apiready = function(){
+      // var index = api.pageParam.index;
+      // alert(index)
+      cid = api.pageParam.cid;
+      console.log(cid);
+      type = api.pageParam.type;
+      console.log(type);
+      opendata()
+      api.addEventListener({
+          name:'scrolltobottom',
+          extra:{
+              threshold: -1            //设置距离底部多少距离时触发，默认值为0，数字类型
+          }
+      }, function(ret, err){
+        loading()
+      });
+      //下拉刷新
+      api.setRefreshHeaderInfo({
+            visible: true,
+            loadingImg: '../../image/loading_more.gif',
+            bgColor: '#ccc',
+            textColor: '#fff',
+            textDown: '下拉刷新...',
+            textUp: '松开刷新...',
+            showTime: true //显示更新时间
+        }, function(ret, err) {
+          // api.refreshHeaderLoadDone()
+          setTimeout(function(){
+            page = 1;
+            state = true;
+            window.location.reload()
+            opendata()
+            api.refreshHeaderLoadDone();
+          },1000)
+            // 在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+      });
+      };
+      //打开详细商品页面
+      function openitem() {
+        api.openWin({
+            name: 'item',
+            url: './item.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+      }
+      //请求数据
+      var opendata = function () {
+        axios({
+          url: '/api/rmitems/lists',
+          data:{
+            type:type,
+            cid:cid,
+            page:page,
+            pagesize:pagesize
+          }
+        },function(ret){
+          console.log(JSON.stringify(ret));
+          var html = "";
+          if (ret.data.length < pagesize) {
+            state = false
+          }
+          for (var i = 0; i < ret.data.length; i++) {
+            // console.log(type);
+            html += `<li onclick="openitem()" class="vouchers-list clearfix">
+              <div class="vouchers-list-left">
+                <img src="${ret.data[i].master_image}" alt="">
+                <div class="peoplenum text-center">自购赚￥0.66</div>
+              </div>
+              <div class="vouchers-list-right">
+                <div class="vouchers-list1 texthidden mb10">
+                  <img src="../../image/${ret.data[i].item_type}.png">
+                  ${ret.data[i].title}
+                </div>
+                <div class="vouchers-list2 texthidden mb48 clearfix">原价
+                  <span class="original">￥${ret.data[i].old_price}</span>
+                  <span class="fr">${ret.data[i].sales}人已买</span>
+                </div>
+                <div class="vouchers-list3 cored clearfix">
+                  <span class="mr2v">券后价</span>
+                  <span class="discount mr1v cored fs16">￥${ret.data[i].end_price}</span>
+                  <span class="coupon fr mr3v">${ret.data[i].coupon_price}元券</span>
+                </div>
+              </div>
+            </li>`
+          }
+          if (page === 1) {
+            list.innerHTML =html
+          } else {
+            list.innerHTML +=html
+          }
+        })
+      }
+      var loading = function(){
+        if (state){
+          page++
+          opendata()
+        }
+      }
+  </script>
+  </html>

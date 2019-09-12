@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>title</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+          body{
+
+          }
+          /*店*/
+          .list_img_box{
+            width: 20vw;
+            height: 20vw;
+            margin-right: 2vw;
+          }
+          .list_news{
+            width: 60vw;
+          }
+      </style>
+  </head>
+  <body>
+    <!-- 附近的店 -->
+    <div class="bgce">
+      <ul id="list" class="list">
+        <li class="clearfix bgcf pad2v mb5">
+          <div class="list_img_box fl boradius3">
+            <img src="../../../image/la3.png" alt="">
+          </div>
+          <div class="fl list_news fs12">
+            <div class="clearfix">
+              <div class="fs16 bold disi-b texthidden wid80b lh29">高新区增势i我就爱喝覅ui就问人家安徽</div>
+            </div>
+            <div>
+              <span class="padr4v borderr1e">川湘菜</span><span class="ml4v">人气3113</span>
+            </div>
+            <div class="fs12 texthidden lh24">武侯区一周大袋暗杀会计恒等式卡夫卡噶就发给卡霍夫事故负有</div>
+          </div>
+          <div class="fr coaaa fs12 mr2v">1000m</div>
+        </li>
+        <li class="clearfix bgcf pad2v mb5">
+          <div class="list_img_box fl boradius3">
+            <img src="../../../image/la3.png" alt="">
+          </div>
+          <div class="fl list_news fs12">
+            <div class="clearfix">
+              <div class="fs16 bold disi-b texthidden wid80b lh29">高新区增势i我就爱喝覅ui就问人家安徽</div>
+            </div>
+            <div>
+              <span class="padr4v borderr1e">川湘菜</span><span class="ml4v">人气3113</span>
+            </div>
+            <div class="fs12 texthidden lh24">武侯区一周大袋暗杀会计恒等式卡夫卡噶就发给卡霍夫事故负有</div>
+          </div>
+          <div class="fr coaaa fs12 mr2v">469m</div>
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript" src="../../../script/md5.js"></script>
+  <script type="text/javascript" src="../../../script/ajax.js"></script>
+  <script type="text/javascript">
+      var list = document.getElementById('list');
+      var cityList = ['上海省','四川省'];
+      console.log(cityList[1]);
+      var page = 1;
+      var pagesize = 6;
+      var state = true;
+      var lng = 104.0647600000;
+      var lat = 30.5702000000;
+      var id;
+      apiready = function(){
+        id = api.pageParam.id;
+        shopData();//店铺数据
+        //下拉刷新
+        api.setRefreshHeaderInfo({
+              visible: true,
+              loadingImg: '../../image/loading_more.gif',
+              bgColor: '#ccc',
+              textColor: '#fff',
+              textDown: '下拉刷新...',
+              textUp: '松开刷新...',
+              showTime: true //显示更新时间
+          }, function(ret, err) {
+            // api.refreshHeaderLoadDone()
+            setTimeout(function(){
+              page = 1;
+              state = true;
+              window.location.reload()
+              api.refreshHeaderLoadDone();
+            },1000)
+              // 在这里从服务器加载数据，加载完成后调用api.refreshHeaderLoadDone()方法恢复组件到默认状态
+        });
+        api.addEventListener({
+            name: 'scrolltobottom',
+            extra: {
+              threshold: -1
+            }
+        }, function(ret, err){
+            loading()
+        });
+
+      };
+      //获取店铺列表
+      var shopData = function () {
+        axios({
+          url: '/api/rmo2o/shoplist',
+          data:{
+            lng:lng,
+            lat:lat,
+            field:"",
+            showgoods:'N',
+            showgoods_num:0,
+            province:'四川省',
+            tid:id,
+            nearby:'Y',
+            star:'N',
+            strict:'N',
+            page:page,
+            pagesize:pagesize
+          }
+        },function(ret){
+            console.log(JSON.stringify(ret));
+            var html = "";
+            if (ret.data.length < pagesize) {
+              state = false;
+            }
+            if (ret.data.length === 0) {
+              html = '<div class="text-center lh35">暂无数据</div>'
+            } else {
+              for (var i = 0; i < ret.data.length; i++) {
+                html += `<li class="clearfix bgcf pad2v mb5">
+                <div class="list_img_box fl boradius3">
+                <img src="${ret.data[i].shop_image}" alt="">
+                </div>
+                <div class="fl list_news fs12">
+                <div class="clearfix">
+                <div class="fs16 bold disi-b texthidden wid80b lh29">${ret.data[i].shop_name}</div>
+                </div>
+                <div>
+                <span class="padr4v borderr1e">川湘菜</span><span class="ml4v">人气${ret.data[i].sale}</span>
+                </div>
+                <div class="fs12 texthidden lh24">${ret.data[i].district}${ret.data[i].address}</div>
+                </div>
+                <div class="fr coaaa fs12 mr2v">${ret.data[i].km}m</div>
+                </li>`
+              }
+            }
+            if (page === 1) {
+              list.innerHTML = html;
+            } else {
+              list.innerHTML += html;
+            }
+        })
+      }
+      //上拉加载
+      var loading = function () {
+        if (state) {
+          page++;
+          shopData()
+        }
+      }
+  </script>
+  </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+      <title>我的收货地址</title>
+      <link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/iconfont.css"/>
+      <link rel="stylesheet" type="text/css" href="../../../css/public.css"/>
+      <style>
+        #header{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 9999;
+        }
+        .icon{
+          left: 0;
+        }
+      </style>
+  </head>
+  <body>
+    <div id="header" class="bgcf">
+      <div class="lh20 text-center lh35">
+        <span onclick="closewin()" class="ml2v pa icon"><i class="iconfont">&#xe601;</i></span>
+        我的收货地址
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="../../../script/api.js"></script>
+  <script type="text/javascript">
+      var ipt = document.getElementsByClassName('ipt')
+      apiready = function(){
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerH = $api.offset(header);
+        var tit = api.pageParam.tit;
+        var id = api.pageParam.id;
+        api.openFrame({
+            name: 'my_adress_frame',
+            url: './my_adress_frame.html',
+            rect: {
+                x: 0,
+                y: headerH.h,
+                w: 'auto',
+                h: 'auto'
+            },
+            pageParam: {
+                id: id
+            },
+            bounces: false,
+        });
+      };
+      //关闭页面
+      function closewin() {
+        api.closeWin();
+      }
+  </script>
+  </html>

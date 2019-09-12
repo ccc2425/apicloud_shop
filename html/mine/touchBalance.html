@@ -51,7 +51,7 @@
             var header = $api.byId('header');
             $api.fixStatusBar(header);
             headerH = $api.offset(header);
-            var valanceValue = api.pageParam.value;
+            var _balance = api.pageParam._balance;
             api.openFrameGroup ({
                 name: 'touchBalanceGroup',
                 background: '#eee',
@@ -68,14 +68,14 @@
                     url: 'touchBalance_frame0.html',
                     bgColor: '#eee',
                     pageParam:{
-                      valanceValue:valanceValue
+                      _balance:_balance
                     }
                 },{
                     name: 'touchBalance_frame1',
                     url: 'touchBalance_frame1.html',
                     bgColor: '#eee',
                     pageParam:{
-                      valanceValue:valanceValue
+                      _balance:_balance
                     }
                 }]
             }, function(ret, err){

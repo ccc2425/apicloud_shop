@@ -26,7 +26,7 @@
     <div class="mt16 padt10 bgcf">
         <div class="text-center lh24 padb10 borderb1e">
           <div class="fs12">可用余额（元）</div>
-          <div class="fs24 bold">0.44</div>
+          <div id="money" class="fs24 bold">0.44</div>
         </div>
         <ul id="money_list" class="money-list">
           <!-- <li class="pr">
@@ -49,7 +49,9 @@
       var pagesize = 12;
       var money_list = document.getElementById('money_list');
       apiready = function(){
-        var valanceValue = api.pageParam.valanceValue;
+        var _balance = api.pageParam._balance;
+        var money = $api.byId('money');
+        money.innerText = _balance;
         openData()
         api.addEventListener({
             name: 'scrolltobottom',

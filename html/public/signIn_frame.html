@@ -184,7 +184,19 @@
                 extra: {
                 }
             });
-            balance_num.innerText = _balance + ret.data.amount;
+            var num = Number(_balance) + Number(ret.data.amount);
+            num = Math.floor(num*100)/100;
+            var s = num.toString();
+            var rs = s.indexOf('.');
+            if (rs < 0) {
+              rs = s.length;
+              s += '.';
+            }
+            while (s.length <= rs + 2) {
+              s += '0';
+            }
+            var nums = s;
+            balance_num.innerText = nums;
           } else {
             api.toast({
                 msg: ret.msg,

@@ -183,6 +183,11 @@
 		return self.slideNodeList.length;
 	};
 	auiSlide.prototype.touchStart = function(event) {
+		// 阻止frame的默认滑动
+    api.setFrameGroupAttr({
+        name: 'homefroup',
+        scrollEnabled: false
+    });
 		touchStartTime = new Date() * 1;
 		firstTouchX = parseInt(event.changedTouches[0].pageX);
 		firstTouchY = parseInt(event.changedTouches[0].pageY);
@@ -199,6 +204,11 @@
         var direction = this.getDirection(offsetX,offsetY);
         if ( typeof isScrolling == 'undefined') {
 			isScrolling = !!( isScrolling || Math.abs(offsetX) < Math.abs(offsetY) );
+
+			api.setFrameAttr({
+          name: 'home_frame',
+          bounces: false
+      })
 		}
 		if(!isScrolling){
 			event.preventDefault();
@@ -229,6 +239,16 @@
 		}
 	};
 	auiSlide.prototype.touchEnd = function(event) {
+		// 恢复frame的默认滑动
+    api.setFrameGroupAttr({
+        name: 'homefroup',
+        scrollEnabled: true
+    })
+    //  恢复水平滑动禁止frame上下抖动
+    api.setFrameAttr({
+        name: 'home_frame',
+        bounces: true
+    })
 		var touchEndObj = event.changedTouches[0];
 		var touchEndX = parseInt(touchEndObj.pageX) - firstTouchX;
         var touchEndY = parseInt(touchEndObj.pageY) - firstTouchY;

@@ -6,6 +6,7 @@
       <title>填写资料</title>
       <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/aui.css"/>
+      <link rel="stylesheet" type="text/css" href="../../css/iconfont.css"/>
       <link rel="stylesheet" type="text/css" href="../../css/public.css"/>
       <style>
           .aui-list-item-inner{
@@ -42,6 +43,123 @@
             font-size: 16px;
             border-radius: 5px;
           }
+          .store{
+            position: fixed;
+            top: 30vh;
+            left: 10vw;
+            z-index: 9;
+            width: 80vw;
+            box-sizing: border-box;
+            padding: 10px 5px;
+            background-color: #fff;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+          }
+          .store>div>div{
+            width: 13vw;
+            height: 13vw;
+            margin: auto;
+          }
+          .store>div>span{
+            margin-top: 5px;
+          }
+          .bge{
+            width: 100vh;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+          .no{
+            display: none;
+          }
+          .cansle{
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: 64vh;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          #class_btn{
+            padding-top: 5px;
+            padding-bottom: 5px;
+          }
+          .classfial{
+              border: 1px solid #eee;
+              padding: 0 15px;
+              line-height: 20px;
+              border-radius: 20px;
+              font-size: 12px;
+              margin: 5px 2vw 5px 0;
+          }
+          /**/
+          .addres {
+            width: 100%;
+            height: 100%;
+            border-bottom: 1px solid #f5f5f5;
+            color: #B6B6B6;
+            position: relative;
+          }
+          .addres div {
+            /*width: 86%;*/
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            height: 100%;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+               -moz-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+          }
+          .addres div select {
+            background: #fff;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+               -moz-box-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            overflow: hidden;
+            outline: none;
+            border: none;
+            -webkit-appearance: none;
+               -moz-appearance: none;
+                    appearance: none;
+            font-size: 14px;
+            margin-right: 1vw;
+            text-align: center;
+          }
+          .piker_bg_out{
+            display: none;
+          }
+          .piker_bg{
+            width: 100%;
+            height: 375px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #eee;
+          }
+          .piker_bg>div{
+            line-height: 35px;
+          }
+          .piker_bg_box{
+            width: 100vw;
+            height: calc(100vh - 375px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.3);
+          }
+          .active{
+            background: #FB4138;
+            color: #fff;
+          }
       </style>
   </head>
   <body>
@@ -50,57 +168,168 @@
         <li class="aui-list-item">
             <div class="aui-list-item-inner">
                 <div class="aui-list-item-label">
-                    真实姓名
+                    账号
                 </div>
                 <div class="aui-list-item-input">
-                    <input class="" type="text" placeholder="输入真实姓名">
+                    <input id="username" class="" type="text" placeholder="请输入你的账号">
                 </div>
             </div>
         </li>
         <li class="aui-list-item">
             <div class="aui-list-item-inner">
                 <div class="aui-list-item-label">
-                    证件号码
+                    密码
                 </div>
                 <div class="aui-list-item-input">
-                    <input class="" type="password" placeholder="输入证件号码">
+                    <input id="password" class="" type="password" placeholder="请输入你的密码">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    手机号码
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="mobile" class="" type="text" placeholder="请输入你的手机号码">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    店铺名称
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="shop_name" class="" type="text" placeholder="请输入你的店铺名称">
                 </div>
             </div>
         </li>
         <li class="aui-list-item">
             <div class="aui-list-item-inner pad10a0">
                 <div class="aui-list-item-label">
-                    手持证件
+                    门面图
                 </div>
                 <div class="aui-list-item-input">
                     <div onclick="upImg(0)" class="upimg"></div>
-                    <span onclick="alertExample()" class="example">示例</span>
+                    <span onclick="alertExample(0)" class="example">示例</span>
                 </div>
             </div>
         </li>
         <li class="aui-list-item">
             <div class="aui-list-item-inner pad10a0">
                 <div class="aui-list-item-label">
-                    证件证明
+                    店铺图片
                 </div>
                 <div class="aui-list-item-input">
                     <div onclick="upImg(1)" class="upimg"></div>
-                    <span onclick="alertExample()" class="example">示例</span>
+                    <span onclick="alertExample(1)" class="example">示例</span>
                 </div>
             </div>
         </li>
         <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    店铺公告
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="shop_ad_led" class="" type="text" placeholder="请输入你的店铺公告">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    分类
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="tid" class="" type="text" placeholder="请选择你的分类" disabled="">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+
+                </div>
+                <div id="class_btn" class="aui-list-item-input">
+                    <span class="classfial active">示例</span>
+                    <span class="classfial">示例</span>
+                    <span class="classfial">示例</span>
+                    <span class="classfial">示例</span>
+                    <span class="classfial">示例</span>
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    商家介绍
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="shop_intro" class="" type="text" placeholder="请输入你的商家介绍">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    营业时间
+                </div>
+                <div onclick="choseTime()" class="aui-list-item-input">
+                    <input id="business_hours" class="" type="text" placeholder="请选择你的营业时间" disabled="">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    人均消费
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="per_capita_consumption" class="" type="number" placeholder="请输入你的人均消费">
+                </div>
+            </div>
+        </li>
+        <!-- <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    商铺位置
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="" class="" type="number" placeholder="请选择你的商铺位置">
+                </div>
+            </div>
+        </li> -->
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                  商铺位置
+                </div>
+                <div class="aui-list-item-input addres">
+                  <div>
+                    <select class="form-control" id="cmbProvince" name="cmbProvince" >
+                    </select>
+                    <select class="form-control" id="cmbCity" name="cmbCity" >
+                    </select>
+                    <select class="form-control" id="cmbArea" name="cmbArea" >
+                    </select>
+                  </div>
+                </div>
+            </div>
+        </li>
+        <!-- <li class="aui-list-item">
             <div class="aui-list-item-inner pad10a0">
                 <div class="aui-list-item-label">
                     证件背面
                 </div>
                 <div class="aui-list-item-input">
                     <div onclick="upImg(2)" class="upimg"></div>
-                    <span onclick="alertExample()" class="example">示例</span>
+                    <span onclick="alertExample(2)" class="example">示例</span>
                 </div>
             </div>
-        </li>
-        <li class="aui-list-item">
+        </li> -->
+        <!-- <li class="aui-list-item">
             <div class="aui-list-item-inner">
                 <div class="aui-list-item-label">
                     商铺位置
@@ -109,14 +338,44 @@
                     <input class="" type="password" disabled placeholder="点我进入地图选择位置">
                 </div>
             </div>
-        </li>
+        </li> -->
         <li class="aui-list-item">
             <div class="aui-list-item-inner">
                 <div class="aui-list-item-label">
                     联系地址
                 </div>
                 <div class="aui-list-item-input">
-                    <input class="" type="password" placeholder="详细店铺地址">
+                    <input id="address" class="" type="text" placeholder="详细店铺地址">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    营业执照注册号
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="business_license_reg_code" class="" type="text" placeholder="请选择你的营业执照注册号">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    法人代表姓名
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="legal_person" class="" type="text" placeholder="请选择你的法人代表姓名">
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    经营品类
+                </div>
+                <div class="aui-list-item-input">
+                    <input id="business_license_type" class="" type="text" placeholder="请选择你的经营品类">
                 </div>
             </div>
         </li>
@@ -125,11 +384,64 @@
     <div onclick="openExamine()" class="btn">
       下一步
     </div>
+    <div class="no">
+      <div onclick="closeAlert()" class="bge"></div>
+      <div class="store text-center">
+        <p class="mb10 fs14">图片示例</p>
+        <div class="">
+          <img src="../../image/ban1.png" alt="">
+        </div>
+      </div>
+      <div onclick="closeAlert()" class="cansle">
+        <img src="../../image/a1.png" alt="">
+      </div>
+    </div>
+    <!-- 背景 -->
+    <div class="piker_bg_out">
+      <div onclick="closePick()" class="piker_bg_box">
+      </div>
+      <div class="piker_bg">
+        <div class="clearfix">
+          <i onclick="closePick()" class="iconfont fl ml3v fs24">&#xe73e;</i>
+          <i onclick="setPick()" class="iconfont fr mr3v fs24">&#xe714;</i>
+        </div>
+      </div>
+    </div>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/address.js"></script>
+  <script type="text/javascript" src="../../script/md5.js"></script>
+  <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
+      var username = document.getElementById('username'),
+          password = document.getElementById('password'),
+          mobile = document.getElementById('mobile'),
+          shop_name = document.getElementById('shop_name'),
+          shop_ad_led = document.getElementById('shop_ad_led'),
+          tid = document.getElementById('tid'),
+          shop_intro = document.getElementById('shop_intro'),
+          business_hours = document.getElementById('business_hours'),
+          per_capita_consumption = document.getElementById('per_capita_consumption'),
+          cmbProvince = document.getElementById('cmbProvince'),
+          cmbCity = document.getElementById('cmbCity'),
+          cmbArea = document.getElementById('cmbArea'),
+          address = document.getElementById('address'),
+          business_license_reg_code = document.getElementById('business_license_reg_code'),
+          legal_person = document.getElementById('legal_person'),
+          business_license_type = document.getElementById('business_license_type'),
+          class_btn = document.getElementById('class_btn');
+      var piker_bg_out = document.getElementsByClassName('piker_bg_out');
+      var piker_bg_box = document.getElementsByClassName('piker_bg_box');
+      var start_time;
+      var end_time;
+      var class_id;//分类id
+      var shop_image;//门面图
+      var shop_images;//门面图
+      var lng = 104.0647600000;//经度
+      var lat = 30.5702000000;//纬度
+      var state = true;
       apiready = function(){
-
+          getclass()
       };
       //上传图片
       function upImg(index) {
@@ -148,8 +460,6 @@
                 destinationType: 'url',
                 allowEdit: true,
                 quality: 50,
-                targetWidth: 100,
-                targetHeight: 100,
                 saveToPhotoAlbum: false
             }, function(ret, err) {
                 getImg(ret,index)
@@ -161,22 +471,307 @@
           api.imageCache({
               url: _data.data
           }, function(ret, err){
-              upimg[index_].style.background = 'url(' + ret.url  + ')';
+              upimg[index_].style.background = 'url(' + ret.url  + ') no-repeat';
+              upimg[index_].style.backgroundSize = '100% 100%';
+              if (index_ === 0) {
+                shop_image =  ret.url;
+              }
+              if (index_ === 1) {
+                shop_images =  ret.url;
+              }
           });
       }
-      //资料审核
-      function openExamine() {
-        api.openWin({
-            name: 'examine',
-            url: './examine.html',
-            pageParam: {
-                name: 'test'
+      //选择分类
+      function choseClass(index) {
+        var classfial = document.getElementsByClassName('classfial');
+        for (var i = 0; i < classfial.length; i++) {
+          var thisLi = classfial[i];
+          if (i===index) {
+            $api.addCls(thisLi, 'active');
+            class_id = thisLi.dataset.id;
+          }else {
+            if ($api.hasCls(thisLi, 'active')) {
+              $api.removeCls(thisLi, 'active');
+            }
+          }
+        }
+      }
+      //选择营业时间
+      function choseTime() {
+        piker_bg_out[0].style.display = "block";
+        //禁止滑动
+        piker_bg_box[0].ontouchmove=function(e){
+            e.preventDefault && e.preventDefault();
+            e.returnValue=false;
+            e.stopPropagation && e.stopPropagation();
+            return false;
+        };
+        //打开时间选择
+        var periodSelector = api.require('periodSelector');
+        periodSelector.open({
+            x: 0,
+            y: api.frameHeight - 340,
+            w: api.frameWidth,
+            h: 340,
+            fixedOn: api.frameName
+        }, function(ret, err) {
+            if (ret) {
+                // console.log(JSON.stringify(ret));
+                start_time = ret.sHour + ":" + ret.sMinit;
+                end_time = ret.eHour + ":" + ret.eMinit;
+                // alert(JSON.stringify(ret));
             }
         });
       }
-      //弹窗
-      function alertExample() {
+      //确定选择
+      function setPick() {
+        console.log(start_time);
+        console.log(end_time);
+        business_hours.value = start_time + '-' + end_time;
+        closePick()
+      }
+      //关闭选择时间
+      function closePick() {
+        var periodSelector = api.require('periodSelector');
+        periodSelector.close();
+        piker_bg_out[0].style.display = "none";
+        //允许滑动
+        piker_bg_box[0].ontouchmove="";
+      }
+      //资料审核
+      function openExamine() {
 
+        if(!username.value){
+          api.toast({
+            msg: '请输入你的账号',
+            duration: 1000
+          });
+          return false
+        }else if(!password.value){
+          api.toast({
+            msg: '请输入你的密码',
+            duration: 1000
+          });
+          return false
+        }else if(!/^1\d{10}/.test(mobile.value)){
+          api.toast({
+            msg: '请输入正确的手机号码',
+            duration: 1000
+          });
+          return false
+        }else if(!shop_name.value){
+          api.toast({
+            msg: '请输入你的店铺名称',
+            duration: 1000
+          });
+          return false
+        }else if(!shop_image){
+          api.toast({
+            msg: '请上传你的门面图',
+            duration: 1000
+          });
+          return false
+        }else if(!shop_images){
+          api.toast({
+            msg: '请上传你的店铺图片',
+            duration: 1000
+          });
+          return false
+        }else if(!shop_ad_led.value){
+          api.toast({
+            msg: '请输入你的店铺公告',
+            duration: 1000
+          });
+          return false
+        }else if(!class_id){
+          api.toast({
+            msg: '请选择你的商家分类',
+            duration: 1000
+          });
+          return false
+        }else if(!shop_intro.value){
+          api.toast({
+            msg: '请输入你的商家介绍',
+            duration: 1000
+          });
+          return false
+        }else if(!business_hours.value){
+          api.toast({
+            msg: '请选择你的营业时间',
+            duration: 1000
+          });
+          return false
+        }else if(!per_capita_consumption.value){
+          api.toast({
+            msg: '请输入你的人均消费',
+            duration: 1000
+          });
+          return false
+        }else if(cmbProvince.value === '未选择'){
+          api.toast({
+            msg: '请选择地址',
+            duration: 1000
+          });
+          return false
+        }else if(!address.value){
+          api.toast({
+            msg: '请输入你的详细地址',
+            duration: 1000
+          });
+          return false
+        }else if(!lng){
+          api.toast({
+            msg: '请选择你的经度',
+            duration: 1000
+          });
+          return false
+        }else if(!lat){
+          api.toast({
+            msg: '请选择你的纬度',
+            duration: 1000
+          });
+          return false
+        }else if(!business_license_reg_code.value){
+          api.toast({
+            msg: '请输入你的营业执照注册号',
+            duration: 1000
+          });
+          return false
+        }else if(!legal_person.value){
+          api.toast({
+            msg: '法人代表姓名',
+            duration: 1000
+          });
+          return false
+        }else if(!business_license_type.value){
+          api.toast({
+            msg: '请输入你的经营品类',
+            duration: 1000
+          });
+          return false
+        }
+        if(!state){
+          return false
+        }
+        state = false
+        setTimeout(function(){
+          state = true
+        },2000)
+        api.showProgress({
+          title: '上传中...',
+          text: '请稍等...',
+          modal: true
+        });
+        openData();//上传数据
+      }
+      //弹窗
+      var no = document.getElementsByClassName('no');
+      //打开弹窗示例
+      function alertExample(index) {
+        no[0].style.display = "block";
+      }
+      //关闭弹窗示例
+      function closeAlert() {
+        no[0].style.display = "none";
+      }
+      //上传数据
+      var openData = function() {
+        console.log(username.value);
+        console.log(password.value);
+        console.log(mobile.value);
+        console.log(shop_name.value);
+        console.log(shop_image);
+        console.log(shop_images);
+        console.log(shop_ad_led.value);
+        console.log(class_id);
+        console.log(shop_intro.value);
+        console.log(business_hours.value);
+        console.log(per_capita_consumption.value);
+        console.log(cmbProvince.value);
+        console.log(cmbCity.value);
+        console.log(cmbArea.value);
+        console.log(address.value);
+        console.log(lng);
+        console.log(lat);
+        console.log(business_license_reg_code.value);
+        console.log(legal_person.value);
+        console.log(business_license_type.value);
+        axios({
+          url: '/api/rmo2o/reg',
+          data:{
+            username:username.value,
+            password:password.value,
+            mobile:mobile.value,
+            shop_name:shop_name.value,
+            shop_image:shop_image,
+            shop_images:shop_images,
+            shop_ad_led:shop_ad_led.value,
+            tid:class_id,
+            shop_intro:shop_intro.value,
+            business_hours:business_hours.value,
+            per_capita_consumption:per_capita_consumption.value,
+            province:cmbProvince.value,
+            citys:cmbCity.value,
+            district:cmbArea.value,
+            address:address.value,
+            lng:lng,
+            lat:lat,
+            business_license_reg_code:business_license_reg_code.value,
+            legal_person:legal_person.value,
+            business_license_type:business_license_type.value
+          }
+        },function(ret){
+            console.log(JSON.stringify(ret));
+            if (ret) {
+              api.hideProgress()
+              if (ret.code === 200) {
+                api.toast({
+                  msg: '上传成功',
+                  duration: 1000,
+                  location: 'middle'
+                });
+                setTimeout(function() {
+                  api.openWin({
+                    name: 'examine',
+                    url: './examine.html',
+                    pageParam: {
+                      name: 'test'
+                    }
+                  });
+                },1000)
+              }else {
+                api.toast({
+                  msg: ret.msg,
+                  duration: 1000,
+                  location: 'middle'
+                });
+              }
+            }else {
+              api.hideProgress()
+              api.toast({
+                msg: '上传失败',
+                duration: 1000,
+                location: 'middle'
+              });
+            }
+        })
+      }
+      //获取分类
+      var getclass = function () {
+        axios({
+          url: '/api/rmo2o/getclasslist',
+          data:{
+          }
+        },function(ret){
+            console.log(JSON.stringify(ret));
+            if (ret) {
+              var html = "";
+              for (var i = 0; i < ret.data.length; i++) {
+                html += '<span data-id="' + ret.data[i].id + '" onclick="choseClass(' + i + ')" class="classfial">' + ret.data[i].name +'</span>'
+              }
+              class_btn.innerHTML = html;
+            }
+        })
       }
   </script>
   </html>
