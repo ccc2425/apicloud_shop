@@ -2,7 +2,6 @@
  * APICloud JavaScript Library
  * Copyright (c) 2014 apicloud.com
  */
- var ajaxUrl = 'http://192.168.0.147/index.php';
 (function(window){
     var u = {};
     var isAndroid = (/android/gi).test(navigator.appVersion);

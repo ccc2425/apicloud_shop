@@ -105,9 +105,9 @@
           }
           .classification ul li{
             display:inline-block;
-            width: 16vw;
+            width: 60px;
             height: 42px;
-            margin: 3px 3vw;
+            margin: 3px 12px;
             line-height: 18px;
           }
           .classification ul::-webkit-scrollbar {
@@ -124,7 +124,7 @@
   <body>
     <div class="classification clearfix text-center bgcp">
       <ul id="time" class="mt5">
-        <li class="classifiy active"><span class="fs16 bold">00:00</span></br><span class="fs12">昨日开抢</span></li>
+        <!-- <li class="classifiy active"><span class="fs16 bold">00:00</span></br><span class="fs12">昨日开抢</span></li> -->
       </ul>
     </div>
     <ul id="vouchersul" class="bgcc vouchersul">
@@ -155,10 +155,12 @@
     </ul>
   </body>
   <script type="text/javascript" src="../../script/api.js"></script>
+  <script type="text/javascript" src="../../script/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="../../script/md5.js"></script>
   <script type="text/javascript" src="../../script/ajax.js"></script>
   <script type="text/javascript">
       var hour_types;
+      var way;
       apiready = function(){
         var vouchersul = $api.byId('vouchersul');
         // var hour_type = api.pageParam.hour_type;
@@ -183,6 +185,8 @@
               // alert(html);
               time.innerHTML = html;
               hour_types = ret.data.hour_type_now;
+              way = (hour_types-3)*84;
+              $("#time").animate({scrollLeft:way});
               openData()
             }
         })
@@ -224,6 +228,8 @@
       function opensingle(index,hour_type) {
         randomSwitchBtn(index)
         openData(hour_type)
+        way = (hour_type-3)*84;
+        $("#time").animate({scrollLeft:way});
         console.log(hour_type);
         hour_types = hour_type;
         // hideAllFrame()
